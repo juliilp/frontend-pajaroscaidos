@@ -1,5 +1,10 @@
+import MainHome from "@/components/MainHome";
 import React from "react";
 
 export default function page() {
-  return <div>page</div>;
+  return (
+    <section>
+      <MainHome />
+    </section>
+  );
 }
