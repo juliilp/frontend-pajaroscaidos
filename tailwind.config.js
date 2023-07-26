@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         roboto: ["var(--font-roboto)"],
+        baloo: ["--font-baloo"],
       },
     },
   },
