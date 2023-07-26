@@ -7,11 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        darkgrey: "#3D3D3D",
-        lightgrey: "#C2C2C2",
-      },
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+     
+    },
+    colors: {
+      darkgrey: "#3D3D3D",
+      lightgrey: "#C2C2C2",
     },
   },
   plugins: [],
-};
+}
+}
