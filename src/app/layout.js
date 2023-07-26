@@ -1,11 +1,17 @@
 import "./globals.css";
-import { Inter, Roboto } from "next/font/google";
+import { Inter, Roboto, Baloo_Bhaijaan_2 } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
   weight: ["400", "700", "500"],
+});
+const Baloo = Baloo_Bhaijaan_2({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-baloo",
+  weight: ["400", "500", "700"],
 });
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +21,9 @@ import ContextProvider from "@/store/ContextProvider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${roboto.variable}`}>
+      <body
+        className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}
+      >
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
