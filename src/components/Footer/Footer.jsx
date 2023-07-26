@@ -1,7 +1,7 @@
 import { BsInstagram, BsTwitter } from 'react-icons/bs'
 import { FaFacebookF } from 'react-icons/fa'
 import { AiOutlineYoutube } from 'react-icons/ai'
-import logo from '../../public/images/Logo.png'
+import logo from '../../../public/images/Logo.png'
 import Image from 'next/image'
 export default function Footer() {
 
