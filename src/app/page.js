@@ -4,7 +4,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <section className=" min-h-screen">{/*min-h-screen para que ocupe si o si toda la pantalla*/}
+    <section>
       <MainHome />
       <Campañas
         fecha="Julio 18, 2023"

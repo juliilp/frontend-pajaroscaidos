@@ -17,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${roboto.variable}`}>
-        <ContextProvider>{children}</ContextProvider>
+        <div className=" min-h-screen">{/* para que las altura minima de las paginas sea el total de la pantalla */}
+          <ContextProvider>{children}</ContextProvider>
+        </div>
         <Footer />
       </body>
     </html>

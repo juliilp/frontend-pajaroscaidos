@@ -7,7 +7,7 @@ export default function Footer() {
 
     const textStyles = ' 2xl:text-2xl xl:text-xl lg:text-lg'
     return (
-        <footer className="flex items-center h-[25rem]  bg-darkgrey  text-lightgrey flex-col 
+        <footer className="flex items-center h-[25rem]  bg-darkgray  text-lightgray flex-col 
          sm:gap-0 sm:justify-between  sm:items-stretch  sm:flex-row w-full sm:min-h-[10rem] sm:h-[12rem]">
 
             <div className=' w-full h-3/6  flex  justify-center relative  
