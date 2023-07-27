@@ -16,6 +16,9 @@ module.exports = {
         roboto: ["var(--font-roboto)"],
         baloo: ["--font-baloo"],
       },
+      boxShadow: {
+        login: "0px 4px 4px 0px #00000040;",
+      },
     },
   },
   plugins: [],
