@@ -10,6 +10,10 @@ module.exports = {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
      
+        baloo: ["--font-baloo"],
+      },
+      boxShadow: {
+        login: "0px 4px 4px 0px #00000040;",
     },
     colors: {
       darkgray: "#3D3D3D",
