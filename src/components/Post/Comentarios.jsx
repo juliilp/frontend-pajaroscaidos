@@ -19,6 +19,12 @@ export default function Comentarios({ id, comment, createdAt, userId }) {
         })
 
     }
+    const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+    const month=createdAt.slice(3).slice(0,2)
+    const day=createdAt.slice(0,2) 
+    const year=createdAt.slice(-4)
+
+    const commentmonth=` ${months[parseInt(month - 1)]}, ${day} ${year}` 
     return (
         <div className="w-full  h-full text-lettersgray flex flex-col items-center gap-3">
 
@@ -45,13 +51,14 @@ export default function Comentarios({ id, comment, createdAt, userId }) {
                         <figure className=" rounded-full bg-black h-[2rem] w-[2rem]"></figure>
                         <div className="flex flex-col gap-1">
                             <h5 className=" text-xl font-medium">Nombre</h5>
-                            <span className=" text-sm">Fecha</span>
+                            {/* <span className=" text-sm">Fecha</span> */}
+                            <span className=" text-sm">{commentmonth}</span>
                         </div>
                     </article>
 
-                    <article title="coment">
+                    <article title="coment" className=" font-semibold">
                         {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui suscipit, veniam fuga quibusdam repudiandae eveniet fugit, enim ut aspernatur quae, tempore autem ducimus dolore facilis aut expedita consequatur neque incidunt.</p> */}
-                    <p>{}</p>
+                    <p>{comment}</p>
                     </article>
 
                 </section>
