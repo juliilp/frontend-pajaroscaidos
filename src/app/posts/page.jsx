@@ -4,6 +4,7 @@ import styles from '../../styles/posts.module.css'
 import { useEffect, useState } from 'react'
 import Comentarios from '@/components/Post/Comentarios'
 import { convertirFecha } from '@/utils/auxfunctions'
+import NuestraComunidad from '@/components/NuestraComunidad/NuestraComunidad'
 export default function page() {
     const [like, setLike] = useState(false)
     const [posts, setPosts] = useState({});
@@ -19,6 +20,10 @@ export default function page() {
                 setComments(resp.publication.comments[0])
             }))
         }
+        const adaptsection=document.getElementById('Uscomunitysection')
+        const post=document.getElementById('Post')
+        console.log(post.clientHeight);
+        adaptsection.style.height=post.clientHeight+'px';
         getposts()
         return () => setPosts({})
     }, [])
@@ -34,9 +39,10 @@ export default function page() {
                 <h1>header</h1>
             </header>
 
-            <div className="flex    min-h-[20rem] gap-3 relative">
+            <div className="flex    min-h-[20rem] gap-3 relative bg-red-700 h-auto ">
+
                 <main className="w-8/12 relative h-full bg-lightgray   rounded-[10px] text-[#2B2B2B] 
-                p-8 pt-4 pb-20 flex flex-col items-center gap-7 ">
+                p-8 pt-4 pb-20 flex flex-col items-center gap-7 " id='Post'>
                     <article className='flex w-full justify-end'>
 
                         <span className='  text-[#727272]'>Fecha</span>
@@ -66,8 +72,8 @@ export default function page() {
                         <span className=' text-xl'>{faketotallike}</span>
                     </article>
                 </main>
-                <section className="w-4/12  bg-lightgray">
-
+                <section className="w-4/12  bg-lightgray h-auto overflow-auto flex-1" id='Uscomunitysection'>
+                      <NuestraComunidad />
                 </section>
             </div >
             <section className="w-full  bg-lightgray min-h-[10rem] p-6">
