@@ -1,6 +1,11 @@
 import "./globals.css";
 import { Inter, Roboto, Baloo_Bhaijaan_2 } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+});
 const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
