@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../images/logo_pajaros_caidos.png";
+import logo from "../../../public/images/logo_pajaros_caidos.png";
 
 //Navbar provisional
 export const Navbar = () => {
