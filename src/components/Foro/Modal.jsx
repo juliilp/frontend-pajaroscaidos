@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react"
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { RiImageFill } from "react-icons/ri";
-
+import styles from '../../styles/modal.module.css'
 export default function ModalnewPost({ setvisible }) {
     useEffect(() => {
         const body = document.getElementById('Body');
@@ -58,12 +58,12 @@ export default function ModalnewPost({ setvisible }) {
     return (
         <main className="bg-[#686868cc] min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
 
-            <div className="relative font-baloo font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%]  bg-[#D9D9D9] flex flex-col justify-between
+            <div className={`${styles.font} relative font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%]  bg-[#D9D9D9] flex flex-col justify-between
              
              md:h-[28rem] md:w-[38rem]
              lg:h-[30rem] lg:w-[40rem]
              xl:h-[33rem] xl:w-[43rem]
-             2xl:h-[35rem] 2xl:w-[45rem] ">
+             2xl:h-[35rem] 2xl:w-[45rem] `}>
                 <button className="absolute right-0 top-0  text-2x1" onClick={setvisible}>X</button>
 
                 <form className="w-full flex flex-col gap-5   h-5/6 overflow-y-auto ">
