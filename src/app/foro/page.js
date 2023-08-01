@@ -1,3 +1,4 @@
+"use client"
 import CardForo from "@/components/CardForo";
 import React from "react";
 import ImagenForo from "../../../public/images/imagen-foro.png";
@@ -10,12 +11,20 @@ import {
 import { AiOutlineFileText } from "react-icons/ai";
 import NuestraComunidad from "@/components/NuestraComunidad/NuestraComunidad";
 import Image from "next/image";
+import { useState } from "react";
+import ModalnewPost from "@/components/Foro/Modal";
 export default function Foros() {
+    const [modal,setModal]=useState(false)
+    const setvisibilitymodal=()=>{
+      setModal(!modal)
+    }
   return (
-    <section className="flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
+    <section className=" relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
+   {modal&&<ModalnewPost setvisible={setvisibilitymodal} />}
+     
       <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center items-center flex-col my-24">
         <div className="flex gap-6 mt-6 text-[#756F70] justify-around w-full sm:border-b sm:border-white py-4">
-          <button className="bg-[#005DAB] py-3 px-3 sm:px-6 max-w text-white  rounded-[20px] flex items-center gap-2 font-semibold">
+          <button onClick={setvisibilitymodal} className="bg-[#005DAB] py-3 px-3 sm:px-6 max-w text-white  rounded-[20px] flex items-center gap-2 font-semibold">
             <AiOutlineFileText color="white" size={20} />
             Crear foro
           </button>
