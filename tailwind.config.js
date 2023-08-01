@@ -23,6 +23,6 @@ module.exports = {
         lettersgray: "#707070",
       },
     },
-    plugins: [],
+    plugins: [require("tailwindcss-animated")],
   },
 };
