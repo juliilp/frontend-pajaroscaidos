@@ -21,7 +21,7 @@ export const VoluntariosSeccion = () => {
         ))}
       </div>
       <hr />
-      <div className="mt-5 grid grid-cols-3 gap-20 items-center p-2 ">
+      <div className="mt-5 grid grid-cols-3 gap-12 items-center p-2 ">
         {numOfUsers_2.map((id) => (
           <Card_2 key={id} user={voluntario} />
         ))}
