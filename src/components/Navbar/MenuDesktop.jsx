@@ -17,9 +17,11 @@ export default function MenuDesktop() {
   console.log(switchMenu);
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16 ">
-      <li className=" cursor-pointer">Inicio</li>
+      <li className=" cursor-pointer justify-center items-center flex ">
+        Inicio
+      </li>
       <li
-        className="flex gap-1 items-center cursor-pointer flex-col relative "
+        className="flex gap-1 justify-center items-center cursor-pointer flex-col relative "
         data-menu="asociacion"
       >
         <span
@@ -30,18 +32,18 @@ export default function MenuDesktop() {
           <IoIosArrowUp
             size={25}
             className={`${
-              switchMenu.asociacion ? "rotate-180" : " rotate-0"
+              switchMenu.asociacion ? "rotate-180" : " rotate-0 "
             } duration-200`}
           />
         </span>
         {switchMenu.asociacion && (
-          <div className="absolute top-10 -left-5">
+          <div className="absolute top-14 -left-5">
             <MenuInterno
               opcion1="Acciones"
               opcion2="Caza y tráfico de faunas"
               opcion3="Crueldad y maltrato"
               opcion4="Legislación"
-              tamaño="md:w-[100%] lg:w-[115%]"
+              tamaño="md:w-[100%] lg:w-[115%]  md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
             />
           </div>
         )}
@@ -63,11 +65,11 @@ export default function MenuDesktop() {
           />
         </span>
         {switchMenu.comunidad && (
-          <div className="absolute top-10 -left-5 ">
+          <div className="absolute top-14  -left-5 ">
             <MenuInterno
               opcion1="Voluntarios"
               opcion2="Foro"
-              tamaño="lg:w-[180%] md:w-[150%] "
+              tamaño="lg:w-[180%] md:w-[150%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
             />
           </div>
         )}
@@ -88,10 +90,10 @@ export default function MenuDesktop() {
             } duration-200`}
           />
           {switchMenu.servicio && (
-            <div className="absolute top-10 -left-8 ">
+            <div className="absolute top-14 -left-8 ">
               {switchMenu.servicio && (
                 <MenuInterno
-                  tamaño="md:w-[130%]"
+                  tamaño="md:w-[130%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
                   opcion1="Contacto"
                   opcion2="Como Denunciar"
                   opcion3="Atención Cliente"
