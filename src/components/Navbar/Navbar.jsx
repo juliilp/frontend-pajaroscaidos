@@ -6,6 +6,7 @@ import Logo from "../../../public/images/navbar-logo.png";
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import Image from "next/image";
+import Link from "next/link";
 export default function Navbar() {
   const [switchMenu, setSwitchMenu] = useState(false);
   const handlerSwitchMenu = () => {
@@ -29,9 +30,9 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
         <div className="flex items-center justify-center gap-3">
-          <span className="text-white font-baloo font-semibold">
+          <Link href="/login" className="text-white font-baloo font-semibold">
             Iniciar sesión
-          </span>
+          </Link>
           <BiSolidUser size={35} color="white" />
         </div>
       </nav>
