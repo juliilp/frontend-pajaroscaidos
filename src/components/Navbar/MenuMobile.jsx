@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
+import Link from "next/link";
 export default function MenuMobile() {
   const [switchMenu, setSwitchMenu] = useState({
     asociacion: false,
@@ -16,7 +17,7 @@ export default function MenuMobile() {
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        Inicio
+        <Link href="/">Inicio</Link>
       </li>
       <li
         className="flex items-center justify-between px-4 bg-[#3D3D3D] flex-col"

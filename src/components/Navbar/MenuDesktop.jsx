@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
+import Link from "next/link";
 
 export default function MenuDesktop() {
   const [switchMenu, setSwitchMenu] = useState({
@@ -17,7 +18,7 @@ export default function MenuDesktop() {
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16 ">
       <li className=" cursor-pointer justify-center items-center flex ">
-        Inicio
+        <Link href="/">Inicio</Link>
       </li>
       <li
         className="flex gap-1 justify-center items-center cursor-pointer flex-col relative "
