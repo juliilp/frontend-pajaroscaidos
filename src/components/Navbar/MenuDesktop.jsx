@@ -14,7 +14,6 @@ export default function MenuDesktop() {
       [menu]: !switchMenu[menu],
     });
   };
-  console.log(switchMenu);
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16 ">
       <li className=" cursor-pointer justify-center items-center flex ">
