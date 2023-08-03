@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import photo from "../../../public/images/fotos.svg";
+import photo from "../../../public/images/tony.jpg";
 import s from "./styles/Card.module.css";
 
 export const Card = ({ name }) => {

@@ -12,6 +12,7 @@
   width: 320px;
   height: 504px;
   perspective: 2000px;
+  overflow: hidden;
 }
 .flip_card_inner {
   position: relative;
