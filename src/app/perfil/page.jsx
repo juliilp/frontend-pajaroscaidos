@@ -1,11 +1,23 @@
+// "use client"
 import CardForo from "@/components/CardForo"
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { BiEditAlt } from "react-icons/bi"
 import { CiClock2, CiSettings } from "react-icons/ci"
 import { IoIosArrowDown } from "react-icons/io"
 
 export default function page() {
-    
-    
+    // const [user, setUser] = useState({})///esto podria ser inicialmente, pero se podria usar un estado global user, que supongo seria guardado despúes que el usuario haga login,para evitar un llamado a la api cada vez que se inicie este componente
+    // useEffect(() => {
+    //     const getActualUser = async (id) => {
+    //         try {
+    //             const get = await axios.get(`https://pajaros-caidos-backend.onrender.com/user/${id}`)//el id supongo deberia venir de un estado global o por params
+    //         } catch (error) {
+    //            throw new Error(error)
+    //         }
+    //     }
+    //     getActualUser()
+    // }, [])
     const shadow = { boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }
     return (
         <div className=" text-[#4F4F4F] bg-[#D9D9D9] min-h-screen  flex flex-col gap-5 pt-20 justify-center items-center">
@@ -68,7 +80,7 @@ export default function page() {
 
                 <article className="flex justify-between ">
                     <p className="w-10/12">Soy una persona apasionada y diversa en mis intereses. Me encanta dedicar mi tiempo libre a salvar aves heridas, brindándoles cuidado y protección. También soy programador, y la creatividad que me brinda la programación complementa mi amor por la naturaleza y me ayuda a encontrar soluciones innovadoras en ambos ámbitos.</p>
-                     <BiEditAlt className="text-black text-2xl cursor-pointer"/>
+                    <BiEditAlt className="text-black text-2xl cursor-pointer" />
                 </article>
             </section>
 
