@@ -3,8 +3,10 @@ import { BiEditAlt } from "react-icons/bi"
 import { CiClock2, CiSettings } from "react-icons/ci"
 import { IoIosArrowDown } from "react-icons/io"
 
-const shadow = { boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }
 export default function page() {
+    
+    
+    const shadow = { boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }
     return (
         <div className=" text-[#4F4F4F] bg-[#D9D9D9] min-h-screen  flex flex-col gap-5 pt-20 justify-center items-center">
             <main className="relative gap-2 p-5 pl-7 pr-7 w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] rounded-sm border font-semibold  flex flex-col border-[#C4C4C4] h-auto min-h-[10rem]" style={shadow}>
