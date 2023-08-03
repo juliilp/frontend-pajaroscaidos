@@ -5,6 +5,7 @@ import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineGoogle } from "react-icons/ai";
 import LoginImagen from "../../assets/login-imagen.jpg";
 import Image from "next/image";
+import Link from "next/link";
 export default function Login() {
   const [switchPassword, setSwitchPassword] = useState(false);
   const [inputLogin, setInputLogin] = useState({
@@ -95,9 +96,11 @@ export default function Login() {
             <span className="text-[#525252]">
               ¿No tienes cuenta en Págaros Caídos?
             </span>
-            <span className="text-[#68A4FF] underline self-end">
-              Registrate
-            </span>
+            <Link href="/registro">
+              <span className="text-[#68A4FF] underline self-end">
+                Registrate
+              </span>
+            </Link>
           </div>
         </div>
       </form>
