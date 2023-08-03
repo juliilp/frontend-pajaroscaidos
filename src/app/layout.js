@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
         className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}
       >
         <Navbar />
-        <div className=" min-h-screen">
+        <div className=" min-h-screen bg-[#D9D9D9] ">
           {/* para que las altura minima de las paginas sea el total de la pantalla */}
           <ContextProvider>{children}</ContextProvider>
         </div>
