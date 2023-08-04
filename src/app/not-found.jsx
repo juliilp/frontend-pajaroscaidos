@@ -4,7 +4,7 @@ import errorimage from '../../public/images/ERROR.svg'
 import Image from "next/image"
 import { AiOutlineReload } from "react-icons/ai"
 
-export default function error({ error, reset }) {
+export default function NotFoundPage() {
     return (
         <div className="flex pt-10 md:pt-0 flex-col md:flex-row relative justify-center items-center min-h-screen  ">
 
@@ -31,15 +31,12 @@ export default function error({ error, reset }) {
             </section>
 
             <section className=" md:absolute bottom-[5%] w-full flex flex-col items-center gap-4">
-
+{/* 
                 <button onClick={reset} className=" text-white flex gap-4 bg-[#0C6410] p-2 items-center">
                     <span>Reintentar</span>
                     <AiOutlineReload />
-                </button>
-
-                <em className=" text-xl font-bold ">
-                    Detalle del error: {error.message}
-                </em>
+                </button> */}
+         
             </section>
         </div>
     )
