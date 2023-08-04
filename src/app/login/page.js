@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineGoogle } from "react-icons/ai";
-import LoginImagen from "../../assets/login-imagen.jpg";
+import LoginImagen from "../../assets/registro-login.png";
 import Image from "next/image";
 import Link from "next/link";
 export default function Login() {
@@ -28,7 +28,7 @@ export default function Login() {
     console.log(inputLogin);
   };
   return (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2">
+    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2 ">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
