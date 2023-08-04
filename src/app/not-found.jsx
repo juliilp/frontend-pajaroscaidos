@@ -30,14 +30,6 @@ export default function NotFoundPage() {
                 <Image src={errorimage} alt="error-img" className=" h-[25rem] w-auto min-h-[18rem] " />
             </section>
 
-            <section className=" md:absolute bottom-[5%] w-full flex flex-col items-center gap-4">
-{/* 
-                <button onClick={reset} className=" text-white flex gap-4 bg-[#0C6410] p-2 items-center">
-                    <span>Reintentar</span>
-                    <AiOutlineReload />
-                </button> */}
-         
-            </section>
         </div>
     )
 }
