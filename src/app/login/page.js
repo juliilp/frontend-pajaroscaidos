@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineGoogle } from "react-icons/ai";
-import LoginImagen from "../../assets/login-imagen.jpg";
+import LoginImagen from "../../assets/registro-login.png";
 import Image from "next/image";
 import Link from "next/link";
 export default function Login() {
@@ -28,25 +28,26 @@ export default function Login() {
     console.log(inputLogin);
   };
   return (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2">
+    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2  md:px-8 md:gap-12 lg:gap-24">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
         alt="imagen"
       />
       <form
-        className="w-[550px]  bg-[#D9D9D9] pb-16 rounded-xl font-baloo "
+        className="w-full max-w-[500px] pb-16 rounded-xl font-baloo bg-white "
         onSubmit={submitHandler}
       >
-        <h2 className="font-bold  text-2xl text-center mt-2 mb-12">
+        <h2 className="font-bold  text-2xl text-center mt-4 mb-12">
           Inicia Sesión
         </h2>
-        <div className="flex flex-col px-4 gap-2 ">
+        {/* Tiene un mb para separarlos así me ahorro hacer un div con un gap-6 */}
+        <div className="flex flex-col px-4 gap-2 mb-6 ">
           <span className="text-[#525252]">Email o nombre de usuario</span>
           {/* Le pongo text por que está pidiendo email o nombre de usuario */}
           <input
             type="text"
-            className="py-3 outline-none pl-2 "
+            className="py-3 outline-none pl-2  bg-[#EEEEEE] "
             onChange={inputHandler}
             name="email"
             value={inputLogin.email}
@@ -57,7 +58,7 @@ export default function Login() {
           <div className="flex relative ">
             <input
               type={switchPassword ? "text" : "password"}
-              className="py-3  w-full outline-none  pl-2"
+              className="py-3  w-full outline-none  pl-2 bg-[#EEEEEE] "
               onChange={inputHandler}
               name="password"
               value={inputLogin.password}
@@ -78,7 +79,7 @@ export default function Login() {
         <div className="flex flex-col gap-4 justify-center items-center my-10">
           <button
             type="submit"
-            className="bg-[#D5BD44] h-[70px] w-[180px] font-bold  text-lg rounded-xl "
+            className="bg-[#43851D] text-white h-[70px] w-[180px] text-lg rounded-xl "
           >
             Inicia Sesión
           </button>
@@ -91,17 +92,13 @@ export default function Login() {
             <AiOutlineGoogle size={50} />
           </button>
         </div>
-        <div className="w-full flex justify-center items-center ">
-          <div className=" flex flex-col justify-center items-center w-max">
-            <span className="text-[#525252]">
-              ¿No tienes cuenta en Págaros Caídos?
-            </span>
-            <Link href="/registro">
-              <span className="text-[#68A4FF] underline self-end">
-                Registrate
-              </span>
-            </Link>
-          </div>
+        <div className="w-full flex justify-center items-center gap-2 ">
+          <span className="text-[#525252]">
+            ¿No tienes cuenta en Págaros Caídos?
+          </span>
+          <Link href="/registro">
+            <span className="text-[#68A4FF] underline">Registrate</span>
+          </Link>
         </div>
       </form>
     </section>
