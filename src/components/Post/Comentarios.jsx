@@ -1,3 +1,4 @@
+"use client"
 import { convertirFecha } from "@/utils/auxfunctions"
 import { useState } from "react"
 
