@@ -28,14 +28,14 @@ export default function Login() {
     console.log(inputLogin);
   };
   return (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2  px-8">
+    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2  md:px-8 md:gap-12 lg:gap-24">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
         alt="imagen"
       />
       <form
-        className="w-full max-w-[500px] pb-16 rounded-xl font-baloo bg-white justify-self-end  "
+        className="w-full max-w-[500px] pb-16 rounded-xl font-baloo bg-white "
         onSubmit={submitHandler}
       >
         <h2 className="font-bold  text-2xl text-center mt-4 mb-12">
@@ -97,9 +97,7 @@ export default function Login() {
             ¿No tienes cuenta en Págaros Caídos?
           </span>
           <Link href="/registro">
-            <span className="text-[#68A4FF] underline self-end">
-              Registrate
-            </span>
+            <span className="text-[#68A4FF] underline">Registrate</span>
           </Link>
         </div>
       </form>
