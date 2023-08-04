@@ -4,6 +4,7 @@ import styles from '../../../styles/posts.module.css'
 import {  useEffect, useState } from 'react'
 import Comentarios from '@/components/Post/Comentarios'
 import NuestraComunidad from '@/components/NuestraComunidad/NuestraComunidad'
+import axios from 'axios'
 
 
 
@@ -14,16 +15,26 @@ export default function page({ params }) {
     const [comments, setComments] = useState([])
     const [postisload, setPostIsLoad] = useState(true)
     const [responsive, setResponsive] = useState(false)
+    const [error, setError] = useState({status:false})
 
     useEffect(() => {
 
-        const getposts = () => {
+        const getposts = async() => {
+            try {
+              const {data} = await axios.get(`https://pajaros-caidos-backend.onrender.com/publication/${params.id}`)
+              
+         setPosts(data?.publication)
+                    setFakeTotalLike(data?.publication.reactions.length)
+                    setComments(data?.publication.comments)
 
-            fetch('http://localhost:3001/api/publication/all').then(res => res.json().then(resp => {//cambiar a ruta de back sin '/api/'
-                setPosts(resp.publication)
-                setFakeTotalLike(resp.publication.reactions.length)
-                setComments(resp.publication.comments)
-            }))
+        
+            } catch (error) {
+                    setError({
+                        status:true,
+                        message:error.message
+                    })
+            }
+
         }
         setPostIsLoad(false)
         getposts()
@@ -63,6 +74,10 @@ export default function page({ params }) {
         !like ? setFakeTotalLike(faketotallike + 1) : setFakeTotalLike(faketotallike - 1)
     }
 
+    // if(error.status){
+    //     throw new Error(error.message)
+    // } ///manejo de error provisorio , redirige a pagina de error
+
     return (
         <div className=" min-h-full gap-3 flex flex-col p-6 
          pl-0 pr-0
@@ -85,14 +100,13 @@ export default function page({ params }) {
                         {/* <span className='  text-[#727272]'>{convertirFecha(posts.createdAt)}</span> */}
                     </article>
                     <article className='w-full flex justify-center'>
-                        <h1 className=" font-semibold  sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl  w-11/12">Title del post {params.id} </h1>
-                        {/* <h1 className=" font-semibold  sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl  w-11/12">{posts.title}</h1> */}
+                        <h1 className=" font-semibold  sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl  w-11/12">{posts.title}</h1>
                     </article>
                     <div className={` w-full bg-[#c2c2c2] h-[0.7rem]  border-2 border-lightgray rounded-lg  `} style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30))' }} />
 
                     <article className=' w-full sm:w-11/12  md:w-10/12 '>
                         <p className={`${styles.aux} text-[#020000] sm:text-sm  md:text-base xl:text-xl 2xl:text-2xl  `}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic placeat quia commodi illum adipisci. Dignissimos debitis officiis provident eligendi commodi! Nesciunt, eligendi placeat ad maiores repellat harum laudantium voluptatum repellendus!
+                              {posts.description}
                         </p>
                     </article>
 

@@ -24,14 +24,17 @@ export const metadata = {
 };
 import ContextProvider from "@/store/ContextProvider";
 import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-      id="Body"
+        id="Body"
         className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}
       >
-        <div className=" min-h-screen">{/* para que las altura minima de las paginas sea el total de la pantalla */}
+        <Navbar />
+        <div className=" min-h-screen">
+          {/* para que las altura minima de las paginas sea el total de la pantalla */}
           <ContextProvider>{children}</ContextProvider>
         </div>
         <Footer />
