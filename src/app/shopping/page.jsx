@@ -5,10 +5,10 @@ import Image from "next/image";
 import ShoppingCards from "@/components/Shop/ShoppingCards";
 import font from '../../styles/fonts.module.css'
 export default function Shopping() {
-    
- const faketotal='12345678912345698711522552'.split('')
+
+    const faketotal = '15554545'.split('')
     return (
-        <div className={`${font.baloo} min-h-screen flex flex-col items-center pt-40 gap-10`}>
+        <div className={`${font.baloo} min-h-screen flex flex-col items-center pt-40 gap-10 pb-14`}>
             <h1 className=" text-lettersgray font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">NUESTRA TIENDA</h1>
 
             <main className="w-full flex justify-between items-center">
@@ -30,26 +30,24 @@ export default function Shopping() {
                     </p>
                 </article>
             </main>
-             <section className="w-10/12 flex justify-center md:justify-end">
-             <button className="  text-white bg-green p-2 w-[8rem] md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
-                Donar
-            </button>
-             </section>
-            <section className="  w-full  m-auto grid gap-y-10 
-             grid-cols-1 
+            <section className="w-10/12 flex justify-center md:justify-end">
+                <button className="  text-white bg-green p-2 w-[8rem] md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
+                    Donar
+                </button>
+            </section>
+            <section className="  w-full  grid  gap-y-5
+             grid-cols-1
              min-[350px]:grid-cols-2
-             min-[400px]:grid-cols-2
-            lg:grid-cols-3
-            xl:w-11/12 xl:gap-14
-            2xl:grid-cols-4
-            2xl:w-10/12   2xl:gap-16 ">
-               {faketotal.map((i,index)=>
-                <ShoppingCards
-                key={index}
-                title={`Producto ${index + 1}`}
-                detail={`descripcion del producto ${index + 1},qwertyuiopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm`}
-               />
-               )}
+             md:grid-cols-3
+             
+             ">
+                {faketotal.map((i, index) =>
+                    <ShoppingCards
+                        key={index}
+                        title={`Producto ${index + 1}`}
+                        detail={`descripcion del producto ${index + 1},qwertyuiopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm`}
+                    />
+                )}
             </section>
         </div>
     )

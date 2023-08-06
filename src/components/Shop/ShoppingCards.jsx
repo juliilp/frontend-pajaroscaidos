@@ -1,27 +1,28 @@
+import ContactUsButton from "./ContactUsbutton";
+
 export default function ShoppingCards({ title, image, detail, redirect }) {
     return (
-        <div
-            className=" shadow-xl text-[#231F20] font-bold flex m-auto  h-auto   min-h-[18rem]  items-center flex-col gap-5 border-lightgray border   
-             w-9/12   
-            min-[350px]:w-[95%]
-            min-[400px]:w-11/12   min-[400px]:border-2 
-            sm:w-3/12   
-            sm:min-w-[20rem]
-            2xl:min-w-[20.5rem]
-          ">
+        <div className="   border-[0.1px] border-[#80808000] border-b-0 shadow-2xl m-auto flex flex-col  justify-between
+        w-[13rem]
+        min-[350px]:w-[11rem]
+        min-[400px]:w-[12rem]
+        min-[450px]:w-[13.5rem]
+        min-[500px]:w-[14rem]
+        sm:w-[14rem]
+        md:w-[14rem]
+        lg:w-[18rem]
+        xl:w-[19rem] min-h-[24rem]  ">
 
-            <section className="h-[8rem] w-full bg-blue-600 ">
+            <section className="h-[8rem] w-full bg-blue-400 ">
 
             </section>
 
-            <h5 className=" text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">{title}</h5>
-            <article className="w-[95%] ">
+            <h5 className=" text-base text-center md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">{title}</h5>
+            <article className="w-[95%] p-2 text-left ">
                 <p className=" break-words p-1 text-sm min-[350px]:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">{detail}</p>
             </article>
 
-            <button className=" text-sm min-[350px]:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl  text-white bg-green p-2 md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
-                Contáctanos
-            </button>
+            <ContactUsButton />
 
         </div>
     )
