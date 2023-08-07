@@ -1,15 +1,12 @@
 import Comentarios from "@/components/Post/Comentarios";
-import NuestraComunidad from "@/components/NuestraComunidad/NuestraComunidad";
-import axios from "axios";
-import getPosts from "@/app/libs/getPosts";
+import {getPosts,setReaction} from "@/libs/PostFunctions";
 import Likesbox from "@/components/Post/Likesbox";
-import { Suspense } from "react";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
 
 export default async function page({ params }) {
   const { publication } = await getPosts(params.id);
-
+  
   return (
     <div
       className=" min-h-full gap-3 flex flex-col p-6 
@@ -28,13 +25,13 @@ export default async function page({ params }) {
           className="w-full lg:w-8/12 relative min-h-[40rem] h-full bg-lightgray   rounded-[10px] text-[#2B2B2B] 
                 p-8 pt-4 pb-20 flex flex-col items-center gap-7 "
           id="Post">
-          <ContentPost publication={publication} />
-          <Likesbox postlikes={publication.reactions.length} />
+          <ContentPost publication={publication} />  
+          <Likesbox postlikes={publication.reactions} idPost={params.id}  />
         </main>
         <OtherContent desktop={true} />
       </div>
       <section className="w-full  bg-lightgray min-h-[15rem] h-full  sm:p-6">
-        <Comentarios comments={publication.comments} />
+        <Comentarios comments={publication.comments}  />
       </section>
 
       <OtherContent mobile={true} />
