@@ -24,6 +24,6 @@ module.exports = {
         green:'#0F8514'
       },
     },
-    plugins: [require("tailwindcss-animated")],
   },
+  plugins: [require('tailwindcss-animated')],
 };
