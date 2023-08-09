@@ -7,7 +7,7 @@ export default function page() {
       <h2 className="w-full text-center text-xl my-8 lg:text-2xl ">
         Voluntarios
       </h2>
-      <div className="px-8 mx-auto max-w-[800px]">
+      <div className="px-8 mx-auto max-w-[800px] mb-8">
         <p>
           Los voluntario son una parte fundamental de nuestra asociación, ya que
           donan su tiempo y sus conocimientos, asegurando el funcionamiento de
