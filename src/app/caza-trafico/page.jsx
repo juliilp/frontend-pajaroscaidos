@@ -14,7 +14,6 @@ export default function page() {
             <section className="w-full  h-fit md:h-[14rem] relative bg-black ">
                 <article >
                     <Image src={image1}
-                    sizes="(max-width:768px)2rem, 100%"
                         alt="background"
                         fill
                      className="hidden md:block"
