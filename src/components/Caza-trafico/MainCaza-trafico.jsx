@@ -34,10 +34,12 @@ export default function MainCazatrafico({images}) {
                 </p>
             </article>
 
-            <article className="w-10/12 flex   item-center justify-around  ">
-                {images&&images.map((i,key)=>
-                  <Image key={key}  src={i} alt={`caza-trafico-${key}`} className="w-3/12 h-auto "/>
-                )}
+            <article className=" w-full md:w-10/12 md:flex-row  flex flex-col   items-center justify-around  ">
+              
+                  <Image  src={images[0]} alt={`caza-trafico-1`} className="md:w-3/12 w-11/12 h-auto hidden md:block "/>
+                  <Image  src={images[1]} alt={`caza-trafico-1`} className=" md:w-3/12 w-11/12 h-auto  "/>
+                  <Image  src={images[2]} alt={`caza-trafico-1`} className=" md:w-3/12 w-11/12 h-auto  hidden md:block"/>
+            
             </article>
 
         </>

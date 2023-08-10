@@ -35,7 +35,8 @@ export default function page() {
                 <MainCazatrafico images={[image2,image3,image4]} />
             </main>
 
-            <section className="flex items-center justify-around bg-lightgray w-10/12 py-20 px-6">
+            <section className="flex flex-col w-full gap-12  items-center justify-around  bg-lightgray  py-20  md:px-6
+            md:flex-row md:gap-0 md:w-10/12">
                 <Section2Caza_Trafico />
             </section>
         </div>

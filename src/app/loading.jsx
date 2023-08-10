@@ -1,9 +1,17 @@
+import Image from "next/image";
+import loadimage from '../../public/images/loading.gif'
+import font from '../styles/fonts.module.css'
 export default function loading() {
     return (
-        <div className=" min-h-screen text-white bg-[#0000009d] flex flex-col items-center justify-center ">
-            <h1 className="tex-4xl">
-                CARGANDO..... :D Espere un segundito....
-            </h1>
+        <div className={`${font.baloo} font-semibold min-h-screen text-[#0C6410]  flex flex-col items-center justify-center `}>
+            <main className="flex flex-col md:flex-row md:gap-0 justify-around items-center ">
+                <article className="text-center text-4xl md:text-6xl ">
+                    <h1>Cargando....</h1>
+                </article>
+                <article>
+                    <Image src={loadimage} alt="loading.." />
+                </article>
+            </main>
         </div>
     )
 }

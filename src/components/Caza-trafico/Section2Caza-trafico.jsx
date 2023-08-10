@@ -3,7 +3,7 @@ export default function Section2Caza_Trafico() {
     const videoID = 'ZUFlRWmiVKM'
     return (
         <>
-            <article className="flex flex-col w-[48%] gap-8">
+            <article className="flex flex-col w-[95%] md:w-[48%] gap-8">
                 <h2>Historias de Rescates. GEGE, El Tucán que pudo volver a la selva.</h2>
                 <p>En diciembre de 2018, la Asociación Civil de Ayuda a las Aves Pájaros Caídos recibió un pichón
                     de tucán que habia sido comercializado ilegalmente y su comprador arrepentido lo entregó para
@@ -13,7 +13,7 @@ export default function Section2Caza_Trafico() {
                 </p>
             </article>
 
-            <article className="w-6/12 h-[20rem] ">
+            <article className=" w-full h-[18rem] md:w-6/12 md:h-[20rem] ">
 
                 <YouTube
 
