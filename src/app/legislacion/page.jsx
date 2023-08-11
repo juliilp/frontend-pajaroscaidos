@@ -17,11 +17,11 @@ export default function page() {
                 <h1 className="text-[#0C6410] 2xl:text-4xl xl:text-3xl lg:text-2xl text-base ">LEGISLACION</h1>
                 
 
-                <section className=" bg-lightgray px-20 pb-8 w-10/12">
+                <section className=" bg-lightgray px-4 sm:px-8  md:px-14 lg:px-20 pb-8 w-11/12 md:w-10/12">
                     <LeyesNacionales />
                 </section>
 
-                <section className=" bg-lightgray px-20 pb-8 w-10/12">
+                <section className=" bg-lightgray px-4 sm:px-8  md:px-14 lg:px-20 pb-8 w-11/12 md:w-10/12">
                     <LeyesProvinciales />
                 </section>
             </main>
