@@ -21,8 +21,9 @@ module.exports = {
         darkgray: "#3D3D3D",
         lightgray: "#C2C2C2",
         lettersgray: "#707070",
+        green:'#0F8514'
       },
     },
-    plugins: [require("tailwindcss-animated")],
   },
+  plugins: [require('tailwindcss-animated')],
 };
