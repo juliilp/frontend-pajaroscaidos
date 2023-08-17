@@ -3,7 +3,6 @@ import CardForo from '@/components/CardForo'
 import React from 'react'
 import ImagenForo from '../../../public/images/imagen-foro.png'
 import { CiClock2 } from 'react-icons/ci'
-import { IoIosArrowDown } from 'react-icons/io'
 import { AiOutlineFileText } from 'react-icons/ai'
 import NuestraComunidad from '@/components/NuestraComunidad/NuestraComunidad'
 import Image from 'next/image'
@@ -22,12 +21,13 @@ export default function Foros() {
   }
 
   //--------------------
-  const { user } = customContext()
+  const { user, logout } = customContext()
 
   // console.log('usuario:', user)
 
   //-------------------
 
+  const [order, setOrder] = useState('desc')
   const [pageNumber, setPageNumber] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
   const [posts, setPosts] = useState([])
@@ -35,19 +35,21 @@ export default function Foros() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await api.get(`/publication/all?pageNumber=${pageNumber}&postPerPage=${6}`)
+        const response = await api.get(
+          `/publication/all?pageNumber=${pageNumber}&postPerPage=${6}&orderCreate=${order}`
+        )
 
         setPosts(response.data.publications)
         setTotalPages(response.data.totalPages)
       } catch (error) {
         console.error('Error al obtener las publicaciones:', error)
-
+        await logout()
         router.push('/login')
       }
     }
 
     fetchPosts()
-  }, [pageNumber])
+  }, [pageNumber, order])
 
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber)
@@ -68,8 +70,16 @@ export default function Foros() {
           </button>
           <div className="flex gap-4 items-center">
             <CiClock2 size={30} />
-            <span className="font-semibold">Recientes</span>
-            <IoIosArrowDown size={25} />
+            <span className="font-semibold">Ordenar por:</span>
+            <select
+              className="bg-gray-100 rounded p-1 border-none"
+              value={order}
+              onChange={(e) => setOrder(e.target.value)}
+            >
+              <option value="desc">Recientes</option>
+              <option value="asc">Más antiguas</option>
+            </select>
+            {/*<IoIosArrowDown size={25} />*/}
           </div>
         </div>
 
@@ -79,10 +89,12 @@ export default function Foros() {
               key={e.id}
               titulo={e.title}
               tiempo={e.createdAt}
-              user={e.user.nick_name}
+              usuario={e.user.nick_name}
               like={e.reactions.length}
               message={e.comments.length}
               image={e.image[0]}
+              id={e.id}
+              reactions={e.reactions}
             />
           )
         })}
