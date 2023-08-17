@@ -36,6 +36,16 @@ export const validateLogin = (email, password) => {
   return error
 }
 
+export const validateEmail = (email) => {
+  const error = {}
+
+  if (!email) error.email = 'Debe ingresar e-mail'
+
+  if (email && !emailRegex.test(email)) error.email = 'Debe ingresar un e-mail valido'
+
+  return error
+}
+
 export const validateCreateUser = (input) => {
   const { email, password, passwordConfirm, first_name, last_name } = input
 
