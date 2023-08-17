@@ -1,3 +1,4 @@
+
 'use client'
 import React, { useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
@@ -11,6 +12,7 @@ import { customContext } from '@/store/ContextProvider'
 import { validateLogin } from '@/utils/auxfunctions'
 import api from '@/api/api'
 import Cookies from 'js-cookie'
+
 
 export default function Login() {
   const router = useRouter()
@@ -76,12 +78,16 @@ export default function Login() {
   }
   return (
     <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2  md:px-8 md:gap-12 lg:gap-24">
+
       <Image src={LoginImagen} className="hidden md:block justify-self-end" alt="imagen" />
+
       <form
         className="w-full max-w-[500px] pb-16 rounded-xl font-baloo bg-white "
         onSubmit={submitHandler}
       >
+
         <h2 className="font-bold  text-2xl text-center mt-4 mb-12">Inicia Sesión</h2>
+
 
         <div className="flex flex-col px-4 gap-2 mb-6 ">
           <span className="text-[#525252]">Email o nombre de usuario</span>
@@ -100,7 +106,9 @@ export default function Login() {
           <span className="text-[#525252]">Contraseña</span>
           <div className="flex relative ">
             <input
+
               type={switchPassword ? 'text' : 'password'}
+
               className="py-3  w-full outline-none  pl-2 bg-[#EEEEEE] "
               onChange={inputHandler}
               name="password"
@@ -137,8 +145,10 @@ export default function Login() {
           </button>
         </div>
 
+
         <div className="w-full flex justify-center items-center gap-2 ">
           <span className="text-[#525252]">¿No tienes cuenta en Pájaros Caídos?</span>
+
           <Link href="/registro">
             <span className="text-[#68A4FF] underline">Registrate</span>
           </Link>

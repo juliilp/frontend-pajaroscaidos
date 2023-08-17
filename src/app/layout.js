@@ -29,6 +29,7 @@ import Navbar from '@/components/Navbar/Navbar'
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body id="Body" className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}>
         <ContextProvider>
           <Navbar />
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
             {children}
           </div>
         </ContextProvider>
+
         <Footer />
       </body>
     </html>

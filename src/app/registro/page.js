@@ -1,3 +1,4 @@
+
 'use client'
 import { useState } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
@@ -28,10 +29,12 @@ export default function Page() {
     first_name: '',
     last_name: '',
   })
+
   const handlerRegistro = (e) => {
     setFormRegister({
       ...formRegister,
       [e.target.name]: e.target.value,
+
     })
   }
   const handlerSubmit = async (e) => {
@@ -83,6 +86,7 @@ export default function Page() {
   return (
     <section className="w-full h-screen flex justify-center items-center gap-12 px-12">
       <Image src={RegistroImagen} alt="imagen" className="hidden md:block justify-self-end" />
+
       <form
         className="w-full max-w-[550px] md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl gap-6 md:gap-8 lg:gap-10 justify-self-start"
         onSubmit={handlerSubmit}
@@ -90,6 +94,7 @@ export default function Page() {
         <h2 className="w-full text-center mt-6 md:mt-8 lg:mt-10 font-bold text-xl md:text-2xl lg:text-3xl">
           Registrate
         </h2>
+
 
         <div className="flex flex-col gap-1 mx-4">
           <span>Nombre</span>
@@ -125,6 +130,7 @@ export default function Page() {
           </span>
         </div>
 
+
         <div className="flex flex-col gap-1 mx-4">
           <span>Email</span>
           <input
@@ -134,6 +140,7 @@ export default function Page() {
             onChange={handlerRegistro}
             value={formRegister.email}
           />
+
           <span
             className="text-red-500"
             style={{ visibility: errors.email || emailUsed ? 'visible' : 'hidden' }}
@@ -142,11 +149,14 @@ export default function Page() {
           </span>
         </div>
 
+
         <div className="flex flex-col gap-1 mx-4">
           <span>Contraseña</span>
           <div className="relative">
             <input
+
               type={switchPassword ? 'text' : 'password'}
+
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="password"
               onChange={handlerRegistro}
@@ -156,6 +166,7 @@ export default function Page() {
               {switchPassword ? (
                 <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
               ) : (
+
                 <AiOutlineEyeInvisible size={30} onClick={handlerSwitchPassword} />
               )}
             </div>
@@ -195,6 +206,7 @@ export default function Page() {
         </div>
 
         {/*<div className="flex flex-col gap-1 mx-4">
+
           <span>Tipo de voluntario</span>
           <input
             type="text"
@@ -203,6 +215,7 @@ export default function Page() {
             onChange={handlerRegistro}
             value={formRegister.voluntario}
           />
+
         </div>*/}
 
         <button
@@ -214,4 +227,5 @@ export default function Page() {
       </form>
     </section>
   )
+
 }
