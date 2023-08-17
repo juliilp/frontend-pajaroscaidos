@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios from 'axios'
 
 const api = axios.create({
-  baseURL: "https://pajaros-caidos-backend.onrender.com",
-});
+  baseURL: 'https://pajaros-caidos-backend.onrender.com',
+  withCredentials: true,
+})
 
-export default api;
+export default api
