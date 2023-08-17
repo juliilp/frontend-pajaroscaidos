@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import LoginImagen from '../../assets/login-imagen.jpg'
+import LoginImagen from '../../assets/registro-login.png'
 import Image from 'next/image'
 import api from '@/api/api'
 import { useRouter } from 'next/navigation'
@@ -9,9 +9,9 @@ import { customContext } from '@/store/ContextProvider'
 export default function EmailCode() {
   const router = useRouter()
   const regex = /^[0-9]+$/
-  const { user } = customContext()
+  const { newUserId } = customContext()
 
-  // console.log('usuario emailcode: ', user)
+  // console.log('usuario emailcode: ', newUserId.id)
 
   const [errors, setErrors] = useState(false)
   const [invalidCode, setInvalidCode] = useState(false)
@@ -35,7 +35,9 @@ export default function EmailCode() {
     }
 
     try {
-      const response = await api.post(`user/${user.id}/validate`, input, { withCredentials: true })
+      const response = await api.post(`user/${newUserId.id}/validate`, input, {
+        withCredentials: true,
+      })
 
       if (response.status == 200) {
         router.push('/login')
@@ -60,7 +62,7 @@ export default function EmailCode() {
     e.preventDefault()
 
     try {
-      const response = await api.patch(`user/${user.id}/code`, { withCredentials: true })
+      const response = await api.patch(`user/${newUserId.id}/code`, { withCredentials: true })
 
       if (response.status == 200) {
         return alert(`Se envió un nuevo código al correo: `) //${user.email} react context
@@ -74,7 +76,7 @@ export default function EmailCode() {
     <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2">
       <Image src={LoginImagen} className="hidden md:block justify-self-end" alt="imagen" />
       <form
-        className="w-[550px]  bg-[#D9D9D9] pb-16 rounded-xl font-baloo "
+        className="w-[550px]  bg-[#FFFFFF] pb-16 rounded-xl font-baloo "
         onSubmit={submitHandler}
       >
         <h2 className="font-bold  text-2xl text-center mt-2 mb-12">Validar e-mail</h2>
@@ -84,7 +86,7 @@ export default function EmailCode() {
           </span>
           <input
             type="text"
-            className="py-3 outline-none pl-2 "
+            className="bg-[#EEEEEE] py-3 outline-none pl-2 "
             onChange={inputHandler}
             name="code"
             value={input.code}
@@ -99,6 +101,9 @@ export default function EmailCode() {
           >
             Enviar código
           </button>
+        </div>
+        <div className="flex w-full items-center justify-between px-4">
+          <div className="h-[10px] w-[100%] bg-[#c2c2c2] shadow-login rounded-2xl  " />
         </div>
         <div className="flex flex-col  justify-center items-center my-10">
           <button
