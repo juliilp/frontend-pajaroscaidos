@@ -40,13 +40,13 @@ export default function MenuDesktop() {
           <div className="absolute top-14 -left-5">
             <MenuInterno
               opciones={[
-                <Link key="opcion1" href="/accion">
+                <Link key="opcion1" href="/acciones">
                   Acciones
                 </Link>,
-                <Link key="opcion2" href="/caza">
+                <Link key="opcion2" href="/caza-trafico">
                   Caza y tráfico de faunas
                 </Link>,
-                <Link key="opcion3" href="/crueldad">
+                <Link key="opcion3" href="/actosmaltratoycrueldad">
                   Crueldad y maltrato
                 </Link>,
                 <Link key="opcion4" href="/legislacion">
