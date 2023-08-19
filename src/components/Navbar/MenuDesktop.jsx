@@ -39,10 +39,20 @@ export default function MenuDesktop() {
         {switchMenu.asociacion && (
           <div className="absolute top-14 -left-5">
             <MenuInterno
-              opcion1="Acciones"
-              opcion2="Caza y tráfico de faunas"
-              opcion3="Crueldad y maltrato"
-              opcion4="Legislación"
+              opciones={[
+                <Link key="opcion1" href="/accion">
+                  Acciones
+                </Link>,
+                <Link key="opcion2" href="/caza">
+                  Caza y tráfico de faunas
+                </Link>,
+                <Link key="opcion3" href="/crueldad">
+                  Crueldad y maltrato
+                </Link>,
+                <Link key="opcion4" href="/legislacion">
+                  Legislación
+                </Link>,
+              ]}
               tamaño="md:w-[100%] lg:w-[115%]  md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
             />
           </div>
@@ -67,8 +77,14 @@ export default function MenuDesktop() {
         {switchMenu.comunidad && (
           <div className="absolute top-14  -left-5 ">
             <MenuInterno
-              opcion1="Voluntarios"
-              opcion2="Foro"
+              opciones={[
+                <Link key="opcion1" href="/accion">
+                  Voluntarios
+                </Link>,
+                <Link key="opcion2" href="/caza">
+                  Foro
+                </Link>,
+              ]}
               tamaño="lg:w-[180%] md:w-[150%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
             />
           </div>
@@ -93,12 +109,24 @@ export default function MenuDesktop() {
             <div className="absolute top-14 -left-8 ">
               {switchMenu.servicio && (
                 <MenuInterno
+                  opciones={[
+                    <Link key="opcion1" href="/accion">
+                      Contacto
+                    </Link>,
+                    <Link key="opcion2" href="/caza">
+                      Como Denunciar
+                    </Link>,
+                    <Link key="opcion3" href="/caza">
+                      Atención Cliente
+                    </Link>,
+                    <Link key="opcion4" href="/caza">
+                      Galeria Solidaria
+                    </Link>,
+                    <Link key="opcion5" href="/caza">
+                      Cursos
+                    </Link>,
+                  ]}
                   tamaño="md:w-[130%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
-                  opcion1="Contacto"
-                  opcion2="Como Denunciar"
-                  opcion3="Atención Cliente"
-                  opcion4="Galeria Solidaria"
-                  opcion5="Cursos"
                 />
               )}
             </div>
