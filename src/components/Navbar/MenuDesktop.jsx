@@ -110,19 +110,19 @@ export default function MenuDesktop() {
               {switchMenu.servicio && (
                 <MenuInterno
                   opciones={[
-                    <Link key="opcion1" href="/accion">
+                    <Link key="opcion1" href="/contactanos">
                       Contacto
                     </Link>,
-                    <Link key="opcion2" href="/caza">
+                    <Link key="opcion2" href="/*">
                       Como Denunciar
                     </Link>,
-                    <Link key="opcion3" href="/caza">
+                    <Link key="opcion3" href="/*">
                       Atención Cliente
                     </Link>,
-                    <Link key="opcion4" href="/caza">
+                    <Link key="opcion4" href="/*">
                       Galeria Solidaria
                     </Link>,
-                    <Link key="opcion5" href="/caza">
+                    <Link key="opcion5" href="/*">
                       Cursos
                     </Link>,
                   ]}
