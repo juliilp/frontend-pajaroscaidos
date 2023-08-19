@@ -78,10 +78,10 @@ export default function MenuDesktop() {
           <div className="absolute top-14  -left-5 ">
             <MenuInterno
               opciones={[
-                <Link key="opcion1" href="/accion">
+                <Link key="opcion1" href="/voluntarios">
                   Voluntarios
                 </Link>,
-                <Link key="opcion2" href="/caza">
+                <Link key="opcion2" href="/foro">
                   Foro
                 </Link>,
               ]}
