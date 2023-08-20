@@ -17,7 +17,9 @@ export default function MenuMobile() {
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link href="/">Inicio</Link>
+        <Link href="/" className="focus:underline">
+          Inicio
+        </Link>
       </li>
       <li
         className="flex items-center justify-between px-4 bg-[#3D3D3D] flex-col"
@@ -42,16 +44,28 @@ export default function MenuMobile() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones">
+              <Link key="opcion1" href="/acciones" className="focus:underline">
                 Acciones
               </Link>,
-              <Link key="opcion2" href="/caza-trafico">
+              <Link
+                key="opcion2"
+                href="/caza-trafico"
+                className="focus:underline"
+              >
                 Caza y tráfico de faunas
               </Link>,
-              <Link key="opcion3" href="/actosmaltratoycrueldad">
+              <Link
+                key="opcion3"
+                href="/actosmaltratoycrueldad"
+                className="focus:underline"
+              >
                 Crueldad y maltrato
               </Link>,
-              <Link key="opcion4" href="/legislacion">
+              <Link
+                key="opcion4"
+                href="/legislacion"
+                className="focus:underline"
+              >
                 Legislación
               </Link>,
             ]}
@@ -81,10 +95,14 @@ export default function MenuMobile() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/voluntarios">
+              <Link
+                key="opcion1"
+                href="/voluntarios"
+                className="focus:underline"
+              >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro">
+              <Link key="opcion2" href="/foro" className="focus:underline">
                 Foro
               </Link>,
             ]}
@@ -114,19 +132,23 @@ export default function MenuMobile() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/contactanos">
+              <Link
+                key="opcion1"
+                href="/contactanos"
+                className="focus:underline"
+              >
                 Contacto
               </Link>,
-              <Link key="opcion2" href="/*">
+              <Link key="opcion2" href="/*" className="focus:underline">
                 Como Denunciar
               </Link>,
-              <Link key="opcion3" href="/*">
+              <Link key="opcion3" href="/*" className="focus:underline">
                 Atención Cliente
               </Link>,
-              <Link key="opcion4" href="/*">
+              <Link key="opcion4" href="/*" className="focus:underline">
                 Galeria Solidaria
               </Link>,
-              <Link key="opcion5" href="/*">
+              <Link key="opcion5" href="/*" className="focus:underline">
                 Cursos
               </Link>,
             ]}
