@@ -36,8 +36,8 @@ export default function MenuMobile() {
           />
         </span>
         <div
-          className={`transition duration-300 ${
-            switchMenu.asociacion ? "block" : "hidden"
+          className={`transition-all duration-300 w-full pl-8 ${
+            switchMenu.asociacion ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -75,8 +75,8 @@ export default function MenuMobile() {
           />
         </span>
         <div
-          className={`transition duration-300 ${
-            switchMenu.comunidad ? "block" : "hidden"
+          className={`transition-all duration-300 w-full pl-8 ${
+            switchMenu.comunidad ? "opacity-100 h-[6rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -108,8 +108,8 @@ export default function MenuMobile() {
           />
         </span>
         <div
-          className={`transition duration-300 ${
-            switchMenu.servicio ? "block" : "hidden"
+          className={`transition-all duration-300 w-full pl-8 ${
+            switchMenu.servicio ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
