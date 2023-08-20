@@ -16,12 +16,12 @@ export default function MenuDesktop() {
     });
   };
   return (
-    <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16 ">
+    <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
       <li className=" cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none ">
         <Link href="/">Inicio</Link>
       </li>
       <li
-        className="flex gap-1 justify-center items-center cursor-pointer flex-col relative "
+        className="flex gap-1 justify-center items-center cursor-pointer flex-col relative"
         data-menu="asociacion"
       >
         <span
@@ -39,8 +39,8 @@ export default function MenuDesktop() {
         <div
           className={`absolute top-14 -left-5 transition-all duration-300 -z-20 ${
             switchMenu.asociacion
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-12 opacity-0"
+              ? "translate-y-0 opacity-100 pointer-events-auto"
+              : "-translate-y-12 opacity-0 pointer-events-none"
           }`}
         >
           <MenuInterno
@@ -81,8 +81,8 @@ export default function MenuDesktop() {
         <div
           className={`absolute top-14 -left-5 transition-all duration-300 -z-20 ${
             switchMenu.comunidad
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-12 opacity-0"
+              ? "translate-y-0 opacity-100 pointer-events-auto"
+              : "-translate-y-12 opacity-0 pointer-events-none"
           }`}
         >
           <MenuInterno
@@ -116,8 +116,8 @@ export default function MenuDesktop() {
           <div
             className={`absolute top-14 -left-8 transition-all duration-300 -z-20 ${
               switchMenu.servicio
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-12 opacity-0"
+                ? "translate-y-0 opacity-100 pointer-events-auto"
+                : "-translate-y-12 opacity-0 pointer-events-none"
             }`}
           >
             <MenuInterno

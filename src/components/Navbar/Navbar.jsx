@@ -79,7 +79,15 @@ export default function Navbar() {
           )}
         </div>
       </nav>
-      {switchMenu && <MenuMobile />}
+      <div
+        className={`transition-all duration-300 ${
+          switchMenu
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-8 opacity-0 pointer-events-none"
+        }`}
+      >
+        {<MenuMobile />}
+      </div>
     </header>
   );
 }
