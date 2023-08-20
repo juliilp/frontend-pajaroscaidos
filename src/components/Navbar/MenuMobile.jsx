@@ -35,14 +35,28 @@ export default function MenuMobile() {
             } duration-200`}
           />
         </span>
-        {switchMenu.asociacion && (
+        <div
+          className={`transition duration-300 ${
+            switchMenu.asociacion ? "block" : "hidden"
+          }`}
+        >
           <MenuInterno
-            opcion1="Acciones"
-            opcion2="Caza y tráfico de faunas"
-            opcion3="Crueldad y maltrato"
-            opcion4="Legislación"
+            opciones={[
+              <Link key="opcion1" href="/acciones">
+                Acciones
+              </Link>,
+              <Link key="opcion2" href="/caza-trafico">
+                Caza y tráfico de faunas
+              </Link>,
+              <Link key="opcion3" href="/actosmaltratoycrueldad">
+                Crueldad y maltrato
+              </Link>,
+              <Link key="opcion4" href="/legislacion">
+                Legislación
+              </Link>,
+            ]}
           />
-        )}
+        </div>
       </li>
       <li
         className="flex items-center justify-between px-4 bg-[#3D3D3D] flex-col "
@@ -60,9 +74,22 @@ export default function MenuMobile() {
             } duration-200`}
           />
         </span>
-        {switchMenu.comunidad && (
-          <MenuInterno opcion1="Voluntarios" opcion2="Foro" />
-        )}
+        <div
+          className={`transition duration-300 ${
+            switchMenu.comunidad ? "block" : "hidden"
+          }`}
+        >
+          <MenuInterno
+            opciones={[
+              <Link key="opcion1" href="/voluntarios">
+                Voluntarios
+              </Link>,
+              <Link key="opcion2" href="/foro">
+                Foro
+              </Link>,
+            ]}
+          />
+        </div>
       </li>
       <li
         className="flex items-center justify-between px-4 bg-[#3D3D3D] flex-col "
@@ -80,15 +107,31 @@ export default function MenuMobile() {
             } duration-200`}
           />
         </span>
-        {switchMenu.servicio && (
+        <div
+          className={`transition duration-300 ${
+            switchMenu.servicio ? "block" : "hidden"
+          }`}
+        >
           <MenuInterno
-            opcion1="Contacto"
-            opcion2="Como Denunciar"
-            opcion3="Atención Cliente"
-            opcion4="Galeria Solidaria"
-            opcion5="Cursos"
+            opciones={[
+              <Link key="opcion1" href="/contactanos">
+                Contacto
+              </Link>,
+              <Link key="opcion2" href="/*">
+                Como Denunciar
+              </Link>,
+              <Link key="opcion3" href="/*">
+                Atención Cliente
+              </Link>,
+              <Link key="opcion4" href="/*">
+                Galeria Solidaria
+              </Link>,
+              <Link key="opcion5" href="/*">
+                Cursos
+              </Link>,
+            ]}
           />
-        )}
+        </div>
       </li>
     </ul>
   );
