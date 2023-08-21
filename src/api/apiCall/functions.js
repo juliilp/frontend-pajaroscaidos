@@ -19,3 +19,11 @@ export const fetchPosts = async (pageNumber, order, setPageNumber, setPosts, set
     router.push('/login')
   }
 }
+export const createNewPost = async(userId,newPost)=>{
+  try {
+    const {data:response}= await api.post(`publication/create/${userId}`,newPost)
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}
