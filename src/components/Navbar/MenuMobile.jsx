@@ -139,7 +139,11 @@ export default function MenuMobile() {
               >
                 Contacto
               </Link>,
-              <Link key="opcion2" href="/*" className="focus:underline">
+              <Link
+                key="opcion2"
+                href="/como-denunciar"
+                className="focus:underline"
+              >
                 Como Denunciar
               </Link>,
               <Link key="opcion3" href="/*" className="focus:underline">

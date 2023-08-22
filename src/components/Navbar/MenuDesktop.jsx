@@ -125,7 +125,7 @@ export default function MenuDesktop() {
                 <Link key="opcion1" href="/contactanos">
                   Contacto
                 </Link>,
-                <Link key="opcion2" href="/*">
+                <Link key="opcion2" href="/como-denunciar">
                   Como Denunciar
                 </Link>,
                 <Link key="opcion3" href="/*">
