@@ -80,6 +80,7 @@ export default function Shopping() {
           {products.map((product) => (
             <ShoppingCards
               key={product.id}
+              id={product.id}
               title={product.title}
               description={product.description}
               image={product.image}

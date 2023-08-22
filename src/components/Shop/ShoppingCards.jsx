@@ -2,7 +2,7 @@ import Image from "next/image";
 import ContactUsButton from "./ContactUsbutton";
 
 export default function ShoppingCards({
-  key,
+  id,
   title,
   image,
   description,
@@ -10,7 +10,7 @@ export default function ShoppingCards({
 }) {
   return (
     <div
-      key={key}
+      id={id}
       className="border-[0.1px] border-[#80808000] border-b-0 shadow-2xl m-auto flex flex-col justify-between 
         w-[13rem]
         min-[350px]:w-[11rem]
