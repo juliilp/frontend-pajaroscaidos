@@ -131,7 +131,7 @@ export default function MenuDesktop() {
                 <Link key="opcion3" href="/*">
                   Atención Cliente
                 </Link>,
-                <Link key="opcion4" href="/*">
+                <Link key="opcion4" href="/shopping">
                   Galeria Solidaria
                 </Link>,
                 <Link key="opcion5" href="/*">

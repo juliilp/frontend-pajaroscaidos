@@ -149,7 +149,7 @@ export default function MenuMobile() {
               <Link key="opcion3" href="/*" className="focus:underline">
                 Atención Cliente
               </Link>,
-              <Link key="opcion4" href="/*" className="focus:underline">
+              <Link key="opcion4" href="/shopping" className="focus:underline">
                 Galeria Solidaria
               </Link>,
               <Link key="opcion5" href="/*" className="focus:underline">
