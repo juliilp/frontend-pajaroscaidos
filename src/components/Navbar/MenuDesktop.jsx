@@ -4,17 +4,12 @@ import MenuInterno from "./MenuInterno";
 import Link from "next/link";
 
 export default function MenuDesktop() {
-  const [switchMenu, setSwitchMenu] = useState({
-    asociacion: false,
-    comunidad: false,
-    servicio: false,
-  });
-  const handlerMenu = (e, menu) => {
-    setSwitchMenu({
-      ...switchMenu,
-      [menu]: !switchMenu[menu],
-    });
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const handlerMenu = (menu) => {
+    setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
+
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
       <li className=" cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none ">
@@ -26,19 +21,19 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={(e) => handlerMenu(e, "asociacion")}
+          onClick={() => handlerMenu("asociacion")}
         >
           Asociación
           <IoIosArrowUp
             size={25}
             className={`${
-              switchMenu.asociacion ? "rotate-180" : " rotate-0 "
+              openMenu === "asociacion" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
         </span>
         <div
           className={`absolute top-14 -left-5 transition-all duration-300 -z-20 ${
-            switchMenu.asociacion
+            openMenu === "asociacion"
               ? "translate-y-0 opacity-100 pointer-events-auto"
               : "-translate-y-12 opacity-0 pointer-events-none"
           }`}
@@ -68,19 +63,19 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={(e) => handlerMenu(e, "comunidad")}
+          onClick={() => handlerMenu("comunidad")}
         >
           Comunidad
           <IoIosArrowUp
             size={25}
             className={`${
-              switchMenu.comunidad ? "rotate-180" : " rotate-0"
+              openMenu === "comunidad" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
         </span>
         <div
           className={`absolute top-14 -left-5 transition-all duration-300 -z-20 ${
-            switchMenu.comunidad
+            openMenu === "comunidad"
               ? "translate-y-0 opacity-100 pointer-events-auto"
               : "-translate-y-12 opacity-0 pointer-events-none"
           }`}
@@ -104,18 +99,18 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={(e) => handlerMenu(e, "servicio")}
+          onClick={() => handlerMenu("servicio")}
         >
           Servicios
           <IoIosArrowUp
             size={25}
             className={`${
-              switchMenu.servicio ? "rotate-180" : " rotate-0"
+              openMenu === "servicio" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
           <div
             className={`absolute top-14 -left-8 transition-all duration-300 -z-20 ${
-              switchMenu.servicio
+              openMenu === "servicio"
                 ? "translate-y-0 opacity-100 pointer-events-auto"
                 : "-translate-y-12 opacity-0 pointer-events-none"
             }`}
