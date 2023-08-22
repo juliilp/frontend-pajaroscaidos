@@ -15,7 +15,7 @@ export default function CardVoluntariado({
 }) {
   return (
     <section
-      className={`  flex flex-col items-center justify-center bg-[#C2C2C2] md:flex-row max-w-[1000px] h-full  md:mx-8 py-8 px-4  md:gap-16`}
+      className={`  flex flex-col items-center justify-center bg-[#C2C2C2] md:flex-row max-w-[976px] h-full  md:mx-8 py-8 px-4  md:gap-16`}
     >
       <Image
         src={imagen}
@@ -27,7 +27,7 @@ export default function CardVoluntariado({
         <Image
           src={imagen}
           alt="imagen"
-          className=" max-w-[300px] h-[200px] object-cover md:hidden mx-auto"
+          className=" max-w-[300px] h-[200px] object-cover md:hidden mx-auto my-6"
         />
         <p className="max-w-[530px] pl-6">{parrafo}</p>
         {Livisible && (
