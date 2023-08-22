@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import CardForo from '@/components/CardForo'
 import React from 'react'
 import ImagenForo from '../../../public/images/imagen-foro.png'
@@ -85,17 +86,19 @@ export default function Foros() {
 
         {posts.map((e) => {
           return (
-            <CardForo
-              key={e.id}
-              titulo={e.title}
-              tiempo={e.createdAt}
-              usuario={e.user.nick_name}
-              like={e.reactions.length}
-              message={e.comments.length}
-              image={e.image[0]}
-              id={e.id}
-              reactions={e.reactions}
-            />
+            <Link href={`/foro/${e.id}`}>
+              <CardForo
+                key={e.id}
+                titulo={e.title}
+                tiempo={e.createdAt}
+                usuario={e.user.nick_name}
+                like={e.reactions.length}
+                message={e.comments.length}
+                image={e.image[0]}
+                id={e.id}
+                reactions={e.reactions}
+              />
+            </Link>
           )
         })}
 
