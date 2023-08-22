@@ -3,16 +3,10 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
 import Link from "next/link";
 export default function MenuMobile() {
-  const [switchMenu, setSwitchMenu] = useState({
-    asociacion: false,
-    comunidad: false,
-    servicio: false,
-  });
-  const handlerMenu = (e, menu) => {
-    setSwitchMenu({
-      ...switchMenu,
-      [menu]: !switchMenu[menu],
-    });
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const handlerMenu = (menu) => {
+    setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
@@ -27,19 +21,21 @@ export default function MenuMobile() {
       >
         <span
           className="flex items-center justify-between  w-full "
-          onClick={(e) => handlerMenu(e, "asociacion")}
+          onClick={() => handlerMenu("asociacion")}
         >
           Nuestra Asociación
           <IoIosArrowDown
             size={55}
             className={`${
-              switchMenu.asociacion ? "rotate-180" : " rotate-0"
+              openMenu === "asociacion" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            switchMenu.asociacion ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
+            openMenu === "asociacion"
+              ? "opacity-100 h-[12rem]"
+              : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -78,19 +74,19 @@ export default function MenuMobile() {
       >
         <span
           className="flex items-center justify-between w-full"
-          onClick={(e) => handlerMenu(e, "comunidad")}
+          onClick={() => handlerMenu("comunidad")}
         >
           Nuestra Comunidad
           <IoIosArrowDown
             size={55}
             className={`${
-              switchMenu.comunidad ? "rotate-180" : " rotate-0"
+              openMenu === "comunidad" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            switchMenu.comunidad ? "opacity-100 h-[6rem]" : "opacity-0 h-0"
+            openMenu === "comunidad" ? "opacity-100 h-[6rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -114,20 +110,20 @@ export default function MenuMobile() {
         data-menu="servicio"
       >
         <span
-          onClick={(e) => handlerMenu(e, "servicio")}
+          onClick={() => handlerMenu("servicio")}
           className="flex items-center justify-between w-full"
         >
           Nuestro Servicio
           <IoIosArrowDown
             size={55}
             className={`${
-              switchMenu.servicio ? "rotate-180" : " rotate-0"
+              openMenu === "servicio" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            switchMenu.servicio ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
+            openMenu === "servicio" ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -139,13 +135,17 @@ export default function MenuMobile() {
               >
                 Contacto
               </Link>,
-              <Link key="opcion2" href="/*" className="focus:underline">
+              <Link
+                key="opcion2"
+                href="/como-denunciar"
+                className="focus:underline"
+              >
                 Como Denunciar
               </Link>,
               <Link key="opcion3" href="/*" className="focus:underline">
                 Atención Cliente
               </Link>,
-              <Link key="opcion4" href="/*" className="focus:underline">
+              <Link key="opcion4" href="/shopping" className="focus:underline">
                 Galeria Solidaria
               </Link>,
               <Link key="opcion5" href="/*" className="focus:underline">
