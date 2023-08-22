@@ -1,23 +1,65 @@
-// "use client"
+"use client"
 import CardForo from "@/components/CardForo"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BiEditAlt } from "react-icons/bi"
 import { CiClock2, CiSettings } from "react-icons/ci"
 import { IoIosArrowDown } from "react-icons/io"
+import { useRouter } from 'next/navigation';
+
+
+
+const usuarioDePrueba = {
+    id: 'asdfasdf',
+    nombre: 'Ale',
+    edad: '27',
+    pais: 'Arg',
+    provincia: 'Sta Fe',
+    mail: 'ale@ale.com',
+    tel: 1234,
+    about: 'Soy una persona apasionada y diversa en mis intereses. Me encanta dedicar mi tiempo libre a salvar aves heridas, brindándoles cuidado y protección. También soy programador, y la creatividad que me brinda la programación complementa mi amor por la naturaleza y me ayuda a encontrar soluciones innovadoras en ambos ámbitos.',
+    esPropietario: true,
+}
+
+
+
+
 
 export default function page() {
-    // const [user, setUser] = useState({})///esto podria ser inicialmente, pero se podria usar un estado global user, que supongo seria guardado despúes que el usuario haga login,para evitar un llamado a la api cada vez que se inicie este componente
+    // const router = useRouter();
+    // console.log(router)
+    // const { id } = router.query;
+
+    const [user, setUser] = useState({})///esto podria ser inicialmente, pero se podria usar un estado global user, que supongo seria guardado despúes que el usuario haga login,para evitar un llamado a la api cada vez que se inicie este componente
+    
     // useEffect(() => {
     //     const getActualUser = async (id) => {
     //         try {
-    //             const get = await axios.get(`https://pajaros-caidos-backend.onrender.com/user/${id}`)//el id supongo deberia venir de un estado global o por params
+    //             const getUser = await axios.get(`https://pajaros-caidos-backend.onrender.com/user/${id}`)//el id supongo deberia venir de un estado global o por params
+    //             return getUser.data
     //         } catch (error) {
-    //            throw new Error(error)
+    //             throw new Error(error)
     //         }
     //     }
-    //     getActualUser()
-    // }, [])
+
+    //     if(id){
+    //         getActualUser(id)
+    //             .then((actualUser) => {
+    //                 setUser(actualUser)
+    //             })
+    //             .catch((error) => {
+    //                 throw new Error(error)
+    //             })
+    //     }
+    // },)
+
+    useEffect(() => {
+        // Primero hacer la llamada a la api para tener el usuario.
+        setUser(usuarioDePrueba)
+    }, [])
+
+
+
     const shadow = { boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }
     return (
         <div className=" text-[#4F4F4F] bg-[#D9D9D9] min-h-screen  flex flex-col gap-5 pt-20 justify-center items-center">
@@ -31,23 +73,23 @@ export default function page() {
                 <section className="flex flex-col gap-1">
                     <article className="flex gap-1">
                         <span><u>Nombre:</u></span>
-                        <span>Fulanito</span>
+                        <span>{user.nombre}</span>
                     </article>
 
                     <article className="flex gap-1">
                         <span><u>Edad:</u></span>
-                        <span>28 años</span>
+                        <span>{user.edad}</span>
                     </article>
 
                     <article className="flex gap-1">
                         <span><u>Pais:</u></span>
-                        <span>Argentina</span>
+                        <span>{user.pais}</span>
                     </article>
 
                     <article className="flex gap-1">
 
                         <span><u>Estado provincia:</u></span>
-                        <span>Disneylandia</span>
+                        <span>{user.provincia}</span>
                     </article>
 
                 </section>
@@ -56,16 +98,20 @@ export default function page() {
                     <h6 className=" border-b-2 border-white w-9/12">Contacto</h6>
                     <article className="flex gap-1">
                         <span ><u>Mail</u></span>
-                        <span>fulanito@gmail.com</span>
+                        <span>{user.mail}</span>
                     </article>
                     <article className="flex gap-1">
                         <span> <u>Telefono:</u></span>
-                        <span>0800-fulanito</span>
+                        <span>{user.tel}</span>
 
                     </article>
                 </section>
 
-                <CiSettings className="absolute right-0 bottom-0 text-4xl font-black text-black cursor-pointer" />
+                {
+                    user.esPropietario 
+                    ?<CiSettings className="absolute right-0 bottom-0 text-4xl font-black text-black cursor-pointer" />
+                    : <></>
+                }
 
 
             </main>
@@ -79,7 +125,8 @@ export default function page() {
                 </h2>
 
                 <article className="flex justify-between ">
-                    <p className="w-10/12">Soy una persona apasionada y diversa en mis intereses. Me encanta dedicar mi tiempo libre a salvar aves heridas, brindándoles cuidado y protección. También soy programador, y la creatividad que me brinda la programación complementa mi amor por la naturaleza y me ayuda a encontrar soluciones innovadoras en ambos ámbitos.</p>
+                    {/* <p className="w-10/12">Soy una persona apasionada y diversa en mis intereses. Me encanta dedicar mi tiempo libre a salvar aves heridas, brindándoles cuidado y protección. También soy programador, y la creatividad que me brinda la programación complementa mi amor por la naturaleza y me ayuda a encontrar soluciones innovadoras en ambos ámbitos.</p> */}
+                    <p className="w-10/12">{user.about}</p>
                     <BiEditAlt className="text-black text-2xl cursor-pointer" />
                 </article>
             </section>
