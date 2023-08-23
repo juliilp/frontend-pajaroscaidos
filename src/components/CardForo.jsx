@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { IoMdHeartEmpty } from 'react-icons/io'
 import { RiMessage2Line } from 'react-icons/ri'
 import { customContext } from '@/store/ContextProvider'
@@ -6,16 +6,15 @@ import { convertirFecha } from '@/utils/auxfunctions'
 import api from '../api/api'
 
 export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
-  const { user } = customContext()
+  const { userContext } = customContext()
 
-  const userReaction = reactions?.find((e) => e.userId === user?.id)
+  const userReaction = reactions?.find((e) => e.userId === userContext?.id)
   // console.log('reaction:', userReaction)
   const [reaction, setReaction] = useState(!!userReaction)
   const [likesNumber, setLikesNumber] = useState(like)
   const fecha = convertirFecha(tiempo)
   const [newLike, setNewLike] = useState(userReaction)
   const [sending, setSending] = useState(false)
-  // useEffect(() => {}, [reaction])
 
   const handleLike = async () => {
     try {
@@ -26,7 +25,7 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
       setSending(true)
 
       const response = await api.post(`/reaction/create/${id}`, {
-        idUser: user.id,
+        idUser: userContext.id,
         reaction: 'like',
       })
 
