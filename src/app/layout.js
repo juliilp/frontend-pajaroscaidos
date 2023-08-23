@@ -25,22 +25,23 @@ export const metadata = {
 import ContextProvider from '@/store/ContextProvider'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
+import ProviderAuth from '@/components/ProviderAuth/ProviderAuth'
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
-      <body id="Body" className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}>
-        <ContextProvider>
-          <Navbar />
-          <div className=" min-h-screen bg-[#D9D9D9] ">
-            {/* para que las altura minima de las paginas sea el total de la pantalla */}
-            {children}
-          </div>
-        </ContextProvider>
-
-        <Footer />
-      </body>
+      <ProviderAuth>
+        <body id="Body" className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}>
+          <ContextProvider>
+            <Navbar />
+            <div className=" min-h-screen bg-[#D9D9D9] ">
+              {/* para que las altura minima de las paginas sea el total de la pantalla */}
+              {children}
+            </div>
+          </ContextProvider>
+          <Footer />
+        </body>
+      </ProviderAuth>
     </html>
   )
 }
