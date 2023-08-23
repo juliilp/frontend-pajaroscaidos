@@ -4,6 +4,7 @@ import MainHome from '@/components/Home/MainHome'
 import NuestraComunidad from '@/components/NuestraComunidad/NuestraComunidad'
 import api from '@/api/api'
 import React, { useState, useEffect } from 'react'
+import Loading from './loading'
 
 export default function Home() {
   const [images, setImages] = useState([])
@@ -12,7 +13,6 @@ export default function Home() {
     async function getBannerImages() {
       try {
         const response = await api.get(`/news/banner`)
-        // console.log('ress: ', response.data)
         setImages(response.data.images)
       } catch (error) {
         console.log('error al obtener las noticias: ', error)
@@ -21,6 +21,10 @@ export default function Home() {
 
     getBannerImages()
   }, [])
+
+  if (!images[0]) {
+    return <Loading />
+  }
 
   return (
     <section>
