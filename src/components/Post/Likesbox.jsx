@@ -40,7 +40,6 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
       }
 
       const updatedPostData = await getPosts(idPost);
-      console.log("New comments:", updatedPostData.publication.comments);
       updateLikes(updatedPostData.publication.reactions);
     } catch (error) {
       console.error("Error updating reaction:", error);
