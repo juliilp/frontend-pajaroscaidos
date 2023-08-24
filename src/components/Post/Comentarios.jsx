@@ -1,13 +1,30 @@
 "use client";
 import { convertirFecha } from "@/utils/auxfunctions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { BiSolidUser } from "react-icons/bi";
+import api from "@/api/api";
 
 export default function Comentarios({ comments }) {
+  const [users, setUsers] = useState([]);
   const [actualComments, setActualComments] = useState({
     Antiguos: true,
     Recientes: false,
     Destacados: false,
   });
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const userIds = comments.map((comment) => comment.userId);
+      const userRequests = userIds.map((id) => api.get(`user/${id}`));
+      const userResponses = await Promise.all(userRequests);
+      const usersData = userResponses.map((response) => response.data);
+      setUsers(usersData);
+    }
+
+    fetchUsers();
+  }, [comments]);
+
   const setComments = (e) => {
     const comments = e.target.id;
 
@@ -102,19 +119,35 @@ export default function Comentarios({ comments }) {
           {comments?.map((i, key) => (
             <section className="flex flex-col  gap-4 items-start" key={key}>
               <article className="flex gap-4">
-                <figure className=" rounded-full bg-black h-[2rem] w-[2rem]"></figure>
+                <figure className=" rounded-full bg-black h-[2rem] w-[2rem] overflow-hidden justify-center items-center">
+                  {users[key]?.avatar ? (
+                    <Image
+                      src={users[key]?.user.avatar}
+                      alt="Avatar"
+                      width={50}
+                      height={50}
+                      layout="fixed"
+                      className="rounded-full"
+                    />
+                  ) : (
+                    <BiSolidUser
+                      className="flex justify-center items-center w-full h-full"
+                      color="white"
+                    />
+                  )}
+                </figure>
                 <div className="flex flex-col gap-1">
-                  <h5 className=" text-xl font-medium">Nombre</h5>
-                  {/* <span className=" text-sm">Fecha</span> */}
+                  <h5 className=" text-xl font-medium">
+                    {users[key]?.user.first_name} {users[key]?.user.last_name}
+                  </h5>
                   <span className=" text-sm">{commentmonth(i.createdAt)}</span>
                 </div>
               </article>
 
               <article
-                title="coment"
+                title="comment"
                 className=" font-semibold w-full sm:w-8/12"
               >
-                {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui suscipit, veniam fuga quibusdam repudiandae eveniet fugit, enim ut aspernatur quae, tempore autem ducimus dolore facilis aut expedita consequatur neque incidunt.</p> */}
                 <p className=" break-words">{i.comment}</p>
               </article>
               <div
