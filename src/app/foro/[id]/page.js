@@ -5,6 +5,7 @@ import { getPosts } from "@/libs/PostFunctions";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
+import InputComment from "@/components/Post/InputComment";
 
 export default function Page({ params }) {
   const [publication, setPublication] = useState(null);
@@ -20,11 +21,20 @@ export default function Page({ params }) {
   }, [params.id]);
 
   const updateLikes = (newLikes) => {
+    console.log(newLikes);
     setPublication((prevPublication) => ({
       ...prevPublication,
       reactions: newLikes,
     }));
     setLikeInProgress(false);
+  };
+
+  const onCommentSubmit = (newComments) => {
+    console.log(newComments);
+    setPublication((prevPublication) => ({
+      ...prevPublication,
+      comments: newComments,
+    }));
   };
 
   const handleLikeClick = async (reaction) => {
@@ -33,7 +43,9 @@ export default function Page({ params }) {
   };
 
   if (!publication) {
-    return null;
+    return (
+      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-gray-600"></div>
+    );
   }
 
   return (
@@ -50,20 +62,30 @@ export default function Page({ params }) {
         <h2>header</h2>
       </header>
 
-      <div className="flex    min-h-[20rem] gap-3 relative  h-auto ">
+      <div className="flex min-h-[20rem] gap-3 relative  h-auto ">
         <main
-          className="w-full lg:w-8/12 relative min-h-[40rem] h-full bg-lightgray   rounded-[10px] text-[#2B2B2B] 
-                p-8 pt-4 pb-20 flex flex-col items-center gap-7 "
+          className="w-full lg:w-8/12 relative h-full bg-lightgray rounded-[10px] text-[#2B2B2B] 
+                p-8 pt-4 pb-6 flex flex-col items-center gap-7 "
           id="Post"
         >
           <ContentPost publication={publication} />
-          <Likesbox
-            postlikes={publication.reactions}
-            idPost={params.id}
-            updateLikes={updateLikes}
-            likeInProgress={likeInProgress} // Pasar el estado de acción en progreso al componente Likesbox
-            onLikeClick={handleLikeClick}
-          />
+          <div className="flex items-center gap-6 w-full justify-between">
+            <div className="w-[80%]">
+              <InputComment
+                onCommentSubmit={onCommentSubmit}
+                idPost={params.id}
+              />
+            </div>
+            <div className="flex-grow">
+              <Likesbox
+                postlikes={publication.reactions}
+                idPost={params.id}
+                updateLikes={updateLikes}
+                likeInProgress={likeInProgress}
+                onLikeClick={handleLikeClick}
+              />
+            </div>
+          </div>
         </main>
         <OtherContent desktop={true} />
       </div>
