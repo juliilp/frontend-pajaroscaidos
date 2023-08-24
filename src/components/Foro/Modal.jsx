@@ -1,10 +1,13 @@
 import { newpostvalidations } from "@/utils/auxfunctions";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react"
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { RiImageFill } from "react-icons/ri";
 import styles from '../../styles/modal.module.css'
+import { createNewPost } from "@/api/apiCall/functions";
+import { customContext } from "@/store/ContextProvider";
 export default function ModalnewPost({ setvisible }) {
+    const { user } = customContext()
     useEffect(() => {
         const body = document.getElementById('Body');
         body && (body.style.overflow = 'hidden')
@@ -12,18 +15,18 @@ export default function ModalnewPost({ setvisible }) {
             body && (body.style.overflow = 'auto')
         }
     })
-     
+
 
     const [newPost, setNewPost] = useState({
         title: '',
         description: '',
-        image: [''],
+        image: ['vacioporahora'],
     })
-    const [errors,setErrors]= useState({
-        default:'campos vacíos'
+    const [errors, setErrors] = useState({
+        default: 'campos vacíos'
     })
 
-    const [visibleErrors,setVisibleError]=useState(false)
+    const [visibleErrors, setVisibleError] = useState(false)
 
     const handleChange = (e) => {
         setNewPost({
@@ -38,23 +41,40 @@ export default function ModalnewPost({ setvisible }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-       if('default' in errors){
-        setVisibleError(true)
-         return alert(errors.default)
-       }
-       if(Object.entries(errors).length){
-             setVisibleError(true)
-         return alert('Revisa los errores')
-       }
-       if(!Object.entries(errors).length){
-           setVisibleError(false)
-         console.log('Todo bien post completo')
-         setTimeout(()=>{
-            setvisible()
-         },5000)  
-       }
+        if ('default' in errors) {
+            setVisibleError(true)
+            return alert(errors.default)
+        }
+        if (Object.entries(errors).length) {
+            setVisibleError(true)
+            return alert('Revisa los errores')
+        }
+        if (!Object.entries(errors).length) {
+            setVisibleError(false)
+             createNewPost(user.id,newPost)
+            console.log(newPost)
+            setTimeout(() => {
+                setvisible()
+            }, 5000)
+        }
 
     }
+
+    const handlePhotoChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+
+            // setNewPost({
+            //     ...newPost,
+            //     [event.target.name]: [reader.result]
+            // })
+            console.log(reader.result);//imagen en base 64
+        };
+        reader.readAsDataURL(file);
+
+    };
+
     return (
         <main className="bg-[#686868cc] min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
 
@@ -65,7 +85,7 @@ export default function ModalnewPost({ setvisible }) {
              xl:h-[33rem] xl:w-[43rem]
              2xl:h-[35rem] 2xl:w-[45rem] `}>
                 <button className="absolute right-0 top-0  text-2x1" onClick={setvisible}>X</button>
-
+                <button onClick={() => console.log(user)}>ver usuario id</button>
                 <form className="w-full flex flex-col gap-5   h-5/6 overflow-y-auto ">
                     <section className=" w-full flex justify-start items-center bg-lightgray min-h-[4rem] ">
                         <h1 className=" text-2xl ml-4">Crea tu post!</h1>
@@ -79,7 +99,7 @@ export default function ModalnewPost({ setvisible }) {
 
                     <section className="flex  w-full items-center h-[25%] justify-center gap-8">
                         <article>
-                            <input type="file" name="" id="selectimage" className="hidden" accept="image/*" />
+                            <input type="file" name="image" onChange={handlePhotoChange} id="selectimage" className="hidden" accept="image/*" />
                             <label htmlFor="selectimage" className=" flex items-center gap-2" >
                                 <RiImageFill className="cursor-pointer text-2xl " />
                                 <span className="cursor-pointer text-[#989898] ">Imagen</span>
