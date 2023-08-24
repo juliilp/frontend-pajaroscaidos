@@ -1,4 +1,10 @@
 "use client";
+
+import Image from "next/image";
+import Imagen1 from "@/../public/images/rinasDeGallos/imagen1.png";
+import Imagen2 from "@/../public/images/rinasDeGallos/imagen2.png";
+import Imagen3 from "@/../public/images/rinasDeGallos/imagen3.png";
+
 export default function page() {
   return (
     <section className="mt-[70px] w-full bg-[#d8d8d8] h-full pb-16">
@@ -6,72 +12,75 @@ export default function page() {
       <h2 className="text-[#0C6410] text-center text-2xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS
       </h2>
-      <p className="px-6 font-semibold ">
+      <p className="px-6 font-semibold">
         Las riñas de gallos son otra de las actividaades crueles en la cual dos
         ejemplares de un mismo género o raza, especialmente preparados, combaten
         para el entretenimiento y apuestas de las personas humanas. <br />
         Las riñas de gallos se llevan a cabo desde hace más de 2500 años y
         tuvieron su origen en Asia y de allí se extendieron a Europa, para ser
-        traídas a America por los colonizadores españoles. <br />
+        traídas a América por los colonizadores españoles. <br />
         Las peleas de gallos se realizan en un espacio en forma de redondel que
-        se denomina "Gallera", donde las aves combaten debiendo dejar a su
-        adversario inhabilitado para seguir peleando. El que demuestra mejores
-        cualidades para la riña es considerado ganador. Los gallos pueden salir
-        seriamente heridos, incapacitados o muertos del violento espectáculo. En
-        algunos lugares, los gallos son equipados con espolones artificiales de
-        plástico, carey, hueso de pescado, o acero para que puedan lastimar a
-        sus adversarios. <br />
+        se denomina &ldquo;Gallera&rdquo;, donde las aves combaten debiendo
+        dejar a su adversario inhabilitado para seguir peleando. El que
+        demuestra mejores cualidades para la riña es considerado ganador. Los
+        gallos pueden salir seriamente heridos, incapacitados o muertos del
+        violento espectáculo. En algunos lugares, los gallos son equipados con
+        espolones artificiales de plástico, carey, hueso de pescado, o acero
+        para que puedan lastimar a sus adversarios. <br />
         En la República Argentina las riñas de gallos se encuentran prohibidas
         expresamente por la Ley N° 14.346 al considerar actos de crueldad contra
-        los animales “Realizar actos públicos o privados de riñas de animales,
-        corridas de toros, novilladas y parodias, en que se mate, hiera u
-        hostilice a los animales” (artículo 3 inciso 8).
+        los animales &ldquo;Realizar actos públicos o privados de riñas de
+        animales, corridas de toros, novilladas y parodias, en que se mate,
+        hiera u hostilice a los animales&rdquo; (artículo 3 inciso 8).
         <br />
         Sin perjuicio de ello, y de su vigencia en todo el territorio nacional
         por ser una ley de fondo incorporada al Código Penal,[1] algunas
         provincias han dictado normas que permiten las riñas de gallos y
         fomentan su realización. <br />
         Así es el caso de la Provincia de Tucumán con la que en su artículo 1
-        decía: “Autorízase en todo el territorio de la Provincia la realización
-        de las denominadas riñas de gallos” en tanto que en su artículo 2
-        señalaba que “Será autoridad de aplicación de la presente ley, la
-        Secretaría de Deportes de la Provincia dependiente de la Secretaría
-        General de la Gobernación, la que por intermedio de sus dependencias,
-        concederá los permisos pertinentes para su realización”. Sin embargo, en
-        septiembre de 2016 la justicia tucumana a instancias de una organización
-        defensora de los derechos de los animales,[2] dictó una medida cautelar
-        impidiendo con ello y hasta que se dicte sentencia de fondo, que el
-        gobierno provincial siga autorizando riñas de gallos. <br />
+        decía: &ldquo;Autorízase en todo el territorio de la Provincia la
+        realización de las denominadas riñas de gallos&rdquo; en tanto que en su
+        artículo 2 señalaba que &ldquo;Será autoridad de aplicación de la
+        presente ley, la Secretaría de Deportes de la Provincia dependiente de
+        la Secretaría General de la Gobernación, la que por intermedio de sus
+        dependencias, concederá los permisos pertinentes para su
+        realización&rdquo;. Sin embargo, en septiembre de 2016 la justicia
+        tucumana a instancias de una organización defensora de los derechos de
+        los animales,[2] dictó una medida cautelar impidiendo con ello y hasta
+        que se dicte sentencia de fondo, que el gobierno provincial siga
+        autorizando riñas de gallos. <br />
         En uno de sus párrafos, la resolución señala que: <br />
-        "De otra parte, pareciera poder afirmarse en principio que la
-        realización en si misma de riñas de gallos es una circunstancia que por
+        &ldquo;De otra parte, pareciera poder afirmarse en principio que la
+        realización en sí misma de riñas de gallos es una circunstancia que por
         la autorización de la ley provincial aparenta comportar un riesgo de
         daño inminente. Ello a estar de las alegaciones vertidas en la demanda,
         según las cuales los gallos sometidos a participar en las riñas
-        autorizadas por la ley 6048 pueden sufrir “fracturas expuestas del
-        occipital, perdida de los ojos, roturas de alas, quebraduras de patas,
+        autorizadas por la ley 6048 pueden sufrir &ldquo;fracturas expuestas del
+        occipital, pérdida de los ojos, roturas de alas, quebraduras de patas,
         severas lastimaduras en el cuello, lesiones en los oídos, lesiones en el
-        cráneo y hasta la propia muerte”… derivadas de las heridas punzantes que
-        ocasionan las filosas espuelas que les son colocadas para combatir…Estas
-        alegaciones parecen adquirir relevancia si se tiene en cuenta que
-        algunos estudios han revelado que los animales son seres “sintientes”
-        que son concientes de lo que sucede en sus cuerpos y que pueden
-        experimentar dolor, placer, ansiedad y sufrimiento físico y psicológico
-        en determinadas circunstancias".[3]
+        cráneo y hasta la propia muerte&rdquo;… derivadas de las heridas
+        punzantes que ocasionan las filosas espuelas que les son colocadas para
+        combatir… Estas alegaciones parecen adquirir relevancia si se tiene en
+        cuenta que algunos estudios han revelado que los animales son seres
+        &ldquo;sintientes&rdquo; que son conscientes de lo que sucede en sus
+        cuerpos y que pueden experimentar dolor, placer, ansiedad y sufrimiento
+        físico y psicológico en determinadas circunstancias&rdquo;.[3]
       </p>
+
       <div className="w-full bg-slate-500 h-[300px] my-16 " />
       <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12 pr-6  ">
         <p className="font-semibold px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 ">
           En la Provincia de San Luis, la Legislatura provincial sancionó en el
           año 2006 la Ley N° V-0546-2006 y el Poder Ejecutivo Provincial la
           promulgó mediante el Decreto N° 7500-MHP-2006. En la misma se
-          autorizaba “la organización de competencias denominadas “Riñas de
-          Gallos”,[4] y por otra parte, se establecía que: <br />
-          "Si durante la competencia acaeciera la muerte de un ave participante,
-          se aplicará a la Entidad que haya organizado el Evento una multa
-          equivalente a QUINIENTOS (500) litros de nafta súper, cuyo importe
-          será destinado a la Organización Protectora de Animales que determine
-          la Autoridad de Aplicación".[5] <br />
+          autorizaba &ldquo;la organización de competencias denominadas
+          &ldquo;Riñas de Gallos&rdquo;,[4] y por otra parte, se establecía que:{" "}
+          <br />
+          &ldquo;Si durante la competencia acaeciera la muerte de un ave
+          participante, se aplicará a la Entidad que haya organizado el Evento
+          una multa equivalente a QUINIENTOS (500) litros de nafta súper, cuyo
+          importe será destinado a la Organización Protectora de Animales que
+          determine la Autoridad de Aplicación&rdquo;.[5] <br />
           Como puede apreciarse, mientras la ley autorizaba que los gallos
           fueran expuestos a la crueldad de las riñas, por otra parte se
           intentaba mostrar compasión ya que las multas resultantes por las
@@ -80,12 +89,12 @@ export default function page() {
           Afortunadamente el Tribunal Superior de Justicia de San Luis, ante la
           demanda de una organización no gubernamental[6] declaró por mayoría,
           la inconstitucionalidad de la normativa provincial que legalizaba las
-          riñas de gallos,[7] sentencia que tendrá efectos “erga omnes”, por lo
-          que se aplicará a todos. En fallo del Juez Dr. Horacio G. Zabala
-          Rodríguez quien sentó en gran parte los fundamentos de la decisión se
-          señaló que: <br />
-          “VII.- En síntesis, estimo que todos los calificativos usados por la
-          actora son pocos para definir el acto de barbarie que es la ley
+          riñas de gallos,[7] sentencia que tendrá efectos &ldquo;erga
+          omnes&rdquo;, por lo que se aplicará a todos. En fallo del Juez Dr.
+          Horacio G. Zabala Rodríguez quien sentó en gran parte los fundamentos
+          de la decisión se señaló que: <br />
+          &ldquo;VII.- En síntesis, estimo que todos los calificativos usados
+          por la actora son pocos para definir el acto de barbarie que es la ley
           provincial. Dicha ley retrotrae a San Luis a la época de las cavernas,
           a la época del hombre primitivo y no al de este siglo XXI, que aspira
           a su cultura, a su progreso, a su salud, al perfeccionamiento de sus
@@ -94,10 +103,11 @@ export default function page() {
           convirtiéndose en un ser brutal, bárbaro, vándalo, violento,
           despiadado, inculto, salvaje, etc... ¿Cómo es posible que para solaz
           de unos pocos y para enriquecimiento de otros, se permitan estas
-          supuestas “competencias” anacrónicas?- Es del caso traer a colación la
-          reflexión que hiciera un gran hombre de trascendencia mundial como lo
-          fue Mahatma Gandhi: “La grandeza de una Nación y su progreso moral se
-          puede juzgar por la forma en que trata a su animales”. <br />
+          supuestas &ldquo;competencias&rdquo; anacrónicas?- Es del caso traer a
+          colación la reflexión que hiciera un gran hombre de trascendencia
+          mundial como lo fue Mahatma Gandhi: &ldquo;La grandeza de una Nación y
+          su progreso moral se puede juzgar por la forma en que trata a su
+          animales&rdquo;. <br />
           Como puede apreciarse, las riñas de gallos importan un acto de
           crueldad y se encuentran expresamente prohibidas por la Ley N° 14346
           incorporada al Código Penal. Las provincias que las han autorizado
@@ -117,9 +127,24 @@ export default function page() {
           Argentina.
         </p>
         <div className="flex flex-col gap-6  justify-center items-center lg:gap-0 lg:justify-between w-full col-span-2 ">
-          <div className="w-[250px] h-[250px] bg-slate-600 " />
-          <div className="w-[250px] h-[250px] bg-slate-600 " />
-          <div className="w-[250px] h-[250px] bg-slate-600 " />
+          {/* <div className="w-[250px] h-[200px] bg-slate-600 " /> */}
+          <Image
+            src={Imagen1}
+            alt="imagen1"
+            className="w-[250px] h-[200px] object-cover "
+          />
+          <Image
+            src={Imagen2}
+            alt="imagen2"
+            className="w-[250px] h-[200px] object-cover "
+          />
+          <Image
+            src={Imagen3}
+            alt="imagen3"
+            className="w-[250px] h-[200px] object-cover "
+          />
+          {/* <div className="w-[250px] h-[200px] bg-slate-600 " />
+          <div className="w-[250px] h-[200px] bg-slate-600 " /> */}
         </div>
       </div>
       {/* Sector de abajo  */}
@@ -128,29 +153,31 @@ export default function page() {
           UN FALLO EJEMPLAR CONTRA LAS RIÑAS DE GALLOS
         </h2>
         <p className="px-6 font-semibold">
-          Las provincias de Santiago del Estero, Tucuman y San Luis,
-          desconiciendo el ssistema legal vigente en la Argentina por el cual
-          compete a la Nacion dictar los códigos de fondo como es el Código
+          Las provincias de Santiago del Estero, Tucumán y San Luis,
+          desconociendo el sistema legal vigente en la Argentina por el cual
+          compete a la Nación dictar los códigos de fondo como es el Código
           Penal y a las provincias los códigos de forma, han avanzado contra la
           Ley Nº 14.346 que incorpora al Comigo Penal los delitos de crueldad y
           maltrato contra los animales. <br />
           La Ley 14.346 expresamente prohibe las riñas de animales (gallos), sin
           embargo, estas provincias con serias deficiencias en el funcionamiento
-          de sus instituciones democraticas, han avanzado en dictar leyes que
+          de sus instituciones democráticas, han avanzado en dictar leyes que
           autorizan las riñas de gallos. <br />
-          La Provincia de Tucuman sancionó la Ley N° 6048 en año 1990, la cual
-          se encuentra suspendida por una accion judicial iniciada por la
-          Asociación Animalista Libera de Tucuman. <br />
-          En Santiago del Estero, la accion judicial iniciada contra la Ley Nº
+          La Provincia de Tucumán sancionó la Ley N° 6048 en año 1990, la cual
+          se encuentra suspendida por una acción judicial iniciada por la
+          Asociación Animalista Libera de Tucumán. <br />
+          En Santiago del Estero, la acción judicial iniciada contra la Ley Nº
           5574/1986 por la Asociación de Ayuda al Animal San Francisco de Asís
           en la causa contra el Sr. Saavedra-Propietario del riñero denominado
-          "El Gran Chaparral" fue rechazada por el Tribunal Superior de Justicia
-          en la Resolución Serie "A" Nº 183 del 02-12-2005. <br />
+          &ldquo;El Gran Chaparral&rdquo; fue rechazada por el Tribunal Superior
+          de Justicia en la Resolución Serie &ldquo;A&rdquo; Nº 183 del
+          02-12-2005. <br />
           Solo en la Provincia de San Luis, en un fallo ejemplar del Tribunal
           Superior de Justicia, cuyo texto fue redactado por el Juez Dr. Horacio
-          G. Zabala Rodríguez declaró insconstitucional la Ley Provincial N°
+          G. Zabala Rodríguez declaró inconstitucional la Ley Provincial N°
           V-0546-2006 y de su Decreto promulgatorio N° 7500-MHP-2006.
         </p>
+
         <h2 className="text-[#0C6410] text-xl text-center font-semibold my-8 md:my-12">
           REFERENCIAS DE LAS LEYES{" "}
         </h2>
@@ -179,9 +206,9 @@ export default function page() {
           [8] Ley provincial N° 5574, Santiago del Estero, sancionada el 20 de
           noviembre de 1986Boletín Oficial, 17 de diciembre de 1986.
           <br />
-          Texto extraído del Capítulo "Protección legal de las Aves" de Martín
-          Scotto, en el Manual de Derecho Animal, Editorial JusBaires, Buenos
-          Aires, 2019.
+          Texto extraído del Capítulo &ldquo;Protección legal de las Aves&rdquo;
+          de Martín Scotto, en el Manual de Derecho Animal, Editorial JusBaires,
+          Buenos Aires, 2019.
         </p>
       </div>
     </section>
