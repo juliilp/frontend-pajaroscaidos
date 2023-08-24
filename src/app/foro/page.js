@@ -22,7 +22,7 @@ export default function Foros() {
   };
 
   //--------------------
-  const { user, logout } = customContext();
+  const { userContext, logout } = customContext();
 
   // console.log('usuario:', user)
 
@@ -44,7 +44,7 @@ export default function Foros() {
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error al obtener las publicaciones:", error);
-        await logout();
+        logout();
         router.push("/login");
       }
     };

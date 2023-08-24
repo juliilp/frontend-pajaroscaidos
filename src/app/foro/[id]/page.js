@@ -8,6 +8,7 @@ import OtherContent from "@/components/Post/OtherContent";
 
 export default function Page({ params }) {
   const [publication, setPublication] = useState(null);
+  const [likeInProgress, setLikeInProgress] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,10 +24,16 @@ export default function Page({ params }) {
       ...prevPublication,
       reactions: newLikes,
     }));
+    setLikeInProgress(false);
+  };
+
+  const handleLikeClick = async (reaction) => {
+    if (likeInProgress) return;
+    setLikeInProgress(true);
   };
 
   if (!publication) {
-    return;
+    return null;
   }
 
   return (
@@ -54,6 +61,8 @@ export default function Page({ params }) {
             postlikes={publication.reactions}
             idPost={params.id}
             updateLikes={updateLikes}
+            likeInProgress={likeInProgress} // Pasar el estado de acción en progreso al componente Likesbox
+            onLikeClick={handleLikeClick}
           />
         </main>
         <OtherContent desktop={true} />
