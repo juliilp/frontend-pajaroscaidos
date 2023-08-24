@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function CardAcciones({
@@ -8,6 +9,7 @@ export default function CardAcciones({
   className,
   distanciaImagen,
   distanciaDiv,
+  redireccion,
 }) {
   return (
     <section className="w-full flex flex-col justify-center items-center font-baloo gap-12 md:gap-0 md:grid md:grid-cols-2  ">
@@ -25,9 +27,12 @@ export default function CardAcciones({
         </h2>
         <p className="font-semibold max-w-[550px] px-4 ">{texto}</p>
         <div className="w-full justify-center items-center flex">
-          <button className="bg-[#128117] py-5 px-16 md:py-3 md:px-12 text-white justify-self-center w-max">
+          <Link
+            className="bg-[#128117] py-5 px-16 md:py-3 md:px-12 text-white justify-self-center w-max"
+            href={redireccion}
+          >
             saber más
-          </button>
+          </Link>
         </div>
       </div>
     </section>
