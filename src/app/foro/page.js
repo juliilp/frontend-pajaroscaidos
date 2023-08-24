@@ -1,60 +1,60 @@
-'use client'
-import Link from 'next/link'
-import CardForo from '@/components/CardForo'
-import React from 'react'
-import ImagenForo from '../../../public/images/imagen-foro.png'
-import { CiClock2 } from 'react-icons/ci'
-import { AiOutlineFileText } from 'react-icons/ai'
-import NuestraComunidad from '@/components/NuestraComunidad/NuestraComunidad'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
-import ModalnewPost from '@/components/Foro/Modal'
-import api from '../../api/api'
-import Pagination2 from '@/components/Pagination2/Pagination2'
-import { customContext } from '@/store/ContextProvider'
-import { useRouter } from 'next/navigation'
+"use client";
+import Link from "next/link";
+import CardForo from "@/components/CardForo";
+import React from "react";
+import ImagenForo from "../../../public/images/imagen-foro.png";
+import { CiClock2 } from "react-icons/ci";
+import { AiOutlineFileText } from "react-icons/ai";
+import NuestraComunidad from "@/components/NuestraComunidad/NuestraComunidad";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import ModalnewPost from "@/components/Foro/Modal";
+import api from "../../api/api";
+import Pagination2 from "@/components/Pagination2/Pagination2";
+import { customContext } from "@/store/ContextProvider";
+import { useRouter } from "next/navigation";
 
 export default function Foros() {
-  const router = useRouter()
-  const [modal, setModal] = useState(false)
+  const router = useRouter();
+  const [modal, setModal] = useState(false);
   const setvisibilitymodal = () => {
-    setModal(!modal)
-  }
+    setModal(!modal);
+  };
 
   //--------------------
-  const { user, logout } = customContext()
+  const { user, logout } = customContext();
 
   // console.log('usuario:', user)
 
   //-------------------
 
-  const [order, setOrder] = useState('desc')
-  const [pageNumber, setPageNumber] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
-  const [posts, setPosts] = useState([])
+  const [order, setOrder] = useState("desc");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await api.get(
           `/publication/all?pageNumber=${pageNumber}&postPerPage=${6}&orderCreate=${order}`
-        )
+        );
 
-        setPosts(response.data.publications)
-        setTotalPages(response.data.totalPages)
+        setPosts(response.data.publications);
+        setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.error('Error al obtener las publicaciones:', error)
-        await logout()
-        router.push('/login')
+        console.error("Error al obtener las publicaciones:", error);
+        await logout();
+        router.push("/login");
       }
-    }
+    };
 
-    fetchPosts()
-  }, [pageNumber, order])
+    fetchPosts();
+  }, [pageNumber, order]);
 
   const handlePageChange = (pageNumber) => {
-    setPageNumber(pageNumber)
-  }
+    setPageNumber(pageNumber);
+  };
 
   return (
     <section className=" relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
@@ -80,15 +80,13 @@ export default function Foros() {
               <option value="desc">Recientes</option>
               <option value="asc">Más antiguas</option>
             </select>
-            {/*<IoIosArrowDown size={25} />*/}
           </div>
         </div>
 
         {posts.map((e) => {
           return (
-            <Link href={`/foro/${e.id}`}>
+            <Link key={e.id} href={`/foro/${e.id}`}>
               <CardForo
-                key={e.id}
                 titulo={e.title}
                 tiempo={e.createdAt}
                 usuario={e.user.nick_name}
@@ -99,7 +97,7 @@ export default function Foros() {
                 reactions={e.reactions}
               />
             </Link>
-          )
+          );
         })}
 
         <Pagination2
@@ -109,9 +107,14 @@ export default function Foros() {
         />
       </div>
       <div className="mt-24 flex justify-center items-center flex-col gap-6">
-        <Image src={ImagenForo} alt="imagen" className="hidden lg:block" width="400px" />
+        <Image
+          src={ImagenForo}
+          alt="imagen"
+          className="hidden lg:block"
+          width="400px"
+        />
         <NuestraComunidad />
       </div>
     </section>
-  )
+  );
 }
