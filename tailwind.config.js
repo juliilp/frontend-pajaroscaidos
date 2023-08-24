@@ -7,23 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        roboto: ["var(--font-roboto)"],
-
-        baloo: ["--font-baloo"],
-        inter: ["--font-inter"],
-      },
-      boxShadow: {
-        login: "0px 4px 4px 0px #00000040;",
-        cardForo: "0px 4px 4px 0px #00000040;",
-      },
-      colors: {
-        darkgray: "#3D3D3D",
-        lightgray: "#C2C2C2",
-        lettersgray: "#707070",
-        green:'#0F8514'
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
-  plugins: [require('tailwindcss-animated')],
-};
+  plugins: [],
+}
