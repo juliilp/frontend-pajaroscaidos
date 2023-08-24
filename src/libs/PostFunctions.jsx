@@ -1,31 +1,29 @@
-import {notFound} from 'next/navigation'
-export  async function getPosts(id){
-    const response= await fetch(`https://pajaros-caidos-backend.onrender.com/publication/${id}`,{
-        cache:'no-store'
-    })
-     if(! response.ok){
-        notFound()
-     }
-     const data=await response.json()
-    return data
+import api from "@/api/api";
+
+export async function getPosts(id) {
+  try {
+    const resp = await api.get(`/publication/${id}`);
+    return resp.data;
+  } catch (error) {
+    console.error(error.response);
+  }
 }
 
-export async function setReaction(PostData){
-    const{idPost,reaction,idUser}=PostData
-    
-    const resquest= await fetch(`https://pajaros-caidos-backend.onrender.com/reaction/create/${idPost}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            reaction,
-            idUser
-        })
-      })
+export async function createReaction(PostData) {
+  const { idPost, reaction, idUser } = PostData;
+  const body = { reaction, idUser };
 
-      if(!resquest.ok){
-        throw new Error('Algo salio mal')
-      };
+  try {
+    await api.post(`/reaction/create/${idPost}`, body);
+  } catch (error) {
+    return console.error(error.response);
+  }
+}
 
+export async function deleteReaction(id) {
+  try {
+    await api.delete(`reaction/delete/${id}`);
+  } catch (error) {
+    console.error(error.response);
+  }
 }
