@@ -27,3 +27,11 @@ export async function deleteReaction(id) {
     console.error(error.response);
   }
 }
+
+export const createComment = async (body, idPost) => {
+  try {
+    await api.post(`comment/create/${idPost}`, body);
+  } catch (error) {
+    console.error(error.response);
+  }
+};
