@@ -21,7 +21,6 @@ export default function Page({ params }) {
   }, [params.id]);
 
   const updateLikes = (newLikes) => {
-    console.log(newLikes);
     setPublication((prevPublication) => ({
       ...prevPublication,
       reactions: newLikes,
@@ -30,7 +29,6 @@ export default function Page({ params }) {
   };
 
   const onCommentSubmit = (newComments) => {
-    console.log(newComments);
     setPublication((prevPublication) => ({
       ...prevPublication,
       comments: newComments,
