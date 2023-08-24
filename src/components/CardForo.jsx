@@ -71,7 +71,7 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
       {/* Supuesta imagen */}
       <div className=" flex-[2] h-full w-2/6 p-3 justify-center items-center flex ">
         <div className="bg-slate-600 w-[100%] max-w-[80px] h-[70px] sm:max-w-[120px] sm:h-[100px] lg:max-w-[150px] lg:h-[120px] rounded-2xl">
-          <img src={image} />
+        {image.includes('.com') ?<img src={image} /> :<span>controlar no foto</span>}
         </div>
       </div>
 

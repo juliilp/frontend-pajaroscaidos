@@ -83,9 +83,9 @@ export default function Foros() {
           </div>
         </div>
 
-        {posts.map((e) => {
+        {posts.map((e, key) => {
           return (
-            <Link key={e.id} href={`/foro/${e.id}`}>
+            <Link key={key} href={`/foro/${e.id}`}>
               <CardForo
                 titulo={e.title}
                 tiempo={e.createdAt}
