@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export default function page() {
   return (
+    // Comentario
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
       <div className="w-full bg-slate-500 h-[10rem]" />
       <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
