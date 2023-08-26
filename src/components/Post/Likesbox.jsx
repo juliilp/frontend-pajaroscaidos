@@ -52,13 +52,13 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     <article className="bottom-0 right-[2rem] flex items-end gap-2 text-[#E11447] font-bold justify-end">
       {userLike ? (
         <BsFillSuitHeartFill
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-pointer"
+          className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl cursor-pointer"
           onClick={() => likepost("dislike")}
           disabled={likeInProgress}
         />
       ) : (
         <BsSuitHeart
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-pointer"
+          className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl cursor-pointer"
           onClick={() => likepost("like")}
           disabled={likeInProgress}
         />
