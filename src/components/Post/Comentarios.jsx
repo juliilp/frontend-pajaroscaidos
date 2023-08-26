@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BiSolidUser } from "react-icons/bi";
 import api from "@/api/api";
+import {
+  orderByAntiguos,
+  orderByDestacados,
+  orderByRecientes,
+} from "@/helpers/orderComments";
 
 export default function Comentarios({ comments }) {
   const [users, setUsers] = useState([]);
-  const [actualComments, setActualComments] = useState({
-    Antiguos: true,
-    Recientes: false,
-    Destacados: false,
-  });
+  const [orderComments, setOrderComments] = useState("Antiguos");
+  const [sortedComments, setSortedComments] = useState(comments);
 
   useEffect(() => {
     async function fetchUsers() {
@@ -25,20 +27,24 @@ export default function Comentarios({ comments }) {
     fetchUsers();
   }, [comments]);
 
-  const setComments = (e) => {
-    const comments = e.target.id;
+  const setComments = (event) => {
+    const selectedOrder = event.target.id;
+    setOrderComments(selectedOrder);
 
-    setActualComments({
-      ...actualComments,
-      Antiguos: false,
-      Recientes: false,
-      Destacados: false,
-      [comments]: true,
-    });
+    let sortedCommentsCopy = [...comments];
+    if (selectedOrder === "Recientes") {
+      sortedCommentsCopy.sort(orderByRecientes);
+    } else if (selectedOrder === "Destacados") {
+      sortedCommentsCopy.sort(orderByDestacados);
+    } else if (selectedOrder === "Antiguos") {
+      sortedCommentsCopy.sort(orderByAntiguos);
+    }
+
+    setSortedComments(sortedCommentsCopy);
   };
 
-  const commentmonth = (coments) => {
-    const Date = convertirFecha(coments);
+  const commentMonth = (comment) => {
+    const formattedDate = convertirFecha(comment);
     const months = [
       "Enero",
       "Febrero",
@@ -53,12 +59,13 @@ export default function Comentarios({ comments }) {
       "Noviembre",
       "Diciembre",
     ];
-    const month = Date.slice(3).slice(0, 2);
-    const day = Date.slice(0, 2);
-    const year = Date.slice(-4);
+    const month = formattedDate.slice(3, 5);
+    const day = formattedDate.slice(0, 2);
+    const year = formattedDate.slice(-4);
 
-    return ` ${months[parseInt(month - 1)]}, ${day} ${year}`;
+    return `${months[parseInt(month) - 1]}, ${day} ${year}`;
   };
+
   return (
     <div className="w-full  h-full text-lettersgray flex flex-col items-center gap-3">
       <section
@@ -72,38 +79,35 @@ export default function Comentarios({ comments }) {
         </article>
 
         <article
-          className="flex items-center  min-h-[3rem]  justify-between w-full min-w-fit  max-w-full  
+          className="flex items-center  min-h-[3rem] justify-between w-full min-w-fit max-w-full  
                 text-xs  min-[370px]:text-lg  md:text-base lg:text-lg  xl:text-xl 2xl:text-2xl
-                md:min-w-[20rem] sm:w-8/12  md:w-6/12  "
+                md:min-w-[20rem] sm:w-8/12 md:w-6/12 "
         >
           <h4
             id="Antiguos"
             onClick={setComments}
-            className={`${
-              actualComments.Antiguos && " font-extrabold"
+            className={`transition-all duration-150 w-full ${
+              orderComments == "Antiguos" && "font-extrabold"
             } hover:font-extrabold cursor-pointer`}
           >
-            {" "}
             ANTIGUOS
           </h4>
           <h4
             id="Recientes"
             onClick={setComments}
-            className={`${
-              actualComments.Recientes && " font-extrabold"
+            className={`transition-all duration-150 w-full ${
+              orderComments == "Recientes" && " font-extrabold"
             } hover:font-extrabold cursor-pointer`}
           >
-            {" "}
             RECIENTES
           </h4>
           <h4
             id="Destacados"
             onClick={setComments}
-            className={`${
-              actualComments.Destacados && " font-extrabold"
+            className={`transition-all duration-150 w-full ${
+              orderComments == "Destacados" && " font-extrabold"
             } hover:font-extrabold cursor-pointer`}
           >
-            {" "}
             DESTACADOS
           </h4>
         </article>
@@ -114,9 +118,9 @@ export default function Comentarios({ comments }) {
         style={{ filter: " drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))" }}
       />
 
-      {comments.length ? (
+      {sortedComments.length ? (
         <div className=" w-[95%] flex flex-col gap-5 ">
-          {comments?.map((i, key) => (
+          {sortedComments?.map((i, key) => (
             <section className="flex flex-col  gap-4 items-start" key={key}>
               <article className="flex gap-4">
                 <figure className=" rounded-full bg-black h-[2rem] w-[2rem] overflow-hidden justify-center items-center">
@@ -140,7 +144,7 @@ export default function Comentarios({ comments }) {
                   <h5 className=" text-xl font-medium">
                     {users[key]?.user.first_name} {users[key]?.user.last_name}
                   </h5>
-                  <span className=" text-sm">{commentmonth(i.createdAt)}</span>
+                  <span className=" text-sm">{commentMonth(i.createdAt)}</span>
                 </div>
               </article>
 
