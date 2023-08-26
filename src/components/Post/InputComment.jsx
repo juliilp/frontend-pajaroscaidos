@@ -1,6 +1,7 @@
 import { createComment, getPosts } from "@/libs/PostFunctions";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
+import Image from "next/image";
 
 const InputComment = ({ onCommentSubmit, idPost }) => {
   const userCookie = Cookies.get("user");
@@ -32,28 +33,22 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
   return (
     <div className="flex">
       <input
-        className="flex-grow px-2 py-1 border border-gray-300 rounded-l"
+        className="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg"
         type="text"
         placeholder="Comment"
         value={comment}
         onChange={handleCommentChange}
       />
       <button
-        className="px-3 py-1 bg-gray-300 rounded-r"
+        className="px-3 bg-gray-300 rounded-r-lg"
         onClick={handleCommentSubmit}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 text-gray-600"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M17.293 2.293a1 1 0 011.414 1.414L6.414 15H10a1 1 0 110 2H4a1 1 0 01-1-1V4a1 1 0 112 0v4.586l11.293-11.293z"
-            clipRule="evenodd"
-          />
-        </svg>
+        <Image
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3VsQkCQRSE4Q8NrUFjcxMjazAxOOzARGxEsAdNbEJEbUEjixCEg0tWBAURwfPgcYkDEy7/7s7bWf76QQccMUFLgNKLL1igHQV4usAa/ShAevEeIzSjAOnhM6ZVcioLSG85dcoC8gqQ9Mhphd43QIYltjjhWgF2XztEo+ypWuhigDFmmJfYyKYWQBZ9RXl0yCl6TFPdD20fURVFVNmF1PUu+sP5yyfdABfusvOmwtUYAAAAAElFTkSuQmCC"
+          width={20}
+          height={20}
+          alt="Send"
+        />
       </button>
     </div>
   );
