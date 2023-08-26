@@ -67,14 +67,14 @@ export default function Page({ params }) {
           id="Post"
         >
           <ContentPost publication={publication} />
-          <div className="flex items-center gap-6 w-full justify-between">
-            <div className="w-[80%]">
+          <div className="flex items-center gap-6 w-full justify-between flex-col sm:flex-row">
+            <div className="w-full sm:w-[80%]">
               <InputComment
                 onCommentSubmit={onCommentSubmit}
                 idPost={params.id}
               />
             </div>
-            <div className="flex-grow">
+            <div className="flex-grow items-start">
               <Likesbox
                 postlikes={publication.reactions}
                 idPost={params.id}
