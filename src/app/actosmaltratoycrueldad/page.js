@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-
+import Image from "next/image";
+import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
 export default function page() {
   return (
     <section className="mt-[70px] py-8 ">
@@ -129,7 +130,11 @@ export default function page() {
           exposición al público, inadecuados espacios donde son colocados,
           estrés y sufrimiento entre otras causas.
         </p>
-        <div className=" w-full mx-auto max-w-[450px] h-[250px] sm:h-[300px] my-6 bg-slate-600 " />
+        <Image
+          src={Imagen}
+          alt="imagen"
+          className="w-full mx-auto max-w-[450px] h-[250px] sm:h-[300px] my-6"
+        />
         <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">
           Jaulas con espacio insuficiente
         </h2>

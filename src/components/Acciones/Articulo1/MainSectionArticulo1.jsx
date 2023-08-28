@@ -50,15 +50,24 @@ export default function MainSectionArticulo1({ image }) {
           Programa de Reinserción de Tucanes para poder próximamente presentar a
           Fauna Silvestre. El programa se llama "Regresá Al tucán a la selva" y
           tiene el objetivo de luchar por los miles que viven en cautivierio y
-          son comercializados. Texto Diario La Nacion, por Jimena Barrionuevo <br />
-          <a className=" text-blue-600 hover:text-blue-300" href="https://www.lanacion.com.ar/lifestyle/gege-tucan-victima-del-trafico-fauna-lloro-nid2236543">
+          son comercializados. Texto Diario La Nacion, por Jimena Barrionuevo{" "}
+          <br />
+          <a
+            className=" text-blue-600 hover:text-blue-300"
+            href="https://www.lanacion.com.ar/lifestyle/gege-tucan-victima-del-trafico-fauna-lloro-nid2236543"
+          >
             https://www.lanacion.com.ar/lifestyle/gege-tucan-victima-del-trafico-fauna-lloro-nid2236543
           </a>
         </p>
       </article>
 
       <article className="w-6/12 hidden md:block">
-        <Image src={image} alt="Bg-article-1" className="m-auto w-8/12 h-auto" quality={100} />
+        <Image
+          src={image}
+          alt="Bg-article-1"
+          className="m-auto w-8/12 h-auto max-h-[625px]"
+          quality={100}
+        />
       </article>
     </>
   );

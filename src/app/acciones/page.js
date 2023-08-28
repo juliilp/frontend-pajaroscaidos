@@ -24,6 +24,7 @@ export default function Acciones() {
               titulo={card.titulo}
               texto={card.texto}
               image={card.image}
+              redireccion={card.redireccion}
               distanciaImagen={
                 card.id % 2 === 0
                   ? "lg:justify-self-end"
