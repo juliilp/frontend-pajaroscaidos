@@ -1,9 +1,10 @@
-import { Suspense } from 'react'
-import styles from '../../styles/posts.module.css'
-import { convertirFecha } from '@/utils/auxfunctions'
+import { Suspense } from "react";
+import styles from "../../styles/posts.module.css";
+import { convertirFecha } from "@/utils/auxfunctions";
+import Image from "next/image";
 
 export default function ContentPost({ publication }) {
-  const { title, createdAt, description, image } = publication
+  const { title, createdAt, description, image } = publication;
   return (
     <>
       <article className="flex w-full justify-end">
@@ -19,7 +20,7 @@ export default function ContentPost({ publication }) {
       </article>
       <div
         className={` w-full bg-[#c2c2c2] h-[0.7rem]  border-2 border-lightgray rounded-lg  `}
-        style={{ filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30))' }}
+        style={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30))" }}
       />
 
       <article className=" w-full sm:w-11/12  md:w-10/12 ">
@@ -32,12 +33,22 @@ export default function ContentPost({ publication }) {
         </Suspense>
       </article>
 
-      <article className="  flex justify-center  w-10/12">
-        <div className=" min-h-[15rem]  bg-slate-600 w-8/12 flex items-center justify-center">
-          <img src={image[0].secure_url} />
-          {/* <h1 className=" text-center"> Otro contenido/video/imagen</h1> */}
-        </div>
-      </article>
+      {image[0].secure_url && (
+        <article className="flex justify-center w-10/12">
+          <div className="h-auto w-full flex items-center justify-center relative">
+            <Image
+              src={image[0].secure_url}
+              alt={image[0].public_id}
+              width={1000}
+              height={1000}
+              className="h-full w-full rounded-lg"
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+          </div>
+        </article>
+      )}
     </>
-  )
+  );
 }
