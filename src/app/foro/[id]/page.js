@@ -6,6 +6,9 @@ import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
 import InputComment from "@/components/Post/InputComment";
+import Image from "next/image";
+import ImgPortada from "@/../public/images/foro-id/Portada.png";
+import { BiSolidUser } from "react-icons/bi";
 
 export default function Page({ params }) {
   const [publication, setPublication] = useState(null);
@@ -41,14 +44,12 @@ export default function Page({ params }) {
   };
 
   if (!publication) {
-    return (
-      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-gray-600"></div>
-    );
+    return;
   }
 
   return (
     <div
-      className=" min-h-full gap-3 flex flex-col p-6 
+      className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
          pl-0 pr-0
          sm:pl-2 sm:pr-2
          md:pl-6 md:pr-6
@@ -56,8 +57,35 @@ export default function Page({ params }) {
          xl:pl-14  xl:pr-14 
          2xl:pl-20 2xl:pr-20 text-white"
     >
-      <header className="w-full h-[10rem] bg-blue-200">
-        <h2>header</h2>
+      <header className="w-full h-[10rem] relative ">
+        <Image
+          src={ImgPortada}
+          alt="ImgPortada"
+          layout="fill"
+          objectFit="cover"
+          className=""
+        />
+        <div className="absolute inset-0 flex items-center ml-16">
+          <div className="flex items-center gap-3 h-full">
+            <div className="rounded-full overflow-hidden w-20 h-20 relative">
+              <Image
+                src={publication.user.avatar.avatar_url}
+                alt="User Avatar"
+                layout="fill"
+                objectFit="cover"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
+              />
+              {!publication?.user.avatar?.avatar_url && (
+                <BiSolidUser color="white" size={35} />
+              )}
+            </div>
+            <span className="text-black font-bold text-2xl ml-2">
+              {publication.user.nick_name}
+            </span>
+          </div>
+        </div>
       </header>
 
       <div className="flex min-h-[20rem] gap-3 relative  h-auto ">
