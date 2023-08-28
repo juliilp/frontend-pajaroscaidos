@@ -2,9 +2,25 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
+import image1 from "../../../public/images/actos-maldad.png";
 export default function page() {
   return (
-    <section className="mt-[70px] py-8 ">
+    <section className="min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12">
+      <section className="w-full h-[14rem] md:h-[14rem] relative">
+        <article className="max-w-screen-xl mx-auto">
+          <Image
+            src={image1}
+            alt="background"
+            fill
+            className="hidden md:block object-cover w-full h-full"
+          />
+          <Image
+            src={image1}
+            alt="background"
+            className="w-full h-[14rem] md:hidden object-cover absolute"
+          />
+        </article>
+      </section>
       <h2 className="text-[#0C6410] font-semibold md:text-2xl text-center ">
         ACTOS DE CRUELDAD Y MALTRATO
       </h2>
