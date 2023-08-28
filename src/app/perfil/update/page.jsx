@@ -14,16 +14,42 @@ import Link from "next/link";
 export default function page() {
   const router = useRouter();
   const { user } = customContext();
-  console.log(user)
+  console.log(user);
 
-  const [firstName, setFirstName] = useState(user && user.first_name)
-  const [lastName, setLastName] = useState(user && user.last_name)
-  const [birthDate, setBirthDate] = useState(user && user.birth_date)
-  const [country, setCountry] = useState(user && user.country)
-  const [city, setCity] = useState(user && user.city)
-  const [email, setEmail] = useState(user && user.email)
-  const [phoneNumber, setPhoneNumber] = useState(user && user.phone_number)
-  const [description, setDescription] = useState(user && user.description)
+  const [firstName, setFirstName] = useState(user && user.first_name);
+  const [lastName, setLastName] = useState(user && user.last_name);
+  const [nickName, setNickName] = useState(user && user.nick_name);
+  const [birthDate, setBirthDate] = useState(user && user.birth_date);
+  const [country, setCountry] = useState(user && user.country);
+  const [city, setCity] = useState(user && user.city);
+  const [email, setEmail] = useState(user && user.email);
+  const [phoneNumber, setPhoneNumber] = useState(user && user.phone_number);
+  const [description, setDescription] = useState(user && user.description);
+
+  const handleUpdate = () => {
+    const updateUser = {
+      first_name: firstName,
+      last_name: lastName,
+      birth_date: birthDate,
+      country: country,
+      city: city,
+      email: email,
+      phone_number: phoneNumber,
+      description: description,
+    };
+
+    axios
+      .put(
+        `https://pajaros-caidos-backend.onrender.com/user/update/${user.id}`,
+        updateUser
+      )
+      .then((response) => {
+        console.log("Usuario actualizado:", response.data);
+      })
+      .catch((error) => {
+        console.log("Error al actualizar el usuario:", error);
+      });
+  };
 
   const shadow = { boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" };
   return (
@@ -69,6 +95,18 @@ export default function page() {
               type="text"
               className="outline-none pl-2 bg-[#EEEEEE] rounded-md"
               value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </article>
+
+          <article className="flex gap-1">
+            <span>
+              <u>Nickname:</u>
+            </span>
+            <input
+              type="text"
+              className="outline-none pl-2 bg-[#EEEEEE] rounded-md"
+              value={nickName}
               onChange={(e) => setLastName(e.target.value)}
             />
           </article>
@@ -136,7 +174,10 @@ export default function page() {
             />
           </article>
         </section>
-        <MdOutlineDoneAll className="absolute right-3 bottom-2 text-4xl font-black text-lime-700 cursor-pointer"/>
+        <MdOutlineDoneAll
+          className="absolute right-3 bottom-2 text-4xl font-black text-lime-700 cursor-pointer"
+          onClick={handleUpdate}
+        />
       </main>
 
       <section
@@ -154,8 +195,7 @@ export default function page() {
             className="outline-none pl-2 bg-[#EEEEEE] rounded-md"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          >
-          </textarea>
+          ></textarea>
         </article>
       </section>
     </div>

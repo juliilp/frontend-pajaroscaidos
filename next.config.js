@@ -13,6 +13,6 @@ module.exports = {
   // ...otras configuraciones
 
   images: {
-    domains: ['t4.ftcdn.net', 'lh3.googleusercontent.com'], // Agrega aquí los dominios de las imágenes permitidas
+    domains: ["t4.ftcdn.net", "lh3.googleusercontent.com"], // Agrega aquí los dominios de las imágenes permitidas
   },
-}
+};
