@@ -10,6 +10,10 @@ export default function MenuDesktop() {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
 
+  const closeMenu = () => {
+    setOpenMenu(null);
+  };
+
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
       <li className=" cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none ">
@@ -40,16 +44,20 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones">
+              <Link key="opcion1" href="/acciones" onClick={closeMenu}>
                 Acciones
               </Link>,
-              <Link key="opcion2" href="/caza-trafico">
+              <Link key="opcion2" href="/caza-trafico" onClick={closeMenu}>
                 Caza y tráfico de faunas
               </Link>,
-              <Link key="opcion3" href="/actosmaltratoycrueldad">
+              <Link
+                key="opcion3"
+                href="/actosmaltratoycrueldad"
+                onClick={closeMenu}
+              >
                 Crueldad y maltrato
               </Link>,
-              <Link key="opcion4" href="/legislacion">
+              <Link key="opcion4" href="/legislacion" onClick={closeMenu}>
                 Legislación
               </Link>,
             ]}
@@ -82,10 +90,10 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/voluntarios">
+              <Link key="opcion1" href="/voluntarios" onClick={closeMenu}>
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro">
+              <Link key="opcion2" href="/foro" onClick={closeMenu}>
                 Foro
               </Link>,
             ]}
@@ -117,19 +125,19 @@ export default function MenuDesktop() {
           >
             <MenuInterno
               opciones={[
-                <Link key="opcion1" href="/contactanos">
+                <Link key="opcion1" href="/contactanos" onClick={closeMenu}>
                   Contacto
                 </Link>,
-                <Link key="opcion2" href="/como-denunciar">
+                <Link key="opcion2" href="/como-denunciar" onClick={closeMenu}>
                   Como Denunciar
                 </Link>,
-                <Link key="opcion3" href="/*">
+                <Link key="opcion3" href="/*" onClick={closeMenu}>
                   Atención Cliente
                 </Link>,
-                <Link key="opcion4" href="/shopping">
+                <Link key="opcion4" href="/shopping" onClick={closeMenu}>
                   Galeria Solidaria
                 </Link>,
-                <Link key="opcion5" href="/*">
+                <Link key="opcion5" href="/*" onClick={closeMenu}>
                   Cursos
                 </Link>,
               ]}

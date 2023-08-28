@@ -3,11 +3,12 @@ import Image from "next/image";
 
 export default function page() {
   return (
+    // Comentario
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
       <div className="w-full bg-slate-500 h-[10rem]" />
       <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
       <div className="md:grid md:grid-cols-2">
-        <p className="px-6 mb-8 md:mb-16 max-w-[500px] ">
+        <p className="px-6 mb-8 md:mb-16 max-w-[500px] ">  
           La caza en sí misma es una actividad cruel que en algunas
           circunstancias lamentablemente se encuentra autorizada por la ley y
           aunque ello no configure un delito penal o infracción contravencional,
