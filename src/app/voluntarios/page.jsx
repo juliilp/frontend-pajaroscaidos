@@ -6,20 +6,23 @@ import image2 from "../../../public/images/Emma.png";
 export default function Voluntarios() {
   return (
     <div className=" min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
-      <section className="w-full  h-fit md:h-[14rem] relative bg-black ">
-        <article>
+      <section className="w-full h-[14rem] md:h-[14rem] relative">
+        <article className="max-w-screen-xl mx-auto">
           <Image
             src={image1}
             alt="background"
             fill
-            className="hidden md:block"
+            className="hidden md:block object-cover w-full h-full"
           />
           <Image
             src={image1}
             alt="background"
-            className="w-full h-[10rem]  md:hidden"
+            className="w-full h-[14rem] md:hidden object-cover absolute"
           />
         </article>
+        <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-slate-300 p-2  font-semibold text-base lg:text-lg xl:text-xl 2xl:text-2xl  ">
+          voluntarios
+        </p>
       </section>
 
       <div class="hidden md:block">
