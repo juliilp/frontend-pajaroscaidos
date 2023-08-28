@@ -71,8 +71,9 @@ export default function Page({ params }) {
               <Image
                 src={publication.user.avatar.avatar_url}
                 alt="User Avatar"
-                layout="fill"
-                objectFit="cover"
+                width={1000}
+                height={1000}
+                className="h-full w-full"
                 onError={(e) => {
                   e.target.style.display = "none";
                 }}
