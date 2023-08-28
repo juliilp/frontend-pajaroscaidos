@@ -1,5 +1,6 @@
 import api from '../../api/api'
 import { customContext } from '@/store/ContextProvider'
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
 export const fetchPosts = async (pageNumber, order, setPageNumber, setPosts, setTotalPages) => {
@@ -19,9 +20,15 @@ export const fetchPosts = async (pageNumber, order, setPageNumber, setPosts, set
     router.push('/login')
   }
 }
-export const createNewPost = async(userId,newPost)=>{
+export const createNewPost = async (userId, newPost) => {
   try {
-    const {data:response}= await api.post(`publication/create/${userId}`,newPost)
+    // console.log('newPost: ', newPost)
+    const formData = new FormData()
+    formData.append('title', newPost.title)
+    formData.append('description', newPost.description)
+    formData.append('image', newPost.image)
+    const { data: response } = await api.post(`publication/create/${userId}`, formData)
+
     return response
   } catch (error) {
     console.log(error)
