@@ -35,7 +35,7 @@ export default function Campañas() {
           className="w-[100%] max-w-[300px] font-roboto bg-[#d9d9d9] p-4  rounded-md mb-6"
         >
           <div className="w-full h-[150px]">
-            <img src={e.image} alt="auto" className="object-cover w-full h-full" />
+            <img src={e.image[0].secure_url} alt="auto" className="object-cover w-full h-full" />
           </div>
           <span className="text-[#727272] mt-4">{e.createdAt}</span>
           <h1 className="font-bold text-2xl my-4">{e.title}</h1>
