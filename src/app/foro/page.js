@@ -50,7 +50,7 @@ export default function Foros() {
     };
 
     fetchPosts();
-  }, [pageNumber, order]);
+  }, [pageNumber, order, logout, router]);
 
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
@@ -60,7 +60,7 @@ export default function Foros() {
     <section className=" relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
       {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
 
-      <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center items-center flex-col my-24">
+      <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-24">
         <div className="flex gap-6 mt-6 text-[#756F70] justify-around w-full sm:border-b sm:border-white py-4">
           <button
             onClick={setvisibilitymodal}
@@ -100,11 +100,13 @@ export default function Foros() {
           );
         })}
 
-        <Pagination2
-          pageNumber={pageNumber}
-          totalPages={totalPages}
-          changePage={handlePageChange}
-        />
+        <div className="flex justify-center w-full">
+          <Pagination2
+            pageNumber={pageNumber}
+            totalPages={totalPages}
+            changePage={handlePageChange}
+          />
+        </div>
       </div>
       <div className="mt-24 flex justify-center items-center flex-col gap-6">
         <Image
