@@ -16,19 +16,20 @@ export default function EncontreUnAve({
   return (
     <section className="bg-[#C2C2C2] p-8 max-w-[728px] h-full flex flex-col gap-8 md:p-16 md:gap-16">
       <h2 className="text-[#0C6410] text-center font-semibold ">{titulo}</h2>
-      {!video && (
+
+      {video ? (
+        <YoutubePlay
+          styles="max-w-[500px] h-[400px] w-full mx-auto"
+          videoID="https://www.youtube.com/watch?v=wUN2wjMBTtw"
+        />
+      ) : (
         <Image
           src={imagen}
           alt="imagen"
           className="mx-auto max-w-[400px] h-[250px]"
         />
       )}
-      {video && (
-        <YoutubePlay
-          styles="max-w-[500px] h-[400px] w-full mx-auto"
-          videoID="https://www.youtube.com/watch?v=wUN2wjMBTtw"
-        />
-      )}
+
       <div>
         {parrafov2.map((paragraph, index) => {
           return (
