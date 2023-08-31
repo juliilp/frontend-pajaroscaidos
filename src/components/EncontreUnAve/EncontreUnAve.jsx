@@ -20,7 +20,7 @@ export default function EncontreUnAve({
       {video ? (
         <YoutubePlay
           styles="max-w-[500px] h-[400px] w-full mx-auto"
-          videoID="https://www.youtube.com/watch?v=wUN2wjMBTtw"
+          videoID="wUN2wjMBTtw"
         />
       ) : (
         <Image
