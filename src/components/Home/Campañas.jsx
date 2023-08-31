@@ -30,7 +30,7 @@ export default function Campañas() {
     setPageNumber(pageNumber);
   };
   return (
-    <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3  ">
+    <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3 justify-center items-center lg:justify-normal lg:items-stretch ">
       {news.map((e) => (
         <div
           key={e.id}

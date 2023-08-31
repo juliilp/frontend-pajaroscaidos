@@ -30,7 +30,7 @@ export default function Home() {
     <section className="mt-[70px]">
       <MainHome banner={images} />
 
-      <div className="w-full flex flex-col gap-6 xl:flex-row lg:gap-0 xl:px-8">
+      <div className="w-full justify-center items-center flex flex-col gap-6 xl:flex-row lg:gap-0 xl:px-8">
         <Campañas />
 
         <NuestraComunidad />
