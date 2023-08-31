@@ -4,7 +4,6 @@ import { getPostForNuestraComunidad } from "@/api/apiCall/functions";
 export default function NuestraComunidad() {
   const [publications, setPublications] = useState([]);
   const [option, setOption] = useState("day");
-
   useEffect(() => {
     async function getPublications() {
       const publicationsResponse = await getPostForNuestraComunidad(option); // NOTA: sacar 'limit' para que traiga todos los posts.
@@ -46,7 +45,9 @@ export default function NuestraComunidad() {
         </div>
         <div className="h-[5px] w-[100%] bg-[#c2c2c2] shadow-login rounded-2xl  " />
         <div
-          className={`flex flex-col justify-center items-center w-full gap-4 `}
+          className={`flex flex-col justify-center items-center w-full gap-4 ${
+            publications.length > 2 && "overflow-y-scroll"
+          } `}
         >
           <PostComunidad publications={publications} />
         </div>
