@@ -30,12 +30,10 @@ export default function Home() {
     <section className="mt-[70px]">
       <MainHome banner={images} />
 
-      <div className="w-full flex flex-col gap-6 lg:flex-row lg:gap-0">
+      <div className="w-full flex flex-col gap-6 xl:flex-row lg:gap-0 xl:px-8">
         <Campañas />
 
-        <div className="lg:w-[30%] lg:ml-6">
-          <NuestraComunidad />
-        </div>
+        <NuestraComunidad />
       </div>
     </section>
   );
