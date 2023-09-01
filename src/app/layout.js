@@ -24,16 +24,8 @@ export const metadata = {
 };
 import ContextProvider from "@/store/ContextProvider";
 import Footer from "@/components/Footer/Footer";
-// import Navbar from '@/components/Navbar/Navbar'
+import Navbar from "@/components/Navbar/Navbar";
 import ProviderAuth from "@/components/ProviderAuth/ProviderAuth";
-import dynamic from "next/dynamic";
-
-const DynamicNavbarWithNoSSR = dynamic(
-  () => import("@/components/Navbar/Navbar"),
-  {
-    ssr: false,
-  }
-);
 
 export default function RootLayout({ children }) {
   return (
@@ -44,7 +36,7 @@ export default function RootLayout({ children }) {
           className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}
         >
           <ContextProvider>
-            <DynamicNavbarWithNoSSR />
+            <Navbar />
             <div className=" min-h-screen bg-[#D9D9D9] ">
               {/* para que las altura minima de las paginas sea el total de la pantalla */}
               {children}
