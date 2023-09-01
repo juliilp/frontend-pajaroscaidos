@@ -34,3 +34,18 @@ export const createNewPost = async (userId, newPost) => {
     console.log(error)
   }
 }
+
+export async function getPostForNuestraComunidad(option) {
+  try {
+    const response = await api.get(`publication/all?filter=${option}&limit=${2}`)
+
+    if (response.status === 200) {
+      const publications = response.data.publications
+      return publications
+    } else {
+      console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD")
+    }
+  } catch (error) {
+    console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD")
+  }
+}
