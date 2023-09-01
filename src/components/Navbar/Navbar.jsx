@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { customContext } from "@/store/ContextProvider";
 import { useSession, signOut } from "next-auth/react";
-import SpinnerLoading from "@/assets/loading/spinner-loading";
+//import SpinnerLoading from "@/assets/loading/spinner-loading";
 
 export default function Navbar() {
   const { userContext, logout } = customContext();
@@ -61,7 +61,7 @@ export default function Navbar() {
               {userContext.nick_name}
             </span>
             {userContext.avatar.avatar_url !== "-" ? (
-              <Suspense fallback={<SpinnerLoading />}>
+              <Suspense fallback={/**<SpinnerLoading />**/}>
                 <Image
                   src={
                     userContext.avatar.avatar_url

@@ -1,12 +1,27 @@
 import CardTiroAlPichon from "@/components/CardTiroAlPichon/CardTiroAlPichon";
 import Image from "next/image";
-import Imagen1 from "@/../public/images/tiroalpichon/imagen1.png";
-import Imagen2 from "@/../public/images/tiroalpichon/imagen2.png";
-import Imagen3 from "@/../public/images/tiroalpichon/imagen3.png";
-
+import Imagen1 from "../../../public/images/tiroalpichon/Imagen1.png";
+import Imagen2 from "@/../public/images/tiroalpichon/Imagen2.png";
+import Imagen3 from "@/../public/images/tiroalpichon/Imagen3.png";
+import image1 from "../../../public/images/tiro-al-pichon.png"
 function Tiroalpichon() {
   return (
     <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8 px-6 md:px-0 py-12">
+       <section className="w-full h-[14rem] md:h-[40rem] relative">
+        <article className="max-w-screen-xl mx-auto">
+          <Image
+            src={image1}  
+            alt="background"
+            fill
+            className="hidden  md:block object-cover w-full h-full"
+          />
+          <Image
+            src={image1}
+            alt="background"
+            className="w-full h-[14rem] md:hidden object-cover absolute"
+          />
+        </article>
+      </section>
       <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8">
         CAZA DEPORTIVA TIRO AL PICHON
       </h1>
