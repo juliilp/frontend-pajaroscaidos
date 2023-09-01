@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser } from "react-icons/bi";
 import Logo from "../../../public/images/navbar-logo.png";
@@ -9,11 +9,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { customContext } from "@/store/ContextProvider";
 import { useSession, signOut } from "next-auth/react";
+import SpinnerLoading from "@/assets/loading/spinner-loading";
 
 export default function Navbar() {
   const { userContext, logout } = customContext();
   const { data: session } = useSession();
   const [switchMenu, setSwitchMenu] = useState(false);
+  const [rendering, setRendering] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setRendering(true);
+    }
+  }, []);
 
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
@@ -47,24 +55,25 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
 
-        {userContext && userContext.nick_name ? (
+        {rendering && userContext && userContext.nick_name ? (
           <div className="flex items-center justify-center gap-3">
             <span className="text-white font-baloo font-semibold">
               {userContext.nick_name}
             </span>
             {userContext.avatar.avatar_url !== "-" ? (
-              <Image
-                src={
-                  userContext.avatar.avatar_url
-                    ? userContext.avatar.avatar_url
-                    : userContext.avatar.secure_url
-                }
-                alt="Avatar"
-                width={50}
-                height={50}
-                layout="fixed"
-                className="rounded-full"
-              />
+              <Suspense fallback={<SpinnerLoading />}>
+                <Image
+                  src={
+                    userContext.avatar.avatar_url
+                      ? userContext.avatar.avatar_url
+                      : userContext.avatar.secure_url
+                  }
+                  alt="Avatar"
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              </Suspense>
             ) : (
               <BiSolidUser size={35} color="white" />
             )}
@@ -78,7 +87,6 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="flex items-center justify-center gap-3">
-            {/* <span></span> */}
             <Link
               href="/login"
               className="text-white font-baloo font-semibold"
