@@ -142,7 +142,7 @@ export default function Comentarios({ comments }) {
                 </figure>
                 <div className="flex flex-col gap-1">
                   <h5 className=" text-xl font-medium">
-                    {users[key]?.user.first_name} {users[key]?.user.last_name}
+                    {users[key]?.user.nick_name}
                   </h5>
                   <span className=" text-sm">{commentMonth(i.createdAt)}</span>
                 </div>

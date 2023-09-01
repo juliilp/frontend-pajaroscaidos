@@ -1,45 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import Pagination2 from '../Pagination2/Pagination2'
-import api from '@/api/api'
+import React, { useState, useEffect } from "react";
+import Pagination2 from "../Pagination2/Pagination2";
+import api from "@/api/api";
+import Image from "next/image";
 
 export default function Campañas() {
-  const [pageNumber, setPageNumber] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
-  const [news, setNews] = useState([])
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await api.get(`/news?pageNumber=${pageNumber}&newsPerPage=6`)
+        const response = await api.get(
+          `/news?pageNumber=${pageNumber}&newsPerPage=6`
+        );
 
-        setNews(response.data.news)
+        setNews(response.data.news);
         // console.log(response.data.news)
-        setTotalPages(response.data.totalPages)
+        setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.error('Error al obtener las noticias:', error)
+        console.error("Error al obtener las noticias:", error);
       }
-    }
+    };
 
-    fetchNews()
-  }, [pageNumber])
+    fetchNews();
+  }, [pageNumber]);
 
   const handlePageChange = (pageNumber) => {
-    setPageNumber(pageNumber)
-  }
-
+    setPageNumber(pageNumber);
+  };
   return (
-    <div className="w-full h-max flex flex-wrap gap-6 md:grid md:grid-cols-3 2xl:grid-cols-3 lg:w-[70%]">
+    <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3 justify-center items-center lg:justify-normal lg:items-stretch ">
       {news.map((e) => (
         <div
           key={e.id}
-          className="w-[100%] max-w-[300px] font-roboto bg-[#d9d9d9] p-4  rounded-md mb-6"
+          className="w-full  max-w-[300px] font-roboto bg-[#d9d9d9] p-4 lg:p-0  rounded-md my-6 justify-self-center "
         >
-          <div className="w-full h-[150px]">
-            <img src={e.image[0].secure_url} alt="auto" className="object-cover w-full h-full" />
-          </div>
-          <span className="text-[#727272] mt-4">{e.createdAt}</span>
-          <h1 className="font-bold text-2xl my-4">{e.title}</h1>
-          <p>{e.description}</p>
+          <Image
+            src={e.image[0].secure_url}
+            alt="auto"
+            width={250}
+            height={200}
+            className=" h-[150px] w-[200px]"
+          />
+
+          <span className="text-[#727272] text-sm ">{e.createdAt}</span>
+          <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
+          <p className="text-sm  ">{e.description}</p>
         </div>
       ))}
 
@@ -51,5 +58,5 @@ export default function Campañas() {
         />
       </div>
     </div>
-  )
+  );
 }

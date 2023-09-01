@@ -1,9 +1,25 @@
 import CardVoluntariado from "@/components/CardVoluntariado/CardVoluntariado";
 import { dataVoluntario } from "@/components/CardVoluntariado/dataVoluntario";
+import Image from "next/image";
+import image1 from "../../../public/images/voluntariado.png"
 export default function page() {
   return (
     <section className="mt-[70px]">
-      <div className="hidden md:block w-full h-[200px] bg-slate-600" />
+                  <section className="w-full h-[14rem] md:h-[40rem] relative">
+        <article className="max-w-screen-xl mx-auto">
+          <Image
+            src={image1}
+            alt="background"
+            fill
+            className="hidden  md:block object-cover w-full h-full"
+          />
+          <Image
+            src={image1}
+            alt="background"
+            className="w-full h-[14rem] md:hidden object-cover absolute"
+          />
+        </article>
+      </section>
       <h2 className="w-full text-center text-xl my-8 lg:text-2xl ">
         Voluntarios
       </h2>

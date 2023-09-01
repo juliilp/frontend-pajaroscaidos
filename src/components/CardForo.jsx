@@ -4,6 +4,8 @@ import { RiMessage2Line } from 'react-icons/ri'
 import { customContext } from '@/store/ContextProvider'
 import { convertirFecha } from '@/utils/auxfunctions'
 import api from '../api/api'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
   const { userContext } = customContext()
@@ -67,17 +69,30 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
   }
 
   return (
-    <div className=" flex w-[95%] h-[150px]  items-center justify-center shadow-cardForo sm:shadow-none sm:border-b sm:border-white ">
-      {/* Supuesta imagen */}
-      <div className=" flex-[2] h-full w-2/6 p-3 justify-center items-center flex ">
-        <div className="bg-slate-600 w-[100%] max-w-[80px] h-[70px] sm:max-w-[120px] sm:h-[100px] lg:max-w-[150px] lg:h-[120px] rounded-2xl">
-          {/* {image.includes('.com') ?<img src={image} /> :<span>controlar no foto</span>} */}
-        {image?.secure_url&& <img src={image.secure_url} />}
+    <div className="flex w-full h-[150px] items-center justify-start shadow-cardForo sm:shadow-none sm:border-b sm:border-white ">
+      <div className="flex-[2] h-full w-2/6 p-3 justify-end items-center flex">
+        {/* <Link href={`/foro/${id}`}> */}
+        <div className="h-full overflow-hidden w-40 flex items-center justify-center rounded-2xl relative">
+          {image?.secure_url && (
+            <Image
+              src={image.secure_url}
+              alt={image.public_id}
+              width={1000}
+              height={1000}
+              className="h-full "
+              onError={(e) => {
+                e.target.style.display = 'none'
+              }}
+            />
+          )}
         </div>
+        {/* </Link> */}
       </div>
 
       <div className="w-4/6 h-[100px] flex flex-col px-3 gap-1 justify-center font-inter ">
-        <h2 className="font-bold  text-lg sm:text-2xl">{titulo}</h2>
+        <Link href={`/foro/${id}`}>
+          <h2 className="font-bold  text-lg sm:text-2xl">{titulo}</h2>
+        </Link>
         <span>
           <b className="text-[#2594EF] cursor-pointer ">Foro</b> - {fecha} por
           <b className="text-[#2594EF] cursor-pointer "> {usuario}</b>

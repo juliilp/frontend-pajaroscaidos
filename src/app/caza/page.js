@@ -1,14 +1,17 @@
-import Caza from "@/../public/images/caza.png";
+import Caza from "@/../public/images/caza/caza.png";
+import Banner from "@/../public/images/caza/caza-banner-min.png";
 import Image from "next/image";
 
 export default function page() {
   return (
     // Comentario
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
-      <div className="w-full bg-slate-500 h-[10rem]" />
+      <div className="w-full xl:h-56 sm:h-48 h-32 relative">
+        <Image src={Banner} alt="Banner caza" fill className="" />
+      </div>
       <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
       <div className="md:grid md:grid-cols-2">
-        <p className="px-6 mb-8 md:mb-16 max-w-[500px] ">  
+        <p className="px-6 mb-8 md:mb-16 max-w-[500px] ">
           La caza en sí misma es una actividad cruel que en algunas
           circunstancias lamentablemente se encuentra autorizada por la ley y
           aunque ello no configure un delito penal o infracción contravencional,

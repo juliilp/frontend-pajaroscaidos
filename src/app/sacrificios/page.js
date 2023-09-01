@@ -1,10 +1,25 @@
 import Caza from "@/../public/images/sacrificios.png";
 import Image from "next/image";
+import image1 from "../../../public/images/sacrificio-religioso.jpeg"
 
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
-      <div className="w-full bg-slate-500 h-[10rem]" />
+            <section className="w-full h-[14rem] md:h-[14rem] relative">
+        <article className="max-w-screen-xl mx-auto">
+          <Image
+            src={image1}
+            alt="background"
+            fill
+            className="hidden  md:block object-cover w-full h-full"
+          />
+          <Image
+            src={image1}
+            alt="background"
+            className="w-full h-[14rem] md:hidden object-cover absolute"
+          />
+        </article>
+      </section>
       <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
       <div className="md:grid md:grid-cols-5">
         <p className="px-6 mb-8 md:mb-16 max-w-[800px] md:col-span-3 ">

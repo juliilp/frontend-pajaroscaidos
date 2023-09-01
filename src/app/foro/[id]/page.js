@@ -57,7 +57,7 @@ export default function Page({ params }) {
          xl:pl-14  xl:pr-14 
          2xl:pl-20 2xl:pr-20 text-white"
     >
-      <header className="w-full h-[10rem] relative ">
+      <header className="w-full h-40 relative">
         <Image
           src={ImgPortada}
           alt="ImgPortada"
@@ -65,14 +65,15 @@ export default function Page({ params }) {
           objectFit="cover"
           className=""
         />
-        <div className="absolute inset-0 flex items-center ml-16">
+        <div className="absolute inset-0 flex items-center sm:ml-16 ml-6">
           <div className="flex items-center gap-3 h-full">
             <div className="rounded-full overflow-hidden w-20 h-20 relative">
               <Image
                 src={publication.user.avatar.avatar_url}
                 alt="User Avatar"
-                layout="fill"
-                objectFit="cover"
+                width={1000}
+                height={1000}
+                className="h-full w-full"
                 onError={(e) => {
                   e.target.style.display = "none";
                 }}
