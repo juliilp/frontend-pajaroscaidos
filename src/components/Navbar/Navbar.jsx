@@ -79,7 +79,11 @@ export default function Navbar() {
         ) : (
           <div className="flex items-center justify-center gap-3">
             {/* <span></span> */}
-            <Link href="/login" className="text-white font-baloo font-semibold">
+            <Link
+              href="/login"
+              className="text-white font-baloo font-semibold"
+              prefetch={false}
+            >
               Iniciar sesión
             </Link>
             <BiSolidUser size={35} color="white" />

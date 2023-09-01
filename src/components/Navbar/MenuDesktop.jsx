@@ -17,7 +17,9 @@ export default function MenuDesktop() {
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
       <li className=" cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none ">
-        <Link href="/">Inicio</Link>
+        <Link href="/" prefetch={false}>
+          Inicio
+        </Link>
       </li>
       <li
         className="flex gap-1 justify-center items-center cursor-pointer flex-col relative"
@@ -44,20 +46,36 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones" onClick={closeMenu}>
+              <Link
+                key="opcion1"
+                href="/acciones"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Acciones
               </Link>,
-              <Link key="opcion2" href="/caza-trafico" onClick={closeMenu}>
+              <Link
+                key="opcion2"
+                href="/caza-trafico"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Caza y tráfico de faunas
               </Link>,
               <Link
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
-              <Link key="opcion4" href="/legislacion" onClick={closeMenu}>
+              <Link
+                key="opcion4"
+                href="/legislacion"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Legislación
               </Link>,
             ]}
@@ -90,10 +108,20 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/voluntarios" onClick={closeMenu}>
+              <Link
+                key="opcion1"
+                href="/voluntarios"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro" onClick={closeMenu}>
+              <Link
+                key="opcion2"
+                href="/foro"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Foro
               </Link>,
             ]}
@@ -125,19 +153,44 @@ export default function MenuDesktop() {
           >
             <MenuInterno
               opciones={[
-                <Link key="opcion1" href="/contactanos" onClick={closeMenu}>
+                <Link
+                  key="opcion1"
+                  href="/contactanos"
+                  onClick={closeMenu}
+                  prefetch={false}
+                >
                   Contacto
                 </Link>,
-                <Link key="opcion2" href="/como-denunciar" onClick={closeMenu}>
+                <Link
+                  key="opcion2"
+                  href="/como-denunciar"
+                  onClick={closeMenu}
+                  prefetch={false}
+                >
                   Como Denunciar
                 </Link>,
-                <Link key="opcion3" href="/*" onClick={closeMenu}>
+                <Link
+                  key="opcion3"
+                  href="/*"
+                  onClick={closeMenu}
+                  prefetch={false}
+                >
                   Atención Cliente
                 </Link>,
-                <Link key="opcion4" href="/shopping" onClick={closeMenu}>
+                <Link
+                  key="opcion4"
+                  href="/shopping"
+                  onClick={closeMenu}
+                  prefetch={false}
+                >
                   Galeria Solidaria
                 </Link>,
-                <Link key="opcion5" href="/*" onClick={closeMenu}>
+                <Link
+                  key="opcion5"
+                  href="/*"
+                  onClick={closeMenu}
+                  prefetch={false}
+                >
                   Cursos
                 </Link>,
               ]}

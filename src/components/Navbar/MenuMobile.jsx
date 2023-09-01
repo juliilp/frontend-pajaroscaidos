@@ -11,7 +11,7 @@ export default function MenuMobile() {
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link href="/" className="focus:underline">
+        <Link href="/" className="focus:underline" prefetch={false}>
           Inicio
         </Link>
       </li>
@@ -40,13 +40,19 @@ export default function MenuMobile() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones" className="focus:underline">
+              <Link
+                key="opcion1"
+                href="/acciones"
+                className="focus:underline"
+                prefetch={false}
+              >
                 Acciones
               </Link>,
               <Link
                 key="opcion2"
                 href="/caza-trafico"
                 className="focus:underline"
+                prefetch={false}
               >
                 Caza y tráfico de faunas
               </Link>,
@@ -54,6 +60,7 @@ export default function MenuMobile() {
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
                 className="focus:underline"
+                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
@@ -61,6 +68,7 @@ export default function MenuMobile() {
                 key="opcion4"
                 href="/legislacion"
                 className="focus:underline"
+                prefetch={false}
               >
                 Legislación
               </Link>,
@@ -95,10 +103,16 @@ export default function MenuMobile() {
                 key="opcion1"
                 href="/voluntarios"
                 className="focus:underline"
+                prefetch={false}
               >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro" className="focus:underline">
+              <Link
+                key="opcion2"
+                href="/foro"
+                className="focus:underline"
+                prefetch={false}
+              >
                 Foro
               </Link>,
             ]}
@@ -132,6 +146,7 @@ export default function MenuMobile() {
                 key="opcion1"
                 href="/contactanos"
                 className="focus:underline"
+                prefetch={false}
               >
                 Contacto
               </Link>,
@@ -139,16 +154,32 @@ export default function MenuMobile() {
                 key="opcion2"
                 href="/como-denunciar"
                 className="focus:underline"
+                prefetch={false}
               >
                 Como Denunciar
               </Link>,
-              <Link key="opcion3" href="/*" className="focus:underline">
+              <Link
+                key="opcion3"
+                href="/*"
+                className="focus:underline"
+                prefetch={false}
+              >
                 Atención Cliente
               </Link>,
-              <Link key="opcion4" href="/shopping" className="focus:underline">
+              <Link
+                key="opcion4"
+                href="/shopping"
+                className="focus:underline"
+                prefetch={false}
+              >
                 Galeria Solidaria
               </Link>,
-              <Link key="opcion5" href="/*" className="focus:underline">
+              <Link
+                key="opcion5"
+                href="/*"
+                className="focus:underline"
+                prefetch={false}
+              >
                 Cursos
               </Link>,
             ]}
