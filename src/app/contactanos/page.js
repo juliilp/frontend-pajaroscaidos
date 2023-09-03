@@ -1,11 +1,16 @@
+import Image from "next/image";
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
 import Consultas from "@/../public/images/contactanos-consultas.png";
 import Donaciones from "@/../public/images/contactanos-donaciones.png";
 import Contacto from "@/../public/images/contactanos-contacto.png";
+import Banner from "@/../public/images/contactanos/Banner-min.png";
+
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col gap-16">
-      <div className="hidden md:block w-full h-[200px] bg-slate-600" />
+      <div className="w-full h-[134px] sm:h-[260px] lg:h-80 2xl:h-[40rem] relative">
+        <Image src={Banner} alt="Banner" fill priority={true} />
+      </div>
       <div className="flex items-center justify-center w-full  px-[5%] gap-10 flex-wrap">
         <CardComoColaborar
           titulo="CONSULTAS SOBRE AVES"

@@ -1,77 +1,87 @@
-import React, { useState } from 'react'
-import { IoMdHeartEmpty } from 'react-icons/io'
-import { RiMessage2Line } from 'react-icons/ri'
-import { customContext } from '@/store/ContextProvider'
-import { convertirFecha } from '@/utils/auxfunctions'
-import api from '../api/api'
-import Image from 'next/image'
-import Link from 'next/link'
+import React, { useState } from "react";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { RiMessage2Line } from "react-icons/ri";
+import { customContext } from "@/store/ContextProvider";
+import { convertirFecha } from "@/utils/auxfunctions";
+import api from "../api/api";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
-  const { userContext } = customContext()
+export default function CardForo({
+  titulo,
+  tiempo,
+  usuario,
+  like,
+  message,
+  image,
+  id,
+  reactions,
+}) {
+  const { userContext } = customContext();
 
-  const userReaction = reactions?.find((e) => e.userId === userContext?.id)
+  const userReaction = reactions?.find((e) => e.userId === userContext?.id);
   // console.log('reaction:', userReaction)
-  const [reaction, setReaction] = useState(!!userReaction)
-  const [likesNumber, setLikesNumber] = useState(like)
-  const fecha = convertirFecha(tiempo)
-  const [newLike, setNewLike] = useState(userReaction)
-  const [sending, setSending] = useState(false)
+  const [reaction, setReaction] = useState(!!userReaction);
+  const [likesNumber, setLikesNumber] = useState(like);
+  const fecha = convertirFecha(tiempo);
+  const [newLike, setNewLike] = useState(userReaction);
+  const [sending, setSending] = useState(false);
 
   const handleLike = async () => {
     try {
       if (sending) {
-        return
+        return;
       }
 
-      setSending(true)
+      setSending(true);
 
       const response = await api.post(`/reaction/create/${id}`, {
         idUser: userContext.id,
-        reaction: 'like',
-      })
+        reaction: "like",
+      });
 
       if (response.status === 200) {
         // console.log('id:', response.data.newReaction.id)
-        setNewLike(response.data.newReaction.id)
-        setReaction(true)
-        setLikesNumber(likesNumber + 1)
+        setNewLike(response.data.newReaction.id);
+        setReaction(true);
+        setLikesNumber(likesNumber + 1);
       }
     } catch (error) {
-      console.error('error al dar el me gusta::', error)
+      console.error("error al dar el me gusta::", error);
     } finally {
-      setSending(false)
+      setSending(false);
     }
-  }
+  };
 
   const handleUnLike = async () => {
     if (sending) {
-      return
+      return;
     }
 
-    setSending(true)
+    setSending(true);
 
     try {
       // console.log('userReaction: ', userReaction)
       const response = await api.delete(
-        `/reaction/delete/${userReaction !== undefined ? userReaction.id : newLike}`
-      ) //userReaction.id
+        `/reaction/delete/${
+          userReaction !== undefined ? userReaction.id : newLike
+        }`
+      ); //userReaction.id
 
       if (response.status === 200) {
-        setReaction(false)
-        setLikesNumber(likesNumber - 1)
+        setReaction(false);
+        setLikesNumber(likesNumber - 1);
       }
     } catch (error) {
-      console.error('error al sacar el me gusta::', error)
+      console.error("error al sacar el me gusta::", error);
     } finally {
-      setSending(false)
+      setSending(false);
     }
-  }
+  };
 
   return (
     <div className="flex w-full h-[150px] items-center justify-start shadow-cardForo sm:shadow-none sm:border-b sm:border-white ">
       <div className="flex-[2] h-full w-2/6 p-3 justify-end items-center flex">
-        {/* <Link href={`/foro/${id}`}> */}
         <div className="h-full overflow-hidden w-40 flex items-center justify-center rounded-2xl relative">
           {image?.secure_url && (
             <Image
@@ -81,12 +91,11 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
               height={1000}
               className="h-full "
               onError={(e) => {
-                e.target.style.display = 'none'
+                e.target.style.display = "none";
               }}
             />
           )}
         </div>
-        {/* </Link> */}
       </div>
 
       <div className="w-4/6 h-[100px] flex flex-col px-3 gap-1 justify-center font-inter ">
@@ -100,22 +109,34 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
         <div className="flex gap-6 self-end sm:self-start pr-6">
           <div className="flex gap-2 ">
             <IoMdHeartEmpty
-              color={reaction ? '#E11447' : '#000000'}
+              color={reaction ? "#E11447" : "#000000"}
               size={25}
-              className={`cursor-pointer ${sending ? 'opacity-50 pointer-events-none' : ''}`}
+              className={`cursor-pointer ${
+                sending ? "opacity-50 pointer-events-none" : ""
+              }`}
               onClick={sending ? null : reaction ? handleUnLike : handleLike}
             />
-            <span className={`font-semibold text-lg ${reaction ? 'text-[#AA153A]' : ''}`}>
+            <span
+              className={`font-semibold text-lg ${
+                reaction ? "text-[#AA153A]" : ""
+              }`}
+            >
               {likesNumber}
             </span>
           </div>
 
           <div className="flex  gap-2">
-            <RiMessage2Line color="#0C6410" size={25} className="cursor-pointer" />
-            <span className="text-[#0C6410] font-semibold text-lg self-end ">{message}</span>
+            <RiMessage2Line
+              color="#0C6410"
+              size={25}
+              className="cursor-pointer"
+            />
+            <span className="text-[#0C6410] font-semibold text-lg self-end ">
+              {message}
+            </span>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
