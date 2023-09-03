@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PostComunidad from "./PostComunidad";
+import PostComunidadDesktop from "./PostComunidadDesktop";
 import { getPostForNuestraComunidad } from "@/api/apiCall/functions";
 export default function NuestraComunidad() {
   const [publications, setPublications] = useState([]);
@@ -24,7 +24,7 @@ export default function NuestraComunidad() {
   ];
 
   return (
-    <section className=" mt-4 shadow-md w-full bg-[#d8d8d9] flex flex-col items-center justify-center xl:max-w-[400px]  px-4 h-max mr-4 py-6  rounded-lg">
+    <section className=" mt-4 hidden shadow-md w-full bg-[#d8d8d9] xl:flex flex-col items-center justify-center xl:max-w-[400px]  px-4 h-max mr-4 py-6  rounded-lg">
       <div className="w-full flex flex-col space-y-2">
         <h2 className="text-[#707070] text-center font-baloo font-semibold text-3xl  ">
           Nuestra Comunidad
@@ -49,7 +49,7 @@ export default function NuestraComunidad() {
             publications.length > 2 && "overflow-y-scroll"
           } `}
         >
-          <PostComunidad publications={publications} />
+          <PostComunidadDesktop publications={publications} />
         </div>
       </div>
     </section>
