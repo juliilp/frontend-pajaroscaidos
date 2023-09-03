@@ -22,6 +22,7 @@ export default function MainHome({ banner }) {
               alt={`Banner ${e.name}`}
               fill
               className="w-full h-full object-cover"
+              priority={true}
             />
           </SwiperSlide>
         ))}

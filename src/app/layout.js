@@ -37,10 +37,7 @@ export default function RootLayout({ children }) {
         >
           <ContextProvider>
             <Navbar />
-            <div className=" min-h-screen bg-[#D9D9D9] ">
-              {/* para que las altura minima de las paginas sea el total de la pantalla */}
-              {children}
-            </div>
+            <div className=" min-h-screen bg-[#D9D9D9] ">{children}</div>
           </ContextProvider>
           <Footer />
         </body>
