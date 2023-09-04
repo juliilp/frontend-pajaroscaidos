@@ -8,7 +8,6 @@ import font from '../../styles/fonts.module.css'
 import api from '@/api/api'
 
 export default function Shopping() {
-  // const faketotal = "15554545".split("");
   const [products, setProducts] = useState([])
 
   const getAllProducts = async () => {
@@ -61,16 +60,6 @@ export default function Shopping() {
              
              "
         >
-          {/* {faketotal.map((i, index) => (
-          <ShoppingCards
-            key={index}
-            title={`Producto ${index + 1}`}
-            description={`descripcion del producto ${
-              index + 1
-            },qwertyuiopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm`}
-            image={`image${index}.jpg`}
-          />
-        ))} */}
           {products.map((product) => (
             <ShoppingCards
               key={product.id}
