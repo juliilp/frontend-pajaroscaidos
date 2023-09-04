@@ -30,10 +30,8 @@ export default function Home() {
   return (
     <section className="mt-[70px]">
       <MainHome banner={images} />
-
-      <div className="w-full justify-center items-center flex flex-col gap-6 xl:flex-row lg:items-start  lg:gap-0 xl:px-8">
+      <div className="w-full justify-center items-center flex flex-col gap-0 xl:gap-6 xl:flex-row lg:items-start xl:px-8">
         <Campañas />
-
         <NuestraComunidadDesktop />
         {/* Necesito centrarlo de ésta manera ya que no tiene nada mas que lo contenga */}
         <div className="flex w-full items-center justify-center xl:hidden">
