@@ -6,17 +6,10 @@ const inter = Inter({
   variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
 });
-const roboto = Roboto({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto",
-  weight: ["400", "700", "500"],
-});
 const Baloo = Baloo_Bhaijaan_2({
-  subsets: ["latin"],
   display: "swap",
-  variable: "--font-baloo",
   weight: ["400", "500", "700"],
+  subsets: ["latin"],
 });
 export const metadata = {
   title: "Create Next App",
@@ -31,10 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <ProviderAuth>
-        <body
-          id="Body"
-          className={`${inter.className} ${roboto.variable} ${Baloo.variable}`}
-        >
+        <body id="Body" className={`${Baloo.className} `}>
           <ContextProvider>
             <Navbar />
             <div className=" min-h-screen bg-[#D9D9D9] ">{children}</div>

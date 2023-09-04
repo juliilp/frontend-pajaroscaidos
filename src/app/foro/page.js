@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import ImagenForo from "../../../public/images/imagen-foro.png";
 import { CiClock2 } from "react-icons/ci";
 import { AiOutlineFileText } from "react-icons/ai";
-import NuestraComunidad from "@/components/NuestraComunidad/NuestraComunidad";
+import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
 import Image from "next/image";
 import ModalnewPost from "@/components/Foro/Modal";
 import api from "../../api/api";
