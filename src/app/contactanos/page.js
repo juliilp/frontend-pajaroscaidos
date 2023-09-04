@@ -17,7 +17,7 @@ export default function page() {
           parrafo='MUY IMPORTANTE: Si queres realizar alguna consulta sobre aves, o recibir asistencia en casos de URGENCIA, accede al enlace que tenes a continuación y escribí tu consulta en la sección "Crear Publicación" de la Página de Facebook Refugio de Aves Pájaros Caídos, que te responderemos a la mayor brevedad posible.'
           image={Consultas}
           nombreEnlace="CONTACTANOS"
-          enlace="#" //pendiente de enlace
+          enlace="https://www.facebook.com/refugio.de.aves.pajaros.caidos"
         />
         <CardComoColaborar
           titulo="CONTACTO"
@@ -31,7 +31,7 @@ export default function page() {
           parrafo="Para poder seguir trabajando por el bienestar de las aves y crecer, necesitamos de tu colaboracion. Desde acá podrás ayudarnos a construir nuevos refugios para aves, dictar cursos de capacitación, realizar campañas de concientización, formular denuncias por actos de maltrato o crueldad, trabajar contra el tráfico ilegal de animales, entre otras tantas cosas."
           image={Donaciones}
           nombreEnlace="DONAR"
-          enlace="#" //pendiente de enlace
+          enlace="#" //pendiente de enlace para donacion
         />
       </div>
     </section>
