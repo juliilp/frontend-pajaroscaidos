@@ -29,10 +29,8 @@ export default function Home() {
   return (
     <section className="mt-[70px]">
       <MainHome banner={images} />
-
-      <div className="w-full justify-center items-center flex flex-col gap-6 xl:flex-row lg:gap-0 xl:px-8">
+      <div className="w-full justify-center flex flex-col gap-6 xl:flex-row lg:gap-0 xl:px-8">
         <Campañas />
-
         <NuestraComunidad />
       </div>
     </section>
