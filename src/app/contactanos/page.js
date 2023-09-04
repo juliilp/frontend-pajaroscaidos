@@ -31,7 +31,7 @@ export default function page() {
           parrafo="Para poder seguir trabajando por el bienestar de las aves y crecer, necesitamos de tu colaboracion. Desde acá podrás ayudarnos a construir nuevos refugios para aves, dictar cursos de capacitación, realizar campañas de concientización, formular denuncias por actos de maltrato o crueldad, trabajar contra el tráfico ilegal de animales, entre otras tantas cosas."
           image={Donaciones}
           nombreEnlace="DONAR"
-          enlace="#" //pendiente de enlace para donacion
+          enlace="https://link.mercadopago.com.ar/pajaroscaidos"
         />
       </div>
     </section>
