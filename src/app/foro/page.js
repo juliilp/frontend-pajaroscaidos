@@ -11,6 +11,7 @@ import api from "../../api/api";
 import Pagination2 from "@/components/Pagination2/Pagination2";
 import { customContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
+import Loading from "../loading";
 
 export default function Foros() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Foros() {
   const [order, setOrder] = useState("desc");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(undefined);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -48,6 +49,10 @@ export default function Foros() {
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
   };
+
+  if (posts == undefined) {
+    return <Loading />;
+  }
 
   return (
     <section className=" relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
