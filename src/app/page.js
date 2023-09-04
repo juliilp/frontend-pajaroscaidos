@@ -5,6 +5,7 @@ import NuestraComunidadDesktop from "@/components/NuestraComunidadDesktop/Nuestr
 import api from "@/api/api";
 import React, { useState, useEffect } from "react";
 import Loading from "./loading";
+import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
 
 export default function Home() {
   const [images, setImages] = useState([]);
@@ -34,6 +35,10 @@ export default function Home() {
         <Campañas />
 
         <NuestraComunidadDesktop />
+        {/* Necesito centrarlo de ésta manera ya que no tiene nada mas que lo contenga */}
+        <div className="flex w-full items-center justify-center xl:hidden">
+          <NuestraComunidadMobile />
+        </div>
       </div>
     </section>
   );
