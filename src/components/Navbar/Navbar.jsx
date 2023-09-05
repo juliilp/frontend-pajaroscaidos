@@ -51,6 +51,7 @@ export default function Navbar() {
             src={Logo}
             alt="logo"
             className="h-[62px] w-[80px] object-cover"
+            priority={true}
           />
           <MenuDesktop />
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Pagination2 from "../Pagination2/Pagination2";
 import api from "@/api/api";
 import Image from "next/image";
+import formatDate from "@/helpers/FormatDate";
 
 export default function Campañas() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -16,7 +17,6 @@ export default function Campañas() {
         );
 
         setNews(response.data.news);
-        // console.log(response.data.news)
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error al obtener las noticias:", error);
@@ -44,7 +44,9 @@ export default function Campañas() {
             className=" h-[150px] w-[200px]"
           />
 
-          <span className="text-[#727272] text-sm ">{e.createdAt}</span>
+          <span className="text-[#727272] text-sm ">
+            {formatDate(e.createdAt)}
+          </span>
           <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
           <p className="text-sm  ">{e.description}</p>
         </div>
