@@ -6,11 +6,11 @@ import Imagen3 from "@/../public/images/tiroalpichon/Imagen3.png";
 import image1 from "../../../public/images/tiro-al-pichon.png"
 function Tiroalpichon() {
   return (
-    <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8 px-6 md:px-0 py-12">
-       <section className="w-full h-[14rem] md:h-[40rem] relative">
+    <section className=" mt-[70px] ">
+            <section className="w-full h-[14rem] md:h-[14rem] relative">
         <article className="max-w-screen-xl mx-auto">
           <Image
-            src={image1}  
+            src={image1}
             alt="background"
             fill
             className="hidden  md:block object-cover w-full h-full"
@@ -22,7 +22,8 @@ function Tiroalpichon() {
           />
         </article>
       </section>
-      <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8">
+      <article className="flex justify-center items-center w-full flex-col gap-8 px-6 md:px-0 py-12">
+             <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8">
         CAZA DEPORTIVA TIRO AL PICHON
       </h1>
       <p className="max-w-[1150px] md:px-12 font-semibold">
@@ -127,7 +128,10 @@ function Tiroalpichon() {
           listaVisible={false}
         />
       </div>
+      </article>
     </section>
+
+ 
   );
 }
 
