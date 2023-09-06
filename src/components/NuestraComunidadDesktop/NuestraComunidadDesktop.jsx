@@ -45,7 +45,7 @@ export default function NuestraComunidad() {
         </div>
         <div className="h-[5px] hidden xl:block w-[100%] bg-[#c2c2c2] shadow-login rounded-2xl  " />
         <div
-          className={`flex flex-col justify-center items-center w-full gap-4 ${
+          className={`flex flex-col  items-center w-full gap-4 ${
             publications.length > 2 &&
             "overflow-y-scroll overflow-x-hidden h-[700px]"
           } `}

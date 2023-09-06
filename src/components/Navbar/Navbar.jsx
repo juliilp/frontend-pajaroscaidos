@@ -61,6 +61,7 @@ export default function Navbar() {
               {userContext.nick_name}
             </span>
             {userContext.avatar.avatar_url !== "-" ? (
+                  <Link href={'/perfil'}>
               <Image
                 src={
                   userContext.avatar.avatar_url
@@ -72,8 +73,11 @@ export default function Navbar() {
                 height={50}
                 className="rounded-full"
               />
+            </Link>
             ) : (
+              <Link href={'/perfil'}>
               <BiSolidUser size={35} color="white" />
+              </Link >
             )}
 
             <button
