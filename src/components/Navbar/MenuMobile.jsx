@@ -160,7 +160,7 @@ export default function MenuMobile() {
               </Link>,
               <Link
                 key="opcion3"
-                href="/*"
+                href="/atencion-al-cliente"
                 className="focus:underline"
                 prefetch={false}
               >
@@ -176,7 +176,7 @@ export default function MenuMobile() {
               </Link>,
               <Link
                 key="opcion5"
-                href="/*"
+                href="/cursos"
                 className="focus:underline"
                 prefetch={false}
               >

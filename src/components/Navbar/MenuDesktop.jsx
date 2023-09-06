@@ -171,7 +171,7 @@ export default function MenuDesktop() {
                 </Link>,
                 <Link
                   key="opcion3"
-                  href="/*"
+                  href="/atencion-al-cliente"
                   onClick={closeMenu}
                   prefetch={false}
                 >
@@ -187,7 +187,7 @@ export default function MenuDesktop() {
                 </Link>,
                 <Link
                   key="opcion5"
-                  href="/*"
+                  href="/cursos"
                   onClick={closeMenu}
                   prefetch={false}
                 >
