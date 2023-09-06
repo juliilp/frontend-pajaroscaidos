@@ -2,9 +2,10 @@
 import React, { useState } from 'react'
 import LoginImagen from '../../../assets/registro-login.png'
 import Image from 'next/image'
-import api from '@/api/api'
 import { useRouter } from 'next/navigation'
 import { validateEmail } from '@/utils/auxfunctions'
+import { newPassword } from '@/api/apiCall/functions'
+import { MESSAGE_TYPES } from '@/api/dictionary/dictionary'
 
 export default function EmailCode() {
   const router = useRouter()
@@ -30,20 +31,13 @@ export default function EmailCode() {
       return
     }
 
-    try {
-      const response = await api.post(`user/generate-password`, input, { withCredentials: true })
+    const response = await newPassword(input)
 
-      if (response.status == 200) {
-        alert('Se envió la contraseña a su correo')
-        router.push('/login')
-      }
-    } catch (error) {
-      console.error('Error al enviar la pass:', error)
-      if (error.response && error.response.data && error.response.data.error) {
-        if (error.response.data.error.code === 'USER_NOT_FOUND') {
-          setInvalidUser(true)
-        }
-      }
+    if (response === MESSAGE_TYPES.USER_NOT_FOUND) {
+      setInvalidUser(true)
+    } else {
+      alert('Se envió la contraseña a su correo')
+      router.push('/login')
     }
 
     setInput({
