@@ -1,15 +1,17 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LoginImagen from '../../assets/registro-login.png'
 import Image from 'next/image'
-import api from '@/api/api'
 import { useRouter } from 'next/navigation'
-import { customContext } from '@/store/ContextProvider'
+import { checkEmail, newCode } from '@/api/apiCall/functions'
+import { MESSAGE_TYPES } from '@/api/dictionary/dictionary'
+import Cookies from 'js-cookie'
 
 export default function EmailCode() {
   const router = useRouter()
   const regex = /^[0-9]+$/
-  const { newUserId } = customContext()
+
+  const [id, setId] = useState(null)
 
   // console.log('usuario emailcode: ', newUserId.id)
 
@@ -18,6 +20,18 @@ export default function EmailCode() {
   const [input, setInput] = useState({
     code: '',
   })
+
+  useEffect(() => {
+    if (!id) {
+      const userIdFromCookie = Cookies.get('newUserId')
+      // console.log('id cookie', userIdFromCookie)
+      if (userIdFromCookie) {
+        const decodedUser = decodeURIComponent(userIdFromCookie)
+        const userParser = JSON.parse(decodedUser)
+        setId(userParser.id)
+      }
+    }
+  }, [id])
 
   const inputHandler = (e) => {
     setInput({
@@ -34,42 +48,27 @@ export default function EmailCode() {
       return
     }
 
-    try {
-      const response = await api.post(`user/${newUserId.id}/validate`, input, {
-        withCredentials: true,
+    const response = await checkEmail(id, input)
+
+    if (response === MESSAGE_TYPES.INVALID_CODE) {
+      setInvalidCode(true)
+      setInput({
+        code: '',
       })
-
-      if (response.status == 200) {
-        router.push('/login')
-      }
-    } catch (error) {
-      console.error('Error al validar codigo:', error)
-      if (error.response && error.response.data && error.response.data.error) {
-        if (error.response.data.error.code === 'INVALID_CODE') {
-          setInvalidCode(true)
-        }
-      }
+    } else {
+      router.push('/login')
     }
-
-    setInput({
-      code: '',
-    })
-
-    // console.log(input)
   }
 
   const sendNewCode = async (e) => {
     e.preventDefault()
 
-    try {
-      const response = await api.patch(`user/${newUserId.id}/code`, { withCredentials: true })
+    const response = await newCode(id)
 
-      if (response.status == 200) {
-        return alert(`Se envió un nuevo código al correo: `) //${user.email} react context
-      }
-    } catch (error) {
-      console.error('Error al enviar un nuevo código:', error)
+    if (response) {
+      return alert(`Se envió un nuevo código al correo `)
     }
+    return alert('ERROR AL ENVIAR EL CÓDIGO')
   }
 
   return (

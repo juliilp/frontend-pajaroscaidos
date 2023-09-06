@@ -1,27 +1,27 @@
-
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AiOutlineEye } from 'react-icons/ai'
 import { AiOutlineEyeInvisible } from 'react-icons/ai'
 import RegistroImagen from '../../assets/registro-login.png'
 import Image from 'next/image'
-import { customContext } from '@/store/ContextProvider'
 import api from '@/api/api'
-import { useRouter } from 'next/navigation'
 import { validateCreateUser } from '@/utils/auxfunctions'
 import Cookies from 'js-cookie'
+import RegistroExitoso from '@/components/RegistroExitoso/RegistroExitoso'
 
 export default function Page() {
-  const router = useRouter()
-  const { setNewUserId } = customContext()
   const [errors, setErrors] = useState({})
   const [emailUsed, setEmailUsed] = useState(false)
   const [isRegistering, setIsRegistering] = useState(false)
+  const [registroOk, setRegistroOk] = useState(false)
 
   const [switchPassword, setSwitchPassword] = useState(false)
   const handlerSwitchPassword = () => {
     setSwitchPassword((prev) => !prev)
   }
+
+  useEffect(() => {}, [registroOk])
+
   const [formRegister, setFormRegister] = useState({
     email: '',
     password: '',
@@ -34,7 +34,6 @@ export default function Page() {
     setFormRegister({
       ...formRegister,
       [e.target.name]: e.target.value,
-
     })
   }
   const handlerSubmit = async (e) => {
@@ -57,12 +56,12 @@ export default function Page() {
       const response = await api.post(`/user/create`, userData, { withCredentials: true })
 
       if (response.status == 200) {
-        const user = await response.data
+        const user = response.data
         // console.log('newUser', user.newUser)
 
         Cookies.set('newUserId', JSON.stringify({ id: user.newUser.id }), { expires: 7 })
 
-        router.push('/emailcode')
+        return setRegistroOk(true)
       }
     } catch (error) {
       console.error('Error al crear usuario:', error)
@@ -83,6 +82,9 @@ export default function Page() {
       last_name: '',
     })
   }
+
+  if (registroOk) return <RegistroExitoso />
+
   return (
     <section className="w-full h-screen flex justify-center items-center gap-12 px-12">
       <Image src={RegistroImagen} alt="imagen" className="hidden md:block justify-self-end" />
@@ -94,7 +96,6 @@ export default function Page() {
         <h2 className="w-full text-center mt-6 md:mt-8 lg:mt-10 font-bold text-xl md:text-2xl lg:text-3xl">
           Registrate
         </h2>
-
 
         <div className="flex flex-col gap-1 mx-4">
           <span>Nombre</span>
@@ -130,7 +131,6 @@ export default function Page() {
           </span>
         </div>
 
-
         <div className="flex flex-col gap-1 mx-4">
           <span>Email</span>
           <input
@@ -149,14 +149,11 @@ export default function Page() {
           </span>
         </div>
 
-
         <div className="flex flex-col gap-1 mx-4">
           <span>Contraseña</span>
           <div className="relative">
             <input
-
               type={switchPassword ? 'text' : 'password'}
-
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="password"
               onChange={handlerRegistro}
@@ -166,7 +163,6 @@ export default function Page() {
               {switchPassword ? (
                 <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
               ) : (
-
                 <AiOutlineEyeInvisible size={30} onClick={handlerSwitchPassword} />
               )}
             </div>
@@ -227,5 +223,4 @@ export default function Page() {
       </form>
     </section>
   )
-
 }
