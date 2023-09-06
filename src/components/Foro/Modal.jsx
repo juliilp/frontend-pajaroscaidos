@@ -92,7 +92,7 @@ export default function ModalnewPost({ setvisible }) {
     imagePreview = URL.createObjectURL(newPost.image)
   }
   return (
-    <main className="bg-[#686868cc] min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+    <main className="bg-[#686868cc] z-10 min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
       <div
         className={`${styles.font} relative font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%]  bg-[#D9D9D9] flex flex-col justify-between
              
