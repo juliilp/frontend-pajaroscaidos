@@ -9,10 +9,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { customContext } from '@/store/ContextProvider'
 import { validateLogin } from '@/utils/auxfunctions'
-import api from '@/api/api'
-import Cookies from 'js-cookie'
 import { useSession, signIn } from 'next-auth/react'
 import Loading from '../loading'
+import { loginNextAuth, loginUser } from '@/api/apiCall/functions'
+import { MESSAGE_TYPES } from '@/api/dictionary/dictionary'
 
 export default function Login() {
   const { data: session, status: sessionStatus } = useSession()
@@ -30,8 +30,6 @@ export default function Login() {
     password: '',
   })
 
-  //------------------------------
-
   useEffect(() => {
     if (session && session.user) {
       const data = {
@@ -41,19 +39,13 @@ export default function Login() {
       }
       //mando al back:
       const authenticateUser = async () => {
-        try {
-          const response = await api.post(`/user/login-auth0`, data)
+        const user = await loginNextAuth(data)
 
-          if (response.status === 200) {
-            const userBackEnd = response.data
-            // console.log('user back:', userBackEnd)
-            setUserContext(userBackEnd.user)
-            router.push('/foro')
-          } else {
-            router.push('/login')
-          }
-        } catch (error) {
-          console.log('error al obtener user del back: ', error)
+        if (user) {
+          setUserContext(user)
+          router.push('/foro')
+        } else {
+          router.push('/login')
         }
       }
 
@@ -62,8 +54,6 @@ export default function Login() {
       setLoading(false)
     }
   }, [session])
-
-  //-------------------------
 
   const inputHandler = (e) => {
     setInputLogin({
@@ -77,35 +67,19 @@ export default function Login() {
     const validationErrors = validateLogin(inputLogin.email, inputLogin.password)
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
-      return
     }
 
-    try {
-      const response = await api.post(`/user/login`, inputLogin, { withCredentials: true })
+    const user = await loginUser(inputLogin)
 
-      if (response.status == 200) {
-        const userBackEnd = response.data
-        // console.log('user back:', userBackEnd.user.id)
-
-        if (userBackEnd.user.userEmailValidate === false) {
-          Cookies.set('newUserId', JSON.stringify({ id: userBackEnd.user.id }), { expires: 7 })
-
-          router.push('/emailcode')
-        } else {
-          setUserContext(userBackEnd.user)
-          router.push('/foro')
-        }
-      }
-    } catch (error) {
-      console.error('Error inicio sesion:', error)
-      if (error.response && error.response.data && error.response.data.error) {
-        if (error.response.data.error.code === 'USER_NOT_FOUND') {
-          setUserNotFound(true)
-        }
-        if (error.response.data.error.code === 'INVALID_PASSWORD') {
-          setInvalidPass(true)
-        }
-      }
+    if (user === MESSAGE_TYPES.VALIDATE_EMAIL) {
+      return router.push('/emailcode')
+    } else if (user === MESSAGE_TYPES.USER_NOT_FOUND) {
+      setUserNotFound(true)
+    } else if (user === MESSAGE_TYPES.INVALID_PASSWORD) {
+      setInvalidPass(true)
+    } else {
+      setUserContext(user)
+      router.push('/foro')
     }
 
     setInputLogin({
