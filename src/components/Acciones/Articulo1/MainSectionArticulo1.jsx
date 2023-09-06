@@ -63,9 +63,11 @@ export default function MainSectionArticulo1({ image }) {
 
       <article className="w-6/12 hidden md:block">
         <Image
-          src={image}
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694033501/Action_Tucan_zrbiae.png"
           alt="Bg-article-1"
           className="m-auto w-8/12 h-auto max-h-[625px]"
+          width={2270}
+          height={1310}
           quality={100}
         />
       </article>
