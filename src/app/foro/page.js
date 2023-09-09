@@ -1,55 +1,55 @@
-'use client'
-import CardForo from '@/components/CardForo'
-import React, { useState, useEffect } from 'react'
-import ImagenForo from '../../../public/images/imagen-foro.png'
-import { CiClock2 } from 'react-icons/ci'
-import { AiOutlineFileText } from 'react-icons/ai'
-import NuestraComunidad from '@/components/NuestraComunidadDesktop/NuestraComunidadDesktop'
-import Image from 'next/image'
-import ModalnewPost from '@/components/Foro/Modal'
-import Pagination from '@/components/Pagination/Pagination'
-import { customContext } from '@/store/ContextProvider'
-import { useRouter } from 'next/navigation'
-import Loading from '../loading'
-import { fetchPosts } from '@/api/apiCall/functions'
-import { MESSAGE_TYPES } from '@/api/dictionary/dictionary'
+"use client";
+import CardForo from "@/components/CardForo";
+import React, { useState, useEffect } from "react";
+import ImagenForo from "../../../public/images/imagen-foro.png";
+import { CiClock2 } from "react-icons/ci";
+import { AiOutlineFileText } from "react-icons/ai";
+import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
+import Image from "next/image";
+import ModalnewPost from "@/components/Foro/Modal";
+import Pagination from "@/components/Pagination/Pagination";
+import { CustomContext } from "@/store/ContextProvider";
+import { useRouter } from "next/navigation";
+import Loading from "../loading";
+import { fetchPosts } from "@/api/apiCall/functions";
+import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
 
 export default function Foros() {
-  const router = useRouter()
-  const [modal, setModal] = useState(false)
+  const router = useRouter();
+  const [modal, setModal] = useState(false);
   const setvisibilitymodal = () => {
-    setModal(!modal)
-  }
+    setModal(!modal);
+  };
 
-  const { logout } = customContext()
+  const { logout } = CustomContext();
 
-  const [order, setOrder] = useState('desc')
-  const [pageNumber, setPageNumber] = useState(1)
-  const [totalPages, setTotalPages] = useState(0)
-  const [posts, setPosts] = useState(undefined)
+  const [order, setOrder] = useState("desc");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [posts, setPosts] = useState(undefined);
 
   useEffect(() => {
     const fetchPosts2 = async () => {
-      const response = await fetchPosts(pageNumber, order)
+      const response = await fetchPosts(pageNumber, order);
 
       if (response === MESSAGE_TYPES.ERROR) {
-        await logout()
-        router.push('/login')
+        await logout();
+        router.push("/login");
       } else {
-        setPosts(response.publications)
-        setTotalPages(response.totalPages)
+        setPosts(response.publications);
+        setTotalPages(response.totalPages);
       }
-    }
+    };
 
-    fetchPosts2()
-  }, [pageNumber, order, logout, router])
+    fetchPosts2();
+  }, [pageNumber, order, logout, router]);
 
   const handlePageChange = (pageNumber) => {
-    setPageNumber(pageNumber)
-  }
+    setPageNumber(pageNumber);
+  };
 
   if (posts == undefined) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -92,7 +92,7 @@ export default function Foros() {
               id={e.id}
               reactions={e.reactions}
             />
-          )
+          );
         })}
 
         <div className="flex justify-center w-full">
@@ -104,9 +104,14 @@ export default function Foros() {
         </div>
       </div>
       <div className="mt-24 flex justify-center items-center flex-col gap-6">
-        <Image src={ImagenForo} alt="imagen" className="hidden lg:block" width="400px" />
+        <Image
+          src={ImagenForo}
+          alt="imagen"
+          className="hidden lg:block"
+          width="400px"
+        />
         <NuestraComunidad />
       </div>
     </section>
-  )
+  );
 }

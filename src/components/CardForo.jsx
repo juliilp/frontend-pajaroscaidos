@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { RiMessage2Line } from "react-icons/ri";
-import { customContext } from "@/store/ContextProvider";
+import { CustomContext } from "@/store/ContextProvider";
 import { convertirFecha } from "@/utils/auxfunctions";
 import api from "../api/api";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function CardForo({
   id,
   reactions,
 }) {
-  const { userContext } = customContext();
+  const { userContext } = CustomContext();
 
   const userReaction = reactions?.find((e) => e.userId === userContext?.id);
   // console.log('reaction:', userReaction)
