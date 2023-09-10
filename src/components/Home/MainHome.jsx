@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../../app/swiper.css";
-import { Navigation } from "swiper/modules";
+import "swiper/css/autoplay";
+import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 export default function MainHome({ banner }) {
@@ -12,8 +13,13 @@ export default function MainHome({ banner }) {
     <div className="mySwiperContainer h-[350px] max-h-[600px] z-[-1]">
       <Swiper
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper h-full"
+        autoplay={{
+          delay: 4000, // tiempo automatico al pasar a la otra imagen
+          disableOnInteraction: false,
+        }}
+        speed={4000} // velocidad con que pasa a la otra imagen
       >
         {banner.map((e) => (
           <SwiperSlide key={e.id} className="swiper-slide-centered">
