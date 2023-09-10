@@ -1,32 +1,21 @@
-'use client'
-import Campañas from '@/components/Home/Campañas'
-import MainHome from '@/components/Home/MainHome'
-import NuestraComunidadDesktop from '@/components/NuestraComunidadDesktop/NuestraComunidadDesktop'
-import React, { useState, useEffect } from 'react'
-import Loading from './loading'
-import NuestraComunidadMobile from '@/components/NuestraComunidadMobile/NuestraComunidadMobile'
-import { getBannerImages } from '@/api/apiCall/functions'
+"use client";
+import Campañas from "@/components/Home/Campañas";
+import MainHome from "@/components/Home/MainHome";
+import NuestraComunidadDesktop from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
+import React, { useState, useEffect } from "react";
+import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
+import { getBannerImages } from "@/api/apiCall/functions";
 
 export default function Home() {
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     async function getImages() {
-      const banners = await getBannerImages()
-
-      if (banners) {
-        setImages(banners)
-      } else {
-        console.log('Error al obtener banners')
-      }
+      const banners = await getBannerImages();
+      banners ? setImages(banners) : console.log("Error al obtener banners");
     }
-
-    getImages()
-  }, [])
-
-  if (!images[0]) {
-    return <Loading />
-  }
+    getImages();
+  }, []);
 
   return (
     <section className="mt-[70px]">
@@ -40,5 +29,5 @@ export default function Home() {
         </div>
       </div>
     </section>
-  )
+  );
 }
