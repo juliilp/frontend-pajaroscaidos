@@ -7,11 +7,11 @@ import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import Image from "next/image";
 import Link from "next/link";
-import { customContext } from "@/store/ContextProvider";
+import { CustomContext } from "@/store/ContextProvider";
 import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
-  const { userContext, logout } = customContext();
+  const { UserContext, logout } = CustomContext();
   const { data: session } = useSession();
   const [switchMenu, setSwitchMenu] = useState(false);
   const [rendering, setRendering] = useState(false);
@@ -55,29 +55,29 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
 
-        {rendering && userContext && userContext.nick_name ? (
+        {rendering && UserContext && UserContext.nick_name ? (
           <div className="flex items-center justify-center gap-3">
             <span className="text-white font-baloo font-semibold">
-              {userContext.nick_name}
+              {UserContext.nick_name}
             </span>
-            {userContext.avatar.avatar_url !== "-" ? (
-                  <Link href={'/perfil'}>
-              <Image
-                src={
-                  userContext.avatar.avatar_url
-                    ? userContext.avatar.avatar_url
-                    : userContext.avatar.secure_url
-                }
-                alt="Avatar"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-            </Link>
+            {UserContext.avatar.avatar_url !== "-" ? (
+              <Link href={"/perfil"}>
+                <Image
+                  src={
+                    UserContext.avatar.avatar_url
+                      ? UserContext.avatar.avatar_url
+                      : UserContext.avatar.secure_url
+                  }
+                  alt="Avatar"
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              </Link>
             ) : (
-              <Link href={'/perfil'}>
-              <BiSolidUser size={35} color="white" />
-              </Link >
+              <Link href={"/perfil"}>
+                <BiSolidUser size={35} color="white" />
+              </Link>
             )}
 
             <button
