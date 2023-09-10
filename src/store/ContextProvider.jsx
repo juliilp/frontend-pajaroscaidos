@@ -11,7 +11,7 @@ export default function ContextProvider({ children }) {
 
   const [numero, setNumero] = useState(5);
 
-  const [userContext, setUserContext] = useState(() => {
+  const [UserContext, setUserContext] = useState(() => {
     const storedUser = Cookies.get("user");
     if (storedUser) {
       const decodedUser = decodeURIComponent(storedUser);
@@ -31,8 +31,8 @@ export default function ContextProvider({ children }) {
   });
 
   useEffect(() => {
-    Cookies.set("user", JSON.stringify(userContext), { expires: 7 });
-  }, [userContext]);
+    Cookies.set("user", JSON.stringify(UserContext), { expires: 7 });
+  }, [UserContext]);
 
   const logout = async () => {
     try {
@@ -54,7 +54,7 @@ export default function ContextProvider({ children }) {
       // Dentro del value va lo que queres exportar
       value={{
         numero,
-        userContext,
+        UserContext,
         setUserContext,
         logout,
         newUserId,
