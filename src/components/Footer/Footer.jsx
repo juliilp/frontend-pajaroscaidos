@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer
       className="flex items-center bg-darkgray px-6 text-lightgray 
-         sm:gap-0 sm:justify-between sm:flex-row w-full   "
+      sm:gap-0 sm:justify-between sm:flex-row flex-col py-3 gap-2 w-full"
     >
       <Image
         src={logo}
