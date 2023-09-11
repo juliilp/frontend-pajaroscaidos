@@ -67,14 +67,11 @@ export default function ModalnewPost({ setvisible }) {
       console.log("data: ", postData);
       try {
         const response = await createNewPost(UserContext.id, postData);
-        console.log(response); // Respuesta de la API
+        if(response) return setvisible();
       } catch (error) {
         console.error("Error:", error);
       }
 
-      setTimeout(() => {
-        setvisible();
-      }, 5000);
     }
   };
 

@@ -26,7 +26,9 @@ export const createNewPost = async (userId, newPost) => {
     formData.append('description', newPost.description)
     formData.append('image', newPost.image)
     const { data: response } = await api.post(`publication/create/${userId}`, formData)
-
+    if(response){
+      alert('Tu post fue creado y subido con exito.!')
+    }
     return response
   } catch (error) {
     console.log(error)
