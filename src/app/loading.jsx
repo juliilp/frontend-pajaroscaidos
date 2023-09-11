@@ -1,10 +1,10 @@
-import Image from 'next/image'
-import loadimage from '../../public/images/loading.gif'
-import font from '../styles/fonts.module.css'
+import Image from "next/image";
+import loadimage from "../../public/images/loading.gif";
+import font from "../styles/fonts.module.css";
 export default function Loading() {
   return (
     <div
-      className={`${font.baloo} font-semibold min-h-screen text-[#0C6410]  flex flex-col items-center justify-center `}
+      className={`font-baloo font-semibold min-h-screen text-[#0C6410]  flex flex-col items-center justify-center `}
     >
       <main className="flex flex-col md:flex-row md:gap-0 justify-around items-center ">
         <article className="text-center text-4xl md:text-6xl ">
@@ -15,5 +15,5 @@ export default function Loading() {
         </article>
       </main>
     </div>
-  )
+  );
 }
