@@ -26,19 +26,23 @@ export default function Navbar() {
     setSwitchMenu((prev) => !prev);
   };
 
-  const handleLogout = async (e) => {
+  const closeMenu = () => {
+    setSwitchMenu(false);
+  };
+
+  const handleLogout = async () => {
     await logout();
 
     if (session) {
       await signOut({
-        callbackUrl: "/", // Especifica la URL a la que deseas redirigir
+        callbackUrl: "/",
       });
     }
   };
 
   return (
     <header className="font-baloo bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
-      <nav className="w-full h-full flex items-center  justify-between px-3">
+      <nav className="w-full h-full flex items-center justify-between px-3">
         <GiHamburgerMenu
           size={35}
           color="white"
@@ -61,7 +65,7 @@ export default function Navbar() {
               {UserContext.nick_name}
             </span>
             {UserContext.avatar.avatar_url !== "-" ? (
-              <Link href={"/perfil"}>
+              <Link href={"/perfil"} prefetch={false}>
                 <Image
                   src={
                     UserContext.avatar.avatar_url
@@ -107,7 +111,7 @@ export default function Navbar() {
             : "-translate-y-8 opacity-0 pointer-events-none"
         }`}
       >
-        {<MenuMobile />}
+        {<MenuMobile closeMenu={closeMenu} />}
       </div>
     </header>
   );

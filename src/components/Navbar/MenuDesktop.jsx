@@ -16,8 +16,8 @@ export default function MenuDesktop() {
 
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
-      <li className=" cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none ">
-        <Link href="/" prefetch={false}>
+      <li className="cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none">
+        <Link href="/" prefetch={false} onClick={closeMenu}>
           Inicio
         </Link>
       </li>
@@ -49,32 +49,32 @@ export default function MenuDesktop() {
               <Link
                 key="opcion1"
                 href="/acciones"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Acciones
               </Link>,
               <Link
                 key="opcion2"
                 href="/caza-trafico"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Caza y tráfico de faunas
               </Link>,
               <Link
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Crueldad y maltrato
               </Link>,
               <Link
                 key="opcion4"
                 href="/legislacion"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Legislación
               </Link>,
@@ -111,16 +111,16 @@ export default function MenuDesktop() {
               <Link
                 key="opcion1"
                 href="/voluntarios"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Voluntarios
               </Link>,
               <Link
                 key="opcion2"
                 href="/foro"
-                onClick={closeMenu}
                 prefetch={false}
+                onClick={closeMenu}
               >
                 Foro
               </Link>,
@@ -144,60 +144,60 @@ export default function MenuDesktop() {
               openMenu === "servicio" ? "rotate-180" : " rotate-0"
             } duration-200`}
           />
-          <div
-            className={`absolute top-14 -left-8 transition-all duration-300 -z-20 ${
-              openMenu === "servicio"
-                ? "translate-y-0 opacity-100 pointer-events-auto"
-                : "-translate-y-12 opacity-0 pointer-events-none"
-            }`}
-          >
-            <MenuInterno
-              opciones={[
-                <Link
-                  key="opcion1"
-                  href="/contactanos"
-                  onClick={closeMenu}
-                  prefetch={false}
-                >
-                  Contacto
-                </Link>,
-                <Link
-                  key="opcion2"
-                  href="/como-denunciar"
-                  onClick={closeMenu}
-                  prefetch={false}
-                >
-                  Como Denunciar
-                </Link>,
-                <Link
-                  key="opcion3"
-                  href="/atencion-al-cliente"
-                  onClick={closeMenu}
-                  prefetch={false}
-                >
-                  Atención Cliente
-                </Link>,
-                <Link
-                  key="opcion4"
-                  href="/galeria-solidaria"
-                  onClick={closeMenu}
-                  prefetch={false}
-                >
-                  Galeria Solidaria
-                </Link>,
-                <Link
-                  key="opcion5"
-                  href="/cursos"
-                  onClick={closeMenu}
-                  prefetch={false}
-                >
-                  Cursos
-                </Link>,
-              ]}
-              tamaño="md:w-[130%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
-            />
-          </div>
         </span>
+        <div
+          className={`absolute top-14 -left-8 transition-all duration-300 -z-20 ${
+            openMenu === "servicio"
+              ? "translate-y-0 opacity-100 pointer-events-auto"
+              : "-translate-y-12 opacity-0 pointer-events-none"
+          }`}
+        >
+          <MenuInterno
+            opciones={[
+              <Link
+                key="opcion1"
+                href="/contactanos"
+                prefetch={false}
+                onClick={closeMenu}
+              >
+                Contactanos
+              </Link>,
+              <Link
+                key="opcion2"
+                href="/como-denunciar"
+                prefetch={false}
+                onClick={closeMenu}
+              >
+                Como Denunciar
+              </Link>,
+              <Link
+                key="opcion3"
+                href="/atencion-al-cliente"
+                prefetch={false}
+                onClick={closeMenu}
+              >
+                Atención Cliente
+              </Link>,
+              <Link
+                key="opcion4"
+                href="/galeria-solidaria"
+                prefetch={false}
+                onClick={closeMenu}
+              >
+                Galeria Solidaria
+              </Link>,
+              <Link
+                key="opcion5"
+                href="/cursos"
+                prefetch={false}
+                onClick={closeMenu}
+              >
+                Cursos
+              </Link>,
+            ]}
+            tamaño="md:w-[130%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
+          />
+        </div>
       </li>
     </ul>
   );
