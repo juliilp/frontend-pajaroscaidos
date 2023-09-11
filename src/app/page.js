@@ -18,7 +18,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="mt-[70px]">
+    <section className="mt-[70px] font-baloo">
       <MainHome banner={images} />
       <div className="w-full justify-center items-center flex flex-col gap-0 xl:gap-6 xl:flex-row lg:items-start xl:px-8">
         <Campañas />

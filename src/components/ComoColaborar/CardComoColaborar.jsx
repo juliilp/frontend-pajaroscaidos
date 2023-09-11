@@ -24,7 +24,7 @@ export default function CardComoColaborar({
       <a
         target="_blank"
         href={enlace}
-        className="text-center text-white bg-[#128117] py-2 px-4 rounded hover:bg-[#00812b] duration-150"
+        className="text-center text-white bg-[#128117] py-2 px-4 rounded hover:bg-[#00812b] duration-200"
       >
         {nombreEnlace}
       </a>

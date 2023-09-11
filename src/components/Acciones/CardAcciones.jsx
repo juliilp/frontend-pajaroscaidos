@@ -28,7 +28,7 @@ export default function CardAcciones({
         <p className="font-semibold max-w-[550px] px-4 ">{texto}</p>
         <div className="w-full justify-center items-center flex">
           <Link
-            className="bg-[#128117] py-5 px-16 md:py-3 md:px-12 text-white justify-self-center w-max"
+            className="bg-[#128117] py-5 px-16 md:py-3 md:px-12 text-white justify-self-center w-max rounded"
             href={redireccion}
           >
             saber más

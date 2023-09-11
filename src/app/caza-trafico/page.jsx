@@ -9,7 +9,7 @@ import image4 from "../../../public/images/caza_trafico 4.png";
 
 export default function page() {
   return (
-    <div className=" min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
+    <div className=" font-baloo min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
       <section className="w-full h-32 md:h-[14rem] relative">
         <Image src={image1} alt="banner" fill priority={true} />
       </section>
