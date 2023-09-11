@@ -35,7 +35,7 @@ export const createNewPost = async (userId, newPost) => {
 
 export async function getPostForNuestraComunidad(option) {
   try {
-    const response = await api.get(`publication/all?filter=${option}&limit=${2}`)
+    const response = await api.get(`publication/community?filter=${option}&limit=${2}`)
 
     if (response.status === 200) {
       const publications = response.data.publications

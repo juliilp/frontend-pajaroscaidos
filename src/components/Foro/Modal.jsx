@@ -9,7 +9,7 @@ import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
 
 export default function ModalnewPost({ setvisible }) {
-  const { userContext } = CustomContext();
+  const { UserContext } = CustomContext();
 
   useEffect(() => {
     const body = document.getElementById("Body");
@@ -66,7 +66,7 @@ export default function ModalnewPost({ setvisible }) {
 
       console.log("data: ", postData);
       try {
-        const response = await createNewPost(userContext.id, postData);
+        const response = await createNewPost(UserContext.id, postData);
         console.log(response); // Respuesta de la API
       } catch (error) {
         console.error("Error:", error);
@@ -89,7 +89,7 @@ export default function ModalnewPost({ setvisible }) {
 
   let imagePreview = null;
 
-  if (newPost.image) {
+  if (newPost.image && newPost.image instanceof Blob) {
     imagePreview = URL.createObjectURL(newPost.image);
   }
   return (
@@ -102,13 +102,10 @@ export default function ModalnewPost({ setvisible }) {
              xl:h-[33rem] xl:w-[43rem]
              2xl:h-[35rem] 2xl:w-[45rem] `}
       >
-        <button
-          className="absolute right-0 top-0  text-2x1"
-          onClick={setvisible}
-        >
+        <button className="absolute right-0 top-0  text-2x1" onClick={setvisible}>
           X
         </button>
-        <button onClick={() => console.log(userContext)}>ver usuario id</button>
+        <button onClick={() => console.log(UserContext)}>ver usuario id</button>
         <form
           className="w-full flex flex-col gap-5   h-5/6 overflow-y-auto "
           onSubmit={handleSubmit}
@@ -156,13 +153,7 @@ export default function ModalnewPost({ setvisible }) {
             </article>
 
             <article>
-              <input
-                type="file"
-                name=""
-                id="SelectVideo"
-                className="hidden"
-                accept="video/*"
-              />
+              <input type="file" name="" id="SelectVideo" className="hidden" accept="video/*" />
               <label htmlFor="SelectVideo" className="flex items-center gap-2 ">
                 <AiOutlinePlayCircle className="cursor-pointer text-2xl" />
                 <span className="cursor-pointer text-[#989898]">Video</span>
@@ -176,6 +167,8 @@ export default function ModalnewPost({ setvisible }) {
             <Image
               src={imagePreview}
               alt="Preview"
+              width={400}
+              height={400}
               className="max-w-[300px] mx-auto mt-4"
             />
           </div>
