@@ -23,7 +23,7 @@ export default function CardComoColaborar({
         <p className="w-full max-w-[350px]">{parrafo}</p>
       </div>
       <Link
-        href={enlace}
+        href={enlace ?? ""}
         prefetch={false}
         className="text-center text-white bg-[#128117] py-2 px-4 rounded"
       >

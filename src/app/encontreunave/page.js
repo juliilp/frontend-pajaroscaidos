@@ -1,9 +1,19 @@
 import EncontreUnAve from "@/components/EncontreUnAve/EncontreUnAve";
 import React from "react";
+import Image from "next/image";
 import { DataEncontreUnAve } from "./DataEncontreUnAve";
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col w-full gap-8">
+      <article className="relative w-screen">
+        <Image
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694204433/image_22_1_jmfgfz.png"
+          alt="background"
+          width={3056}
+          height={755}
+          className="w-full h-[18rem] "
+        />
+      </article>
       <h1 className="text-xl text-[#0C6410] text-center font-semibold mt-8 ">
         QUE HACER SI ME ENCUENTRO UN AVE
       </h1>

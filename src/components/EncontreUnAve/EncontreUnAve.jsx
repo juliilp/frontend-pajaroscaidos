@@ -26,6 +26,9 @@ export default function EncontreUnAve({
         <Image
           src={imagen}
           alt="imagen"
+          priority={true}
+          width={412}
+          height={231}
           className="mx-auto max-w-[400px] h-[250px]"
         />
       )}

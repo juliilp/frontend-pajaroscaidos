@@ -1,23 +1,21 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
-import image1 from "../../../public/images/actos-maldad.png";
 export default function page() {
+  const image1 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694036537/actos-maldad_yse3du.png";
+  const Imagen =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694037622/actosmaltratoycrueldad_hfmrmc.png";
   return (
     <section className="min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12">
       <section className="w-full h-[14rem] md:h-[14rem] relative">
-        <article className="max-w-screen-xl mx-auto">
+        <article className="relative w-screen">
           <Image
             src={image1}
             alt="background"
-            fill
-            className="hidden md:block object-cover w-full h-full"
-          />
-          <Image
-            src={image1}
-            alt="background"
-            className="w-full h-[14rem] md:hidden object-cover absolute"
+            width={1440}
+            height={326}
+            className=" object-cover w-full h-[14rem]"
           />
         </article>
       </section>
@@ -149,6 +147,8 @@ export default function page() {
         <Image
           src={Imagen}
           alt="imagen"
+          width={434}
+          height={325}
           className="w-full mx-auto max-w-[450px] h-[250px] sm:h-[300px] my-6"
         />
         <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">

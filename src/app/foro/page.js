@@ -1,7 +1,6 @@
 "use client";
 import CardForo from "@/components/CardForo";
 import React, { useState, useEffect } from "react";
-import ImagenForo from "../../../public/images/imagen-foro.png";
 import { CiClock2 } from "react-icons/ci";
 import { AiOutlineFileText } from "react-icons/ai";
 import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
@@ -19,6 +18,8 @@ export default function Foros() {
   const setvisibilitymodal = () => {
     setModal(!modal);
   };
+  const ImagenForo =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694205155/imagen-foro_l7rlfx.png";
 
   const { userContext, logout } = customContext();
 
@@ -110,7 +111,8 @@ export default function Foros() {
           src={ImagenForo}
           alt="imagen"
           className="hidden lg:block"
-          width="400px"
+          width={333}
+          height={132}
         />
         <NuestraComunidad />
       </div>

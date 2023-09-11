@@ -1,14 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import Imagen1 from "@/../public/images/rinasDeGallos/imagen1.png";
-import Imagen2 from "@/../public/images/rinasDeGallos/imagen2.png";
-import Imagen3 from "@/../public/images/rinasDeGallos/imagen3.png";
 
 export default function page() {
+  const Imagen1 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694206524/Imagen1_rzsbpp.png";
+  const Imagen2 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694206524/Imagen2_pdthyj.png";
+  const Imagen3 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694206525/Imagen3_x35miu.png";
   return (
     <section className="mt-[70px] w-full bg-[#d8d8d8] h-full pb-16">
-      <div className="w-full bg-slate-500 h-[300px]" />
+      <section className="relative w-screen">
+        <Image
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694207062/image_22_3_uij8md.png"
+          alt="bg-image-1"
+          width={1822}
+          height={460}
+          className="w-full h-[18rem]"
+          property={true}
+        />
+      </section>
       <h2 className="text-[#0C6410] text-center text-2xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS
       </h2>
@@ -67,7 +79,16 @@ export default function page() {
         físico y psicológico en determinadas circunstancias&rdquo;.[3]
       </p>
 
-      <div className="w-full bg-slate-500 h-[300px] my-16 " />
+      <section className="relative w-screen">
+        <Image
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694207058/Rectangle_173_tlrw8l.png"
+          alt="bg-image-2"
+          width={1822}
+          height={460}
+          className="w-full h-[28rem] py-10"
+          property={true}
+        />
+      </section>
       <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12 pr-6  ">
         <p className="font-semibold px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 ">
           En la Provincia de San Luis, la Legislatura provincial sancionó en el
@@ -131,16 +152,22 @@ export default function page() {
           <Image
             src={Imagen1}
             alt="imagen1"
+            width={263}
+            height={177}
             className="w-[250px] h-[200px] object-cover "
           />
           <Image
             src={Imagen2}
             alt="imagen2"
+            width={265}
+            height={158}
             className="w-[250px] h-[200px] object-cover "
           />
           <Image
             src={Imagen3}
             alt="imagen3"
+            width={254}
+            height={171}
             className="w-[250px] h-[200px] object-cover "
           />
           {/* <div className="w-[250px] h-[200px] bg-slate-600 " />

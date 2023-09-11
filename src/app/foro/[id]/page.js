@@ -7,13 +7,13 @@ import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
 import InputComment from "@/components/Post/InputComment";
 import Image from "next/image";
-import ImgPortada from "@/../public/images/foro-id/Portada.png";
 import { BiSolidUser } from "react-icons/bi";
 
 export default function Page({ params }) {
   const [publication, setPublication] = useState(null);
   const [likeInProgress, setLikeInProgress] = useState(false);
-
+  const ImgPortada =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694204999/Portada_hxrxxu.png";
   useEffect(() => {
     async function fetchData() {
       const data = await getPosts(params.id);
@@ -64,6 +64,9 @@ export default function Page({ params }) {
           layout="fill"
           objectFit="cover"
           className=""
+          priority={true}
+          width={934}
+          height={269}
         />
         <div className="absolute inset-0 flex items-center sm:ml-16 ml-6">
           <div className="flex items-center gap-3 h-full">

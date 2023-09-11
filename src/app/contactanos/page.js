@@ -1,15 +1,26 @@
 import Image from "next/image";
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
-import Consultas from "@/../public/images/contactanos-consultas.png";
-import Donaciones from "@/../public/images/contactanos-donaciones.png";
-import Contacto from "@/../public/images/contactanos-contacto.png";
-import Banner from "@/../public/images/contactanos/Banner-min.png";
 
 export default function page() {
+  const Consultas =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694040088/contactanos-consultas_aud5gw.png";
+  const Donaciones =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694040162/contactanos-donaciones_x9et7z.png";
+  const Contacto =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694040144/contactanos-contacto_cgzhrj.png";
+  const Banner =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694040422/Banner-min_bif2sv.png";
   return (
     <section className="mt-[70px] flex flex-col gap-16 pb-16">
-      <div className="w-full h-[134px] sm:h-[260px] lg:h-80 2xl:h-[40rem] relative">
-        <Image src={Banner} alt="Banner" fill priority={true} />
+      <div className="relative w-screen">
+        <Image
+          src={Banner}
+          alt="Banner"
+          width={1392}
+          height={522}
+          priority={true}
+          className="w-full h-full"
+        />
       </div>
       <div className="flex items-center justify-center w-full px-8 gap-10 flex-wrap ">
         <CardComoColaborar

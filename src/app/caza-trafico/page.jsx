@@ -2,16 +2,27 @@
 import MainCazatrafico from "@/components/Caza-trafico/MainCaza-trafico";
 import Section2Caza_Trafico from "@/components/Caza-trafico/Section2Caza-trafico";
 import Image from "next/image";
-import image1 from "../../../public/images/caza_trafico 1.png";
-import image2 from "../../../public/images/caza_trafico 2.png";
-import image3 from "../../../public/images/caza_trafico 3.png";
-import image4 from "../../../public/images/caza_trafico 4.png";
 
 export default function page() {
+  const image1 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694038477/caza_trafico_1_mqmfnm.png";
+  const image2 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694038713/caza_trafico_2_lnjior.png";
+  const image3 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694038723/caza_trafico_3_t6bjif.png";
+  const image4 =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694038734/caza_trafico_4_t8d84d.png";
   return (
     <div className=" min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
-      <section className="w-full h-32 md:h-[14rem] relative">
-        <Image src={image1} alt="banner" fill priority={true} />
+      <section className="relative w-screen">
+        <Image
+          src={image1}
+          alt="banner"
+          width={1803}
+          height={475}
+          priority={true}
+          className="w-full h-[16rem]"
+        />
       </section>
 
       <main className="w-full flex flex-col items-center gap-12 ">

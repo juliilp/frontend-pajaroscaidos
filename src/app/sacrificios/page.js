@@ -1,22 +1,16 @@
-import Caza from "@/../public/images/sacrificios.png";
 import Image from "next/image";
-import image1 from "../../../public/images/sacrificio-religioso.jpeg"
-
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
-            <section className="w-full h-[14rem] md:h-[14rem] relative">
-        <article className="max-w-screen-xl mx-auto">
+      <section className="w-full h-[14rem] md:h-[14rem] relative">
+        <article className="relative w-screen">
           <Image
-            src={image1}
+            src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694208111/sacrificio-religioso_fasnc7.jpg"
             alt="background"
-            fill
-            className="hidden  md:block object-cover w-full h-full"
-          />
-          <Image
-            src={image1}
-            alt="background"
-            className="w-full h-[14rem] md:hidden object-cover absolute"
+            priority={true}
+            className="w-full h-[22rem]"
+            width={2400}
+            height={870}
           />
         </article>
       </section>
@@ -55,8 +49,10 @@ export default function page() {
           autoridades.
         </p>
         <Image
-          src={Caza}
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694208316/sacrificios_j8zv5b.png"
           alt="caza"
+          width={1055}
+          height={1616}
           className="object-cover mx-auto max-w-[320px] h-[500px] md:col-span-2 "
         />
       </div>

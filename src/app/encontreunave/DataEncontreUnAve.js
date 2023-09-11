@@ -1,6 +1,9 @@
-import Imagen1 from "@/../public/images/encontreunave/imagen1.png";
-import Imagen2 from "@/../public/images/encontreunave/imagen2.png";
-import Imagen3 from "@/../public/images/encontreunave/imagen3.png";
+const Imagen1 =
+  "https://res.cloudinary.com/di5mf85h3/image/upload/v1694200796/Imagen1_nibytw.png";
+const Imagen2 =
+  "https://res.cloudinary.com/di5mf85h3/image/upload/v1694200797/Imagen2_b8tkbn.png";
+const Imagen3 =
+  "https://res.cloudinary.com/di5mf85h3/image/upload/v1694200799/Imagen3_hspr3i.png";
 
 export const DataEncontreUnAve = [
   {

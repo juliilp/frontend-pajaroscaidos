@@ -1,10 +1,18 @@
-import EnvenenamientoFoto from "@/../public/images/envenenamiento-foto.png";
 import Image from "next/image";
 export default function page() {
+  const EnvenenamientoFoto =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694204852/envenenamiento-foto_txrwgs.png";
   return (
     <section className="w-full flex flex-col justify-center items-center gap-8 pb-16 ">
-      <div className="w-full bg-slate-500 h-[300px]" />
-      {/* comentario de prueba */}
+      <article className="relative w-screen">
+        <Image
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694204690/image_22_2_jlpqex.png"
+          alt="background"
+          width={2937}
+          height={844}
+          className="w-full h-[22rem] "
+        />
+      </article>
       <h2 className="text-[#0C6410] text-xl md:text-2xl text-center hidden md:block ">
         ENVENENAMIENTO
       </h2>
@@ -39,12 +47,16 @@ export default function page() {
             src={EnvenenamientoFoto}
             alt="imagen"
             className="px-6 md:hidden"
+            width={362}
+            height={506}
           />
         </div>
         <Image
           src={EnvenenamientoFoto}
           alt="imagen"
           className="hidden md:block self-start"
+          width={362}
+          height={506}
         />
       </div>
     </section>
