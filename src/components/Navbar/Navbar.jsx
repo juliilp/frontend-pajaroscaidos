@@ -37,7 +37,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
+    <header className="font-baloo bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
       <nav className="w-full h-full flex items-center  justify-between px-3">
         <GiHamburgerMenu
           size={35}

@@ -179,7 +179,7 @@ export default function MenuDesktop() {
                 </Link>,
                 <Link
                   key="opcion4"
-                  href="/shopping"
+                  href="/galeria-solidaria"
                   onClick={closeMenu}
                   prefetch={false}
                 >

@@ -168,7 +168,7 @@ export default function MenuMobile() {
               </Link>,
               <Link
                 key="opcion4"
-                href="/shopping"
+                href="/galeria-solidaria"
                 className="focus:underline"
                 prefetch={false}
               >
