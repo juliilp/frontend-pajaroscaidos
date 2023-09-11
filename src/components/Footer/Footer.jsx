@@ -7,8 +7,8 @@ export default function Footer() {
   const textStyles = " 2xl:text-2xl xl:text-xl lg:text-lg";
   return (
     <footer
-      className="flex items-center bg-darkgray px-6 text-lightgray 
-      sm:gap-0 sm:justify-between sm:flex-row flex-col py-3 gap-2 w-full"
+      className=" flex items-center bg-darkgray px-6 text-lightgray 
+      sm:gap-0 sm:justify-between sm:flex-row flex-col sm:py-1 py-3 gap-2 w-full"
     >
       <Image
         src={logo}
@@ -19,7 +19,7 @@ export default function Footer() {
         className="sm:h-full"
       />
 
-      <p>Derechos reservados ©PajarosCaidos</p>
+      <p className="font-baloo">Derechos reservados ©PajarosCaidos</p>
 
       <div className="flex">
         <article>
