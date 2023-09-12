@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import shopimage from "../../../public/images/shopimage.png";
 import Image from "next/image";
 import ShoppingCards from "@/components/Shop/ShoppingCards";
-import font from "../../styles/fonts.module.css";
 import api from "@/api/api";
 
 export default function Shopping() {
@@ -20,9 +19,7 @@ export default function Shopping() {
   }, []);
 
   return (
-    <div
-      className={`font-baloo min-h-screen flex flex-col items-center pt-40 gap-10 pb-14`}
-    >
+    <div className="min-h-screen flex flex-col items-center pt-40 gap-10 pb-14">
       <h1 className=" text-lettersgray font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
         NUESTRA TIENDA
       </h1>
@@ -32,10 +29,10 @@ export default function Shopping() {
           <Image
             src={shopimage}
             alt="shopimage"
-            className=" border w-[30rem] h-auto"
+            className="border w-[30rem] h-auto"
           />
         </article>
-        <article className="w-full p-1 sm:w-5/12  lg:px-6 xl:px-10 2xl:px-12   ">
+        <article className="w-full p-1 sm:w-5/12 lg:px-6 xl:px-10 2xl:px-12">
           <p
             className=" 
                      md:text-base md:leading-7
@@ -58,14 +55,7 @@ export default function Shopping() {
         </button>
       </section>
       {products && products[0] ? (
-        <section
-          className="  w-full  grid  gap-y-5
-             grid-cols-1
-             min-[350px]:grid-cols-2
-             md:grid-cols-3
-             
-             "
-        >
+        <section className="w-full grid gap-y-5 grid-cols-1 min-[350px]:grid-cols-2 md:grid-cols-3">
           {products.map((product) => (
             <ShoppingCards
               key={product.id}

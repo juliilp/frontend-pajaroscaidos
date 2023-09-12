@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { RiImageFill } from "react-icons/ri";
-import styles from "../../styles/modal.module.css";
 import { createNewPost } from "@/api/apiCall/functions";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
@@ -94,24 +93,20 @@ export default function ModalnewPost({ setvisible }) {
   }
   return (
     <main className="bg-[#686868cc] z-10 min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
-      <div
-        className={`${styles.font} relative font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%]  bg-[#D9D9D9] flex flex-col justify-between
-             
-             md:h-[28rem] md:w-[38rem]
-             lg:h-[30rem] lg:w-[40rem]
-             xl:h-[33rem] xl:w-[43rem]
-             2xl:h-[35rem] 2xl:w-[45rem] `}
-      >
-        <button className="absolute right-0 top-0  text-2x1" onClick={setvisible}>
+      <div className="relative font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%] bg-[#D9D9D9] flex flex-col justify-between md:h-[28rem] md:w-[38rem] lg:h-[30rem] lg:w-[40rem] xl:h-[33rem] xl:w-[43rem] 2xl:h-[35rem] 2xl:w-[45rem]">
+        <button
+          className="absolute right-0 top-0 text-2x1"
+          onClick={setvisible}
+        >
           X
         </button>
         <button onClick={() => console.log(UserContext)}>ver usuario id</button>
         <form
-          className="w-full flex flex-col gap-5   h-5/6 overflow-y-auto "
+          className="w-full flex flex-col gap-5 h-5/6 overflow-y-auto "
           onSubmit={handleSubmit}
           encType="multipart/form-data"
         >
-          <section className=" w-full flex justify-start items-center bg-lightgray min-h-[4rem] ">
+          <section className=" w-full flex justify-start items-center bg-lightgray min-h-[4rem]">
             <h1 className=" text-2xl ml-4">Crea tu post!</h1>
           </section>
           <section className="w-full">
@@ -153,7 +148,13 @@ export default function ModalnewPost({ setvisible }) {
             </article>
 
             <article>
-              <input type="file" name="" id="SelectVideo" className="hidden" accept="video/*" />
+              <input
+                type="file"
+                name=""
+                id="SelectVideo"
+                className="hidden"
+                accept="video/*"
+              />
               <label htmlFor="SelectVideo" className="flex items-center gap-2 ">
                 <AiOutlinePlayCircle className="cursor-pointer text-2xl" />
                 <span className="cursor-pointer text-[#989898]">Video</span>

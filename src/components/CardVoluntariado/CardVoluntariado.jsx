@@ -14,9 +14,7 @@ export default function CardVoluntariado({
   className,
 }) {
   return (
-    <section
-      className={`  flex flex-col items-center justify-center bg-[#C2C2C2] md:flex-row max-w-[976px] h-full  md:mx-8 py-8 px-4  md:gap-16`}
-    >
+    <section className="flex flex-col items-center justify-center bg-[#C2C2C2] md:flex-row max-w-[976px] h-full md:mx-8 py-8 px-4 md:gap-16">
       <Image
         src={imagen}
         alt="imagen"

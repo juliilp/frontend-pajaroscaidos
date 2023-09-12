@@ -41,7 +41,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="font-baloo bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
+    <header className="bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
       <nav className="w-full h-full flex items-center justify-between px-3">
         <GiHamburgerMenu
           size={35}
@@ -61,7 +61,7 @@ export default function Navbar() {
 
         {rendering && UserContext && UserContext.nick_name ? (
           <div className="flex items-center justify-center gap-3">
-            <span className="text-white font-baloo font-semibold">
+            <span className="text-white font-semibold">
               {UserContext.nick_name}
             </span>
             {UserContext.avatar.avatar_url !== "-" ? (
@@ -86,7 +86,7 @@ export default function Navbar() {
 
             <button
               onClick={(e) => handleLogout(e)}
-              className="text-white font-baloo font-semibold"
+              className="text-white font-semibold"
             >
               Cerrar sesión
             </button>
@@ -95,7 +95,7 @@ export default function Navbar() {
           <div className="flex items-center justify-center gap-3">
             <Link
               href="/login"
-              className="text-white font-baloo font-semibold"
+              className="text-white font-semibold"
               prefetch={false}
             >
               Iniciar sesión

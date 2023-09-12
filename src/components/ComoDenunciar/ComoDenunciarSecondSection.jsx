@@ -22,79 +22,223 @@ export default function ComodenunciarSecondSection() {
         <article className=" flex  justify-between ">
           <div className="flex flex-col gap-2">
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://denuncias.fiscalias.gob.ar/">Ciudad Autonoma de Buenos Aires</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://denuncias.fiscalias.gob.ar/"
+              >
+                Ciudad Autonoma de Buenos Aires
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.mpba.gov.ar/mapa">Buenos Aires</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.mpba.gov.ar/mapa"
+              >
+                Buenos Aires
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://juscatamarca.gob.ar/PDF/GUIA%20DE%20MAGISTRADOS%20Y%20FUNCIONARIOS.pdf">Catamarca</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://juscatamarca.gob.ar/PDF/GUIA%20DE%20MAGISTRADOS%20Y%20FUNCIONARIOS.pdf"
+              >
+                Catamarca
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.justiciachaco.gov.ar/">Chaco</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.justiciachaco.gov.ar/"
+              >
+                Chaco
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.mpfchubut.gov.ar/">Chubut</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.mpfchubut.gov.ar/"
+              >
+                Chubut
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.mpfcordoba.gob.ar/fiscalias-de-turno/">Córdoba</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.mpfcordoba.gob.ar/fiscalias-de-turno/"
+              >
+                Córdoba
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.juscorrientes.gov.ar/nomina-de-autoridades/">Corrientes</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.juscorrientes.gov.ar/nomina-de-autoridades/"
+              >
+                Corrientes
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://mpf.jusentrerios.gov.ar/">Entre Rios</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://mpf.jusentrerios.gov.ar/"
+              >
+                Entre Rios
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.jusformosa.gov.ar/fx/oficinasjudiciales/siac/denuncia.pdf">Formosa</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.jusformosa.gov.ar/fx/oficinasjudiciales/siac/denuncia.pdf"
+              >
+                Formosa
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://mpajujuy.gob.ar/denuncias">Jujuy</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://mpajujuy.gob.ar/denuncias"
+              >
+                Jujuy
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.mplapampa.gov.ar/Integrantes_MPF_SantaRosa.asp">La Pampa</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.mplapampa.gov.ar/Integrantes_MPF_SantaRosa.asp"
+              >
+                La Pampa
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.mpflarioja.gob.ar/contacto/">La rioja</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.mpflarioja.gob.ar/contacto/"
+              >
+                La rioja
+              </a>
             </span>
           </div>
 
           <div className="flex flex-col gap-2">
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://mpfmza.jus.mendoza.gov.ar/">Mendoza</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://mpfmza.jus.mendoza.gov.ar/"
+              >
+                Mendoza
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.jusmisiones.gov.ar/index.php/guia-de-autoridades">Misiones</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.jusmisiones.gov.ar/index.php/guia-de-autoridades"
+              >
+                Misiones
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.mpfneuquen.gob.ar/mpf/index.php/es/denuncias-web">Neuquén</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.mpfneuquen.gob.ar/mpf/index.php/es/denuncias-web"
+              >
+                Neuquén
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://ministeriopublico.jusrionegro.gov.ar/como_denunciar.php">Rio Negro</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://ministeriopublico.jusrionegro.gov.ar/como_denunciar.php"
+              >
+                Rio Negro
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.fiscalespenalesalta.gob.ar/ubicaciones/">Salta</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.fiscalespenalesalta.gob.ar/ubicaciones/"
+              >
+                Salta
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.jussanjuan.gov.ar/contacto/">San Juan</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.jussanjuan.gov.ar/contacto/"
+              >
+                San Juan
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.justiciasanluis.gov.ar/?page_id=640">San Luis</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.justiciasanluis.gov.ar/?page_id=640"
+              >
+                San Luis
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.jussantacruz.gob.ar/index.php/dependencias-de-apoyo/ofi-or-ac-ju">Santa Cruz</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.jussantacruz.gob.ar/index.php/dependencias-de-apoyo/ofi-or-ac-ju"
+              >
+                Santa Cruz
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://mpa.santafe.gov.ar/categories/view/denuncias_online">Santa Fe</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://mpa.santafe.gov.ar/categories/view/denuncias_online"
+              >
+                Santa Fe
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="http://www.mpfsde.gob.ar/denuncia-web/">Santiago del Estero</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="http://www.mpfsde.gob.ar/denuncia-web/"
+              >
+                Santiago del Estero
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.justierradelfuego.gov.ar/?page_id=915#1474033701626-96c9adb7-021f">Tierra del fuego</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.justierradelfuego.gov.ar/?page_id=915#1474033701626-96c9adb7-021f"
+              >
+                Tierra del fuego
+              </a>
             </span>
             <span>
-              <a target='_blank' className="text-[blue]  hover:text-gray-500" href="https://www.mpftucuman.gob.ar/contactos.html">Tucumán</a>
+              <a
+                target="_blank"
+                className="text-[blue]  hover:text-gray-500"
+                href="https://www.mpftucuman.gob.ar/contactos.html"
+              >
+                Tucumán
+              </a>
             </span>
           </div>
         </article>
@@ -121,7 +265,13 @@ export default function ComodenunciarSecondSection() {
               Silvestre)
             </i>
           </b>
-          : <a className="text-[blue]  hover:text-gray-500" href="mailto:faunayfloradenuncia@ambiente.gob.ar">faunayfloradenuncia@ambiente.gob.ar</a>
+          :{" "}
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:faunayfloradenuncia@ambiente.gob.ar"
+          >
+            faunayfloradenuncia@ambiente.gob.ar
+          </a>
         </p>
 
         <p>
@@ -130,7 +280,13 @@ export default function ComodenunciarSecondSection() {
           </b>
           <br />
           Teléfono: (011) 4342-9886 / 4342-9887 <br />
-          Correo eléctronico: <a className="text-[blue]  hover:text-gray-500" href="mailto:ufima@mpf.gov.ar">ufima@mpf.gov.ar</a>
+          Correo eléctronico:{" "}
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:ufima@mpf.gov.ar"
+          >
+            ufima@mpf.gov.ar
+          </a>
         </p>
         <p>
           <b>
@@ -139,10 +295,34 @@ export default function ComodenunciarSecondSection() {
           <br />
           Teléfono: (011) 4370-5876 ó 4370-5811 <br />
           Correos electronicos:
-          <a className="text-[blue]  hover:text-gray-500" href="mailto:dto.unifed.ambientales@policiafederal.gov.ar"> dto.unifed.ambientales@policiafederal.gov.ar</a>
-          <a className="text-[blue]  hover:text-gray-500" href="mailto:delitoambiental@yahoo.com.ar">  delitoambiental@yahoo.com.ar </a>
-          <a className="text-[blue]  hover:text-gray-500" href="mailto:dto.unifed.ambientales@gmail.com">  dto.unifed.ambientales@gmail.com </a>
-          <a className="text-[blue]  hover:text-gray-500" href="mailto:denunciasdelitosfederales@policiafederal.gov.ar">  denunciasdelitosfederales@policiafederal.gov.ar </a>
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:dto.unifed.ambientales@policiafederal.gov.ar"
+          >
+            {" "}
+            dto.unifed.ambientales@policiafederal.gov.ar
+          </a>
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:delitoambiental@yahoo.com.ar"
+          >
+            {" "}
+            delitoambiental@yahoo.com.ar{" "}
+          </a>
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:dto.unifed.ambientales@gmail.com"
+          >
+            {" "}
+            dto.unifed.ambientales@gmail.com{" "}
+          </a>
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:denunciasdelitosfederales@policiafederal.gov.ar"
+          >
+            {" "}
+            denunciasdelitosfederales@policiafederal.gov.ar{" "}
+          </a>
         </p>
 
         <p>
@@ -151,7 +331,14 @@ export default function ComodenunciarSecondSection() {
           </i>
           <br />
           Teléfono: 0800-888-8804 <br />
-          Correo electrónico: <br /> <a className="text-[blue]  hover:text-gray-500" href="mailto:0800denuncias@gendarmeria.gob.ar">0800denuncias@gendarmeria.gob.ar</a> .
+          Correo electrónico: <br />{" "}
+          <a
+            className="text-[blue]  hover:text-gray-500"
+            href="mailto:0800denuncias@gendarmeria.gob.ar"
+          >
+            0800denuncias@gendarmeria.gob.ar
+          </a>{" "}
+          .
         </p>
 
         <p>

@@ -1,5 +1,6 @@
 import CardVoluntariado from "@/components/CardVoluntariado/CardVoluntariado";
 import { dataVoluntario } from "@/components/CardVoluntariado/dataVoluntario";
+
 export default function page() {
   return (
     <section className="mt-[70px]">

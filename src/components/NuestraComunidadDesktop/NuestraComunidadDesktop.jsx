@@ -24,13 +24,13 @@ export default function NuestraComunidad() {
   ];
 
   return (
-    <section className=" mt-4 hidden shadow-md w-full bg-[#d8d8d9] xl:flex flex-col items-center justify-center xl:max-w-[400px] h-max mr-4 py-6  rounded-lg">
+    <section className="mt-4 hidden shadow-md w-full bg-[#d8d8d9] xl:flex flex-col items-center justify-center xl:max-w-[400px] h-max mr-4 py-6 rounded-lg">
       <div className="w-full flex flex-col space-y-2">
-        <h2 className="text-[#707070] text-center font-baloo font-semibold text-3xl  ">
+        <h2 className="text-[#707070] text-center font-semibold text-3xl">
           Nuestra Comunidad
         </h2>
-        <div className="h-[2px] hidden xl:block w-[100%] bg-[#C2C2C2] shadow-login rounded-2xl  " />
-        <div className="flex gap-5 text-[#707070] items-center justify-center font-baloo font-semibold text-2xl">
+        <div className="h-[2px] hidden xl:block w-[100%] bg-[#C2C2C2] shadow-login rounded-2xl" />
+        <div className="flex gap-5 text-[#707070] items-center justify-center font-semibold text-2xl">
           {botonesOpciones.map(({ etiqueta, valor }) => {
             return (
               <button
@@ -43,7 +43,7 @@ export default function NuestraComunidad() {
             );
           })}
         </div>
-        <div className="h-[5px] hidden xl:block w-[100%] bg-[#c2c2c2] shadow-login rounded-2xl  " />
+        <div className="h-[5px] hidden xl:block w-[100%] bg-[#c2c2c2] shadow-login rounded-2xl" />
         <div
           className={`flex flex-col  items-center w-full gap-4 ${
             publications.length > 2 &&

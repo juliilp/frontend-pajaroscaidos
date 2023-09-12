@@ -7,7 +7,7 @@ import Banner from "@/../public/images/contactanos/Banner-min.png";
 
 export default function page() {
   return (
-    <section className="font-baloo mt-[70px] flex flex-col gap-16 pb-16">
+    <section className="mt-[70px] flex flex-col gap-16 pb-16">
       <div className="w-full h-[134px] sm:h-[260px] lg:h-80 2xl:h-[40rem] relative">
         <Image src={Banner} alt="Banner" fill priority={true} />
       </div>
