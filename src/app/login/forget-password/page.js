@@ -53,7 +53,7 @@ export default function EmailCode() {
         alt="imagen"
       />
       <form
-        className="w-[550px]  bg-[#FFFFFF] pb-16 rounded-xl p3"
+        className="w-[550px]  bg-[#FFFFFF] pb-16 rounded-xl"
         onSubmit={submitHandler}
       >
         <h2 className="font-bold  text-2xl text-center mt-2 mb-12">
