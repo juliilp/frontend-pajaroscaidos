@@ -53,7 +53,7 @@ export default function Foros() {
   }
 
   return (
-    <section className=" relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
+    <section className="font-baloo relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
       {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
 
       <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-24">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
 export default function page() {
   return (
-    <section className="mt-[70px] py-8 ">
+    <section className="mt-[70px] py-8 font-baloo">
       <h2 className="text-[#0C6410] font-semibold md:text-2xl text-center ">
         ACTOS DE CRUELDAD Y MALTRATO
       </h2>

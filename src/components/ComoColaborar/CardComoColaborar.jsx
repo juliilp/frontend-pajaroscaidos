@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import Link from "next/link";
 
 export default function CardComoColaborar({
   titulo,
@@ -18,17 +17,17 @@ export default function CardComoColaborar({
           alt="imagen"
           height={500}
           width={500}
-          className="object-cover w-full max-w-[350px] h-[300px] rounded-md"
+          className="object-cover w-full max-w-[350px] h-[300px] rounded-md "
         />
         <p className="w-full max-w-[350px]">{parrafo}</p>
       </div>
-      <Link
+      <a
+        target="_blank"
         href={enlace}
-        prefetch={false}
-        className="text-center text-white bg-[#128117] py-2 px-4 rounded"
+        className="text-center text-white bg-[#128117] py-2 px-4 rounded hover:bg-[#00812b] duration-200"
       >
         {nombreEnlace}
-      </Link>
+      </a>
     </section>
   );
 }

@@ -12,7 +12,7 @@ export default function page() {
         <Image src={imageBG} alt="bg-tucan" fill className="" />
       </section>
       <h1>GEGE VOLVIO A LA SELVA</h1>
-      <main className="flex w-full md:w-11/12  justify-center">
+      <main className="flex w-full md:w-11/12 justify-center">
         <MainSectionArticulo1 image={image1} />
       </main>
       <section className=" w-9/12 h-[20rem] md:w-10/12 md:h-[25rem] xl:w-11/12 xl:h-[30rem] 2xl:w-full 2xl:h-[35rem] justify-center items-center">

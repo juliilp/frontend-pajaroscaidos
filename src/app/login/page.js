@@ -101,7 +101,7 @@ export default function Login() {
     loading ? (
     <Loading />
   ) : (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2  md:px-8 md:gap-12 lg:gap-24">
+    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 mt-8">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
@@ -112,16 +112,16 @@ export default function Login() {
         className="w-full max-w-[500px] pb-16 rounded-xl   bg-white "
         onSubmit={submitHandler}
       >
-        <h2 className="font-bold  text-2xl text-center mt-4 mb-12">
+        <h2 className="font-bold text-2xl text-center mt-4 mb-6">
           Inicia Sesión
         </h2>
 
-        <div className="flex flex-col px-4 gap-2 mb-6 ">
+        <div className="flex flex-col px-4 gap-1 mb-4 ">
           <span className="text-[#525252]">Email o nombre de usuario</span>
 
           <input
             type="text"
-            className="py-3 outline-none pl-2  bg-[#EEEEEE] "
+            className="py-3 outline-none pl-2 bg-[#EEEEEE] "
             onChange={inputHandler}
             name="email"
             value={inputLogin.email}
@@ -131,7 +131,7 @@ export default function Login() {
             <span className="text-red-500">Usuario no registrado</span>
           )}
         </div>
-        <div className="flex flex-col px-4  gap-2 ">
+        <div className="flex flex-col px-4 gap-1 mb-4 ">
           <span className="text-[#525252]">Contraseña</span>
           <div className="flex relative ">
             <input
@@ -143,7 +143,7 @@ export default function Login() {
             />
 
             <div
-              className="absolute right-0 top-[18%]"
+              className="absolute right-2 top-[18%] cursor-pointer"
               onClick={() => setSwitchPassword((prev) => !prev)}
             >
               {switchPassword ? (
@@ -168,7 +168,7 @@ export default function Login() {
         <div className="flex flex-col gap-4 justify-center items-center my-10">
           <button
             type={"submit"}
-            className="bg-[#43851D] text-white h-[70px] w-[180px] text-lg rounded-xl "
+            className="bg-[#43851D] text-white h-[60px] w-[180px] text-lg rounded"
           >
             Inicia Sesión
           </button>
@@ -180,13 +180,13 @@ export default function Login() {
 
           <button
             onClick={(e) => loginWithGoogle(e)}
-            className="bg-[#BCBCBC] h-[75px] w-[180px] flex justify-center items-center rounded-xl"
+            className="bg-[#BCBCBC] h-[60px] w-[180px] flex justify-center items-center rounded"
           >
             <AiOutlineGoogle size={50} />
           </button>
         </div>
 
-        <div className="w-full flex justify-center items-center gap-2 ">
+        <div className="w-full flex justify-center items-center">
           <span className="text-[#525252]">
             ¿No tienes cuenta en Pájaros Caídos?
           </span>

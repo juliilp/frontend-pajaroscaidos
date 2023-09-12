@@ -14,7 +14,7 @@ export default function Acciones() {
           Su compromiso no solo salva vidas aviares,sino que también restaura la
           dignidad y el equilibrio en nuestros ecosistemas.
         </p>
-        <div className="w-full h-[3px] bg-[#0C6410] hidden md:block my-16 " />
+        <div className="w-full h-[3px] bg-[#0C6410] hidden md:block my-16" />
       </div>
       <div className="flex flex-col w-full items-center justify-center gap-32 md:gap-16">
         {dataAcciones.map((card) => {

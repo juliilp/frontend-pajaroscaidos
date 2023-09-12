@@ -78,10 +78,10 @@ export default function EmailCode() {
           )}
         </div>
 
-        <div className="flex flex-col  justify-center items-center my-10">
+        <div className="flex flex-col justify-center items-center mt-10">
           <button
             type="submit"
-            className="bg-[#008000] h-[70px] w-[180px] font-bold text-[#FFFFFF] text-lg rounded-xl "
+            className="bg-[#008000] h-[65px] w-[180px] font-bold text-[#FFFFFF] text-lg rounded"
           >
             Solicitar nueva contraseña
           </button>
