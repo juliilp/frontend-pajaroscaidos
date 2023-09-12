@@ -21,8 +21,16 @@ export default function PostComunidadMobile({ publications }) {
               />
             </div>
             <div className="flex flex-col sm:justify-between justify-around">
-              <TextoMobile texto={description} longitud={30} className="block sm:hidden" />
-              <TextoMobile texto={description} longitud={45} className=" hidden sm:block " />
+              <TextoMobile
+                texto={description}
+                longitud={30}
+                className="block sm:hidden"
+              />
+              <TextoMobile
+                texto={description}
+                longitud={45}
+                className=" hidden sm:block "
+              />
 
               {/* Icono y nombre de usuario */}
               <div className="flex items-center gap-2 justify-self-center">

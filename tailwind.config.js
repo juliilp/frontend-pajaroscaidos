@@ -9,8 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
-
-        baloo: ["--font-baloo"],
+        baloo: ["Baloo Bhaijaan 2", "sans"],
         inter: ["--font-inter"],
       },
       boxShadow: {
@@ -25,5 +24,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animated")],
+  plugins: [],
 };

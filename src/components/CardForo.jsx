@@ -7,11 +7,19 @@ import api from "../api/api";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
+export default function CardForo({
+  titulo,
+  tiempo,
+  usuario,
+  like,
+  message,
+  image,
+  id,
+  reactions,
+}) {
   const { UserContext } = CustomContext();
 
   const userReaction = reactions?.find((e) => e.userId === UserContext?.id);
-  // console.log('reaction:', userReaction)
   const [reaction, setReaction] = useState(!!userReaction);
   const [likesNumber, setLikesNumber] = useState(like);
   const fecha = convertirFecha(tiempo);
@@ -32,7 +40,6 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
       });
 
       if (response.status === 200) {
-        // console.log('id:', response.data.newReaction.id)
         setNewLike(response.data.newReaction.id);
         setReaction(true);
         setLikesNumber(likesNumber + 1);
@@ -52,10 +59,11 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
     setSending(true);
 
     try {
-      // console.log('userReaction: ', userReaction)
       const response = await api.delete(
-        `/reaction/delete/${userReaction !== undefined ? userReaction.id : newLike}`
-      ); //userReaction.id
+        `/reaction/delete/${
+          userReaction !== undefined ? userReaction.id : newLike
+        }`
+      );
 
       if (response.status === 200) {
         setReaction(false);
@@ -100,17 +108,29 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
             <IoMdHeartEmpty
               color={reaction ? "#E11447" : "#000000"}
               size={25}
-              className={`cursor-pointer ${sending ? "opacity-50 pointer-events-none" : ""}`}
+              className={`cursor-pointer ${
+                sending ? "opacity-50 pointer-events-none" : ""
+              }`}
               onClick={sending ? null : reaction ? handleUnLike : handleLike}
             />
-            <span className={`font-semibold text-lg ${reaction ? "text-[#AA153A]" : ""}`}>
+            <span
+              className={`font-semibold text-lg ${
+                reaction ? "text-[#AA153A]" : ""
+              }`}
+            >
               {likesNumber}
             </span>
           </div>
 
           <div className="flex  gap-2">
-            <RiMessage2Line color="#0C6410" size={25} className="cursor-pointer" />
-            <span className="text-[#0C6410] font-semibold text-lg self-end ">{message}</span>
+            <RiMessage2Line
+              color="#0C6410"
+              size={25}
+              className="cursor-pointer"
+            />
+            <span className="text-[#0C6410] font-semibold text-lg self-end ">
+              {message}
+            </span>
           </div>
         </div>
       </div>

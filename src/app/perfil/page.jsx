@@ -2,9 +2,7 @@
 import CardForo from "@/components/CardForo";
 import { useEffect, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
-import { BiSolidUser } from "react-icons/bi";
-import { CiClock2, CiSettings } from "react-icons/ci";
-import { IoIosArrowDown } from "react-icons/io";
+import { CiSettings } from "react-icons/ci";
 import { CustomContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -34,8 +32,6 @@ export default function Perfil() {
           className="absolute bottom-4 right-4 font-black text-black "
         />
         <div className="bg-slate-500 w-full h-[100px] my-8 flex items-center">
-          {/* <div className="rounded-full bg-white w-[75px] h-[75px] ml-6 " /> */}
-
           {user?.avatar.secure_url && (
             <Image
               src={user?.avatar.secure_url}
@@ -100,8 +96,3 @@ export default function Perfil() {
     </section>
   );
 }
-//edad
-// user?.country
-// user?.province
-// user?.phone_number
-//Card foro

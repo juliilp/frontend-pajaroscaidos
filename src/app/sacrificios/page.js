@@ -31,13 +31,13 @@ export default function page() {
           es motivo de no reconocimiento y/o perdida de la autorizacioón como
           asociación religiosa. El artículo 3 inciso b) de la Ley Nº 21.745
           establece que perderá su inscripción como culto la asociación
-          religiosa: "cuando se hubiere comprobado que los principios y/o
+          religiosa: &quot;cuando se hubiere comprobado que los principios y/o
           propósitos que dieron origen a la constitución de la asociación o la
           actividad que ejerce, resultaren lesivas al orden público, la
-          seguridad nacional, la moral y las buenas costumbres"- La utilizaciñon
-          y sacrificio de animales en cultos y ceremonias religiosas es un acto
-          ilegal penado por la Ley Nº 14.346 que debe ser denunciado a las
-          autoridades.
+          seguridad nacional, la moral y las buenas costumbres&quot;- La
+          utilizaciñon y sacrificio de animales en cultos y ceremonias
+          religiosas es un acto ilegal penado por la Ley Nº 14.346 que debe ser
+          denunciado a las autoridades.
         </p>
         <Image
           src={Caza}
