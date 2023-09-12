@@ -21,7 +21,6 @@ export default function Navbar() {
       setRendering(true);
     }
   }, []);
-
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
   };
@@ -59,11 +58,13 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
 
-        {rendering && UserContext && UserContext.nick_name ? (
+        {rendering && UserContext && UserContext.first_name ? (
           <div className="flex items-center justify-center gap-3">
-            <span className="text-white font-semibold">
-              {UserContext.nick_name}
-            </span>
+            <Link href={"/perfil"}>
+              <span className="text-white font-semibold">
+                {UserContext.first_name}
+              </span>
+            </Link>
             {UserContext.avatar.avatar_url !== "-" ? (
               <Link href={"/perfil"} prefetch={false}>
                 <Image

@@ -11,19 +11,19 @@ import api from "../../api/api";
 
 export default function Perfil() {
   const router = useRouter();
-  const { userContext } = CustomContext();
+  const { UserContext } = CustomContext();
   const [user, setUser] = useState();
   const [publications, setPublications] = useState([]);
   useEffect(() => {
-    if (!userContext) return router.push("/");
-    setUser(userContext);
+    if (!UserContext) return router.push("/");
+    setUser(UserContext);
     async function userPublications() {
       const result = await api(`/user/${user.id}/?filter=publications`);
       const data = result.data.user.publications;
       setPublications(data);
     }
     if (user) return userPublications();
-  }, [userContext, user, router]);
+  }, [UserContext, user, router]);
   return (
     <section className="pt-[100px] flex flex-col gap-8 justify-center items-center font-semibold text-letterPerfil text-xl pb-[100px] ">
       <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] p-6 flex flex-col shadow-primary relative">
