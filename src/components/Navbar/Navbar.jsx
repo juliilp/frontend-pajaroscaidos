@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, Suspense, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser } from "react-icons/bi";
 import Logo from "../../../public/images/navbar-logo.png";
@@ -21,24 +21,27 @@ export default function Navbar() {
       setRendering(true);
     }
   }, []);
-
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
   };
 
-  const handleLogout = async (e) => {
+  const closeMenu = () => {
+    setSwitchMenu(false);
+  };
+
+  const handleLogout = async () => {
     await logout();
 
     if (session) {
       await signOut({
-        callbackUrl: "/", // Especifica la URL a la que deseas redirigir
+        callbackUrl: "/",
       });
     }
   };
 
   return (
     <header className="bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
-      <nav className="w-full h-full flex items-center  justify-between px-3">
+      <nav className="w-full h-full flex items-center justify-between px-3">
         <GiHamburgerMenu
           size={35}
           color="white"
@@ -55,13 +58,15 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
 
-        {rendering && UserContext && UserContext.nick_name ? (
+        {rendering && UserContext && UserContext.first_name ? (
           <div className="flex items-center justify-center gap-3">
-            <span className="text-white font-baloo font-semibold">
-              {UserContext.nick_name}
-            </span>
+            <Link href={"/perfil"}>
+              <span className="text-white font-semibold">
+                {UserContext.first_name}
+              </span>
+            </Link>
             {UserContext.avatar.avatar_url !== "-" ? (
-              <Link href={"/perfil"}>
+              <Link href={"/perfil"} prefetch={false}>
                 <Image
                   src={
                     UserContext.avatar.avatar_url
@@ -82,7 +87,7 @@ export default function Navbar() {
 
             <button
               onClick={(e) => handleLogout(e)}
-              className="text-white font-baloo font-semibold"
+              className="text-white font-semibold"
             >
               Cerrar sesión
             </button>
@@ -91,7 +96,7 @@ export default function Navbar() {
           <div className="flex items-center justify-center gap-3">
             <Link
               href="/login"
-              className="text-white font-baloo font-semibold"
+              className="text-white font-semibold"
               prefetch={false}
             >
               Iniciar sesión
@@ -107,7 +112,7 @@ export default function Navbar() {
             : "-translate-y-8 opacity-0 pointer-events-none"
         }`}
       >
-        {<MenuMobile />}
+        {<MenuMobile closeMenu={closeMenu} />}
       </div>
     </header>
   );

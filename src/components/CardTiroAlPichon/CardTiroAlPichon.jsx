@@ -44,7 +44,7 @@ export default function CardTiroAlPichon({
         </ul>
       )}
       {visibleBoton && (
-        <div className="w-full flex justify-center items-center cursor-pointer  ">
+        <div className="w-full flex justify-center items-center cursor-pointer">
           <Link
             href="/acciones/articulo3"
             className="bg-[#128117] text-white py-2 px-6 justify-self-center w-max rounded-lg"

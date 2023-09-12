@@ -37,7 +37,6 @@ export default function Login() {
         avatar: session.user.image,
         nick_name: session.user.name,
       };
-      //mando al back:
       const authenticateUser = async () => {
         const user = await loginNextAuth(data);
 
@@ -89,8 +88,6 @@ export default function Login() {
       email: "",
       password: "",
     });
-
-    // console.log(inputLogin)
   };
 
   function loginWithGoogle(e) {
@@ -112,7 +109,7 @@ export default function Login() {
       />
 
       <form
-        className="w-full max-w-[500px] pb-10 rounded-xl font-baloo bg-white "
+        className="w-full max-w-[500px] pb-16 rounded-xl   bg-white "
         onSubmit={submitHandler}
       >
         <h2 className="font-bold text-2xl text-center mt-4 mb-6">

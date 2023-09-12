@@ -4,7 +4,7 @@ export default function MainCazatrafico({ images }) {
   return (
     <>
       <div className="flex w-full justify-end">
-        <button className=" text-sm min-[350px]:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl  text-white bg-green p-2 md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
+        <button className="text-sm min-[350px]:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white bg-green p-2 md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
           Como denunciar
         </button>
       </div>
@@ -67,27 +67,27 @@ export default function MainCazatrafico({ images }) {
         </p>
       </article>
 
-      <article className=" w-full md:w-10/12 md:flex-row  flex flex-col   items-center justify-around  ">
+      <article className="w-full md:w-10/12 md:flex-row flex flex-col items-center justify-around">
         <Image
           src={images[0]}
           alt={`caza-trafico-1`}
           width={500}
           height={500}
-          className="md:w-3/12 w-11/12 h-auto hidden md:block "
+          className="md:w-3/12 w-11/12 h-auto hidden md:block"
         />
         <Image
           src={images[1]}
           alt={`caza-trafico-2`}
           width={500}
           height={500}
-          className=" md:w-3/12 w-11/12 h-auto  "
+          className="md:w-3/12 w-11/12 h-auto"
         />
         <Image
           src={images[2]}
           alt={`caza-trafico-3`}
           width={500}
           height={500}
-          className=" md:w-3/12 w-11/12 h-auto  hidden md:block"
+          className="md:w-3/12 w-11/12 h-auto hidden md:block"
         />
       </article>
     </>

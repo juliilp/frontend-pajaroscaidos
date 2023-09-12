@@ -43,8 +43,6 @@ export default function EmailCode() {
     setInput({
       email: "",
     });
-
-    // console.log(input)
   };
 
   return (
@@ -55,7 +53,7 @@ export default function EmailCode() {
         alt="imagen"
       />
       <form
-        className="w-[550px]  bg-[#FFFFFF] pb-10 rounded-xl font-baloo p-3"
+        className="w-[550px]  bg-[#FFFFFF] pb-16 rounded-xl p3"
         onSubmit={submitHandler}
       >
         <h2 className="font-bold  text-2xl text-center mt-2 mb-12">

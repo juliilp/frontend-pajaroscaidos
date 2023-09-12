@@ -1,14 +1,12 @@
 import LeyesNacionales from "@/components/Legislacion/LeyesNacionales";
 import LeyesProvinciales from "@/components/Legislacion/LeyesProvinciales";
-import font from "../../styles/fonts.module.css";
 import Image from "next/image";
 import image1 from "../../../public/images/legislacion_1.png";
+
 export default function page() {
   return (
-    <div
-      className={`${font.baloo} font-semibold flex flex-col items-center gap-12 pt-[69px] pb-[5rem] font-baloo`}
-    >
-      <div className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
+    <div className="font-semibold flex flex-col items-center gap-12 pt-[69px] pb-[5rem]">
+      <div className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem] md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
         <Image src={image1} alt="background" fill priority={true} />
       </div>
 
