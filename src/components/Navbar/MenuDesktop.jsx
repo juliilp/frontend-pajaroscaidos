@@ -17,7 +17,7 @@ export default function MenuDesktop() {
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
       <li className="cursor-pointer justify-center items-center flex text-white hover:text-gray-300 focus:outline-none">
-        <Link href="/" prefetch={false} onClick={closeMenu}>
+        <Link href="/" onClick={closeMenu}>
           Inicio
         </Link>
       </li>

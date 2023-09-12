@@ -17,7 +17,6 @@ export default function MenuMobile({ closeMenu }) {
           href="/"
           className="focus:underline"
           onClick={closeMenu}
-          prefetch={false}
         >
           Inicio
         </Link>
