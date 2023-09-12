@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <ProviderAuth>
-        <body id="Body" className={"font-baloo"}>
+        <body id="Body">
           <ContextProvider>
             <Navbar />
-            <div className=" min-h-screen bg-[#D9D9D9] ">{children}</div>
+            <div className="min-h-screen bg-[#D9D9D9]">{children}</div>
           </ContextProvider>
           <Footer />
         </body>
