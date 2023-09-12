@@ -69,7 +69,7 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
   };
 
   return (
-    <div className="flex w-full h-[150px] items-center justify-start shadow-cardForo sm:shadow-none sm:border-b sm:border-white ">
+    <div className="flex w-max h-[150px] items-center justify-start shadow-cardForo sm:shadow-none sm:border-b sm:border-white ">
       <div className="flex-[2] h-full w-2/6 p-3 justify-end items-center flex">
         <div className="h-full overflow-hidden w-40 flex items-center justify-center rounded-2xl relative">
           {image?.secure_url && (
