@@ -9,16 +9,23 @@ import { CustomContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import api from "../../api/api";
 
 export default function Perfil() {
   const router = useRouter();
   const { userContext } = CustomContext();
   const [user, setUser] = useState();
-  console.log(userContext);
+  const [publications, setPublications] = useState([]);
   useEffect(() => {
+    if (!userContext) return router.push("/");
     setUser(userContext);
-    // console.log(user.first_name);
-  }, [userContext, user]);
+    async function userPublications() {
+      const result = await api(`/user/${user.id}/?filter=publications`);
+      const data = result.data.user.publications;
+      setPublications(data);
+    }
+    if (user) return userPublications();
+  }, [userContext, user, router]);
   return (
     <section className="pt-[100px] flex flex-col gap-8 justify-center items-center font-semibold text-letterPerfil text-xl pb-[100px] ">
       <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] p-6 flex flex-col shadow-primary relative">
@@ -69,26 +76,26 @@ export default function Perfil() {
         </p>
       </article>
 
-      <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] flex flex-col items-center gap-2 border-[#C4C4C4] shadow-primary">
-        <div className="flex h-[3rem] text-[#756F70] justify-between items-center w-full sm:border-b sm:border-white ">
-          <div className="  flex items-center  font-semibold p-6">
-            <h2 className="text-2xl font-medium ">Mis publicaciones</h2>
-          </div>
+      <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] flex flex-col gap-2 border-[#C4C4C4] shadow-primary">
+        <h2 className="text-2xl font-medium ml-6">Mis publicaciones</h2>
 
-          <div className="flex gap-4 items-center">
-            <CiClock2 size={30} />
-            <span className="font-semibold">Recientes</span>
-            <IoIosArrowDown size={25} />
-          </div>
+        <div>
+          {publications.length > 0 ? (
+            publications.map((card) => {
+              return (
+                <CardForo
+                  key={card.id}
+                  titulo={card.title}
+                  image={card.image[0].secure_url}
+                  tiempo={card.createdAt}
+                  id={card.id}
+                />
+              );
+            })
+          ) : (
+            <Link href="/foro">Crear mi primer publicacion</Link>
+          )}
         </div>
-
-        <CardForo
-          titulo="TINA, no puede volar!"
-          tiempo="40 min"
-          user="Kevin"
-          like={5}
-          message={3}
-        />
       </article>
     </section>
   );
