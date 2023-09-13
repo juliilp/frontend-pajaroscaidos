@@ -1,12 +1,24 @@
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
-import Construccion from "@/../public/images/colaborar-construccion.png";
-import Donaciones from "@/../public/images/colaborar-donaciones.png";
-import Voluntarios from "@/../public/images/colaborar-voluntarios.png";
-
+import Image from "next/image";
 export default function page() {
+  const Construccion =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694645383/colaborar-construccion_tx5v4v.png";
+  const Donaciones =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694645383/colaborar-donaciones_f4krh3.png";
+  const Voluntarios =
+    "https://res.cloudinary.com/di5mf85h3/image/upload/v1694645383/colaborar-voluntarios_e1hfxi.png";
   return (
     <section className="mt-[70px]">
-      <div className="hidden md:block w-full h-[200px] bg-slate-600" />
+      <section className="relative w-screen">
+        <Image
+          src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694645116/image_13_w0lvlt.png"
+          alt="bg-image-1"
+          width={1822}
+          height={460}
+          className="w-full h-full"
+          property={true}
+        />
+      </section>
       <div className="hidden md:flex flex-col gap-8 my-8 ">
         <span className="text-center md:text-2xl">COMO COLABORAR</span>
         <p className="max-w-[800px] text-center w-full mx-auto md:text-lg">
