@@ -8,7 +8,7 @@ export default function page() {
   const Voluntarios =
     "https://res.cloudinary.com/di5mf85h3/image/upload/v1694645383/colaborar-voluntarios_e1hfxi.png";
   return (
-    <section className="mt-[70px]">
+    <section className="mt-[70px]  ">
       <section className="relative w-screen">
         <Image
           src="https://res.cloudinary.com/di5mf85h3/image/upload/v1694645116/image_13_w0lvlt.png"
