@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Imagen1 from "@/../public/images/rinasDeGallos/imagen1.png";
 import Imagen2 from "@/../public/images/rinasDeGallos/imagen2.png";
@@ -127,7 +126,6 @@ export default function page() {
           Argentina.
         </p>
         <div className="flex flex-col gap-6  justify-center items-center lg:gap-0 lg:justify-between w-full col-span-2 ">
-          {/* <div className="w-[250px] h-[200px] bg-slate-600 " /> */}
           <Image
             src={Imagen1}
             alt="imagen1"
@@ -143,10 +141,9 @@ export default function page() {
             alt="imagen3"
             className="w-[250px] h-[200px] object-cover "
           />
-          {/* <div className="w-[250px] h-[200px] bg-slate-600 " />
-          <div className="w-[250px] h-[200px] bg-slate-600 " /> */}
         </div>
       </div>
+
       {/* Sector de abajo  */}
       <div className="bg-[#C2C2C2] mx-6 max-w-[950px] lg:mx-auto ">
         <h2 className="text-[#0C6410] text-xl text-center font-semibold py-8 md:py-12">

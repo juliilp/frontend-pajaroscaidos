@@ -20,7 +20,7 @@ function Tiroalpichon() {
         participante que más palomas extermine, y que logre ubicar los cuerpos
         de las aves en la zona perimetrada. <br /> En este tipo de torneos, las
         palomas se trasladan en pequeñas jaulas y luego de casi un día sin
-        alimento y desorientadas –maltrato intencional que hace que vuelen más
+        alimento y desorientadas -maltrato intencional que hace que vuelen más
         rápido-, se las libera para ser derribadas a los pocos centímetros, y ya
         caídas sobre el suelo, heridas y desangrándose en muchos casos, pero aún
         vivas, son arrojadas a tachos donde terminan muriendo por asfixia al ser

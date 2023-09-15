@@ -4,7 +4,6 @@ export default function page() {
   return (
     <section className="w-full flex flex-col justify-center items-center gap-8 pb-16 ">
       <div className="w-full bg-slate-500 h-[300px]" />
-      {/* comentario de prueba */}
       <h2 className="text-[#0C6410] text-xl md:text-2xl text-center hidden md:block ">
         ENVENENAMIENTO
       </h2>

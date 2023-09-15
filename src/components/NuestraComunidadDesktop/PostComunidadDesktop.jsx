@@ -4,11 +4,8 @@ import Image from "next/image";
 import ImagenPericos from "@/../public/images/Nuestra comunidad/grupo-periquitos-contentos.jpg";
 
 export default function PostComunidad({ publications }) {
-  // publications = null
   return (
     <>
-      {/* Background bg-[#CDCDCD] */}
-
       {publications && publications[0] ? (
         publications?.map((post) => (
           <div
@@ -33,12 +30,12 @@ export default function PostComunidad({ publications }) {
                 <BiSolidUser size={35} color="white" />
               )}
 
-              <span className="text-[#707070] font-baloo font-semibold">
+              <span className="text-[#707070] font-semibold">
                 {post.user.nick_name}
               </span>
             </div>
             <div className="h-[2px] w-[100%] bg-[#D9D9D9] shadow-login rounded-2xl  " />
-            <p className="text-[#707070] font-baloo  font-semibold text-xl pl-5 pt-5">
+            <p className="text-[#707070] font-semibold text-xl pl-5 pt-5">
               {post.description}
             </p>
 
@@ -53,7 +50,7 @@ export default function PostComunidad({ publications }) {
         ))
       ) : (
         <div className="flex flex-col gap-8 bg-[#CDCDCD] py-6 max-w-[300px] border-2  items-center border-none">
-          <p className="text-[#707070] font-baloo font-semibold text-xl ">
+          <p className="text-[#707070] font-semibold text-xl ">
             No hay publicaciones
           </p>
 

@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import styles from "../../styles/posts.module.css";
 import { convertirFecha } from "@/utils/auxfunctions";
 import Image from "next/image";
 
@@ -8,8 +7,8 @@ export default function ContentPost({ publication }) {
   return (
     <>
       <article className="flex w-full justify-end">
-        <span className="  text-[#727272]">Fecha :</span>
-        <span className="  text-[#727272]">{convertirFecha(createdAt)}</span>
+        <span className="text-[#727272]">Fecha :</span>
+        <span className="text-[#727272]">{convertirFecha(createdAt)}</span>
       </article>
       <article className="w-full flex justify-center">
         <Suspense fallback={<p>Cargando...</p>}>
@@ -19,15 +18,13 @@ export default function ContentPost({ publication }) {
         </Suspense>
       </article>
       <div
-        className={` w-full bg-[#c2c2c2] h-[0.7rem]  border-2 border-lightgray rounded-lg  `}
+        className="w-full bg-[#c2c2c2] h-[0.7rem]  border-2 border-lightgray rounded-lg"
         style={{ filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.30))" }}
       />
 
       <article className=" w-full sm:w-11/12  md:w-10/12 ">
         <Suspense fallback={<p>Cargandoo....</p>}>
-          <p
-            className={`${styles.aux} text-[#020000] sm:text-sm  md:text-base xl:text-xl 2xl:text-2xl  `}
-          >
+          <p className="text-[#020000] sm:text-sm  md:text-base xl:text-xl 2xl:text-2xl">
             {description}
           </p>
         </Suspense>
