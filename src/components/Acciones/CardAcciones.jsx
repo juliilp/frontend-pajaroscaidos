@@ -30,6 +30,7 @@ export default function CardAcciones({
           <Link
             className="bg-[#128117] py-5 px-16 md:py-3 md:px-12 text-white justify-self-center w-max rounded"
             href={redireccion}
+            prefetch={false}
           >
             saber más
           </Link>

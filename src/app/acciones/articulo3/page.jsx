@@ -4,6 +4,7 @@ import Image1 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen1.
 import Image2 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen2.png";
 import Image3 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen3.png";
 import Image4 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen4.png";
+
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col gap-8 w-full bg-[#D9d8d8] ">
@@ -66,8 +67,6 @@ export default function page() {
           que utilizan palomas como blanco de entretenimiento y diversión.
         </p>
         <div className="flex flex-col  w-full gap-8 lg:col-span-2 justify-center items-center lg:justify-start   ">
-          {/* <div className="w-[90%]  max-w-[350px] h-[300px] bg-slate-700 " />
-          <div className="w-[90%]  max-w-[350px] h-[300px] bg-red-500 " /> */}
           <Image
             src={Image1}
             alt="imagen1"
@@ -81,8 +80,6 @@ export default function page() {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center gap-12 md:flex-wrap md:flex-row mt-1 my-12 ">
-        {/* <div className="w-[90%]  max-w-[450px] h-[300px] bg-amber-400 " /> */}
-        {/* <div className="w-[90%]  max-w-[450px] h-[300px] bg-lime-800 " /> */}
         <Image
           src={Image4}
           alt="imagen4"

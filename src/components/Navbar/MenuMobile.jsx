@@ -13,11 +13,7 @@ export default function MenuMobile({ closeMenu }) {
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link
-          href="/"
-          className="focus:underline"
-          onClick={closeMenu}
-        >
+        <Link href="/" className="focus:underline" onClick={closeMenu}>
           Inicio
         </Link>
       </li>
@@ -51,7 +47,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/acciones"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Acciones
               </Link>,
@@ -123,7 +118,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/foro"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Foro
               </Link>,
@@ -149,7 +143,7 @@ export default function MenuMobile({ closeMenu }) {
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            openMenu === "servicio" ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
+            openMenu === "servicio" ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -159,7 +153,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/contactanos"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Contacto
               </Link>,
@@ -171,15 +164,6 @@ export default function MenuMobile({ closeMenu }) {
                 prefetch={false}
               >
                 Como Denunciar
-              </Link>,
-              <Link
-                key="opcion3"
-                href="/atencion-al-cliente"
-                className="focus:underline"
-                onClick={closeMenu}
-                prefetch={false}
-              >
-                Atención Cliente
               </Link>,
               <Link
                 key="opcion4"

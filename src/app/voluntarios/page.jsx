@@ -10,11 +10,13 @@ export default function Voluntarios() {
         <Image src={image1} alt="banner" fill priority={true} />
       </section>
 
-      <div class="hidden md:block">
+      <div className="hidden md:block">
         <div className="w-64 h-64 border border-gray-300 p-4 transition-transform hover:scale-105 relative rounded-lg">
           <Image
             src={image2}
             alt="Imagen"
+            width={500}
+            height={500}
             className="w-full h-full object-cover absolute inset-0 rounded-lg "
           />
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-70 opacity-0 transition-opacity hover:opacity-100 border rounded-lg ">
@@ -24,14 +26,20 @@ export default function Voluntarios() {
         </div>
       </div>
 
-      <div class="md:hidden">
-        <div class="flex p-4 border rounded-lg shadow-md">
-          <div class="w-1/3 pr-4">
-            <Image src={image2} alt="Imagen" class="w-full h-auto rounded-lg" />
+      <div className="md:hidden">
+        <div className="flex p-4 border rounded-lg shadow-md">
+          <div className="w-1/3 pr-4">
+            <Image
+              src={image2}
+              alt="Imagen"
+              width={500}
+              height={500}
+              className="w-full h-auto rounded-lg"
+            />
           </div>
-          <div class="w-2/3">
-            <h2 class="text-2xl font-bold mb-2">Título de la Tarjeta</h2>
-            <p class="text-gray-700">
+          <div className="w-2/3">
+            <h2 className="text-2xl font-bold mb-2">Título de la Tarjeta</h2>
+            <p className="text-gray-700">
               Este es el contenido de la tarjeta. Puede ser cualquier texto que
               desees mostrar.
             </p>

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
+
 export default function page() {
   return (
     <section className="mt-[70px] py-8 font-baloo">
