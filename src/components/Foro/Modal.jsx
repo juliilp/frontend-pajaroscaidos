@@ -6,10 +6,11 @@ import { RiImageFill } from "react-icons/ri";
 import { createNewPost } from "@/api/apiCall/functions";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
+import Alerts from "../Alerts/Alerts";
 
 export default function ModalnewPost({ setvisible }) {
   const { UserContext } = CustomContext();
-
+  const [seeAlert, setSeeAlert] = useState(true)
   useEffect(() => {
     const body = document.getElementById("Body");
     body && (body.style.overflow = "hidden");
@@ -66,14 +67,14 @@ export default function ModalnewPost({ setvisible }) {
       console.log("data: ", postData);
       try {
         const response = await createNewPost(UserContext.id, postData);
-        console.log(response); // Respuesta de la API
+
+        if (response) {
+          setSeeAlert(true);
+        }
       } catch (error) {
         console.error("Error:", error);
       }
 
-      setTimeout(() => {
-        setvisible();
-      }, 5000);
     }
   };
 
@@ -91,8 +92,12 @@ export default function ModalnewPost({ setvisible }) {
   if (newPost.image && newPost.image instanceof Blob) {
     imagePreview = URL.createObjectURL(newPost.image);
   }
+  const closeAlert = () => {
+    setSeeAlert(false)
+  }
   return (
     <main className="bg-[#686868cc] z-10 min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+      {seeAlert && <Alerts title={'Exito!'} textdetails={'El post fue subido correctamente'} closemodal={closeAlert} callback={setvisible} />}
       <div className="relative font-semibold h-[35rem] max-h-[90%] w-[40rem] max-w-[97%] bg-[#D9D9D9] flex flex-col justify-between md:h-[28rem] md:w-[38rem] lg:h-[30rem] lg:w-[40rem] xl:h-[33rem] xl:w-[43rem] 2xl:h-[35rem] 2xl:w-[45rem]">
         <button
           className="absolute right-0 top-0 text-2x1"
