@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Banner from "@/../../public/images/cursos/banner.jpg";
-import Card1 from "@/../../public/images/cursos/card1.jpg";
-import Card2 from "@/../../public/images/cursos/card2.jpg";
-import Card3 from "@/../../public/images/cursos/card3.jpg";
-import CardCursos from "@/app/cursos/CardCursos";
+import Banner from "@/../public/images/cursos/banner.jpg";
+import Card1 from "@/../public/images/cursos/card1.jpg";
+import Card2 from "@/../public/images/cursos/card2.jpg";
+import Card3 from "@/../public/images/cursos/card3.jpg";
+import CardCursos from "@/components/cursos/CardCursos";
 
 export default function page() {
   return (
