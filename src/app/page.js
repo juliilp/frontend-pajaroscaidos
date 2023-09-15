@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
 import Campañas from "@/components/Home/Campañas";
 import MainHome from "@/components/Home/MainHome";
 import NuestraComunidadDesktop from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
+import React, { useState, useEffect } from "react";
 import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
 import { getBannerImages } from "@/api/apiCall/functions";
 
@@ -21,9 +21,7 @@ export default function Home() {
     <section className="mt-[70px]">
       <MainHome banner={images} />
       <div className="w-full justify-center items-center flex flex-col gap-0 xl:gap-6 xl:flex-row lg:items-start xl:px-8">
-        <Suspense fallback={<h1 className="font-semibold">Cargando....</h1>}>
-          <Campañas />
-        </Suspense>
+        <Campañas />
         <NuestraComunidadDesktop />
         {/* Necesito centrarlo de ésta manera ya que no tiene nada mas que lo contenga */}
         <div className="flex w-full items-center justify-center xl:hidden">
