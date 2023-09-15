@@ -48,6 +48,7 @@ export default function CardTiroAlPichon({
           <Link
             href="/acciones/articulo3"
             className="bg-[#128117] text-white py-2 px-6 justify-self-center w-max rounded-lg"
+            prefetch={false}
           >
             Saber más
           </Link>

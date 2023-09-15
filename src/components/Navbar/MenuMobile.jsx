@@ -55,6 +55,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/caza-trafico"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Caza y tráfico de faunas
               </Link>,
@@ -63,6 +64,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/actosmaltratoycrueldad"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
@@ -71,6 +73,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/legislacion"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Legislación
               </Link>,
@@ -106,6 +109,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/voluntarios"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Voluntarios
               </Link>,
@@ -139,7 +143,7 @@ export default function MenuMobile({ closeMenu }) {
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            openMenu === "servicio" ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
+            openMenu === "servicio" ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -157,22 +161,16 @@ export default function MenuMobile({ closeMenu }) {
                 href="/como-denunciar"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Como Denunciar
-              </Link>,
-              <Link
-                key="opcion3"
-                href="/atencion-al-cliente"
-                className="focus:underline"
-                onClick={closeMenu}
-              >
-                Atención Cliente
               </Link>,
               <Link
                 key="opcion4"
                 href="/galeria-solidaria"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Galeria Solidaria
               </Link>,
@@ -181,6 +179,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/cursos"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Cursos
               </Link>,

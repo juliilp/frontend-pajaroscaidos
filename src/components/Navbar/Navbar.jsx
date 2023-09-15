@@ -68,7 +68,7 @@ export default function Navbar() {
               </span>
             </Link>
             {UserContext.avatar.avatar_url !== "-" ? (
-              <Link href={"/perfil"} prefetch={false}>
+              <Link href={"/perfil"}>
                 <Image
                   src={
                     UserContext.avatar.avatar_url
