@@ -11,7 +11,6 @@ See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
 */
 module.exports = {
   // ...otras configuraciones
-
   images: {
     domains: [
       "t4.ftcdn.net",

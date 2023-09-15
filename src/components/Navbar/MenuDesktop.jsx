@@ -46,36 +46,20 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/acciones"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion1" href="/acciones" onClick={closeMenu}>
                 Acciones
               </Link>,
-              <Link
-                key="opcion2"
-                href="/caza-trafico"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion2" href="/caza-trafico" onClick={closeMenu}>
                 Caza y tráfico de faunas
               </Link>,
               <Link
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
-                prefetch={false}
                 onClick={closeMenu}
               >
                 Crueldad y maltrato
               </Link>,
-              <Link
-                key="opcion4"
-                href="/legislacion"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion4" href="/legislacion" onClick={closeMenu}>
                 Legislación
               </Link>,
             ]}
@@ -108,20 +92,10 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/voluntarios"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion1" href="/voluntarios" onClick={closeMenu}>
                 Voluntarios
               </Link>,
-              <Link
-                key="opcion2"
-                href="/foro"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion2" href="/foro" onClick={closeMenu}>
                 Foro
               </Link>,
             ]}
@@ -154,44 +128,23 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/contactanos"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion1" href="/contactanos" onClick={closeMenu}>
                 Contactanos
               </Link>,
-              <Link
-                key="opcion2"
-                href="/como-denunciar"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion2" href="/como-denunciar" onClick={closeMenu}>
                 Como Denunciar
               </Link>,
               <Link
                 key="opcion3"
                 href="/atencion-al-cliente"
-                prefetch={false}
                 onClick={closeMenu}
               >
                 Atención Cliente
               </Link>,
-              <Link
-                key="opcion4"
-                href="/galeria-solidaria"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion4" href="/galeria-solidaria" onClick={closeMenu}>
                 Galeria Solidaria
               </Link>,
-              <Link
-                key="opcion5"
-                href="/cursos"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion5" href="/cursos" onClick={closeMenu}>
                 Cursos
               </Link>,
             ]}

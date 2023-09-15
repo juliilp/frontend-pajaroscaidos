@@ -13,11 +13,7 @@ export default function MenuMobile({ closeMenu }) {
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link
-          href="/"
-          className="focus:underline"
-          onClick={closeMenu}
-        >
+        <Link href="/" className="focus:underline" onClick={closeMenu}>
           Inicio
         </Link>
       </li>
@@ -51,7 +47,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/acciones"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Acciones
               </Link>,
@@ -60,7 +55,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/caza-trafico"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Caza y tráfico de faunas
               </Link>,
@@ -69,7 +63,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/actosmaltratoycrueldad"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
@@ -78,7 +71,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/legislacion"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Legislación
               </Link>,
@@ -114,7 +106,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/voluntarios"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Voluntarios
               </Link>,
@@ -123,7 +114,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/foro"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Foro
               </Link>,
@@ -159,7 +149,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/contactanos"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Contacto
               </Link>,
@@ -168,7 +157,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/como-denunciar"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Como Denunciar
               </Link>,
@@ -177,7 +165,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/atencion-al-cliente"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Atención Cliente
               </Link>,
@@ -186,7 +173,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/galeria-solidaria"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Galeria Solidaria
               </Link>,
@@ -195,7 +181,6 @@ export default function MenuMobile({ closeMenu }) {
                 href="/cursos"
                 className="focus:underline"
                 onClick={closeMenu}
-                prefetch={false}
               >
                 Cursos
               </Link>,
