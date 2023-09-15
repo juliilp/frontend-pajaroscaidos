@@ -8,15 +8,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import api from "../../api/api";
-import ModalPerfil from "@/components/ModalPerfil/ModalPerfil";
+import ModalPerfilDescription from "@/components/ModalPerfil/ModalPerfilDescription";
 export default function Perfil() {
   const router = useRouter();
   const { UserContext } = CustomContext();
   const [user, setUser] = useState();
   const [publications, setPublications] = useState([]);
-  const [switchModalInfo, setSwitchModalInfo] = useState(false);
   const [switchSobreMi, setSwitchSobreMi] = useState(false);
-  const handlerModalInfo = () => setSwitchModalInfo((prev) => !prev);
   const handlerSobreMi = () => setSwitchSobreMi((prev) => !prev);
   useEffect(() => {
     if (!UserContext) return router.push("/");
@@ -28,14 +26,16 @@ export default function Perfil() {
     }
     if (user) userPublications();
   }, [UserContext, user, router]);
+
   return (
     <section className="pt-[100px] flex flex-col gap-8 justify-center items-center font-semibold text-letterPerfil text-xl pb-[100px] ">
       <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] p-6 flex flex-col shadow-primary relative">
-        <CiSettings
-          size={45}
-          className="absolute bottom-4 right-4 font-black text-black cursor-pointer "
-          onClick={handlerModalInfo}
-        />
+        <Link href="/perfil/update">
+          <CiSettings
+            size={45}
+            className="absolute bottom-4 right-4 font-black text-black cursor-pointer "
+          />
+        </Link>
         <div className="bg-slate-500 w-full h-[100px] my-8 flex items-center">
           {user?.avatar.secure_url && (
             <Image
@@ -66,8 +66,14 @@ export default function Perfil() {
         </article>
       </article>
 
-      {switchModalInfo && <ModalPerfil handlerClose={handlerModalInfo} />}
-      {switchSobreMi && <ModalPerfil handlerClose={handlerSobreMi} />}
+      {switchSobreMi && (
+        <ModalPerfilDescription
+          handlerClose={handlerSobreMi}
+          id={user.id}
+          viejaDescripcion={user.description}
+          user={user}
+        />
+      )}
       <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] shadow-primary p-8 relative">
         <BiEditAlt
           size={45}
@@ -75,12 +81,7 @@ export default function Perfil() {
           onClick={handlerSobreMi}
         />
         <h2 className="underline">Sobre Mi</h2>
-        <p className="font-normal w-[95%]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio,
-          tempora temporibus illum incidunt enim culpa harum aut, consectetur
-          quas possimus quia voluptates optio quam dolor, debitis voluptatum
-          dolores id. A.
-        </p>
+        <p className="font-normal w-[95%]">{user?.description}</p>
       </article>
 
       <article className="w-11/12 sm:w-10/12 md:w-9/12 xl:w-8/12 2xl:max-w-[45rem] flex flex-col gap-2 border-[#C4C4C4] shadow-primary">
