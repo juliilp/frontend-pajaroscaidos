@@ -21,6 +21,7 @@ export default function Navbar() {
       setRendering(true);
     }
   }, []);
+
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
   };
@@ -60,50 +61,53 @@ export default function Navbar() {
           <MenuDesktop />
         </div>
 
-        {rendering && UserContext && UserContext.first_name ? (
+        {rendering && (
           <div className="flex items-center justify-center gap-3">
-            <Link href={"/perfil"}>
-              <span className="text-white font-semibold">
-                {UserContext.first_name}
-              </span>
-            </Link>
-            {UserContext.avatar.avatar_url !== "-" ? (
-              <Link href={"/perfil"}>
-                <Image
-                  src={
-                    UserContext.avatar.avatar_url
-                      ? UserContext.avatar.avatar_url
-                      : UserContext.avatar.secure_url
-                  }
-                  alt="Avatar"
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
-              </Link>
+            {UserContext && UserContext.first_name ? (
+              <React.Fragment>
+                <Link href={"/perfil"}>
+                  <span className="text-white font-semibold">
+                    {UserContext.first_name}
+                  </span>
+                </Link>
+                {UserContext.avatar.avatar_url !== "-" ? (
+                  <Link href={"/perfil"}>
+                    <Image
+                      src={
+                        UserContext.avatar.avatar_url
+                          ? UserContext.avatar.avatar_url
+                          : UserContext.avatar.secure_url
+                      }
+                      alt="Avatar"
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                    />
+                  </Link>
+                ) : (
+                  <Link href={"/perfil"}>
+                    <BiSolidUser size={35} color="white" />
+                  </Link>
+                )}
+                <button
+                  onClick={(e) => handleLogout(e)}
+                  className="text-white font-semibold"
+                >
+                  Cerrar sesión
+                </button>
+              </React.Fragment>
             ) : (
-              <Link href={"/perfil"}>
+              <React.Fragment>
+                <Link
+                  href="/login"
+                  className="text-white font-semibold"
+                  prefetch={false}
+                >
+                  Iniciar sesión
+                </Link>
                 <BiSolidUser size={35} color="white" />
-              </Link>
+              </React.Fragment>
             )}
-
-            <button
-              onClick={(e) => handleLogout(e)}
-              className="text-white font-semibold"
-            >
-              Cerrar sesión
-            </button>
-          </div>
-        ) : (
-          <div className="flex items-center justify-center gap-3">
-            <Link
-              href="/login"
-              className="text-white font-semibold"
-              prefetch={false}
-            >
-              Iniciar sesión
-            </Link>
-            <BiSolidUser size={35} color="white" />
           </div>
         )}
       </nav>
