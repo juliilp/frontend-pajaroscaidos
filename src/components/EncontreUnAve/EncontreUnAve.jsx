@@ -39,6 +39,7 @@ export default function EncontreUnAve({
                 <Link
                   href="#"
                   className="m1-1 text-sm font-semibold cursor-pointer underline block"
+                  prefetch={false}
                 >
                   Acceder al blog
                 </Link>

@@ -1,4 +1,5 @@
 import jsonData from "./ContenidoTarjetas.json";
+
 export default function TarjetaCrueldadMaltrato() {
   return (
     <div>

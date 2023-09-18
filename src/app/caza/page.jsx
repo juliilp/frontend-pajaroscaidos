@@ -4,7 +4,6 @@ import Image from "next/image";
 
 export default function page() {
   return (
-    // Comentario
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
       <div className="w-full xl:h-56 sm:h-48 h-32 relative">
         <Image src={Banner} alt="Banner caza" fill priority={true} />

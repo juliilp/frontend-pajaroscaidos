@@ -38,7 +38,7 @@ export default function MenuDesktop() {
           />
         </span>
         <div
-          className={`absolute top-14 -left-5 transition-all duration-300 -z-20 ${
+          className={`absolute top-14 -left-6 transition-all duration-300 -z-20 ${
             openMenu === "asociacion"
               ? "translate-y-0 opacity-100 pointer-events-auto"
               : "-translate-y-12 opacity-0 pointer-events-none"
@@ -46,40 +46,35 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/acciones"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion1" href="/acciones" onClick={closeMenu}>
                 Acciones
               </Link>,
               <Link
                 key="opcion2"
                 href="/caza-trafico"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Caza y tráfico de faunas
               </Link>,
               <Link
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
               <Link
                 key="opcion4"
                 href="/legislacion"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Legislación
               </Link>,
             ]}
-            tamaño="md:w-[100%] lg:w-[115%]  md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
+            tamaño="md:w-[100%] lg:w-[115%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px] px-2"
           />
         </div>
       </li>
@@ -111,17 +106,12 @@ export default function MenuDesktop() {
               <Link
                 key="opcion1"
                 href="/voluntarios"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Voluntarios
               </Link>,
-              <Link
-                key="opcion2"
-                href="/foro"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion2" href="/foro" onClick={closeMenu}>
                 Foro
               </Link>,
             ]}
@@ -154,43 +144,30 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/contactanos"
-                prefetch={false}
-                onClick={closeMenu}
-              >
+              <Link key="opcion1" href="/contactanos" onClick={closeMenu}>
                 Contactanos
               </Link>,
               <Link
                 key="opcion2"
                 href="/como-denunciar"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Como Denunciar
               </Link>,
               <Link
-                key="opcion3"
-                href="/atencion-al-cliente"
-                prefetch={false}
-                onClick={closeMenu}
-              >
-                Atención Cliente
-              </Link>,
-              <Link
                 key="opcion4"
                 href="/galeria-solidaria"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Galeria Solidaria
               </Link>,
               <Link
                 key="opcion5"
                 href="/cursos"
-                prefetch={false}
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Cursos
               </Link>,
