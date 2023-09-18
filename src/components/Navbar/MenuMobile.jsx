@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
 import Link from "next/link";
-export default function MenuMobile() {
+
+export default function MenuMobile({ closeMenu }) {
   const [openMenu, setOpenMenu] = useState(null);
 
   const handlerMenu = (menu) => {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
+
   return (
     <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link href="/" className="focus:underline">
+        <Link href="/" className="focus:underline" onClick={closeMenu}>
           Inicio
         </Link>
       </li>
@@ -40,13 +42,20 @@ export default function MenuMobile() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones" className="focus:underline">
+              <Link
+                key="opcion1"
+                href="/acciones"
+                className="focus:underline"
+                onClick={closeMenu}
+              >
                 Acciones
               </Link>,
               <Link
                 key="opcion2"
                 href="/caza-trafico"
                 className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
               >
                 Caza y tráfico de faunas
               </Link>,
@@ -54,6 +63,8 @@ export default function MenuMobile() {
                 key="opcion3"
                 href="/actosmaltratoycrueldad"
                 className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
               >
                 Crueldad y maltrato
               </Link>,
@@ -61,6 +72,8 @@ export default function MenuMobile() {
                 key="opcion4"
                 href="/legislacion"
                 className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
               >
                 Legislación
               </Link>,
@@ -95,10 +108,17 @@ export default function MenuMobile() {
                 key="opcion1"
                 href="/voluntarios"
                 className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
               >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro" className="focus:underline">
+              <Link
+                key="opcion2"
+                href="/foro"
+                className="focus:underline"
+                onClick={closeMenu}
+              >
                 Foro
               </Link>,
             ]}
@@ -123,7 +143,7 @@ export default function MenuMobile() {
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            openMenu === "servicio" ? "opacity-100 h-[15rem]" : "opacity-0 h-0"
+            openMenu === "servicio" ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
           }`}
         >
           <MenuInterno
@@ -132,6 +152,7 @@ export default function MenuMobile() {
                 key="opcion1"
                 href="/contactanos"
                 className="focus:underline"
+                onClick={closeMenu}
               >
                 Contacto
               </Link>,
@@ -139,16 +160,27 @@ export default function MenuMobile() {
                 key="opcion2"
                 href="/como-denunciar"
                 className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
               >
                 Como Denunciar
               </Link>,
-              <Link key="opcion3" href="/*" className="focus:underline">
-                Atención Cliente
-              </Link>,
-              <Link key="opcion4" href="/shopping" className="focus:underline">
+              <Link
+                key="opcion4"
+                href="/galeria-solidaria"
+                className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Galeria Solidaria
               </Link>,
-              <Link key="opcion5" href="/*" className="focus:underline">
+              <Link
+                key="opcion5"
+                href="/cursos"
+                className="focus:underline"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Cursos
               </Link>,
             ]}

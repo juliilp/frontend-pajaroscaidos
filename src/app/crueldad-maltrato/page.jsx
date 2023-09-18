@@ -1,4 +1,3 @@
-"use client";
 import TituloCrueldadMaltrato from "../../components/CrueldadMaltrato/TituloCrueldadMaltrato";
 import TarjetaCrueldadMaltrato from "../../components/CrueldadMaltrato/Tarjetas";
 import Image from "next/image";

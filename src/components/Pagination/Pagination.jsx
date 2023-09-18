@@ -1,24 +1,27 @@
 import React from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Pagination = ({ cardsPerPage, allCards, pagination }) => {
-  const pageNumber = [];
-  for (let i = 0; i < Math.ceil(allCards / cardsPerPage); i++) {
-    pageNumber.push(i);
-  }
+const Pagination = ({ pageNumber, totalPages, changePage }) => {
   return (
-    <div>
-      <div>
-        {pageNumber &&
-          pageNumber.map((a) => {
-            return (
-              <div key={a}>
-                <button onClick={() => pagination(a)} href="number page">
-                  {a}
-                </button>
-              </div>
-            );
-          })}
+    <div className="flex items-center gap-6 my-8">
+      <button
+        onClick={pageNumber === 1 ? null : () => changePage(pageNumber - 1)}
+      >
+        <IoIosArrowBack size={30} className="cursor-pointer" />
+      </button>
+      <div className="flex items-center gap-3">
+        <span className="text-[#1D4AE9]">{pageNumber}</span>
+        <span>de</span>
+        <span className="text-[#1D4AE9]">{totalPages}</span>
       </div>
+
+      <button
+        onClick={
+          pageNumber >= totalPages ? null : () => changePage(pageNumber + 1)
+        }
+      >
+        <IoIosArrowForward size={30} className="cursor-pointer" />
+      </button>
     </div>
   );
 };
