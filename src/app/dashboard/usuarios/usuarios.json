@@ -1,0 +1,257 @@
+{
+  "users": [
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "3103333a-fabf-40ef-b88f-699a59cc8510",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "dr@live.com.ar",
+      "nick_name": "Administrador",
+      "isVoluntary": false,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "description": "-",
+      "contact": "-"
+    },
+    {
+      "id": "ad01b19f-f414-4135-ab8d-02591abe9e95",
+      "avatar": {
+        "avatar_url": "https://t4.ftcdn.net.jpg",
+        "public_id": "-",
+        "secure_url": "-"
+      },
+      "email": "pp@hotmail.com",
+      "nick_name": "La_araña_que_pica",
+      "isVoluntary": true,
+      "isAdmin": true,
+      "isBanned": false,
+
+      "first_name": "Peter",
+      "last_name": "Parker",
+      "description": "-",
+      "contact": "-"
+    }
+  ],
+  "status": "success"
+}
