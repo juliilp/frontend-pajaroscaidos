@@ -57,7 +57,7 @@ export default function Foros() {
       {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
 
       <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-24">
-        <div className="flex gap-6 mt-6 text-[#756F70] justify-around w-full sm:border-b sm:border-white py-4">
+        <div className="flex sm:gap-6 mt-6 text-[#756F70] justify-around w-full  sm:border-white py-4">
           <button
             onClick={setvisibilitymodal}
             className="bg-[#005DAB] py-3 px-3 sm:px-6 max-w text-white  rounded-[20px] flex items-center gap-2 font-semibold"
@@ -65,11 +65,11 @@ export default function Foros() {
             <AiOutlineFileText color="white" size={20} />
             Crear foro
           </button>
-          <div className="flex gap-4 items-center">
-            <CiClock2 size={30} />
-            <span className="font-semibold">Ordenar por:</span>
+          <div className="flex gap-4 items-center flex-wrap justify-center">
+            <CiClock2 size={30} className="hidden sm:block" />
+            <span className="font-semibold hidden sm:block">Ordenar por:</span>
             <select
-              className="bg-gray-100 rounded p-1 border-none"
+              className="bg-gray-100 rounded p-1 border-none outline-none"
               value={order}
               onChange={(e) => setOrder(e.target.value)}
             >
@@ -79,21 +79,23 @@ export default function Foros() {
           </div>
         </div>
 
-        {posts.map((e, key) => {
-          return (
-            <CardForo
-              key={key}
-              titulo={e.title}
-              tiempo={e.createdAt}
-              usuario={e.user.nick_name}
-              like={e.reactions.length}
-              message={e.comments.length}
-              image={e.image[0]}
-              id={e.id}
-              reactions={e.reactions}
-            />
-          );
-        })}
+        <article className="flex flex-col gap-6  sm:px-6">
+          {posts.map((e, key) => {
+            return (
+              <CardForo
+                key={key}
+                titulo={e.title}
+                tiempo={e.createdAt}
+                usuario={e.user.nick_name}
+                like={e.reactions.length}
+                message={e.comments.length}
+                image={e.image[0]}
+                id={e.id}
+                reactions={e.reactions}
+              />
+            );
+          })}
+        </article>
 
         <div className="flex justify-center w-full">
           <Pagination
