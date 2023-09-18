@@ -3,8 +3,6 @@ import React from "react";
 import TextoMobile from "./TextoMobile";
 
 export default function PostComunidadMobile({ publications }) {
-  console.log(publications);
-
   return (
     <section className="flex flex-col gap-6  w-full mt-4 ">
       {publications.length > 0 ? (

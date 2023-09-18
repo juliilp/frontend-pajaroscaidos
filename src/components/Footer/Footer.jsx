@@ -16,7 +16,7 @@ export default function Footer() {
         priority={false}
         width={100}
         height={100}
-        className="sm:h-full"
+        className="h-full w-auto"
       />
 
       <p className="font-baloo">Derechos reservados ©PajarosCaidos</p>
