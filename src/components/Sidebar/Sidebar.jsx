@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Sidebar() {
   return (
-    <div className="bg-[#4F4F4F] h-screen w-[20%] mt-[70px] top-0 left-0 z-[999999] text-white">
+    <div className="bg-[#4F4F4F] h-auto w-[20%] mt-[70px] text-white">
       <h1 className="font-bold text-2xl border-b-4 border-b-[#444444] text-center p-4 ">
         Panel administrador
       </h1>
