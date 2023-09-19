@@ -105,11 +105,11 @@ export default function Foros() {
           />
         </div>
       </div>
-      <div className="mt-24 flex justify-center items-center flex-col gap-6">
+      <div className="mt-24  justify-center items-center flex-col gap-6 max-w-[400px] hidden xl:flex">
         <Image
           src={ImagenForo}
           alt="imagen"
-          className="hidden lg:block"
+          className="object-cover w-[400px]"
           width="400px"
         />
         <NuestraComunidad />
