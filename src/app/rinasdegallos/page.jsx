@@ -4,7 +4,7 @@ import Imagen1 from "@/../public/images/rinasDeGallos/Imagen1.png";
 import Imagen2 from "@/../public/images/rinasDeGallos/Imagen2.png";
 import Imagen3 from "@/../public/images/rinasDeGallos/Imagen3.png";
 import bgimage from "@/../public/images/rinasDeGallos/Rinas.png";
-import bgimage2 from "@/../public/images/rinasDeGallos/Rinas2.png";
+
 export default function page() {
   return (
     <section className="mt-[70px] w-full bg-[#d8d8d8] h-full pb-16">

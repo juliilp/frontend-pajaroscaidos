@@ -1,9 +1,12 @@
-import EnvenenamientoFoto from "@/../public/images/envenenamiento-foto.png";
 import Image from "next/image";
+import EnvenenamientoFoto from "@/../public/images/Envenenamiento/envenenamiento-foto.png";
+import bgimage from "@/../public/images/Envenenamiento/Envenenamiento.png";
 export default function page() {
   return (
     <section className="w-full flex flex-col justify-center items-center gap-8 pb-16 ">
-      <div className="w-full bg-slate-500 h-[300px]" />
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
       <h2 className="text-[#0C6410] text-xl md:text-2xl text-center hidden md:block ">
         ENVENENAMIENTO
       </h2>
