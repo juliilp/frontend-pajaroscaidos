@@ -81,7 +81,7 @@ export default function CardForo({
       {image?.secure_url && (
         <Image
           src={image.secure_url}
-          alt={image.public_id}
+          alt="post"
           width={300}
           height={300}
           className="h-full max-w-[160px]"

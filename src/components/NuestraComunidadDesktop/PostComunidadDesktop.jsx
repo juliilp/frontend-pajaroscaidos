@@ -23,11 +23,12 @@ export default function PostComunidad({ publications }) {
                   alt="Avatar"
                   width={50}
                   height={50}
-                  layout="fixed"
-                  className="rounded-full"
+                  className="rounded-full w-[50px] h-[50px]"
+                  priority
+                  layout
                 />
               ) : (
-                <BiSolidUser size={35} color="white" />
+                <BiSolidUser size={35} color="white" layout />
               )}
 
               <span className="text-[#707070] font-semibold">
@@ -41,20 +42,21 @@ export default function PostComunidad({ publications }) {
 
             <Image
               src={post.image[0].secure_url}
-              alt={post.user.nick_name}
+              alt="post"
               width={200}
               height={200}
               className="w-full h-[200px] p-6 object-contain flex-shrink-0"
+              layout
             />
           </div>
         ))
       ) : (
-        <div className="flex flex-col gap-8 bg-[#CDCDCD] py-6 max-w-[300px] border-2  items-center border-none">
+        <div className="flex flex-col gap-8 bg-[#CDCDCD] py-6 w-[400px] border-2  items-center border-none">
           <p className="text-[#707070] font-semibold text-xl ">
             No hay publicaciones
           </p>
 
-          <Image src={ImagenPericos} width={300} height={200} alt={"no post"} />
+          <Image src={ImagenPericos} width={300} height={200} alt="no post" />
         </div>
       )}
     </>
