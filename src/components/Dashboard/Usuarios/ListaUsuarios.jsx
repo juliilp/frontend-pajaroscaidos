@@ -15,7 +15,7 @@ export default function ListaUsuarios({ users, onDataUpdate }) {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      for (const userId in menuRefs.current) {
+      Object.keys(menuRefs.current).forEach((userId) => {
         if (
           menuRefs.current[userId] &&
           !menuRefs.current[userId].contains(event.target)
@@ -25,7 +25,7 @@ export default function ListaUsuarios({ users, onDataUpdate }) {
             [userId]: false,
           }));
         }
-      }
+      });
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
@@ -39,11 +39,11 @@ export default function ListaUsuarios({ users, onDataUpdate }) {
     setOpenMenus((prevOpenMenus) => {
       const updatedOpenMenus = { ...prevOpenMenus };
 
-      for (const menuId in updatedOpenMenus) {
+      Object.keys(updatedOpenMenus).forEach((menuId) => {
         if (menuId !== userId) {
           updatedOpenMenus[menuId] = false;
         }
-      }
+      });
 
       updatedOpenMenus[userId] = !prevOpenMenus[userId];
       return updatedOpenMenus;
