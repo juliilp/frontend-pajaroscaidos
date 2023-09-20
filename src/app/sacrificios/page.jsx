@@ -1,11 +1,16 @@
-import Caza from "@/../public/images/sacrificios.png";
+import Caza from "@/../public/images/Sacrificios/sacrificios.png";
 import Image from "next/image";
+import bgimage from "@/../public/images/Sacrificios/SacrificiosBg.png";
 
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
-      <div className="w-full bg-slate-500 h-[10rem]" />
-      <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
+      <h2 className="text-[#0C6410] font-semibold text-center  text-2xl ">
+        CAZA DE AVES
+      </h2>
       <div className="md:grid md:grid-cols-5">
         <p className="px-6 mb-8 md:mb-16 max-w-[800px] md:col-span-3 ">
           Los sacrificios religiosos son actos que llevan a cabo los seres
