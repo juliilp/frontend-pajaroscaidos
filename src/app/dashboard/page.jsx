@@ -6,7 +6,7 @@ import Campañas from "@/components/Dashboard/OpcionesInicio/Campañas";
 
 export default function Dashboard() {
   return (
-    <div className="flex justify-center h-[100%]">
+    <section className="flex justify-center h-[100%]">
       <div className="flex flex-col justify-center items-center mt-[40px] h-[100%] w-[90%]">
         <h1 className="font-bold text-xl">Banners</h1>
         <div className="flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[300px] w-[90%] bg-[#444] ">
@@ -38,6 +38,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
