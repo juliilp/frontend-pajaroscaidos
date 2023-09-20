@@ -1,8 +1,8 @@
-import Imagen1 from "@/../public/images/voluntariadoImagen1.png";
-import Imagen2 from "@/../public/images/voluntariadoImagen2.png";
-import Imagen3 from "@/../public/images/voluntariadoImagen3.png";
-import Imagen4 from "@/../public/images/voluntariadoImagen4.png";
-import Imagen5 from "@/../public/images/voluntariadoImagen5.png";
+import Imagen1 from "@/../public/images/Voluntariado/voluntariadoImagen1.png";
+import Imagen2 from "@/../public/images/Voluntariado/voluntariadoImagen2.png";
+import Imagen3 from "@/../public/images/Voluntariado/voluntariadoImagen3.png";
+import Imagen4 from "@/../public/images/Voluntariado/voluntariadoImagen4.png";
+import Imagen5 from "@/../public/images/Voluntariado/voluntariadoImagen5.png";
 
 export const dataVoluntario = [
   {

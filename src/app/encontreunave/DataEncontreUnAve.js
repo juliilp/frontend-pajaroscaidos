@@ -1,6 +1,6 @@
-import Imagen1 from "@/../public/images/encontreunave/imagen1.png";
-import Imagen2 from "@/../public/images/encontreunave/imagen2.png";
-import Imagen3 from "@/../public/images/encontreunave/imagen3.png";
+import Imagen1 from "@/../public/images/encontreunave/Imagen1.png";
+import Imagen2 from "@/../public/images/encontreunave/Imagen2.png";
+import Imagen3 from "@/../public/images/encontreunave/Imagen3.png";
 
 export const DataEncontreUnAve = [
   {

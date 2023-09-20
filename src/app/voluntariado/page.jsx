@@ -1,10 +1,13 @@
 import CardVoluntariado from "@/components/CardVoluntariado/CardVoluntariado";
 import { dataVoluntario } from "@/components/CardVoluntariado/dataVoluntario";
-
+import Image from "next/image";
+import bgimage from "@/../public/images/Voluntariado/Voluntariado.png";
 export default function page() {
   return (
     <section className="mt-[70px]">
-      <div className="hidden md:block w-full h-[200px] bg-slate-600" />
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
       <h2 className="w-full text-center text-xl my-8 lg:text-2xl ">
         Voluntarios
       </h2>
