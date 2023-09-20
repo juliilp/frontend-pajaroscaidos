@@ -1,14 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import Image1 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen1.png";
-import Image2 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen2.png";
-import Image3 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen3.png";
-import Image4 from "@/../public/images/AccionesClubPigeionClubArgentino/imagen4.png";
-
+import Image1 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen1.png";
+import Image2 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen2.png";
+import Image3 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen3.png";
+import Image4 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen4.png";
+import bgimage from "../../../../public/images/AccionesClubPigeionClubArgentino/NoMatanza.png";
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col gap-8 w-full bg-[#D9d8d8] ">
-      <div className="w-full bg-slate-500 h-[250px]" />
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full h-full" />
+      </section>
       <h2 className="text-[#0C6410] text-center text-xl font-semibold mt-8">
         CLUB PIGEON CLUB ARGENTINO
       </h2>
