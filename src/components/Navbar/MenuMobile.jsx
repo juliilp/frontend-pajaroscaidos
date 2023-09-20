@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function MenuMobile({ closeMenu }) {
   const [openMenu, setOpenMenu] = useState(null);
 
-  const handlerMenu = (menu) => {
+  const toggleMenu = (menu) => {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
 
@@ -23,7 +23,7 @@ export default function MenuMobile({ closeMenu }) {
       >
         <span
           className="flex items-center justify-between  w-full "
-          onClick={() => handlerMenu("asociacion")}
+          onClick={() => toggleMenu("asociacion")}
         >
           Nuestra Asociación
           <IoIosArrowDown
@@ -47,6 +47,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/acciones"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Acciones
               </Link>,
@@ -87,7 +88,7 @@ export default function MenuMobile({ closeMenu }) {
       >
         <span
           className="flex items-center justify-between w-full"
-          onClick={() => handlerMenu("comunidad")}
+          onClick={() => toggleMenu("comunidad")}
         >
           Nuestra Comunidad
           <IoIosArrowDown
@@ -130,7 +131,7 @@ export default function MenuMobile({ closeMenu }) {
         data-menu="servicio"
       >
         <span
-          onClick={() => handlerMenu("servicio")}
+          onClick={() => toggleMenu("servicio")}
           className="flex items-center justify-between w-full"
         >
           Nuestro Servicio
@@ -153,6 +154,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/contactanos"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Contacto
               </Link>,
