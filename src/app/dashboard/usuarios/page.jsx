@@ -45,7 +45,7 @@ export default function Page() {
   }
 
   return (
-    <div className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
+    <section className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
       <h1 className="text-center pt-6 text-2xl font-bold">Usuarios</h1>
       <div className="bg-[#4f4f4f] w-full flex flex-col gap-2 p-3 rounded-2xl text-white">
         <table className="w-full table-auto text-center border-separate border-spacing-y-2">
@@ -82,6 +82,6 @@ export default function Page() {
         totalPages={totalPages}
         changePage={handlePageChange}
       />
-    </div>
+    </section>
   );
 }
