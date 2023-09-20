@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <body id="Body" className={baloo.className}>
           <ContextProvider>
             <Navbar />
-            <div className="min-h-screen bg-[#D9D9D9]">{children}</div>
+            <main className="min-h-screen bg-[#D9D9D9]">{children}</main>
           </ContextProvider>
           <Footer />
         </body>
