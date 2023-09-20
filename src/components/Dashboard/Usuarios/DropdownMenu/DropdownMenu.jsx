@@ -1,55 +1,54 @@
 import api from "@/api/api";
 import "@/styles/DropdownMenu.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
+
+/**
+ * Renders a dropdown menu with options to change the status of a user.
+ * @param {Object} props.user - The user object containing the user's information and status.
+ * @param {Function} props.onDataUpdate - A callback function to be called when the data is updated.
+ * @returns {JSX.Element} - The rendered dropdown menu component.
+ */
 
 export default function DropdownMenu({ user, onDataUpdate }) {
-  const [dataUpdated, setDataUpdated] = useState(false);
-
-  useEffect(() => {
-    if (dataUpdated) {
-      onDataUpdate();
-      setDataUpdated(false);
-    }
-  }, [dataUpdated, onDataUpdate]);
-
   const changeStatus = async (option, newStatus) => {
     const body = { [option]: newStatus };
 
     try {
       const resp = await api.patch(`user/admin/${user.id}/action`, body);
       if (resp.status === 200) {
-        setDataUpdated(true);
+        onDataUpdate();
       }
     } catch (error) {
       console.error("Error al cambiar el estado:", error);
     }
   };
 
+  const handleStatusClick = (option) => {
+    changeStatus(option, !user[option]);
+  };
+
   return (
     <div>
-      <h3>{user.nick_name}</h3>
       <ul>
         <li
           className="dropdownItem"
-          onClick={() => changeStatus("isVoluntary", !user.isVoluntary)}
+          onClick={() => handleStatusClick("isVoluntary")}
         >
-          {user.isVoluntary ? (
-            <a>Eliminar Voluntario</a>
-          ) : (
-            <a>Convertir Voluntario</a>
-          )}
+          <button>
+            {user.isVoluntary ? "Eliminar Voluntario" : "Convertir Voluntario"}
+          </button>
         </li>
         <li
           className="dropdownItem"
-          onClick={() => changeStatus("isAdmin", !user.isAdmin)}
+          onClick={() => handleStatusClick("isAdmin")}
         >
-          {user.isAdmin ? <a>Eliminar Admin</a> : <a>Convertir Admin</a>}
+          <button>{user.isAdmin ? "Eliminar Admin" : "Convertir Admin"}</button>
         </li>
         <li
           className="dropdownItem"
-          onClick={() => changeStatus("isBanned", !user.isBanned)}
+          onClick={() => handleStatusClick("isBanned")}
         >
-          {user.isBanned ? <a>Desbanear</a> : <a>Banear</a>}
+          <button>{user.isBanned ? "Desbanear" : "Banear"}</button>
         </li>
       </ul>
     </div>
