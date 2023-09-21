@@ -23,7 +23,7 @@ export default function MainHome({ banner }) {
         {banner.map((e) => (
           <SwiperSlide key={e.id} className="swiper-slide-centered">
             <Image
-              src={e.image.secure_url}
+              src={e.image.imageUrl}
               alt={`Banner ${e.name}`}
               fill
               className="w-full h-full object-cover"
