@@ -11,7 +11,7 @@ export default function PostComunidadMobile({ publications }) {
             <div className="flex gap-4 items-center justify-center">
               <span>{index + 1}</span>
               <Image
-                src={image[0].secure_url}
+                src={image[0].imageUrl}
                 alt="imagen"
                 width={100}
                 height={100}
@@ -19,21 +19,13 @@ export default function PostComunidadMobile({ publications }) {
               />
             </div>
             <div className="flex flex-col sm:justify-between justify-around">
-              <TextoMobile
-                texto={description}
-                longitud={30}
-                className="block sm:hidden"
-              />
-              <TextoMobile
-                texto={description}
-                longitud={45}
-                className=" hidden sm:block "
-              />
+              <TextoMobile texto={description} longitud={30} className="block sm:hidden" />
+              <TextoMobile texto={description} longitud={45} className=" hidden sm:block " />
 
               {/* Icono y nombre de usuario */}
               <div className="flex items-center gap-2 justify-self-center">
                 <Image
-                  src={user.avatar.secure_url}
+                  src={user.avatar.imageUrl}
                   alt="icon"
                   width={30}
                   height={30}
