@@ -58,7 +58,7 @@ export async function getBannerImages() {
 
     if (response.status !== 200) return null;
 
-    const banners = response.data.images.banners;
+    const banners = response.data.images;
     return banners;
   } catch (error) {
     console.log("error al obtener BANNER");
@@ -155,5 +155,15 @@ export async function newPassword(data) {
     if (error.response && error.response.data && error.response.data.error) {
       return error.response.data.error.code;
     }
+  }
+}
+
+export async function getItemsShop() {
+  ///esperando que haya datos en el back para integrarla
+  try {
+    const items = await api.get("shop/items");
+    console.log(items.data);
+  } catch (error) {
+    console.log(error);
   }
 }

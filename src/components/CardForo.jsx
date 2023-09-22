@@ -7,16 +7,7 @@ import api from "../api/api";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CardForo({
-  titulo,
-  tiempo,
-  usuario,
-  like,
-  message,
-  image,
-  id,
-  reactions,
-}) {
+export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
   const { UserContext } = CustomContext();
 
   const userReaction = reactions?.find((e) => e.userId === UserContext?.id);
@@ -60,9 +51,7 @@ export default function CardForo({
 
     try {
       const response = await api.delete(
-        `/reaction/delete/${
-          userReaction !== undefined ? userReaction.id : newLike
-        }`
+        `/reaction/delete/${userReaction !== undefined ? userReaction.id : newLike}`
       );
 
       if (response.status === 200) {
@@ -80,7 +69,7 @@ export default function CardForo({
     <section className="flex w-full h-[150px] items-center justify-start shadow-primary sm:shadow-none ">
       {image?.secure_url && (
         <Image
-          src={image.secure_url}
+          src={image.imageUrl}
           alt="post"
           width={300}
           height={300}
@@ -104,29 +93,17 @@ export default function CardForo({
             <IoMdHeartEmpty
               color={reaction ? "#E11447" : "#000000"}
               size={25}
-              className={`cursor-pointer ${
-                sending ? "opacity-50 pointer-events-none" : ""
-              }`}
+              className={`cursor-pointer ${sending ? "opacity-50 pointer-events-none" : ""}`}
               onClick={sending ? null : reaction ? handleUnLike : handleLike}
             />
-            <span
-              className={`font-semibold text-lg ${
-                reaction ? "text-[#AA153A]" : ""
-              }`}
-            >
+            <span className={`font-semibold text-lg ${reaction ? "text-[#AA153A]" : ""}`}>
               {likesNumber}
             </span>
           </div>
 
           <div className="flex  gap-2">
-            <RiMessage2Line
-              color="#0C6410"
-              size={25}
-              className="cursor-pointer"
-            />
-            <span className="text-[#0C6410] font-semibold text-lg self-end ">
-              {message}
-            </span>
+            <RiMessage2Line color="#0C6410" size={25} className="cursor-pointer" />
+            <span className="text-[#0C6410] font-semibold text-lg self-end ">{message}</span>
           </div>
         </div>
       </article>

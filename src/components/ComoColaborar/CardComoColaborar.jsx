@@ -15,9 +15,7 @@ export default function CardComoColaborar({
         <Image
           src={image}
           alt="imagen"
-          height={500}
-          width={500}
-          className="object-cover w-full max-w-[350px] h-[300px] rounded-md "
+          className="object-cover w-full h-full rounded-md "
         />
         <p className="w-full max-w-[350px]">{parrafo}</p>
       </div>
