@@ -158,12 +158,12 @@ export async function newPassword(data) {
   }
 }
 
-export async function getItemsShop(){///esperando que haya datos en el back para integrarla
-   try {
-    const items=await api.get('shop/items')
+export async function getItemsShop() {
+  ///esperando que haya datos en el back para integrarla
+  try {
+    const items = await api.get("shop/items");
     console.log(items.data);
-
-   } catch (error) {
-     console.log(error)
-   }
+  } catch (error) {
+    console.log(error);
+  }
 }

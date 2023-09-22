@@ -3,7 +3,6 @@ import Pagination from "../Pagination/Pagination";
 import api from "@/api/api";
 import Image from "next/image";
 import formatDate from "@/helpers/FormatDate";
-
 export default function Campañas() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
