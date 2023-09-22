@@ -1,11 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import Imagen from "@/../public/images/actosmaltratoycrueldad.png";
-
+import Imagen from "@/../public/images/Actos de Maltrato y crueldad/actosmaltratoycrueldad.png";
+import bgimage from "@/../public/images/Actos de Maltrato y crueldad/ActosdeMaltratoycrueldad.png";
 export default function page() {
   return (
-    <section className="mt-[70px] py-8 font-baloo">
-      <h2 className="text-[#0C6410] font-semibold md:text-2xl text-center ">
+    <section className="mt-[70px]  font-baloo">
+      <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="" />
+      </section>
+      <h2 className="text-[#0C6410] font-semibold md:text-2xl py-8 text-center ">
         ACTOS DE CRUELDAD Y MALTRATO
       </h2>
       <div className="px-6 md:px-12  ">

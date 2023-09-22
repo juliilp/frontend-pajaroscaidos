@@ -1,13 +1,16 @@
 "use client";
 import Image from "next/image";
-import Imagen1 from "@/../public/images/rinasDeGallos/imagen1.png";
-import Imagen2 from "@/../public/images/rinasDeGallos/imagen2.png";
-import Imagen3 from "@/../public/images/rinasDeGallos/imagen3.png";
+import Imagen1 from "@/../public/images/rinasDeGallos/Imagen1.png";
+import Imagen2 from "@/../public/images/rinasDeGallos/Imagen2.png";
+import Imagen3 from "@/../public/images/rinasDeGallos/Imagen3.png";
+import bgimage from "@/../public/images/rinasDeGallos/Rinas.png";
 
 export default function page() {
   return (
     <section className="mt-[70px] w-full bg-[#d8d8d8] h-full pb-16">
-      <div className="w-full bg-slate-500 h-[300px]" />
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
       <h2 className="text-[#0C6410] text-center text-2xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS
       </h2>
@@ -65,8 +68,7 @@ export default function page() {
         cuerpos y que pueden experimentar dolor, placer, ansiedad y sufrimiento
         físico y psicológico en determinadas circunstancias&rdquo;.[3]
       </p>
-
-      <div className="w-full bg-slate-500 h-[300px] my-16 " />
+      <div className="w-[60%] my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo py-4-" />
       <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12 pr-6  ">
         <p className="font-semibold px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 ">
           En la Provincia de San Luis, la Legislatura provincial sancionó en el

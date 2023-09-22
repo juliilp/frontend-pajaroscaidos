@@ -1,16 +1,20 @@
 import CardTiroAlPichon from "@/components/CardTiroAlPichon/CardTiroAlPichon";
 import Image from "next/image";
-import Imagen1 from "@/../public/images/tiroalpichon/imagen1.png";
-import Imagen2 from "@/../public/images/tiroalpichon/imagen2.png";
-import Imagen3 from "@/../public/images/tiroalpichon/imagen3.png";
+import Imagen1 from "@/../public/images/tiroalpichon/Imagen1.png";
+import Imagen2 from "@/../public/images/tiroalpichon/Imagen2.png";
+import Imagen3 from "@/../public/images/tiroalpichon/Imagen3.png";
+import bgimage from "@/../public/images/tiroalpichon/TiroAlPichon.png";
 
 function Tiroalpichon() {
   return (
-    <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8 px-6 md:px-0 py-12">
-      <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8">
+    <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8  md:px-0 ">
+      <section className="w-[18-rem]relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
+      <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8 ">
         CAZA DEPORTIVA TIRO AL PICHON
       </h1>
-      <p className="max-w-[1150px] md:px-12 font-semibold">
+      <p className="max-w-[1150px] md:px-12 font-semibold px-2">
         El “tiro al pichón” es una actividad perversa que se realiza en el marco
         de torneos donde el ganador es aquel que más palomas mata. Consiste en
         soltar este tipo de aves dentro de un espacio en forma de abanico que se
@@ -45,7 +49,7 @@ function Tiroalpichon() {
           className="w-full max-w-[300px] h-[250px]"
         />
       </div>
-      <p className="max-w-[1150px] md:px-12 font-semibold">
+      <p className="max-w-[1150px] md:px-12 font-semibold px-2">
         Esta práctica cruel, mal llamada &ldquo;deporte&rdquo;, está prohibida
         en la República Argentina, por diversas normas de protección de los
         animales. Los torneos o competencias de Tiro al Pichón o a la Paloma
@@ -98,7 +102,7 @@ function Tiroalpichon() {
         animales&rdquo; (inciso 8).
       </p>
 
-      <div className="flex gap-6 justify-center items-center w-full flex-col lg:flex-row   lg:gap-24 mt-12 ">
+      <div className="flex gap-6 justify-center items-center w-full flex-col lg:flex-row   lg:gap-24 mt-12 py-2 px-2">
         <CardTiroAlPichon
           titulo="PROHIBICION DEL TIRO AL PICHON"
           parrafo="El Tiro al Pichón o la Paloma se encuentra expresamente prohibido por la Ley Nacional Nº 14.346. Ademas, diversas provincias avanzaron en una prohibicion local, cuyas leyes son las siguientes:"
