@@ -2,10 +2,10 @@
 import MainCazatrafico from "@/components/Caza-trafico/MainCaza-trafico";
 import Section2Caza_Trafico from "@/components/Caza-trafico/Section2Caza-trafico";
 import Image from "next/image";
-import image1 from "../../../public/images/caza_trafico 1.png";
-import image2 from "../../../public/images/caza_trafico 2.png";
-import image3 from "../../../public/images/caza_trafico 3.png";
-import image4 from "../../../public/images/caza_trafico 4.png";
+import image1 from "../../../public/images/Caza y trafico/caza_trafico 1.png";
+import image2 from "../../../public/images/Caza y trafico/caza_trafico 2.png";
+import image3 from "../../../public/images/Caza y trafico/caza_trafico 3.png";
+import image4 from "../../../public/images/Caza y trafico/caza_trafico 4.png";
 
 export default function page() {
   return (
