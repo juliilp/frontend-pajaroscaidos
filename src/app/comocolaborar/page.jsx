@@ -1,14 +1,20 @@
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
-import Construccion from "@/../public/images/colaborar-construccion.png";
-import Donaciones from "@/../public/images/colaborar-donaciones.png";
-import Voluntarios from "@/../public/images/colaborar-voluntarios.png";
+import Image from "next/image";
+import Construccion from "@/../public/images/Como Colaborar/como colaborar2.jpg";
+import Donaciones from "@/../public/images/Como Colaborar/como colaborar.jpg";
+import Voluntarios from "@/../public/images/Como Colaborar/como colaborar3.jpg";
+import bgimage from "@/../public/images/Como Colaborar/ComoColaborar.png";
 
 export default function page() {
   return (
     <section className="mt-[70px]">
-      <div className="hidden md:block w-full h-[200px] bg-slate-600" />
-      <div className="hidden md:flex flex-col gap-8 my-8 ">
-        <span className="text-center md:text-2xl">COMO COLABORAR</span>
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[18rem]">
+        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      </section>
+      <div className=" flex flex-col gap-8 my-8 ">
+        <span className="text-[#0C6410] text-xl text-center ">
+          COMO COLABORAR
+        </span>
         <p className="max-w-[800px] text-center w-full mx-auto md:text-lg">
           Existen diferentes maneras de colaborar con la Asociación Civil de
           Ayuda a las Aves Pájaros Caídos. Todas son imporantes para seguir
@@ -19,7 +25,7 @@ export default function page() {
           cosas.
         </p>
       </div>
-      <div className="flex items-center justify-center w-full  px-[5%] gap-10 flex-wrap ">
+      <div className="flex items-center justify-center w-full  px-[5%] gap-10 flex-wrap py-2 ">
         <CardComoColaborar
           titulo="Materiales de construcción"
           parrafo="Necesitamos materiales de construcción para ampliar y mejorar nuestros Refugios. Necesitamos chapas, tirantes, hierros, malla de alambre, pintura entre otras cosas."
