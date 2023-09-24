@@ -1,6 +1,7 @@
+import Pagination from "@/components/Pagination/Pagination2";
 import formatDate from "@/helpers/FormatDate";
 import { useEffect, useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward, IoIosTrash } from "react-icons/io";
+import { IoIosTrash } from "react-icons/io";
 
 export default function Comentarios({ post }) {
   const commentsPerPage = 3;
@@ -19,19 +20,10 @@ export default function Comentarios({ post }) {
     }
   }, [post, currentPage, commentsPerPage]);
 
-  // Función para ir a la página anterior
-  const goToPrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
   };
 
-  // Función para ir a la página siguiente
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
   return (
     <article className="flex flex-col w-[60%]">
       <h2 className="font-semibold text-lg text-center">Comentarios</h2>
@@ -56,28 +48,11 @@ export default function Comentarios({ post }) {
               </button>
             </div>
           ))}
-          {/* Paginación */}
-          <div className="flex items-center justify-center gap-3 my-8">
-            <button
-              className="p-2"
-              onClick={goToPrevPage}
-              disabled={currentPage === 1}
-            >
-              <IoIosArrowBack size={30} className="cursor-pointer" />
-            </button>
-            <div className="flex items-center gap-3">
-              <span className="text-[#1D4AE9]">{currentPage}</span>
-              <span>de</span>
-              <span className="text-[#1D4AE9]">{totalPages}</span>
-            </div>
-            <button
-              className="p-2"
-              onClick={goToNextPage}
-              disabled={currentPage === totalPages}
-            >
-              <IoIosArrowForward size={30} className="cursor-pointer" />
-            </button>
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
       ) : (
         <h2 className="font-medium text-center">No hay comentarios</h2>
