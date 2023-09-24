@@ -58,7 +58,7 @@ export async function getBannerImages() {
 
     if (response.status !== 200) return null;
 
-    const banners = response.data.images;
+    const banners = response.data.images.banners;
     return banners;
   } catch (error) {
     console.log("error al obtener BANNER");
