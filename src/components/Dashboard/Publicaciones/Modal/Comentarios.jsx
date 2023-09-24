@@ -32,7 +32,7 @@ export default function Comentarios({ post }) {
           {displayedComments.map((comment, i) => (
             <div
               key={i}
-              className="flex justify-between items-end gap-4 border-b-gray-500 border-b-2"
+              className="flex justify-between items-end gap-4 border-b-[#4f4f4f8c] border-b-2 pt-4"
             >
               <div className="w-[90%]">
                 <div className="flex gap-2 ">
@@ -43,7 +43,7 @@ export default function Comentarios({ post }) {
                 </div>
                 <p className="line-clamp-1">{comment.comment}</p>
               </div>
-              <button className="w-[10%] flex justify-end">
+              <button className="w-[10%] flex justify-end pb-1 pr-2">
                 <IoIosTrash size={25} className="cursor-pointer fill-red-600" />
               </button>
             </div>
