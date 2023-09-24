@@ -1,8 +1,8 @@
 import Image from "next/image";
-import formatDate from "@/helpers/FormatDate";
 import api from "@/api/api";
+import Comentarios from "./Comentarios";
 
-export default function ModalPublicacion({ modal }) {
+export default function ModalPublicacion({ modal, toggleModal }) {
   const deletePost = async () => {
     try {
       const response = await api.delete(`publication/delete/${modal.post.id}`);
@@ -22,12 +22,12 @@ export default function ModalPublicacion({ modal }) {
         <div className="bg-[#D9D9D9] flex flex-col items-end px-6 py-4 rounded-xl gap-2 w-[80%]">
           <button
             className="text-2xl text-red-600 font-bold"
-            onClick={() => toggleModal(undefined)}
+            onClick={() => toggleModal({})}
           >
             X
           </button>
           <div className="w-full flex gap-6 ">
-            <article className="w">
+            <article className="flex flex-col w-[40%]">
               <div className="flex gap-2 items-center">
                 {modal.post.image && modal.post.image[0] && (
                   <Image
@@ -41,36 +41,11 @@ export default function ModalPublicacion({ modal }) {
                 )}
                 <h2 className="text-lg font-semibold">{modal.post.title}</h2>
               </div>
-              <p className="overflow-y-scroll w-80 h-24">
+              <p className="overflow-y-scroll w-80 flex-grow">
                 {modal.post.description}
               </p>
             </article>
-            <article className="flex flex-col w-full">
-              <h2 className="font-semibold text-lg text-center">Comentarios</h2>
-              {modal.post.comments ? (
-                modal.post.comments.map((comment, i) => (
-                  <div
-                    key={i}
-                    className="flex justify-between items-end gap-4 border-b-gray-500 border-b-2"
-                  >
-                    <div className="">
-                      <div className="flex gap-2 ">
-                        <h2 className="font-medium">
-                          {comment.user.nick_name}
-                        </h2>
-                        <p className="text-gray-600">
-                          {formatDate(comment.createdAt)}
-                        </p>
-                      </div>
-                      <p className="line-clamp-1">{comment.comment}</p>
-                    </div>
-                    <button>X</button>
-                  </div>
-                ))
-              ) : (
-                <h2>No hay comentarios</h2>
-              )}
-            </article>
+            <Comentarios post={modal.post} />
           </div>
           <button
             className="py-1 px-3 bg-red-600 rounded-md"

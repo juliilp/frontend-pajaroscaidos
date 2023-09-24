@@ -5,7 +5,7 @@ import { fetchPosts } from "@/api/apiCall/functions";
 import Pagination from "@/components/Pagination/Pagination";
 import Loading from "../loading";
 import ListaPublicaciones from "@/components/Dashboard/Publicaciones/ListaPublicaciones";
-import ModalPublicacion from "@/components/Dashboard/Publicaciones/Modal";
+import ModalPublicacion from "@/components/Dashboard/Publicaciones/Modal/Modal";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,6 @@ export default function Page() {
 
     if (resp !== MESSAGE_TYPES.ERROR) {
       setPosts(resp.publications);
-      console.log(resp.publications);
       setTotalPages(resp.totalPages);
       setIsLoading(false);
     }
@@ -42,8 +41,8 @@ export default function Page() {
 
   const toggleModal = (post) => {
     setModal({
-      toggle: post !== undefined && !modal.toggle,
-      post: post !== undefined ? post : modal.post,
+      toggle: !modal.toggle,
+      post: post,
     });
     console.log(modal);
   };
@@ -86,7 +85,7 @@ export default function Page() {
         totalPages={totalPages}
         changePage={handlePageChange}
       />
-      <ModalPublicacion modal={modal} />
+      <ModalPublicacion modal={modal} toggleModal={toggleModal} />
     </section>
   );
 }
