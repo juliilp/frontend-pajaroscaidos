@@ -57,9 +57,9 @@ export default function Comentarios({ post }) {
             </div>
           ))}
           {/* Paginación */}
-          <div className="flex items-center justify-center gap-6 my-8">
+          <div className="flex items-center justify-center gap-3 my-8">
             <button
-              className="mx-2 p-2"
+              className="p-2"
               onClick={goToPrevPage}
               disabled={currentPage === 1}
             >
@@ -71,7 +71,7 @@ export default function Comentarios({ post }) {
               <span className="text-[#1D4AE9]">{totalPages}</span>
             </div>
             <button
-              className="mx-2 p-2"
+              className="p-2"
               onClick={goToNextPage}
               disabled={currentPage === totalPages}
             >
