@@ -7,6 +7,7 @@ export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
     const response = await deletePost(postId);
     alert(response);
     onDataUpdate();
+    toggleModal({});
   };
 
   return (
