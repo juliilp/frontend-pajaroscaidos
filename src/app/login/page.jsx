@@ -12,6 +12,7 @@ import { validateLogin } from "@/utils/auxfunctions";
 import { useSession, signIn } from "next-auth/react";
 import Loading from "../loading";
 import { loginNextAuth, loginUser } from "@/api/apiCall/functions";
+import api from "@/api/api";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
 
 export default function Login() {
@@ -90,10 +91,20 @@ export default function Login() {
     });
   };
 
-  function loginWithGoogle(e) {
+  async function loginWithGoogle(e) {
     e.preventDefault();
     signIn();
     setLoading(true);
+    const nombreCompleto = session.user.name;
+    const primerNombre = nombreCompleto.split(" ")[0];
+    await api.post("/user/login-auth0", {
+      email: session.user.email,
+      avatar: {
+        secure_url: session.user.avatar,
+      },
+      first_name: primerNombre,
+      nick_name: primerNombre,
+    });
   }
 
   return sessionStatus === "loading" ||
