@@ -11,7 +11,7 @@ export default function ListaPublicaciones({ posts, toggleModal }) {
         >
           <td className="flex justify-center">
             <Image
-              src={post.image[0].secure_url}
+              src={post.image[0].imageUrl}
               alt={`post: ${post.id}`}
               width={300}
               height={300}

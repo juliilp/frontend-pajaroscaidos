@@ -4,7 +4,7 @@ import { deletePost } from "@/api/apiCall/PostFunctions";
 
 export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
   const handleDelete = async (postId) => {
-    await deletePost(postId);
+    const response = await deletePost(postId);
     alert(response);
     onDataUpdate();
   };
@@ -28,7 +28,7 @@ export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
               <div className="flex gap-2 items-center">
                 {modal.post.image && modal.post.image[0] && (
                   <Image
-                    src={modal.post.image[0].secure_url}
+                    src={modal.post.image[0].imageUrl}
                     alt={`post: ${modal.post.id}`}
                     width={300}
                     height={300}
@@ -46,7 +46,7 @@ export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
           </div>
           <button
             className="py-1 px-3 bg-red-600 rounded-md"
-            onClick={handleDelete}
+            onClick={() => handleDelete(modal.post.id)}
           >
             <span className="text-white">Borrar publicación</span>
           </button>
