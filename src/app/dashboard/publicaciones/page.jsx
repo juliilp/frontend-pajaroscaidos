@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
-import { fetchPosts } from "@/api/apiCall/functions";
 import Pagination from "@/components/Pagination/Pagination";
 import Loading from "../loading";
 import ListaPublicaciones from "@/components/Dashboard/Publicaciones/ListaPublicaciones";
 import ModalPublicacion from "@/components/Dashboard/Publicaciones/Modal/Modal";
+import { getAllPosts } from "@/api/apiCall/PostFunctions";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +19,7 @@ export default function Page() {
   });
 
   const fetchPostsData = async () => {
-    const resp = await fetchPosts(pageNumber, order);
+    const resp = await getAllPosts(pageNumber, order);
 
     if (resp !== MESSAGE_TYPES.ERROR) {
       setPosts(resp.publications);
@@ -44,6 +44,10 @@ export default function Page() {
       toggle: !prevModal.toggle,
       post: post,
     }));
+  };
+
+  const handleDataUpdate = async () => {
+    await fetchPostsData();
   };
 
   if (isLoading) {
@@ -75,7 +79,11 @@ export default function Page() {
             </tr>
           </thead>
           <tbody>
-            <ListaPublicaciones posts={posts} toggleModal={toggleModal} />
+            <ListaPublicaciones
+              posts={posts}
+              toggleModal={toggleModal}
+              fetchPostsData={fetchPostsData}
+            />
           </tbody>
         </table>
       </div>
@@ -84,7 +92,11 @@ export default function Page() {
         totalPages={totalPages}
         changePage={handlePageChange}
       />
-      <ModalPublicacion modal={modal} toggleModal={toggleModal} />
+      <ModalPublicacion
+        modal={modal}
+        toggleModal={toggleModal}
+        onDataUpdate={handleDataUpdate}
+      />
     </section>
   );
 }

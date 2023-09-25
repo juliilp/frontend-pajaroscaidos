@@ -1,15 +1,12 @@
 import Image from "next/image";
-import api from "@/api/api";
 import Comentarios from "./Comentarios";
+import { deletePost } from "@/api/apiCall/PostFunctions";
 
-export default function ModalPublicacion({ modal, toggleModal }) {
-  const deletePost = async () => {
-    try {
-      const response = await api.delete(`publication/delete/${modal.post.id}`);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
+  const handleDelete = async (postId) => {
+    await deletePost(postId);
+    alert(response);
+    onDataUpdate();
   };
 
   return (
@@ -45,11 +42,11 @@ export default function ModalPublicacion({ modal, toggleModal }) {
                 {modal.post.description}
               </p>
             </article>
-            <Comentarios post={modal.post} />
+            <Comentarios post={modal.post} onDataUpdate={onDataUpdate} />
           </div>
           <button
             className="py-1 px-3 bg-red-600 rounded-md"
-            onClick={deletePost}
+            onClick={handleDelete}
           >
             <span className="text-white">Borrar publicación</span>
           </button>

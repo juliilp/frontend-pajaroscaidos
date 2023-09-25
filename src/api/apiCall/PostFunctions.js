@@ -46,6 +46,18 @@ export const createNewPost = async (userId, newPost) => {
   }
 };
 
+export const deletePost = async (postId) => {
+  try {
+    const response = await api.delete(`/publication/delete/${postId}`);
+    if (response.status === 200) {
+      return "Publicacion eliminada satisfactoriamente.";
+    }
+  } catch (error) {
+    console.error(error);
+    return "Error al eliminar la publicacion, intentelo mas tarde.";
+  }
+};
+
 //Reacciones
 export async function createReaction(PostData) {
   const { idPost, reaction, idUser } = PostData;
@@ -75,5 +87,17 @@ export const createComment = async (body, idPost) => {
   } catch (error) {
     console.error(error.response);
     return MESSAGE_TYPES.ERROR;
+  }
+};
+
+export const deleteComment = async (commentId) => {
+  try {
+    const response = await api.delete(`comment/delete/${commentId}`);
+    if (response.status === 200) {
+      return "Comentario eliminado satisfactoriamente";
+    }
+  } catch (error) {
+    console.error(error);
+    return "Error al eliminar el comentario, intentelo mas tarde.";
   }
 };

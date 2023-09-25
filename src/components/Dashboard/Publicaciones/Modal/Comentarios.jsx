@@ -2,8 +2,9 @@ import Pagination from "@/components/Pagination/Pagination2";
 import formatDate from "@/helpers/FormatDate";
 import { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
+import { deleteComment } from "@/api/apiCall/PostFunctions";
 
-export default function Comentarios({ post }) {
+export default function Comentarios({ post, onDataUpdate }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedComments, setDisplayedComments] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -22,6 +23,12 @@ export default function Comentarios({ post }) {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+  };
+
+  const handleDelete = async (commentId) => {
+    const response = await deleteComment(commentId);
+    alert(response);
+    onDataUpdate();
   };
 
   return (
@@ -43,7 +50,10 @@ export default function Comentarios({ post }) {
                 </div>
                 <p className="line-clamp-1">{comment.comment}</p>
               </div>
-              <button className="w-[10%] flex justify-end pb-1 pr-2">
+              <button
+                className="w-[10%] flex justify-end pb-1 pr-2"
+                onClick={() => handleDelete(comment.id)}
+              >
                 <IoIosTrash size={25} className="cursor-pointer fill-red-600" />
               </button>
             </div>
