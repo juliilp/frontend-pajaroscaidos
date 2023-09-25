@@ -7,7 +7,16 @@ import api from "../api/api";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CardForo({ titulo, tiempo, usuario, like, message, image, id, reactions }) {
+export default function CardForo({
+  titulo,
+  tiempo,
+  usuario,
+  like,
+  message,
+  image,
+  id,
+  reactions,
+}) {
   const { UserContext } = CustomContext();
 
   const userReaction = reactions?.find((e) => e.userId === UserContext?.id);
@@ -51,7 +60,9 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
 
     try {
       const response = await api.delete(
-        `/reaction/delete/${userReaction !== undefined ? userReaction.id : newLike}`
+        `/reaction/delete/${
+          userReaction !== undefined ? userReaction.id : newLike
+        }`
       );
 
       if (response.status === 200) {
@@ -81,7 +92,7 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
       )}
 
       <article className="w-4/6 h-[100px] flex flex-col px-3 gap-1 justify-center font-inter ">
-        <Link href={`/foro/${id}`}>
+        <Link href={`/foro/${id}`} prefetch={false}>
           <h2 className="font-bold  text-sm sm:text-2xl">{titulo}</h2>
         </Link>
         <span className="text-sm">
@@ -93,17 +104,29 @@ export default function CardForo({ titulo, tiempo, usuario, like, message, image
             <IoMdHeartEmpty
               color={reaction ? "#E11447" : "#000000"}
               size={25}
-              className={`cursor-pointer ${sending ? "opacity-50 pointer-events-none" : ""}`}
+              className={`cursor-pointer ${
+                sending ? "opacity-50 pointer-events-none" : ""
+              }`}
               onClick={sending ? null : reaction ? handleUnLike : handleLike}
             />
-            <span className={`font-semibold text-lg ${reaction ? "text-[#AA153A]" : ""}`}>
+            <span
+              className={`font-semibold text-lg ${
+                reaction ? "text-[#AA153A]" : ""
+              }`}
+            >
               {likesNumber}
             </span>
           </div>
 
           <div className="flex  gap-2">
-            <RiMessage2Line color="#0C6410" size={25} className="cursor-pointer" />
-            <span className="text-[#0C6410] font-semibold text-lg self-end ">{message}</span>
+            <RiMessage2Line
+              color="#0C6410"
+              size={25}
+              className="cursor-pointer"
+            />
+            <span className="text-[#0C6410] font-semibold text-lg self-end ">
+              {message}
+            </span>
           </div>
         </div>
       </article>
