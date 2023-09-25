@@ -15,7 +15,8 @@ export default function Navbar() {
   const { data: session } = useSession();
   const [switchMenu, setSwitchMenu] = useState(false);
   const [rendering, setRendering] = useState(false);
-
+  console.log(UserContext);
+  console.log(session);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setRendering(true);
@@ -39,7 +40,7 @@ export default function Navbar() {
       });
     }
   };
-
+  const avatar = typeof UserContext.avatar;
   return (
     <header className="bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
       <nav className="w-full h-full flex items-center justify-between px-3">
@@ -63,11 +64,11 @@ export default function Navbar() {
 
         {rendering && (
           <div className="flex items-center justify-center gap-3">
-            {UserContext && UserContext.first_name ? (
+            {UserContext ? (
               <React.Fragment>
                 <Link href={"/perfil"}>
                   <span className="text-white font-semibold">
-                    {UserContext.first_name}
+                    {UserContext.nick_name}
                   </span>
                 </Link>
                 {UserContext.avatar.avatar_url !== "-" ? (
