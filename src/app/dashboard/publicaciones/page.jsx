@@ -11,8 +11,8 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [order, setOrder] = useState("desc");
   const [posts, setPosts] = useState(undefined);
+  const [order, setOrder] = useState("desc");
   const [modal, setModal] = useState({
     toggle: false,
     post: {},
@@ -24,27 +24,26 @@ export default function Page() {
     if (resp !== MESSAGE_TYPES.ERROR) {
       setPosts(resp.publications);
       setTotalPages(resp.totalPages);
-      setIsLoading(false);
     }
 
-    return setIsLoading(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     fetchPostsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNumber]);
+  }, [pageNumber, order]);
 
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
   };
 
   const toggleModal = (post) => {
-    setModal({
-      toggle: !modal.toggle,
+    setModal((prevModal) => ({
+      ...prevModal,
+      toggle: !prevModal.toggle,
       post: post,
-    });
-    console.log(modal);
+    }));
   };
 
   if (isLoading) {

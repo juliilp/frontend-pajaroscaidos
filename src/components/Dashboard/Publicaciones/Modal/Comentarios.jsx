@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
 
 export default function Comentarios({ post }) {
-  const commentsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedComments, setDisplayedComments] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  const commentsPerPage = 3;
 
   useEffect(() => {
     if (post.comments && post.comments.length > 0) {
@@ -29,9 +29,9 @@ export default function Comentarios({ post }) {
       <h2 className="font-semibold text-lg text-center">Comentarios</h2>
       {post.comments && post.comments.length !== 0 ? (
         <>
-          {displayedComments.map((comment, i) => (
+          {displayedComments.map((comment) => (
             <div
-              key={i}
+              key={comment.id}
               className="flex justify-between items-end gap-4 border-b-[#4f4f4f8c] border-b-2 pt-4"
             >
               <div className="w-[90%]">
