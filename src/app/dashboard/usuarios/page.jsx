@@ -47,7 +47,7 @@ export default function Page() {
   return (
     <section className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
       <h1 className="text-center pt-6 text-2xl font-bold">Usuarios</h1>
-      <div className="bg-[#4f4f4f] w-full flex flex-col gap-2 p-3 rounded-2xl text-white">
+      <div className="bg-[#4f4f4f] w-full flex flex-col gap-2 p-3 rounded-xl text-white">
         <table className="w-full table-auto text-center border-separate border-spacing-y-2">
           <thead>
             <tr>

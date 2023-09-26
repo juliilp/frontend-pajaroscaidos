@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import { RiImageFill } from "react-icons/ri";
-import { createNewPost } from "@/api/apiCall/functions";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
 import Alerts from "../Alerts/Alerts";
+import { createNewPost } from "@/api/apiCall/PostFunctions";
 
 export default function ModalnewPost({ setvisible }) {
   const { UserContext } = CustomContext();

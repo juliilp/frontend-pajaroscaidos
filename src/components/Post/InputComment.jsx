@@ -1,4 +1,4 @@
-import { createComment, getPosts } from "@/libs/PostFunctions";
+import { createComment, getPost } from "@/api/apiCall/PostFunctions";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -21,7 +21,7 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
     try {
       if (comment.trim() !== "") {
         await createComment(body, idPost);
-        const updatedPostData = await getPosts(idPost);
+        const updatedPostData = await getPost(idPost);
         onCommentSubmit(updatedPostData.publication.comments);
         setComment("");
       }

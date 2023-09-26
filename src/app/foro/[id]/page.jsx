@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Comentarios from "@/components/Post/Comentarios";
-import { getPosts } from "@/libs/PostFunctions";
+import { getPost } from "@/api/apiCall/PostFunctions";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
@@ -16,7 +16,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getPosts(params.id);
+      const data = await getPost(params.id);
       setPublication(data.publication);
     }
 

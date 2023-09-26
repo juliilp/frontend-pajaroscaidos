@@ -2,39 +2,6 @@ import api from "../../api/api";
 import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 
-export const fetchPosts = async (pageNumber, order) => {
-  try {
-    const response = await api.get(
-      `/publication/all?pageNumber=${pageNumber}&postPerPage=${6}&orderCreate=${order}`
-    );
-    const post = {};
-
-    post.publications = response.data.publications;
-    post.totalPages = response.data.totalPages;
-    return post;
-  } catch (error) {
-    console.error("Error al obtener las publicaciones:", error);
-
-    return MESSAGE_TYPES.ERROR;
-  }
-};
-export const createNewPost = async (userId, newPost) => {
-  try {
-    // console.log('newPost: ', newPost)
-    const formData = new FormData();
-    formData.append("title", newPost.title);
-    formData.append("description", newPost.description);
-    formData.append("image", newPost.image);
-    const { data: response } = await api.post(
-      `publication/create/${userId}`,
-      formData
-    );
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export async function getPostForNuestraComunidad(option) {
   try {
     const response = await api.get(
@@ -72,7 +39,6 @@ export async function loginNextAuth(data) {
     if (response.status !== 200) return null;
 
     const userBackEnd = response.data;
-    // console.log('user back:', userBackEnd)
     return userBackEnd.user;
   } catch (error) {
     console.log("error al obtener user del back: ", error);
@@ -87,7 +53,6 @@ export async function loginUser(data) {
 
     if (response.status == 200) {
       const userBackEnd = response.data;
-      // console.log('user back:', userBackEnd.user.id)
 
       if (userBackEnd.user.userEmailValidate === false) {
         Cookies.set("newUserId", JSON.stringify({ id: userBackEnd.user.id }), {
@@ -109,7 +74,6 @@ export async function loginUser(data) {
 
 export async function checkEmail(id, code) {
   try {
-    // console.log('id', id)
     const response = await api.post(`user/${id}/validate`, code, {
       withCredentials: true,
     });

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
-import { deleteReaction, createReaction, getPosts } from "@/libs/PostFunctions";
+import {
+  deleteReaction,
+  createReaction,
+  getPosts,
+} from "@/api/apiCall/PostFunctions";
 import Cookies from "js-cookie";
 
 export default function Likesbox({ idPost, postlikes, updateLikes }) {
