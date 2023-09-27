@@ -31,10 +31,12 @@ function page() {
     event.preventDefault()
 
     const itemprops = {
+      id:data.id,
       image: data.image[0].secure_url,
       title: data.title,
       description: data.description,
-      categories: [data.categories[0]?.name]
+      categories: [data.categories[0]?.name],
+      category: [data.categories[0]?.name]
     }
     setItemToEdit(itemprops)
     setModalType('edit');

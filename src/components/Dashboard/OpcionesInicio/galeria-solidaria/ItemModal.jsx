@@ -1,4 +1,4 @@
-import { createNewItem } from "@/api/apiCall/functions";
+import { createCategory, createNewItem ,editShopItem} from "@/api/apiCall/functions";
 import Image from "next/image";
 import { useEffect, useState } from "react"
 
@@ -49,24 +49,29 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     const selectCategories = (event) => {
         event.preventDefault();
         !startEdit && setStartEdit(true)
-        const updated = [].concat(newItem.categories).filter(i => i)
+        const updated = [].concat(newItem.categories).concat(newItem.category).filter(i => i)
+
         if (categories) {
             updated.push(categories)
 
             setNewItem({
                 ...newItem,
-                categories: updated
+                category: updated.filter((item, index, updated) => updated.indexOf(item) === index),
+                categories: updated.filter((item, index, updated) => updated.indexOf(item) === index)
             });
             setCategories('')
         }
     }
     const deleteCategories = (event) => {
         const { value } = event.target
-        const categories = [].concat(newItem.categories);
+        const categories = [].concat(newItem.categories).concat(newItem.category);
+        console.log(categories,'en delete');
         const updated = categories.filter(i => i !== value);
+        console.log(updated,'en delete2');
         setNewItem({
             ...newItem,
-            categories: updated
+            category: updated.filter((item, index, updated) => updated.indexOf(item) === index),
+            categories: updated.filter((item, index, updated) => updated.indexOf(item) === index)
         });
     }
     const handlePhotoChange = (event) => {
@@ -83,8 +88,9 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
         createNewItem(newItem)
     }
     const handleEdit = () => {
+        // createCategory()
         console.log(newItem);
-        createNewItem(newItem)
+        editShopItem(newItem.id,newItem)
     }
     let imagePreview = null;
 
@@ -97,6 +103,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
                 <section className="flex justify-end  w-full p-1">
                     <button onClick={closeModal} className="text-red-700  text-xl font-bold ">X</button>
+                    <button onClick={()=>console.log(newItem.category,newItem.categories)}>ver</button>
                 </section>
 
                 <section className="flex justify-between w-full">
@@ -135,7 +142,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                                 </article>
                                 <article className="flex w-full gap-2 flex-wrap ">
 
-                                    {newItem.categories && newItem.categories.map((i, key) =>
+                                    {newItem.categories && newItem.category.map((i, key) =>
                                         <div className="flex   bg-white relative min-w-[8rem] " key={key}>
                                             <span>{i}</span>
                                             <button value={i} onClick={deleteCategories} className="absolute  top-0 right-0" >x</button>
@@ -158,7 +165,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                     {mode.create && <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleCreate}>Crear item</button>}
                     {mode.edit && !startEdit ?
                         <button className="bg-red-500 text-white p-1 px-4 rounded-lg" onClick={handleCreate}>Borrar item</button> :
-                        mode.edit && <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleCreate}>Editar item</button>
+                        mode.edit && <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleEdit}>Editar item</button>
                     }
                 </article>
             </div>
