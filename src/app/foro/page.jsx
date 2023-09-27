@@ -11,8 +11,8 @@ import Pagination from "@/components/Pagination/Pagination";
 import { CustomContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
 import Loading from "../loading";
-import { fetchPosts } from "@/api/apiCall/functions";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
+import { getAllPosts } from "@/api/apiCall/PostFunctions";
 
 export default function Foros() {
   const router = useRouter();
@@ -29,8 +29,8 @@ export default function Foros() {
   const [posts, setPosts] = useState(undefined);
 
   useEffect(() => {
-    const fetchPosts2 = async () => {
-      const response = await fetchPosts(pageNumber, order);
+    const fetchPosts = async () => {
+      const response = await getAllPosts(pageNumber, order);
 
       if (response === MESSAGE_TYPES.ERROR) {
         await logout();
@@ -41,7 +41,7 @@ export default function Foros() {
       }
     };
 
-    fetchPosts2();
+    fetchPosts();
   }, [pageNumber, order, logout, router]);
 
   const handlePageChange = (pageNumber) => {
