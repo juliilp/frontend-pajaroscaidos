@@ -1,4 +1,3 @@
-import CardTiroAlPichon from "@/components/CardTiroAlPichon/CardTiroAlPichon";
 import Image from "next/image";
 import Imagen1 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen1.png";
 import Imagen2 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen2.png";
