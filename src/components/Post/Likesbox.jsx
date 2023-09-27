@@ -3,7 +3,7 @@ import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
 import {
   deleteReaction,
   createReaction,
-  getPosts,
+  getAllPosts,
 } from "@/api/apiCall/PostFunctions";
 import Cookies from "js-cookie";
 
@@ -43,7 +43,7 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
         await createReaction(data);
       }
 
-      const updatedPostData = await getPosts(idPost);
+      const updatedPostData = await getAllPosts(idPost);
       updateLikes(updatedPostData.publication.reactions);
     } catch (error) {
       console.error("Error updating reaction:", error);
