@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import api from "@/api/api";
 import Cookies from "js-cookie";
-export default function ModalPerfilDescription({
+export default function ModalAboutMe({
   handlerClose,
   id,
   viejaDescripcion,
