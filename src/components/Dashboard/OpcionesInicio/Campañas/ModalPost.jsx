@@ -3,36 +3,12 @@ import { RiImageFill } from "react-icons/ri";
 import Image from "next/image";
 import api from "@/api/api";
 
-function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
+function ModalPostCampaña({ toggleModal, handleDataUpdated }) {
   const [newCampaña, setNewCampaña] = useState({
     title: "",
     description: "",
     image: null,
   });
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      // Crear un objeto FormData para enviar el formulario, incluyendo la imagen
-      const formData = new FormData();
-      formData.append("title", newCampaña.title);
-      formData.append("description", newCampaña.description);
-      formData.append("image", newCampaña.image);
-
-      const response = await api.post("/news", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data", // Importante: Establece el tipo de contenido como multipart/form-data
-        },
-      });
-
-      console.log("Respuesta del servidor:", response.data);
-
-      toggleModal({});
-    } catch (error) {
-      console.error("Error al enviar la campaña:", error);
-    }
-  };
 
   const handleChange = (event) => {
     setNewCampaña({
@@ -49,7 +25,27 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
     });
   };
 
-  console.log(handlePhotoChange);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData();
+      formData.append("title", newCampaña.title);
+      formData.append("description", newCampaña.description);
+      formData.append("image", newCampaña.image);
+
+      const response = await api.post("/news", formData);
+
+      if (response.status === 200) {
+        handleDataUpdated();
+        alert("Creado con éxito");
+      }
+
+      toggleModal({});
+    } catch (error) {
+      console.error("Error al enviar la campaña:", error);
+    }
+  };
 
   let imagePreview = null;
 
@@ -61,7 +57,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
     <>
       <div className="w-[50%] h-[65%] bg-[#444] rounded-lg text-[#ffffff]">
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
-          <h1>Crea tu campaña!</h1>
+          <h1>Crea tu banner!</h1>
           <button className="text-[#D22929]" onClick={() => toggleModal({})}>
             X
           </button>
@@ -78,14 +74,14 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
             <label htmlFor="description">Descripción</label>
             <textarea
               onChange={handleChange}
-              className="mb-[60px] px-4 bg-[#ccc] rounded h-[40px] text-black flex items-center"
+              className="mb-[60px] px-4 bg-[#ccc] rounded h-[50px] text-black flex items-center"
               type="text"
               name="description"
             />
 
-            <div className="flex h-[120px] justify-between items-end">
+            <div className="flex h-[120px] justify-between">
               <div className="flex justify-between items-end w-full ">
-                <div className="flex flex-col  w-[100%]">
+                <div className="flex flex-col w-[100%]">
                   <section className="flex mb-[100px]">
                     <article className="flex mr-4">
                       <input
@@ -119,7 +115,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
                     <Image
                       src={imagePreview}
                       alt="Preview"
-                      width={150}
+                      width={200}
                       height={100}
                     />
                   </div>
@@ -133,4 +129,4 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
   );
 }
 
-export default ModalPostCampañas;
+export default ModalPostCampaña;

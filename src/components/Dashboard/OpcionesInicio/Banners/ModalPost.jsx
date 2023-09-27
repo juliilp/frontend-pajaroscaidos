@@ -5,8 +5,7 @@ import api from "@/api/api";
 
 function ModalPostBanners({ toggleModal, handleDataUpdated }) {
   const [newBanner, setNewBanner] = useState({
-    title: "",
-    description: "",
+    name: "",
     image: null,
   });
 
@@ -17,19 +16,23 @@ function ModalPostBanners({ toggleModal, handleDataUpdated }) {
     });
   };
 
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    setNewBanner({
+      ...newBanner,
+      image: file,
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const postData = {
-        title: newBanner.title,
-        description: newBanner.description,
-        image: newBanner.image,
-      };
+      const formData = new FormData();
+      formData.append("name", newBanner.title);
+      formData.append("image", newBanner.image);
 
-      console.log("data: ", postData);
-      const response = await api.post("/news/banner", postData);
-      console.log(response);
+      const response = await api.post("/news/banner", formData);
 
       if (response.status === 200) {
         handleDataUpdated();
@@ -41,16 +44,6 @@ function ModalPostBanners({ toggleModal, handleDataUpdated }) {
       console.error("Error al enviar el banner:", error);
     }
   };
-
-  const handlePhotoChange = (event) => {
-    const file = event.target.files[0];
-    setNewBanner({
-      ...newBanner,
-      image: file,
-    });
-  };
-
-  console.log(handlePhotoChange);
 
   let imagePreview = null;
 
