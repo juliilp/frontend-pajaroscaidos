@@ -64,13 +64,13 @@ export default function Navbar() {
           <div className="flex items-center justify-center gap-3">
             {UserContext ? (
               <React.Fragment>
-                <Link href={"/perfil"}>
+                <Link href={"/perfil"} prefetch={false}>
                   <span className="text-white font-semibold">
                     {UserContext.nick_name}
                   </span>
                 </Link>
                 {UserContext.avatar.avatar_url !== "-" ? (
-                  <Link href={"/perfil"}>
+                  <Link href={"/perfil"} prefetch={false}>
                     <Image
                       src={
                         UserContext.avatar.avatar_url
@@ -84,7 +84,7 @@ export default function Navbar() {
                     />
                   </Link>
                 ) : (
-                  <Link href={"/perfil"}>
+                  <Link href={"/perfil"} prefetch={false}>
                     <BiSolidUser size={35} color="white" />
                   </Link>
                 )}
