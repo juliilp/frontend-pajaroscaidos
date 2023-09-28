@@ -3,6 +3,8 @@ import api from "../../api/api";
 import sortPostsByDate from "@/helpers/orderPosts";
 import CardForo from "../CardForo";
 import Pagination from "../Pagination/Pagination2";
+import { BiTime } from "react-icons/bi";
+import { IoIosArrowUp } from "react-icons/io";
 
 export default function MyPosts({ user }) {
   const [userPostsData, setUserPostsData] = useState({
@@ -11,6 +13,7 @@ export default function MyPosts({ user }) {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [orderOptions, setOrderOptions] = useState(false);
   const postsPerPage = 3;
 
   useEffect(() => {
@@ -39,14 +42,17 @@ export default function MyPosts({ user }) {
     setCurrentPage(newPage);
   };
 
-  const handleOrderChange = (event) => {
-    const newOrder = event.target.value;
+  const toggleOpenOrder = () => {
+    setOrderOptions((orderOptionsPrev) => !orderOptionsPrev);
+  };
 
+  const handleOrderChange = (newOrder) => {
     setUserPostsData((prevData) => ({
       ...prevData,
       order: newOrder,
       posts: sortPostsByDate(prevData.posts, newOrder),
     }));
+    toggleOpenOrder();
   };
 
   // Calculate the range of posts to display on the current page
@@ -60,10 +66,43 @@ export default function MyPosts({ user }) {
         <h3 className="text-left w-full text-2xl font-semibold">
           Mis publicaciones
         </h3>
-        <select onChange={handleOrderChange}>
-          <option value="recent">Recientes</option>
-          <option value="old">Antiguos</option>
-        </select>
+        <div className="flex gap-2 pr-2">
+          <BiTime size={25} />
+          <div className="flex flex-col">
+            <span
+              className="flex items-center cursor-pointer text-xl font-semibold"
+              onClick={toggleOpenOrder}
+            >
+              {userPostsData.order === "recent" ? "Recientes" : "Antiguos"}
+              <IoIosArrowUp
+                size={25}
+                className={`${
+                  orderOptions ? "rotate-180" : " rotate-0"
+                } duration-200 ml-1`}
+              />
+            </span>
+            <ul
+              className={`absolute transition-all duration-300 text-lg ${
+                orderOptions
+                  ? "translate-y-8 opacity-100 pointer-events-auto"
+                  : "translate-y-0 opacity-0 pointer-events-none"
+              }`}
+            >
+              <li
+                className="cursor-pointer hover:font-semibold"
+                onClick={() => handleOrderChange("recent")}
+              >
+                Recientes
+              </li>
+              <li
+                className="cursor-pointer hover:font-semibold"
+                onClick={() => handleOrderChange("old")}
+              >
+                Antiguos
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       {currentPosts && currentPosts.length > 0 ? (
         <div className="w-full">
