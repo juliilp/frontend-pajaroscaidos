@@ -17,8 +17,7 @@ function Banners() {
 
   const deleteBanners = async () => {
     try {
-      const response = await api.delete(`/news/banner/${banners.id}`);
-      console.log(response);
+      const response = await api.delete(`/news/banner/${banners[0].id}`);
     } catch (error) {
       console.error("Error al borrar el Banner:", error);
     }
