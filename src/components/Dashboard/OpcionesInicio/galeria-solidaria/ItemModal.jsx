@@ -1,6 +1,9 @@
-import { createCategory, createNewItem ,editShopItem} from "@/api/apiCall/functions";
+import { createNewItem, deleteShopItem, editShopItem } from "@/api/apiCall/functions";
 import Image from "next/image";
 import { useEffect, useState } from "react"
+import Alerts from "@/components/Alerts/Alerts";
+import FormShop from "./FormShop";
+import ShopCategories from "./ShopCategories";
 
 export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
@@ -22,58 +25,15 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
             Body && (Body.style.overflow = 'auto')
         }
     }, [])
-    const [newItem, setNewItem] = useState(itemToEdit ?? { image: "", title: "", description: "", categories: [""] });
+    const [newItem, setNewItem] = useState(itemToEdit ?? { image: "", title: "", description: "", categories: [""], category: [] });
     const [mode, setMode] = useState({
         create: ModalType === 'create',
         edit: ModalType === 'edit',
     })
 
-    const [categories, setCategories] = useState('')
     const [startEdit, setStartEdit] = useState(false)
+    const [seeAlert, setSeeAlert] = useState(false)
 
-    const handleChange = (event) => {
-        const { value, name } = event.target;
-        setNewItem({
-            ...newItem,
-            [name]: value
-        })
-        !startEdit && setStartEdit(true)
-    }
-
-    const handleCategories = (event) => {
-        event.preventDefault();
-        !startEdit && setStartEdit(true)
-        const { value } = event.target
-        setCategories(value)
-    }
-    const selectCategories = (event) => {
-        event.preventDefault();
-        !startEdit && setStartEdit(true)
-        const updated = [].concat(newItem.categories).concat(newItem.category).filter(i => i)
-
-        if (categories) {
-            updated.push(categories)
-
-            setNewItem({
-                ...newItem,
-                category: updated.filter((item, index, updated) => updated.indexOf(item) === index),
-                categories: updated.filter((item, index, updated) => updated.indexOf(item) === index)
-            });
-            setCategories('')
-        }
-    }
-    const deleteCategories = (event) => {
-        const { value } = event.target
-        const categories = [].concat(newItem.categories).concat(newItem.category);
-        console.log(categories,'en delete');
-        const updated = categories.filter(i => i !== value);
-        console.log(updated,'en delete2');
-        setNewItem({
-            ...newItem,
-            category: updated.filter((item, index, updated) => updated.indexOf(item) === index),
-            categories: updated.filter((item, index, updated) => updated.indexOf(item) === index)
-        });
-    }
     const handlePhotoChange = (event) => {
         const file = event.target.files[0];
         console.log("file: ", file);
@@ -87,33 +47,42 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
         console.log(newItem);
         createNewItem(newItem)
     }
+    const closeAlert = () => {
+        setSeeAlert(false)
+    }
     const handleEdit = () => {
         // createCategory()
         console.log(newItem);
-        editShopItem(newItem.id,newItem)
+        editShopItem(newItem.id, newItem)
+    }
+    const handleDelete = () => {
+        seeAlert ? deleteShopItem(newItem.id) : setSeeAlert(true)
     }
     let imagePreview = null;
 
     if (newItem.image && newItem.image instanceof Blob) {
         imagePreview = URL.createObjectURL(newItem.image);
     }
+
     return (
         <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+
+            {seeAlert && <Alerts title={`Eliminar ${newItem.title}`}
+                textdetails={'¿Desea borrar el producto?'} confirm={'Borrar'} callback={handleDelete}
+                closemodal={closeAlert} />}
+
             <div className="flex flex-col items-center bg-[#C2C2C2] max-w-[45rem] min-w-[38rem] w-7/12 min-h-[28rem] gap-8 p-2">
 
                 <section className="flex justify-end  w-full p-1">
                     <button onClick={closeModal} className="text-red-700  text-xl font-bold ">X</button>
-                    <button onClick={()=>console.log(newItem.category,newItem.categories)}>ver</button>
+                    <button onClick={() => console.log(newItem.category, newItem.categories)}>ver</button>
                 </section>
 
                 <section className="flex justify-between w-full">
-
                     <article className="w-6/12 flex flex-col justify-center items-center gap-6">
 
                         {mode.edit &&
-
                             <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} />
-
                         }
                         {
                             mode.create && imagePreview && <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
@@ -127,44 +96,22 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                             accept="image/*"
                         />
                         <label htmlFor="selectimage">{newItem.image ? 'Cambiar' : 'Añadir'} imagen</label>
-
-
                     </article>
 
                     <article className="w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
-                        {mode.edit ?
-                            <>
-                                <input type="text" defaultValue={newItem.title} value={newItem.title} name="title" onChange={handleChange} className="p-2 rounded-lg w-full" />
-                                <textarea className="w-full p-2 h-4/6 " value={newItem.description} name="description" onChange={handleChange} />
-                                <article className="w-full flex justify-between">
-                                    <button onClick={selectCategories} className={` w-5/12 ${categories && 'bg-green'}`}>añadir categoria</button>
-                                    <input type="text" value={categories} onChange={handleCategories} className="p-2 rounded-lg w-6/12" />
-                                </article>
-                                <article className="flex w-full gap-2 flex-wrap ">
 
-                                    {newItem.categories && newItem.category.map((i, key) =>
-                                        <div className="flex   bg-white relative min-w-[8rem] " key={key}>
-                                            <span>{i}</span>
-                                            <button value={i} onClick={deleteCategories} className="absolute  top-0 right-0" >x</button>
-                                        </div>
-                                    )}
-                                </article>
-                            </>
-                            :
-                            <>
-                                <input type="text" className="p-2 rounded-lg w-full" value={newItem.title} placeholder="Ingrese el nombre del nuevo item" onChange={handleChange} name="title" />
-                                <textarea className="w-full p-2 h-4/6 " onChange={handleChange} value={newItem.description} name="description" />
-                                <input type="text" className="p-2 rounded-lg w-full" placeholder="Ingrese los detalles del nuevo item." />
+                        <FormShop setNewItem={setNewItem} startEdit={startEdit} setStartEdit={setStartEdit}
+                         newItem={newItem} mode={mode} />
 
-                            </>
-                        }
+                        <ShopCategories newItem={newItem} setNewItem={setNewItem}
+                            startEdit={startEdit} setStartEdit={setStartEdit} />
                     </article>
 
                 </section>
                 <article className="flex justify-end w-full">
                     {mode.create && <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleCreate}>Crear item</button>}
                     {mode.edit && !startEdit ?
-                        <button className="bg-red-500 text-white p-1 px-4 rounded-lg" onClick={handleCreate}>Borrar item</button> :
+                        <button className="bg-red-500 text-white p-1 px-4 rounded-lg" onClick={handleDelete}>Borrar item</button> :
                         mode.edit && <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleEdit}>Editar item</button>
                     }
                 </article>

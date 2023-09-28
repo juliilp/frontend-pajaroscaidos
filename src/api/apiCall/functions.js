@@ -141,17 +141,33 @@ export async function createNewItem(data) {
     console.log(error);
   }
 }
-export async function createCategory(name){
+export async function createCategory(name) {
   try {
-    const  request = await api.post(`shop/category`, name);
-  } catch (error) {
-    
-  }
+    const request = await api.post(`shop/category`, name);
+  } catch (error) {}
 }
 export async function editShopItem(id, data) {
   try {
     const request = await api.put(`/shop/item/${id}`, data);
     console.log(request.data, "aparentemente editado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteShopItem(id) {
+  try {
+    const request = await api.delete(`/shop/item/${id}`);
+    console.log(request.data, "aparentemente borrado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getCategories() {
+  try {
+    const request = await api.get(`/shop/category`);
+    return request.data
+    console.log(request.data, "categorias");
   } catch (error) {
     console.log(error);
   }
