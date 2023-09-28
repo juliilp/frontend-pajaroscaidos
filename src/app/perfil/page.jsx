@@ -25,7 +25,7 @@ export default function Perfil() {
   }
 
   return (
-    <article className="flex flex-col mt-[70px] items-center">
+    <article className="flex flex-col mt-[70px] items-center pb-6">
       <InfoProfile user={user} />
       <AboutMe description={user.description} />
       <MyPosts user={user} />
