@@ -1,13 +1,13 @@
 import Image from "next/image";
-export default function CardItem({data, key, openEditModal }) {
+export default function CardItem({data, openEditModal }) {
     
     return (
-        <article key={key} className=" flex p-2 flex-col items-center justify-center gap-2  rounded-lg bg-[#C2C2C2] min-h[18rem] md:min-h-[22rem] md:h-auto"
+        <article className=" flex p-2 flex-col items-center justify-center gap-2  rounded-lg bg-[#C2C2C2] min-h[18rem] md:min-h-[22rem] md:h-auto"
             onClick={(event) => openEditModal(event, data)} >
 
             <article className="h-[48%] ">
                 {data.image[0].secure_url &&
-                    <Image width={100} height={100} src={data.image[0].secure_url} alt={`product ${key}`}
+                    <Image width={100} height={100} src={data.image[0].secure_url} alt={`products`}
                         className="w-auto  min-h-[9rem] max-h-[11rem]   h-[10rem]" />
                 }
             </article>
