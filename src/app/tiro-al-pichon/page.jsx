@@ -8,7 +8,7 @@ import bgimage from "@/../public/images/tiroalpichon/TiroAlPichon.png";
 function Tiroalpichon() {
   return (
     <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8  md:px-0 ">
-      <section className="w-[18-rem]relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
+      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
         <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
       </section>
       <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8 ">
