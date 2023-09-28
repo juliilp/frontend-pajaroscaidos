@@ -116,7 +116,12 @@ export default function MenuDesktop() {
               >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro" onClick={closeMenu}>
+              <Link
+                key="opcion2"
+                href="/foro"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Foro
               </Link>,
             ]}
