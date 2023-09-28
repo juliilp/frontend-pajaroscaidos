@@ -80,7 +80,7 @@ export default function CardForo({
     <section className="flex w-full h-[150px] items-center justify-start shadow-primary sm:shadow-none ">
       {image?.secure_url && (
         <Image
-          src={image.imageUrl}
+          src={image.imageUrl || image.secure_url}
           alt="post"
           width={300}
           height={300}
