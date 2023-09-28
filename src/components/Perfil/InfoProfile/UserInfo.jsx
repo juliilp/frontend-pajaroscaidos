@@ -2,8 +2,8 @@ import CalculateAge from "@/helpers/CalculateAge";
 import { PiGearBold } from "react-icons/pi";
 export default function UserInfo({ user, toggleModal }) {
   return (
-    <div className="flex flex-col items-start w-full pl-4 py-1 gap-3 font-semibold text-xl">
-      <>
+    <section className="flex flex-col items-start w-full pl-4 py-1 gap-3 font-semibold text-xl">
+      <div>
         {user.first_name || user.last_name ? (
           <h4>
             Nombre:{" "}
@@ -28,7 +28,7 @@ export default function UserInfo({ user, toggleModal }) {
           Estado / Provincia:{" "}
           <span className="font-normal text-lg">{user.province || "-"}</span>
         </h4>
-      </>
+      </div>
       <div className="flex justify-between w-full items-end">
         <div>
           <h4>
@@ -47,6 +47,6 @@ export default function UserInfo({ user, toggleModal }) {
           onClick={toggleModal}
         />
       </div>
-    </div>
+    </section>
   );
 }
