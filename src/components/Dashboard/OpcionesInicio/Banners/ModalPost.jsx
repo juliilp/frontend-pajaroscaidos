@@ -45,8 +45,6 @@ function ModalPostBanners({ toggleModal, handleDataUpdated }) {
     }
   };
 
-  // console.log(handlePhotoChange);
-
   let imagePreview = null;
 
   if (newBanner.image && newBanner.image instanceof Blob) {

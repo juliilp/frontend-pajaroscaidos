@@ -119,6 +119,7 @@ export default function MenuMobile({ closeMenu }) {
                 href="/foro"
                 className="focus:underline"
                 onClick={closeMenu}
+                prefetch={false}
               >
                 Foro
               </Link>,

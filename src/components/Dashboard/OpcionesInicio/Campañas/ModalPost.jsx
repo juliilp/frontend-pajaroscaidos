@@ -47,8 +47,6 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
     }
   };
 
-  // console.log(handlePhotoChange);
-
   let imagePreview = null;
 
   if (newCampaña.image && newCampaña.image instanceof Blob) {

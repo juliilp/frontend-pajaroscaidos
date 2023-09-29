@@ -121,21 +121,54 @@ export async function newPassword(data) {
     }
   }
 }
-
-export async function getItemsShop(pageNumber,itemPerPage) {
+///---shop
+export async function getItemsShop(pageNumber, itemPerPage) {
   ///esperando que haya datos en el back para integrarla
   try {
-    const items = await api.get(`shop/items?itemPerPage=${itemPerPage??6}&pageNumber=${pageNumber??1}`);
-    return items.data
+    const items = await api.get(
+      `shop/items?itemPerPage=${itemPerPage ?? 6}&pageNumber=${pageNumber ?? 1}`
+    );
+    return items.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
-export async function createNewItem(data){
-   try {
-      const request=await api.post(`/shop/item`,data)
-      console.log(request.data,'aparentemente enviado');
-   } catch (error) {
-     console.log(error);
-   }
+export async function createNewItem(data) {
+  try {
+    const request = await api.post(`/shop/item`, data);
+    console.log(request.data, "aparentemente enviado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function createCategory(name) {
+  try {
+    const request = await api.post(`shop/category`, name);
+  } catch (error) {}
+}
+export async function editShopItem(id, data) {
+  try {
+    const request = await api.put(`/shop/item/${id}`, data);
+    console.log(request.data, "aparentemente editado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteShopItem(id) {
+  try {
+    const request = await api.delete(`/shop/item/${id}`);
+    console.log(request.data, "aparentemente borrado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function getCategories() {
+  try {
+    const request = await api.get(`/shop/category`);
+    return request.data
+    console.log(request.data, "categorias");
+  } catch (error) {
+    console.log(error);
+  }
 }

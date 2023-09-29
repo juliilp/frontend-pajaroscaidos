@@ -10,14 +10,13 @@ import { createNewPost } from "@/api/apiCall/PostFunctions";
 
 export default function ModalnewPost({ setvisible }) {
   const { UserContext } = CustomContext();
-  const [seeAlert, setSeeAlert] = useState(true);
-  useEffect(() => {
-    const body = document.getElementById("Body");
-    body && (body.style.overflow = "hidden");
-    return () => {
-      body && (body.style.overflow = "auto");
-    };
-  });
+  const [seeAlert, setSeeAlert] = useState(false);
+  const [visibleErrors, setVisibleError] = useState(false);
+  let imagePreview = null;
+
+  const closeAlert = () => {
+    setSeeAlert(false);
+  };
 
   const [newPost, setNewPost] = useState({
     title: "",
@@ -28,8 +27,6 @@ export default function ModalnewPost({ setvisible }) {
   const [errors, setErrors] = useState({
     default: "campos vacíos",
   });
-
-  const [visibleErrors, setVisibleError] = useState(false);
 
   const handleChange = (e) => {
     setNewPost({
@@ -44,6 +41,23 @@ export default function ModalnewPost({ setvisible }) {
       })
     );
   };
+
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    setNewPost({
+      ...newPost,
+      image: file,
+    });
+  };
+
+  useEffect(() => {
+    const body = document.getElementById("Body");
+    body && (body.style.overflow = "hidden");
+
+    return () => {
+      body && (body.style.overflow = "auto");
+    };
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,10 +75,9 @@ export default function ModalnewPost({ setvisible }) {
       const postData = {
         title: newPost.title,
         description: newPost.description,
-        image: newPost.image, // Solo asumo que solo hay una imagen en el array
+        image: newPost.image,
       };
 
-      console.log("data: ", postData);
       try {
         const response = await createNewPost(UserContext.id, postData);
 
@@ -77,23 +90,10 @@ export default function ModalnewPost({ setvisible }) {
     }
   };
 
-  const handlePhotoChange = (event) => {
-    const file = event.target.files[0];
-    console.log("file: ", file);
-    setNewPost({
-      ...newPost,
-      image: file, // Almacenar el archivo de imagen en el estado
-    });
-  };
-
-  let imagePreview = null;
-
   if (newPost.image && newPost.image instanceof Blob) {
     imagePreview = URL.createObjectURL(newPost.image);
   }
-  const closeAlert = () => {
-    setSeeAlert(false);
-  };
+
   return (
     <main className="bg-[#686868cc] z-10 min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
       {seeAlert && (
