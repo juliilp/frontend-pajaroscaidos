@@ -6,19 +6,39 @@ function ModalPutCampañas({ toggleModal, modal }) {
   const [formInfo, setFormInfo] = useState({
     title: modal.infoModal.title,
     description: modal.infoModal.description,
+    image: null,
   });
 
   const deleteCampañas = async () => {
     try {
       const response = await api.delete(`/news/${modal.infoModal.id}`);
+
+      toggleModal({});
     } catch (error) {
       console.error("Error al borrar la campaña:", error);
     }
   };
 
+  const handlePhotoChange = (event) => {
+    const file = event.target.files[0];
+    setFormInfo({
+      ...formInfo,
+      image: file,
+    });
+  };
+
   const putCampañas = async () => {
+    const deleteImage = [[modal.infoModal.image[0].public_id]];
+
     try {
-      const response = await api.put(`/news/${modal.infoModal.id}`, formInfo);
+      const formData = new FormData();
+      formData.append("title", formInfo.title);
+      formData.append("description", formInfo.description);
+      formData.append("newImage", formInfo.image);
+      formData.append("deleteImages", JSON.stringify(deleteImage));
+
+      const response = await api.put(`/news/${modal.infoModal.id}`, formData);
+      console.log(response);
 
       toggleModal({});
     } catch (error) {
@@ -41,30 +61,51 @@ function ModalPutCampañas({ toggleModal, modal }) {
     <>
       <div
         key={modal.infoModal.id}
-        className="w-[50%] h-[50%] bg-[#C2C2C2] rounded-lg"
+        className="w-[50%] h-[55%] bg-[#C2C2C2] rounded-lg"
       >
-        <div className="flex justify-end p-4 text-xl text-[#D22929] font-bold ">
-          <button onClick={() => toggleModal({})}>X</button>
+        <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
+          <h1>Edita tu campaña!</h1>
+          <button className="text-[#D22929]" onClick={() => toggleModal({})}>
+            X
+          </button>
         </div>
         <div className="flex justify-around mb-6">
           <div className="w-[40%] h-[150px]">
-            {modal.infoModal.image && modal.infoModal.image[0] && (
-              <Image
-                src={modal.infoModal.image[0].secure_url}
-                width={300}
-                height={300}
-                alt="prueba"
-                className="h-[200px] rounded-lg"
-              />
-            )}
+            <section className="flex mb-[100px]">
+              <article className="relative">
+                <input
+                  onChange={handlePhotoChange}
+                  type="file"
+                  name="image"
+                  id="selectimage"
+                  className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
+                  accept="image/*"
+                />
+                <label
+                  htmlFor="selectimage"
+                  className="flex items-center gap-2 cursor-pointer"
+                >
+                  {modal.infoModal.image && modal.infoModal.image[0] && (
+                    <Image
+                      src={modal.infoModal.image[0].secure_url}
+                      width={300}
+                      height={300}
+                      alt="prueba"
+                      className="h-[200px] rounded-lg"
+                    />
+                  )}
+                </label>
+              </article>
+            </section>
           </div>
+
           <div className="flex flex-col bg-[#444] w-[40%] h-[200px] p-3 rounded gap-3">
             <input
               className="flex h-[40px] bg-white rounded pl-2 font-bold text-lg"
               onChange={(e) =>
                 setFormInfo({ ...formInfo, title: e.target.value })
               }
-              value={formInfo.title}
+              value={formInfo.title || ""}
             />
 
             <textarea
@@ -77,7 +118,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
             />
           </div>
         </div>
-        <div className="flex justify-end w-[95%] gap-3">
+        <div className="flex justify-end w-[95%] gap-3 ">
           <button
             className="bg-[#60EA4A] rounded flex justify-center items-center h-8 w-[20%] text-black "
             onClick={putCampañas}
