@@ -84,6 +84,9 @@ export default function Page() {
       passwordConfirm: "",
       nick_name: "",
       last_name: "",
+      pais: "",
+      estado: "",
+      telefono: "",
     });
   };
 
@@ -136,6 +139,54 @@ export default function Page() {
             style={{ visibility: errors.last_name ? "visible" : "hidden" }}
           >
             {errors.last_name}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Pais</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="last_name"
+            onChange={handlerRegistro}
+            value={formRegister.pais}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.pais ? "visible" : "hidden" }}
+          >
+            {errors.pais}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Estado/Provincia</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="last_name"
+            onChange={handlerRegistro}
+            value={formRegister.estado}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.estado ? "visible" : "hidden" }}
+          >
+            {errors.estado}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Telefono</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="last_name"
+            onChange={handlerRegistro}
+            value={formRegister.telefono}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.telefono ? "visible" : "hidden" }}
+          >
+            {errors.telefono}
           </span>
         </div>
 
@@ -220,19 +271,6 @@ export default function Page() {
             {errors.passwordConfirm}
           </span>
         </div>
-
-        {/*<div className="flex flex-col mx-4">
-
-          <span>Tipo de voluntario</span>
-          <input
-            type="text"
-            className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="voluntario"
-            onChange={handlerRegistro}
-            value={formRegister.voluntario}
-          />
-
-        </div>*/}
 
         <button
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
