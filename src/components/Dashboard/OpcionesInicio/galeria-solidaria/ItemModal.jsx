@@ -25,10 +25,15 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
             Body && (Body.style.overflow = 'auto')
         }
     }, [])
-    const [newItem, setNewItem] = useState(itemToEdit ?? { image: "", title: "", description: "", categories: [""], category: [] });
+    const [newItem, setNewItem] = useState({ image: "", title: "", description: "", categories: [""], category: [] ,price:"5"});
+    useEffect(() => {
+        itemToEdit ? setNewItem(itemToEdit) : null
+    }, [])
+
     const [mode, setMode] = useState({
         create: ModalType === 'create',
         edit: ModalType === 'edit',
+        delete: false
     })
 
     const [startEdit, setStartEdit] = useState(false)
@@ -36,26 +41,31 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
     const handlePhotoChange = (event) => {
         const file = event.target.files[0];
-        console.log("file: ", file);
         setNewItem({
             ...newItem,
-            image: file
+            image: file,
+            newImage: file
+            // newImage:[file]
         });
         !startEdit && setStartEdit(true)
     };
     const handleCreate = () => {
         console.log(newItem);
-        createNewItem(newItem)
+        seeAlert ? createNewItem(newItem) : setSeeAlert(true)
+
     }
     const closeAlert = () => {
         setSeeAlert(false)
+        setMode({ ...mode, delete: false })
     }
     const handleEdit = () => {
         // createCategory()
         console.log(newItem);
-        editShopItem(newItem.id, newItem)
+        seeAlert ? editShopItem(newItem.id, newItem) : setSeeAlert(true)
+
     }
     const handleDelete = () => {
+        setMode({ ...mode, delete: true })
         seeAlert ? deleteShopItem(newItem.id) : setSeeAlert(true)
     }
     let imagePreview = null;
@@ -67,22 +77,28 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     return (
         <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
 
-            {seeAlert && <Alerts title={`Eliminar ${newItem.title}`}
-                textdetails={'¿Desea borrar el producto?'} confirm={'Borrar'} callback={handleDelete}
+            {seeAlert && mode.delete && <Alerts title={`Eliminar ${newItem.title}`}
+                textdetails={'¿Desea borrar el producto?'} confirm={'Si Borrar'} callback={handleDelete}
+                closemodal={closeAlert} />}
+            {seeAlert && mode.edit && !mode.delete &&<Alerts title={`Confirmar edicion`}
+                textdetails={'¿Desea editar el producto?'} confirm={'Si editar'} callback={handleEdit}
+                closemodal={closeAlert} />}
+            {seeAlert && mode.create && <Alerts title={`Crear ${newItem.title}`}
+                textdetails={'¿Desea crear el nuevo producto?'} confirm={'Si crear'} callback={handleCreate}
                 closemodal={closeAlert} />}
 
             <div className="flex flex-col items-center bg-[#C2C2C2] max-w-[45rem] min-w-[38rem] w-7/12 min-h-[28rem] gap-8 p-2">
 
                 <section className="flex justify-end  w-full p-1">
                     <button onClick={closeModal} className="text-red-700  text-xl font-bold ">X</button>
-                    <button onClick={() => console.log(newItem.category, newItem.categories)}>ver</button>
+                    <button onClick={() => console.log(newItem)}>ver</button>
                 </section>
 
                 <section className="flex justify-between w-full">
                     <article className="w-6/12 flex flex-col justify-center items-center gap-6">
 
-                        {mode.edit &&
-                            <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} />
+                        {mode.edit && newItem.image &&
+                            <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} priority={true} />
                         }
                         {
                             mode.create && imagePreview && <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
@@ -101,7 +117,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                     <article className="w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
 
                         <FormShop setNewItem={setNewItem} startEdit={startEdit} setStartEdit={setStartEdit}
-                         newItem={newItem} mode={mode} />
+                            newItem={newItem} mode={mode} />
 
                         <ShopCategories newItem={newItem} setNewItem={setNewItem}
                             startEdit={startEdit} setStartEdit={setStartEdit} />

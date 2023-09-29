@@ -135,12 +135,21 @@ export async function getItemsShop(pageNumber, itemPerPage) {
 }
 export async function createNewItem(data) {
   try {
-    const request = await api.post(`/shop/item`, data);
-    console.log(request.data, "aparentemente enviado");
+
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("price", data.price);
+    formData.append("image", data.image);
+    formData.append("category", data.category);
+    formData.append("description", data.description);
+    const request = await api.post(`/shop/item`, formData);
+    console.log(request.data);
   } catch (error) {
     console.log(error);
   }
 }
+
+
 export async function createCategory(name) {
   try {
     const request = await api.post(`shop/category`, name);
@@ -166,8 +175,8 @@ export async function deleteShopItem(id) {
 export async function getCategories() {
   try {
     const request = await api.get(`/shop/category`);
-    return request.data
-    console.log(request.data, "categorias");
+    return request.data.categories
+    console.log(request.data);
   } catch (error) {
     console.log(error);
   }
