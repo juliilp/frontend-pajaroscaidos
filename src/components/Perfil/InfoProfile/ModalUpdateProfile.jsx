@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { BiEditAlt } from "react-icons/bi";
 
-export default function ModalUpdateProfile({ modal, user, toggleModal }) {
+export default function ModalUpdateProfile({ user, toggleModal }) {
   const [toggleIcon, setToggleIcon] = useState(false);
 
   const handleToggleIcon = () => {
@@ -16,19 +16,13 @@ export default function ModalUpdateProfile({ modal, user, toggleModal }) {
   };
 
   return (
-    <article
-      className={`bg-[#0000008a] fixed w-screen h-screen top-0 left-0 z-[9999999] duration-300 ${
-        modal
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
-      }`}
-    >
+    <article className="bg-[#0000008a] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto">
       <section
         onClick={handleCloseModal}
         id="outside"
-        className="h-full flex justify-center items-center"
+        className="flex justify-center my-10"
       >
-        <div className="bg-[#D9D9D9] flex flex-col items-end px-6 pb-4 pt-2 rounded-xl lg:w-[420px] max-h-[85%] overflow-y-auto">
+        <div className="bg-[#D9D9D9] flex flex-col items-end px-6 pb-4 pt-2 rounded-xl lg:w-[420px]">
           <button
             className="text-2xl text-red-600 font-bold"
             onClick={toggleModal}
@@ -41,14 +35,14 @@ export default function ModalUpdateProfile({ modal, user, toggleModal }) {
                 <Image
                   src={user.avatar.secure_url}
                   alt="Profile Image"
-                  width={80}
-                  height={80}
-                  className="h-[80px] w-[80px] rounded-full"
+                  width={100}
+                  height={100}
+                  className="h-[100px] w-[100px] rounded-full"
                   onMouseEnter={handleToggleIcon}
                 />
                 {toggleIcon && (
                   <div
-                    className="bg-[#00000079] h-[80px] w-[80px] absolute z-10 top-0 rounded-full"
+                    className="bg-[#00000079] h-[100px] w-[100px] absolute z-10 top-0 rounded-full"
                     onMouseLeave={handleToggleIcon}
                   >
                     <div className="flex justify-center items-center w-full h-full">
