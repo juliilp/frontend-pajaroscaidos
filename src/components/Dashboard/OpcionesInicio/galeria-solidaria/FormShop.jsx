@@ -13,7 +13,7 @@ export default function FormShop({ newItem, mode ,setNewItem,startEdit,setStartE
         <>
             {mode.edit ?
                 <>
-                    <input type="text" defaultValue={newItem.title} value={newItem.title} name="title" onChange={handleChange}
+                    <input type="text"  value={newItem.title} name="title" onChange={handleChange}
                         className="p-2 rounded-lg w-full" placeholder="Ingrese el nuevo nombre."/>
                     <textarea className="w-full p-2 h-4/6 " value={newItem.description} name="description" onChange={handleChange} />
                 </> :
