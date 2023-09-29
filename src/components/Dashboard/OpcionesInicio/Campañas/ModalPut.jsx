@@ -11,6 +11,8 @@ function ModalPutCampañas({ toggleModal, modal }) {
   const deleteCampañas = async () => {
     try {
       const response = await api.delete(`/news/${modal.infoModal.id}`);
+
+      toggleModal({});
     } catch (error) {
       console.error("Error al borrar la campaña:", error);
     }
@@ -41,10 +43,13 @@ function ModalPutCampañas({ toggleModal, modal }) {
     <>
       <div
         key={modal.infoModal.id}
-        className="w-[50%] h-[50%] bg-[#C2C2C2] rounded-lg"
+        className="w-[50%] h-[55%] bg-[#C2C2C2] rounded-lg"
       >
-        <div className="flex justify-end p-4 text-xl text-[#D22929] font-bold ">
-          <button onClick={() => toggleModal({})}>X</button>
+        <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
+          <h1>Edita tu campaña!</h1>
+          <button className="text-[#D22929]" onClick={() => toggleModal({})}>
+            X
+          </button>
         </div>
         <div className="flex justify-around mb-6">
           <div className="w-[40%] h-[150px]">
@@ -64,7 +69,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
               onChange={(e) =>
                 setFormInfo({ ...formInfo, title: e.target.value })
               }
-              value={formInfo.title}
+              value={formInfo.title || ""}
             />
 
             <textarea
@@ -77,7 +82,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
             />
           </div>
         </div>
-        <div className="flex justify-end w-[95%] gap-3">
+        <div className="flex justify-end w-[95%] gap-3 ">
           <button
             className="bg-[#60EA4A] rounded flex justify-center items-center h-8 w-[20%] text-black "
             onClick={putCampañas}

@@ -3,7 +3,7 @@ import { RiImageFill } from "react-icons/ri";
 import Image from "next/image";
 import api from "@/api/api";
 
-function ModalPostCampaña({ toggleModal, handleDataUpdated }) {
+function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
   const [newCampaña, setNewCampaña] = useState({
     title: "",
     description: "",
@@ -59,7 +59,7 @@ function ModalPostCampaña({ toggleModal, handleDataUpdated }) {
     <>
       <div className="w-[50%] h-[65%] bg-[#444] rounded-lg text-[#ffffff]">
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
-          <h1>Crea tu banner!</h1>
+          <h1>Crea tu campaña!</h1>
           <button className="text-[#D22929]" onClick={() => toggleModal({})}>
             X
           </button>
@@ -85,23 +85,21 @@ function ModalPostCampaña({ toggleModal, handleDataUpdated }) {
               <div className="flex justify-between items-end w-full ">
                 <div className="flex flex-col w-[100%]">
                   <section className="flex mb-[100px]">
-                    <article className="flex mr-4">
+                    <article className="relative">
                       <input
+                        onChange={handlePhotoChange}
                         type="file"
                         name="image"
-                        onChange={handlePhotoChange}
                         id="selectimage"
-                        className="hidden"
+                        className="opacity-0 absolute inset-0 w-full h-full cursor-pointer"
                         accept="image/*"
                       />
                       <label
                         htmlFor="selectimage"
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 cursor-pointer"
                       >
-                        <RiImageFill className="cursor-pointer text-2xl " />
-                        <span className="cursor-pointer text-[#989898] ">
-                          Imagen
-                        </span>
+                        <RiImageFill className="text-2xl" />
+                        <span className="text-[#989898]">Imagen</span>
                       </label>
                     </article>
                   </section>
@@ -131,4 +129,4 @@ function ModalPostCampaña({ toggleModal, handleDataUpdated }) {
   );
 }
 
-export default ModalPostCampaña;
+export default ModalPostCampañas;
