@@ -11,7 +11,7 @@ export default function UserProfileHeader({ avatar }) {
           alt="Profile Image"
           width={80}
           height={80}
-          className="relative h-[80px] w-[80px] ml-6 rounded-full border-[#C4C4C4] border-2"
+          className="relative h-[80px] w-[80px] ml-6 rounded-full"
         />
       )}
     </header>
