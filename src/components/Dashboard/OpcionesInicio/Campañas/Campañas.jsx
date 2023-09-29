@@ -6,7 +6,7 @@ import Image from "next/image";
 import formatDate from "@/helpers/FormatDate";
 import Pagination from "@/components/Pagination/Pagination";
 import ModalPutCampañas from "@/components/Dashboard/OpcionesInicio/Campañas/ModalPut";
-import ModalPostCampañas from "@/components/Dashboard/OpcionesInicio/Campañas/ModalPost";
+import ModalPostCampaña from "@/components/Dashboard/OpcionesInicio/Campañas/ModalPost";
 
 function Campañas() {
   const [modalPut, setModalPut] = useState({ toggle: false, infoModal: {} });
@@ -102,8 +102,9 @@ function Campañas() {
           modalPost.toggle ? "block" : "hidden"
         }`}
       >
-        <ModalPostCampañas
+        <ModalPostCampaña
           handleDataUpdated={handleDataUpdated}
+          modal={modalPost}
           toggleModal={toggleModalPost}
         />
       </div>

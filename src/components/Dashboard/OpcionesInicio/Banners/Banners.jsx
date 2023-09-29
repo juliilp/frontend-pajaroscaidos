@@ -18,6 +18,10 @@ function Banners() {
   const deleteBanners = async () => {
     try {
       const response = await api.delete(`/news/banner/${banners[0].id}`);
+
+      if (response.status === 200) {
+        alert("El banner fue borrado con exito.");
+      }
     } catch (error) {
       console.error("Error al borrar el Banner:", error);
     }
@@ -58,13 +62,15 @@ function Banners() {
               className="bg-[#ccc] mx-3 flex flex-col rounded-md"
               key={index}
             >
-              <Image
-                src={banner.image.secure_url}
-                width={150}
-                height={150}
-                alt="prueba"
-                className=" w-full h-[100px] rounded-md"
-              />
+              <div className="">
+                <Image
+                  src={banner.image.secure_url}
+                  width={150}
+                  height={200}
+                  alt="prueba"
+                  className="w-[300px] h-[130px] rounded-md"
+                />
+              </div>
               <div className="p-2">
                 <span>{banner.name}</span>
                 <div className="flex justify-end">
