@@ -1,63 +1,40 @@
 import { UpdateUser } from "@/api/apiCall/UserFunctions";
 import parseBackendDate from "@/helpers/FormatBackDate";
+import validateUpdateUser from "@/helpers/ValidateUpdateUser";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
 import { useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
 
+const fieldLabels = {
+  nick_name: "Nickname",
+  first_name: "Nombre",
+  last_name: "Apellido",
+  country: "Pais",
+  city: "Ciudad",
+  birth_date: "Fecha de nacimiento",
+  phone_number: "Telefono",
+};
+
 export default function FormUpdateProfile({ user }) {
+  const { setUserContext } = CustomContext();
   const [toggleIcon, setToggleIcon] = useState(false);
   const [userUpdated, setUserUpdated] = useState({});
   const [errors, setErrors] = useState({});
-  const { setUserContext } = CustomContext();
 
   const handleToggleIcon = () => {
-    setToggleIcon((togglePrev) => !togglePrev);
+    setToggleIcon(!toggleIcon);
   };
 
   const handleUserUpdated = (event) => {
     const { id, value } = event.target;
+    const updatedValue = id === "phone_number" ? Number(value) : value;
 
     setUserUpdated((userPrev) => ({
       ...userPrev,
-      [id]: id === "phone_number" ? Number(value) : value,
+      [id]: updatedValue,
     }));
-    validateField(id, value);
-  };
-
-  const validateField = (fieldName, value) => {
-    const newErrors = { ...errors };
-
-    switch (fieldName) {
-      case "nick_name":
-        if (value.length > 24) {
-          newErrors.nick_name =
-            "El nickname no puede tener más de 24 caracteres";
-        } else {
-          delete newErrors.nick_name;
-        }
-        break;
-      case "first_name":
-        if (value.length > 24) {
-          newErrors.first_name =
-            "El nombre no puede tener más de 24 caracteres";
-        } else {
-          delete newErrors.first_name;
-        }
-        break;
-      case "last_name":
-        if (value.length > 24) {
-          newErrors.last_name =
-            "El apellido no puede tener más de 24 caracteres";
-        } else {
-          delete newErrors.last_name;
-        }
-        break;
-      default:
-        break;
-    }
-
-    setErrors(newErrors);
+    validateUpdateUser(id, updatedValue, errors, setErrors);
   };
 
   const handleSubmit = async (event) => {
@@ -110,99 +87,29 @@ export default function FormUpdateProfile({ user }) {
         className="flex flex-col items-center gap-1 w-full"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col w-full">
-          <label htmlFor="nick_name" className="pl-1 font-medium">
-            Nickname
-          </label>
-          <input
-            id="nick_name"
-            type="text"
-            defaultValue={user.nick_name}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-          {errors.nick_name && (
-            <p className="text-red-500">{errors.nick_name}</p>
-          )}
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="first_name" className="pl-1 font-medium">
-            Nombre
-          </label>
-          <input
-            id="first_name"
-            type="text"
-            defaultValue={user.first_name}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-          {errors.first_name && (
-            <p className="text-red-500">{errors.first_name}</p>
-          )}
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="last_name" className="pl-1 font-medium">
-            Apellido
-          </label>
-          <input
-            id="last_name"
-            type="text"
-            defaultValue={user.last_name}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-          {errors.last_name && (
-            <p className="text-red-500">{errors.last_name}</p>
-          )}
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="country" className="pl-1 font-medium">
-            Pais
-          </label>
-          <input
-            id="country"
-            type="text"
-            defaultValue={user.country}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="city" className="pl-1 font-medium">
-            Ciudad
-          </label>
-          <input
-            id="city"
-            type="text"
-            defaultValue={user.city}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="birth_date" className="pl-1 font-medium">
-            Fecha de nacimiento
-          </label>
-          <input
-            id="birth_date"
-            type="date"
-            defaultValue={user.birth_date}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-        </div>
-        <div className="flex flex-col w-full">
-          <label htmlFor="phone_number" className="pl-1 font-medium">
-            Telefono
-          </label>
-          <input
-            id="phone_number"
-            type="number"
-            defaultValue={user.phone_number}
-            className="rounded-md px-2 py-1"
-            onChange={handleUserUpdated}
-          />
-        </div>
+        {Object.keys(fieldLabels).map((fieldName) => (
+          <div key={fieldName} className="flex flex-col w-full">
+            <label htmlFor={fieldName} className="pl-1 font-medium">
+              {fieldLabels[fieldName]}
+            </label>
+            <input
+              id={fieldName}
+              type={
+                fieldName === "birth_date"
+                  ? "date"
+                  : fieldName === "phone_number"
+                  ? "number"
+                  : "text"
+              }
+              defaultValue={user[fieldName]}
+              className="rounded-md px-2 py-1"
+              onChange={handleUserUpdated}
+            />
+            {errors[fieldName] && (
+              <p className="text-red-500">{errors[fieldName]}</p>
+            )}
+          </div>
+        ))}
         <div className="w-full flex justify-end">
           <button
             className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2 disabled:bg-[#56af48] disabled:cursor-not-allowed"
