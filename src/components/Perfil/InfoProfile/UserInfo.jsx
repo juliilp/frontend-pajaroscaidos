@@ -22,11 +22,12 @@ export default function UserInfo({ user, toggleModal }) {
           </span>
         </h4>
         <h4>
-          Pais: <span className="font-normal text-lg">{user.city || "-"}</span>
+          Pais:{" "}
+          <span className="font-normal text-lg">{user.country || "-"}</span>
         </h4>
         <h4>
-          Estado / Provincia:{" "}
-          <span className="font-normal text-lg">{user.province || "-"}</span>
+          Ciudad:{" "}
+          <span className="font-normal text-lg">{user.city || "-"}</span>
         </h4>
       </div>
       <div className="flex justify-between w-full items-end">
