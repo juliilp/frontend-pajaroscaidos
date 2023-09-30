@@ -12,12 +12,6 @@ export default function Perfil() {
 
   useEffect(() => {
     setUser(UserContext);
-    /* async function getUser() {
-       const response = await api.get(`/user/${user.id}`);
-       setUserContext(response.data.user);
-    }
-    Cuanto se cierre la modal de actualizar perfil, se ejecuta la funcion anterior.
-    TRABAJANDO EN ESTO NO BORRAR! */
   }, [UserContext, user]);
 
   if (!user) {
