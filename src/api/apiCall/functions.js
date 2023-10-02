@@ -1,6 +1,7 @@
 import api from "../../api/api";
 import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
+import { formDataConver } from "@/helpers/formDataConvert";
 
 export async function getPostForNuestraComunidad(option) {
   try {
@@ -135,13 +136,7 @@ export async function getItemsShop(pageNumber, itemPerPage) {
 }
 export async function createNewItem(data) {
   try {
-
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("price", data.price);
-    formData.append("image", data.image);
-    formData.append("category", data.category);
-    formData.append("description", data.description);
+    const formData = formDataConver(data);
     const request = await api.post(`/shop/item`, formData);
     console.log(request.data);
   } catch (error) {
@@ -152,8 +147,11 @@ export async function createNewItem(data) {
 
 export async function createCategory(name) {
   try {
-    const request = await api.post(`shop/category`, name);
-  } catch (error) {}
+    return  api.post(`shop/category`, {name});
+    
+  } catch (error) {
+    console.log(error);
+  }
 }
 export async function editShopItem(id, data) {
   try {
