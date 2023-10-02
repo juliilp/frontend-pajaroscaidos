@@ -129,6 +129,7 @@ export async function getItemsShop(pageNumber, itemPerPage) {
     const items = await api.get(
       `shop/items?itemPerPage=${itemPerPage ?? 6}&pageNumber=${pageNumber ?? 1}`
     );
+    console.log(items.data.items.totalPages);
     return items.data;
   } catch (error) {
     console.log(error);
