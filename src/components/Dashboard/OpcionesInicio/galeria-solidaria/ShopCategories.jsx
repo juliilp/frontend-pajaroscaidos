@@ -1,23 +1,24 @@
-import { getCategories } from "@/api/apiCall/functions";
+import { createCategory, getCategories } from "@/api/apiCall/functions";
 import { useState, useEffect } from "react";
 
 export default function ShopCategories({ newItem, setNewItem, setStartEdit, startEdit }) {
     const [categories, setCategories] = useState('')
     const [apicategories, setApiCategories] = useState([])
     const [newCategory, setNewCategory] = useState(false)
-
+    const [resetCategory, setReseteCategory] = useState(0)
     useEffect(() => {
         const action = async () => {
             const categories = await getCategories();
             console.log('en use');
-            if (!apicategories.length) setApiCategories(categories)
-            else setApiCategories([''])
+            // if (!apicategories.length) setApiCategories(categories)
+            // else setApiCategories([])
+            setApiCategories(categories)
         }
         action()
-        return () => setApiCategories([''])
-    }, [])
+        return () => setApiCategories([])
+    }, [resetCategory])
 
-    const selectCategories = (event) => {
+    const selectCategories = (event, create) => {
         event.preventDefault();
         !startEdit && setStartEdit(true)
         const value = event.target.value ? event.target.value : categories
@@ -34,7 +35,11 @@ export default function ShopCategories({ newItem, setNewItem, setStartEdit, star
             });
             setCategories('')
         }
-        newCategory&&setNewCategory(false)
+        if (categories) {
+            createCategory(categories).then((res) => setReseteCategory(resetCategory+1))
+            .catch((err) => console.log(err))
+        }
+        newCategory && setNewCategory(false)
     }
 
     const deleteCategories = (event) => {
@@ -54,16 +59,18 @@ export default function ShopCategories({ newItem, setNewItem, setStartEdit, star
         const { value } = event.target
         setCategories(value)
     }
-    console.log(apicategories);
+
     return <>
         <article className="flex flex-col items-center">
+            <button onClick={() => console.log(apicategories)}>ver estado</button>
             <select name="" id="" onChange={selectCategories}>
                 <option value="" >Categorias</option>
-                {apicategories.map((i, key) =>
+                {apicategories?.length && apicategories.map((i, key) =>
                     <option key={key} value={i.name} >
                         {i.name}
                     </option>
                 )}
+                {!apicategories?.length && <option value="" >Sin opciones</option>}
             </select>
             {!newCategory && <span onClick={() => setNewCategory(true)} className="text-white cursor-pointer hover:text-gray-200">¿No encuentras la categoria ideal?</span>}
         </article>

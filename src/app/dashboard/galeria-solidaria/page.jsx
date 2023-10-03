@@ -9,18 +9,21 @@ function page() {
   const [visibleModal, setVisibleModal] = useState(false);
   const [modalType, setModalType] = useState('')
   const [itemToEdit, setItemToEdit] = useState({})
-
+  const [actualPage,setActualPage]=useState(1)
+  const [totalPages,setTotalPages]=useState(0)
   useEffect(() => {
     const action = async () => {
       try {
-        const data = await getItemsShop();
+        const data = await getItemsShop(actualPage);
         setData(data.items)
+        setTotalPages(data.items.totalPages)
+        console.log(data.items.totalPages,'total apg');
       } catch (error) {
         console.log(error)
       }
     }
     action();
-  }, [])
+  }, [actualPage])
   const openCreateModal = () => {
     setItemToEdit(null)
     setModalType('create');
@@ -44,7 +47,24 @@ function page() {
   const closeModal = () => {
     setVisibleModal(false)
   }
-
+  const changePage=(event)=>{
+    event.preventDefault();
+    const {value}=event.target;
+    if(value<1) return alert('No hay mas paginas');
+    if (value>totalPages) return alert ('No se puede avanzar');
+    setActualPage(value)
+  }
+  const pagees=()=>{
+    let array=[];
+    console.log(totalPages);
+    if(data?.totalPages){
+      for (let i = 0; i < totalPages; i++) {
+        array.push(parseInt(i+1))
+      }
+    }
+    
+    return array
+  }
   return (
     <div className=" text-sm md:text-sm  lg:text-base xl:text-lg 2xl:text-xl 
      min-h-screen w-full flex flex-col justify-center items-center gap-6 pt-[90px] pb-10">
@@ -55,6 +75,11 @@ function page() {
       
       <section className="  bg-[#4F4F4F] w-[95%] min-h-[20rem] flex flex-col gap-4   p-6 pb-0 pt-12 rounded-lg">
         <ProductSection data={data} openCreateModal={openCreateModal} openEditModal={openEditModal}/>
+      </section>
+      <section className="flex  justify-center gap-2 ">
+      {data?.totalPages&& pagees().map((i,key)=>
+        <button key={key} value={i} onClick={changePage}>{i}</button>
+        )}
       </section>
     </div>
   );

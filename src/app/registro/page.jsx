@@ -146,7 +146,7 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="last_name"
+            name="pais"
             onChange={handlerRegistro}
             value={formRegister.pais}
           />
@@ -162,7 +162,7 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="last_name"
+            name="estado"
             onChange={handlerRegistro}
             value={formRegister.estado}
           />
@@ -178,7 +178,7 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="last_name"
+            name="telefono"
             onChange={handlerRegistro}
             value={formRegister.telefono}
           />

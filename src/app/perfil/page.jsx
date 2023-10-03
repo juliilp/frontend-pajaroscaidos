@@ -12,12 +12,6 @@ export default function Perfil() {
 
   useEffect(() => {
     setUser(UserContext);
-    /* async function getUser() {
-       const response = await api.get(`/user/${user.id}`);
-       setUserContext(response.data.user);
-    }
-    Cuanto se cierre la modal de actualizar perfil, se ejecuta la funcion anterior.
-    TRABAJANDO EN ESTO NO BORRAR! */
   }, [UserContext, user]);
 
   if (!user) {
@@ -27,7 +21,7 @@ export default function Perfil() {
   return (
     <article className="flex flex-col mt-[70px] items-center pb-6">
       <InfoProfile user={user} />
-      <AboutMe description={user.description} />
+      <AboutMe user={user} />
       <MyPosts user={user} />
     </article>
   );

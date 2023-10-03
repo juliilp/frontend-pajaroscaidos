@@ -4,6 +4,7 @@ import image1 from "../../../public/images/voluntarios1.png";
 import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
 import api from "@/api/api";
 import { useEffect, useState } from "react";
+import CardVoluntarioLoading from "@/components/CardVoluntario/CardVoluntarioLoading";
 export default function Voluntarios() {
   const [users, setUsers] = useState();
   useEffect(() => {
@@ -13,8 +14,16 @@ export default function Voluntarios() {
     }
     users();
   }, []);
+
+  function generateLoadingCards(count) {
+    const loadingCards = [];
+    for (let i = 0; i < count; i++) {
+      loadingCards.push(<CardVoluntarioLoading key={i} />);
+    }
+    return loadingCards;
+  }
   return (
-    <section className=" min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
+    <section className=" min-h-screen w-full flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
       <section className="w-full h-28 md:h-[14rem] relative">
         <Image
           src={image1}
@@ -26,18 +35,18 @@ export default function Voluntarios() {
       </section>
 
       <article className="flex flex-col md:grid grid-cols-2 gap-12 lg:grid-cols-3 lg:gap-20 xl:grid-cols-4">
-        {users &&
-          users.length > 1 &&
-          users.map(({ description, first_name, avatar }, key) => {
-            return (
-              <CardVoluntario
-                key={key}
-                texto={description}
-                titulo={first_name}
-                imagen={avatar.secure_url}
-              />
-            );
-          })}
+        {users && users.length > 1
+          ? users.map(({ description, first_name, avatar }, key) => {
+              return (
+                <CardVoluntario
+                  key={key}
+                  texto={description}
+                  titulo={first_name}
+                  imagen={avatar.secure_url}
+                />
+              );
+            })
+          : generateLoadingCards(7)}
       </article>
     </section>
   );
