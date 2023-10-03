@@ -2,9 +2,8 @@ import { UpdateUser } from "@/api/apiCall/UserFunctions";
 import parseBackendDate from "@/helpers/FormatBackDate";
 import validateUpdateUser from "@/helpers/ValidateUpdateUser";
 import { CustomContext } from "@/store/ContextProvider";
-import Image from "next/image";
 import { useState } from "react";
-import { BiEditAlt } from "react-icons/bi";
+import UpdateAvatar from "./FormUpdateProfile/UpdateAvatar";
 
 const fieldLabels = {
   nick_name: "Nickname",
@@ -18,23 +17,17 @@ const fieldLabels = {
 
 export default function FormUpdateProfile({ user }) {
   const { setUserContext } = CustomContext();
-  const [toggleIcon, setToggleIcon] = useState(false);
   const [userUpdated, setUserUpdated] = useState({});
   const [errors, setErrors] = useState({});
 
-  const handleToggleIcon = () => {
-    setToggleIcon(!toggleIcon);
-  };
-
   const handleUserUpdated = (event) => {
     const { id, value } = event.target;
-    const updatedValue = id === "phone_number" ? Number(value) : value;
 
     setUserUpdated((userPrev) => ({
       ...userPrev,
-      [id]: updatedValue,
+      [id]: value,
     }));
-    validateUpdateUser(id, updatedValue, errors, setErrors);
+    validateUpdateUser(id, value, errors, setErrors);
   };
 
   const handleSubmit = async (event) => {
@@ -59,28 +52,7 @@ export default function FormUpdateProfile({ user }) {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      {user.avatar && user.avatar.secure_url && (
-        <div className="relative cursor-pointer">
-          <Image
-            src={user.avatar.secure_url}
-            alt="Profile Image"
-            width={100}
-            height={100}
-            className="h-[100px] w-[100px] rounded-full"
-            onMouseEnter={handleToggleIcon}
-          />
-          {toggleIcon && (
-            <div
-              className="bg-[#00000079] h-[100px] w-[100px] absolute z-10 top-0 rounded-full"
-              onMouseLeave={handleToggleIcon}
-            >
-              <div className="flex justify-center items-center w-full h-full">
-                <BiEditAlt size={30} className="cursor-pointer" color="white" />
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+      {user.avatar && user.avatar.secure_url && <UpdateAvatar user={user} />}
 
       <h2>Editar perfil</h2>
       <form
@@ -94,13 +66,7 @@ export default function FormUpdateProfile({ user }) {
             </label>
             <input
               id={fieldName}
-              type={
-                fieldName === "birth_date"
-                  ? "date"
-                  : fieldName === "phone_number"
-                  ? "number"
-                  : "text"
-              }
+              type={fieldName === "birth_date" ? "date" : "text"}
               defaultValue={user[fieldName]}
               className="rounded-md px-2 py-1"
               onChange={handleUserUpdated}
