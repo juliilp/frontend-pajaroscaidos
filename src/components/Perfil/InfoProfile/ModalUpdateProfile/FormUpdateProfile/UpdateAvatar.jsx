@@ -8,7 +8,7 @@ export default function UpdateAvatar({ user }) {
   const { setUserContext } = CustomContext();
   const [toggleIcon, setToggleIcon] = useState(false);
   const [newAvatar, setNewAvatar] = useState(null);
-  let imagePreview = null;
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleToggleIcon = () => {
     setToggleIcon(!toggleIcon);
@@ -17,6 +17,7 @@ export default function UpdateAvatar({ user }) {
   const handleNewAvatar = (event) => {
     const file = event.target.files[0];
     setNewAvatar(file);
+    setImagePreview(file ? URL.createObjectURL(file) : null);
   };
 
   const handleSubmit = async () => {
@@ -33,10 +34,6 @@ export default function UpdateAvatar({ user }) {
     }
   };
 
-  if (newAvatar && newAvatar instanceof Blob) {
-    imagePreview = URL.createObjectURL(newAvatar);
-  }
-
   useEffect(() => {
     return () => {
       if (imagePreview) {
@@ -46,7 +43,7 @@ export default function UpdateAvatar({ user }) {
   }, [imagePreview]);
 
   return (
-    <div className="relative cursor-pointer">
+    <div className="relative cursor-pointer flex flex-col items-center gap-1">
       {imagePreview ? (
         <Image
           src={imagePreview}
@@ -89,8 +86,11 @@ export default function UpdateAvatar({ user }) {
         </div>
       )}
       {imagePreview && (
-        <button onClick={handleSubmit}>
-          <span>Subir imagen</span>
+        <button
+          onClick={handleSubmit}
+          className="py-1 px-3 rounded-md bg-[#60EA4A]"
+        >
+          <span className="font-semibold">Subir imagen</span>
         </button>
       )}
     </div>
