@@ -54,7 +54,7 @@ export default function FormUpdateProfile({ user }) {
     <section className="flex flex-col justify-center items-center w-full">
       {user.avatar && user.avatar.secure_url && <UpdateAvatar user={user} />}
 
-      <h2>Editar perfil</h2>
+      <h2 className="t text-xl font-semibold mt-2">Editar perfil</h2>
       <form
         className="flex flex-col items-center gap-1 w-full"
         onSubmit={handleSubmit}
@@ -82,7 +82,7 @@ export default function FormUpdateProfile({ user }) {
             type="submit"
             disabled={Object.keys(errors).length > 0}
           >
-            <span className="">Actualizar</span>
+            <span className="font-semibold">Actualizar</span>
           </button>
         </div>
       </form>
