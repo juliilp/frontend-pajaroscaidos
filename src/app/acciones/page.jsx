@@ -4,8 +4,10 @@ import { dataAcciones } from "@/components/Acciones/dataAcciones";
 export default function Acciones() {
   return (
     <section className="mt-[7vh] w-full pb-12 flex flex-col gap-12">
-      <div className="w-full  flex flex-col items-center justify-center">
-        <span className="text-[#0C6410] font-medium my-16">ACCIONES</span>
+      <div className="w-full flex flex-col items-center justify-center">
+        <span className="text-[#0C6410] text-2xl font-medium my-14">
+          ACCIONES
+        </span>
         <p className="px-6 max-w-[800px] font-semibold">
           La Asociación de Pájaros Caídos se destaca por su dedicación en la
           protección de aves en situaciones vulnerables. Rescatando,

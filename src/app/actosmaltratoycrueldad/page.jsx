@@ -12,14 +12,14 @@ export default function page() {
         ACTOS DE CRUELDAD Y MALTRATO
       </h2>
       <div className="px-6 md:px-12  ">
-        <p className="font-semibold mt-4">
+        <p className="font-semibold mt-4 text-center">
           Existen diversas formas de crueldad y maltrato que sería imposible
           identificarlas a todas, sin embargo, algunas de ellas pueden consistir
           en:
         </p>
-        <div className="w-[60%] my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo" />
+        <div className="w-full my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo" />
         <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">
-          ACTOS DE CRUELDAD Y MALTRATO - LEY Nacional Nº 14.346
+          ACTOS DE CRUELDAD Y MALTRATO - Ley Nacional Nº 14.346
         </h2>
         <p>
           La Republica Argentina cuenta con una ley nacional, de aplicación en
@@ -138,7 +138,7 @@ export default function page() {
           alt="imagen"
           className="w-full mx-auto max-w-[450px] h-[250px] sm:h-[300px] my-6"
         />
-        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">
+        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 uppercase">
           Jaulas con espacio insuficiente
         </h2>
         <p>
@@ -150,7 +150,7 @@ export default function page() {
           situación configura un sufrimiento innecesario penalizado por el
           artículo 3 inciso 7) de la Ley N° 14346.
         </p>
-        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">
+        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 uppercase">
           Palomas mensajeras
         </h2>
         <p>
@@ -178,7 +178,7 @@ export default function page() {
           por llegar a destiempo en competencias, situación que encuadraría en
           las prohibiciones 2 inciso 5) de la Ley N° 14.346.
         </p>
-        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 ">
+        <h2 className="text-[#C12E1A] underline font-semibold text-xl my-4 uppercase">
           Tinturas / coloracion
         </h2>
         <p>
@@ -197,7 +197,7 @@ export default function page() {
           de ser tratados con cloro.
         </p>
         <div className="shadow-cardForo  p-4  mt-6 max-w-[85%] ">
-          <h2 className="text-[#0D6210] underline font-semibold text-xl my-4 ">
+          <h2 className="text-[#0D6210] underline font-semibold text-xl my-4 uppercase">
             Legislacion
           </h2>
           <p>
