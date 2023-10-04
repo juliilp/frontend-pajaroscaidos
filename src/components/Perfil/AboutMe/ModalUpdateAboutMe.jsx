@@ -1,10 +1,34 @@
 "use client";
-import React from "react";
+import { UpdateUser } from "@/api/apiCall/UserFunctions";
+import { CustomContext } from "@/store/ContextProvider";
+import React, { useState } from "react";
 import { BiSolidEditAlt } from "react-icons/bi";
+
 export default function ModalUpdateAboutMe({ user, toggleModal }) {
+  const { setUserContext } = CustomContext();
+  const [description, setDescription] = useState({});
+
   const handleCloseModal = (event) => {
     if (event.target.id === "outside") {
       toggleModal();
+    }
+  };
+
+  const handleDescription = (event) => {
+    const { id, value } = event.target;
+    setDescription({
+      [id]: value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = await UpdateUser(description, user.id);
+    if (data.status === "success") {
+      setUserContext(data.userUpdated);
+      setDescription({});
+      alert("La descripcion se ha actualizado correctamente!");
     }
   };
 
@@ -33,9 +57,13 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
                 id="description"
                 cols="40"
                 rows="6"
+                onChange={handleDescription}
                 className="rounded-md px-3 py-2"
               ></textarea>
-              <button className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2">
+              <button
+                onClick={handleSubmit}
+                className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2"
+              >
                 <span className="font-semibold">Actualizar</span>
               </button>
             </form>
