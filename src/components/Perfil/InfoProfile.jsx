@@ -12,7 +12,7 @@ export default function InfoProfile({ user }) {
 
   return (
     <section className="flex p-6 flex-col justify-center gap-4 items-center mt-3 w-[90%] lg:w-[840px] rounded-xl border-[#C4C4C4] border-2 shadow-md">
-      <UserProfileHeader avatar={user.avatar} />
+      <UserProfileHeader avatar={user.avatar} admin={user.isAdmin} />
       <UserInfo user={user} toggleModal={toggleModal} />
       {modal && (
         <ModalUpdateProfile
