@@ -61,7 +61,7 @@ export default function MyPosts({ user }) {
   const currentPosts = userPostsData.posts.slice(startIndex, endIndex);
 
   return (
-    <section className="flex p-6 flex-col justify-center gap-4 items-center mt-3 lg:w-[840px] rounded-xl border-[#C4C4C4] border-2 shadow-md">
+    <section className="flex p-6 flex-col justify-center gap-4 items-center mt-3 w-[90%] lg:w-[840px] rounded-xl border-[#C4C4C4] border-2 shadow-md">
       <div className="flex justify-between w-full">
         <h3 className="text-left w-full text-2xl font-semibold">
           Mis publicaciones

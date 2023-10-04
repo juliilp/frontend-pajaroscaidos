@@ -39,7 +39,7 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
         id="outside"
         className="flex min-h-full items-center justify-center"
       >
-        <div className="bg-[#D9D9D9] flex flex-col items-end px-6 pb-4 pt-3 rounded-xl lg:w-[420px]">
+        <div className="bg-[#D9D9D9] flex flex-col items-end px-6 pb-4 pt-3 rounded-xl w-[85%] md:w-[480px]">
           <button
             className="text-2xl text-red-600 font-bold"
             onClick={toggleModal}
@@ -55,10 +55,8 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
               <textarea
                 defaultValue={user.description}
                 id="description"
-                cols="40"
-                rows="6"
                 onChange={handleDescription}
-                className="rounded-md px-3 py-2"
+                className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
               <button
                 onClick={handleSubmit}

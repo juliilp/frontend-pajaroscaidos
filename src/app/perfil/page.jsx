@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { CustomContext } from "@/store/ContextProvider";
-import Loading from "../loading";
 import InfoProfile from "@/components/Perfil/InfoProfile";
 import AboutMe from "@/components/Perfil/AboutMe";
 import MyPosts from "@/components/Perfil/MyPosts";
