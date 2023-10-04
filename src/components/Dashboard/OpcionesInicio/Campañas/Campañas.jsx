@@ -61,7 +61,7 @@ function Campañas() {
             >
               <div className=" flex justify-center p-2">
                 <Image
-                  src={campaña.image[0].secure_url}
+                  src={campaña.image[campaña.image.length - 1].secure_url}
                   width={150}
                   height={200}
                   alt="prueba"

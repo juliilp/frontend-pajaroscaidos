@@ -48,7 +48,7 @@ export default function page() {
         <a
           target="_blank"
           href={"mailto:pajaroscaidos@yahoo.com.ar"}
-          className=" text-center text-white bg-[#128117] py-2 px-4 w-[40%] md:w-[25%] lg:w-[15%] rounded hover:bg-[#00812b] duration-200"
+          className=" text-center text-white bg-[#128117] py-2 px-4 w-[40%] md:w-[25%] lg:w-[15%] rounded hover:bg-[#13b113] duration-200"
         >
           Correo electronico
         </a>
