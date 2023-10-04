@@ -29,6 +29,7 @@ export default function UpdateAvatar({ user }) {
       if (data.status === "success") {
         setUserContext(data.userUpdated);
         setNewAvatar(null);
+        setImagePreview(null);
         alert("La imagen se ha actualizado correctamente!");
       }
     }

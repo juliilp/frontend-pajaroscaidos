@@ -3,7 +3,7 @@ import { PiGearBold } from "react-icons/pi";
 export default function UserInfo({ user, toggleModal }) {
   return (
     <section className="flex flex-col items-start w-full pl-4 py-1 gap-3 font-semibold text-xl">
-      <div>
+      <div className="overflow-x-auto">
         {user.first_name || user.last_name ? (
           <h4>
             Nombre:{" "}
@@ -31,7 +31,7 @@ export default function UserInfo({ user, toggleModal }) {
         </h4>
       </div>
       <div className="flex justify-between w-full items-end">
-        <div>
+        <div className="w-[85%] overflow-x-auto">
           <h4>
             E-mail: <span className="font-normal text-lg">{user.email}</span>
           </h4>
