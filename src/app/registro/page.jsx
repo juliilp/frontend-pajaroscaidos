@@ -26,7 +26,7 @@ export default function Page() {
     email: "",
     password: "",
     passwordConfirm: "",
-    nick_name: "",
+    first_name: "",
     last_name: "",
     country: "",
     city: "",
@@ -85,7 +85,7 @@ export default function Page() {
       email: "",
       password: "",
       passwordConfirm: "",
-      nick_name: "",
+      first_name: "",
       last_name: "",
       country: "",
       city: "",
@@ -116,15 +116,15 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="nick_name"
+            name="first_name"
             onChange={handlerRegistro}
-            value={formRegister.nick_name}
+            value={formRegister.first_name}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.nick_name ? "visible" : "hidden" }}
+            style={{ visibility: errors.first_name ? "visible" : "hidden" }}
           >
-            {errors.nick_name}
+            {errors.first_name}
           </span>
         </div>
 
