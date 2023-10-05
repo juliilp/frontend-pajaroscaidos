@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
-import api from "@/api/api";
 import Image from "next/image";
 import formatDate from "@/helpers/FormatDate";
 import LoadingCardHome from "../LoadingCardHome/LoadingCardHome";
+import { getNews } from "@/api/apiCall/NewsRequests";
+
 export default function Campañas() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [news, setNews] = useState([]);
+  const newsPerPage = 6;
 
   useEffect(() => {
     const fetchNews = async () => {
-      try {
-        const response = await api.get(
-          `/news?pageNumber=${pageNumber}&newsPerPage=6`
-        );
-        setNews(response.data.news);
-        setTotalPages(response.data.totalPages);
-      } catch (error) {
-        console.error("Error al obtener las noticias:", error);
-      }
+      const data = await getNews(pageNumber, newsPerPage);
+      setNews(data.news);
+      setTotalPages(data.totalPages);
     };
 
     fetchNews();
@@ -28,6 +24,7 @@ export default function Campañas() {
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
   };
+
   return (
     <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3 justify-center items-center lg:justify-normal lg:items-stretch">
       {news.length > 0 ? (

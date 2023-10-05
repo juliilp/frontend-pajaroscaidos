@@ -2,6 +2,23 @@ import api from "@/api/api";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 
 // Publicaciones
+export const getPostForNuestraComunidad = async (option) => {
+  try {
+    const response = await api.get(
+      `publication/community?filter=${option}&limit=${2}`
+    );
+
+    if (response.status === 200) {
+      const publications = response.data.publications;
+      return publications;
+    } else {
+      console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD");
+    }
+  } catch (error) {
+    console.error("error al obtener publicaciones 'NUESTRA COMUNIDAD");
+  }
+};
+
 export const getAllPosts = async (pageNumber, order) => {
   try {
     const response = await api.get(

@@ -1,4 +1,4 @@
-import { createComment, getPost } from "@/api/apiCall/PostFunctions";
+import { createComment, getPost } from "@/api/apiCall/PostRequests";
 import Cookies from "js-cookie";
 import React, { useState } from "react";
 import Image from "next/image";
