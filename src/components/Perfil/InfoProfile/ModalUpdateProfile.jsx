@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FormUpdateProfile from "./ModalUpdateProfile/FormUpdateProfile";
 
 export default function ModalUpdateProfile({ user, toggleModal }) {
@@ -7,6 +7,15 @@ export default function ModalUpdateProfile({ user, toggleModal }) {
       toggleModal();
     }
   };
+
+  useEffect(() => {
+    const body = document.getElementById("Body");
+    body && (body.style.overflow = "hidden");
+
+    return () => {
+      body && (body.style.overflow = "auto");
+    };
+  });
 
   return (
     <article className="bg-[#0000008a] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto">
