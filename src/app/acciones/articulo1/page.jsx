@@ -7,11 +7,13 @@ import YoutubePlay from "@/components/YoutubePlay/YoutubePLay";
 export default function page() {
   const videoID = "jOGVnZJlURU";
   return (
-    <div className="min-h-screen flex flex-col items-center mt-[70px] gap-12 pb-4">
+    <div className="min-h-screen flex flex-col items-center mt-[70px] gap-12 pb-8">
       <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
-        <Image src={imageBG} alt="bg-tucan" fill className="" />
+        <Image src={imageBG} alt="bg-tucan" fill priority />
       </section>
-      <h1>GEGE VOLVIO A LA SELVA</h1>
+      <h1 className="text-[#0C6410] text-2xl font-semibold">
+        GEGE VOLVIO A LA SELVA
+      </h1>
       <main className="flex w-full md:w-11/12 justify-center">
         <MainSectionArticulo1 image={image1} />
       </main>

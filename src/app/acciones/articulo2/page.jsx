@@ -14,7 +14,7 @@ export default function page() {
   return (
     <div className=" font-semibold min-h-screen flex flex-col items-center pt-[70px] gap-12 pb-12">
       <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="" />
+        <Image src={bgimage} alt="bg-tucan" fill priority />
       </section>
       <main className="flex flex-col items-center w-11/12 gap-12">
         <MainSectionArticulo2 image1={image1} image2={image2} />

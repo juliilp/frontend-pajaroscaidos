@@ -3,9 +3,9 @@ import React from "react";
 import { dataAcciones } from "@/components/Acciones/dataAcciones";
 export default function Acciones() {
   return (
-    <section className="mt-[7vh] w-full pb-12 flex flex-col gap-12">
+    <section className="mt-[70px] w-full pb-12 flex flex-col gap-12">
       <div className="w-full flex flex-col items-center justify-center">
-        <span className="text-[#0C6410] text-2xl font-medium my-14">
+        <span className="text-[#0C6410] text-2xl font-medium mt-12 mb-6">
           ACCIONES
         </span>
         <p className="px-6 max-w-[800px] font-semibold">
