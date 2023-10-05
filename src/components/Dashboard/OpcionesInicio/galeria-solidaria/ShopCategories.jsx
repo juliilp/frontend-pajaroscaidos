@@ -64,7 +64,6 @@ export default function ShopCategories({ newItem, setNewItem, setStartEdit, star
 
     return <>
         <article className="flex flex-col items-center">
-            <button onClick={() => console.log(apicategories)}>ver estado</button>
             <select name="" id="" onChange={selectCategories}>
                 <option value="" >Categorias</option>
                 {apicategories?.length && apicategories.map((i, key) =>

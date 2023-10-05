@@ -64,7 +64,8 @@ function page() {
         <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Galeria Solidaria</h1>
       </section>
       
-      <section className="  bg-[#4F4F4F] w-[95%] min-h-[20rem] flex flex-col gap-4 items-center   p-6 pb-0 pt-12 rounded-lg">
+      <section className="   bg-[#4F4F4F] w-[95%] min-h-[20rem] flex flex-col gap-4 
+      items-center   p-6 pb-0 pt-12 rounded-lg ">
         <ProductSection data={data} openCreateModal={openCreateModal} openEditModal={openEditModal} />
 
         <Pagination textcolor={'text-white'} pageNumber={actualPage} totalPages={totalPages} changePage={changePage} />

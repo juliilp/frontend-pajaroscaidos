@@ -111,21 +111,23 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
                 textdetails={'¿Desea crear el nuevo producto?'} confirm={'Si crear'} callback={handleCreate}
                 closemodal={closeAlert} />}
 
-            <div className="flex flex-col items-center bg-[#C2C2C2] max-w-[45rem] min-w-[38rem] w-7/12 min-h-[28rem] gap-8 p-2">
+            <div className="flex flex-col items-center w-9/12 h-[20rem] overflow-auto sm:overflow-visible sm:h-auto 
+            bg-[#C2C2C2] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 
+             min-h-[28rem] gap-8 p-2">
 
                 <section className="flex justify-end  w-full p-1">
                     <button onClick={closeModal} className="text-red-700  text-xl font-bold ">X</button>
-                    <button onClick={() => console.log(newItem)}>ver</button>
                 </section>
 
-                <section className="flex justify-between w-full">
+                <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
+                  
                     <article className="w-6/12 flex flex-col justify-center items-center gap-6">
 
                         {mode.edit && newItem.image &&
-                            <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} priority={true} />
+                            <Image className="h-[12rem] sm:h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} priority={true} />
                         }
                         {
-                            mode.create && imagePreview && <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
+                            mode.create && imagePreview && <Image className="h-[12rem] sm:h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
                         }
                         <input
                             type="file"
@@ -135,10 +137,10 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
                             className="hidden"
                             accept="image/*"
                         />
-                        <label htmlFor="selectimage">{newItem.image ? 'Cambiar' : 'Añadir'} imagen</label>
+                        <label htmlFor="selectimage" className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]">{newItem.image ? 'Cambiar' : 'Añadir'} imagen</label>
                     </article>
 
-                    <article className="w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
+                    <article className="w-11/12 h-[20rem] sm:w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
 
                         <FormShop setNewItem={setNewItem} startEdit={startEdit} setStartEdit={setStartEdit}
                             newItem={newItem} mode={mode} />
