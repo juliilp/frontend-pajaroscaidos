@@ -3,7 +3,12 @@ export default function Alerts({ closemodal, title, textdetails, confirm, callba
     //    {seeAlert&&<Alerts/>}// si esta true mostrara el alerta.
     //para usar close modal:  crear funcion que cambie ese estado a false, y pasar esa funcion a este componente Alerts;
     //callback por si hay que ejecutar otra funcion cuando se pone en confirmar.
-
+    const onClick=()=>{
+        if(callback){
+           return callback();
+        }
+       closemodal()
+    }
     return (
         <main className="bg-[#686868cc] z-10 min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
             <div className="h-[20rem] w-5/12 max-w-[95%]  bg-lightgray flex flex-col items-center gap-4">
@@ -16,7 +21,7 @@ export default function Alerts({ closemodal, title, textdetails, confirm, callba
                     <p>{textdetails} </p>
                     <article className=" flex justify-center gap-4 w-full"> 
                         <button className=" bg-red-500 text-white p-2" onClick={closemodal}>{noConfirm ?? 'Cancelar'}</button>
-                        <button className=" bg-green text-white p-2" onClick={() => callback() ?? null}>{confirm ?? 'Aceptar'}</button>
+                        <button className=" bg-green text-white p-2" onClick={onClick}>{confirm ?? 'Aceptar'}</button>
                     </article>
                 </section>
 
