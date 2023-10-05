@@ -96,8 +96,8 @@ export default function CardForo({
           <h2 className="font-bold  text-sm sm:text-2xl">{titulo}</h2>
         </Link>
         <span className="text-sm">
-          <b className="text-[#2594EF] cursor-pointer ">Foro</b> - {fecha}
-          <b className="text-[#2594EF] cursor-pointer "> {usuario}</b>
+          <b className="text-[#2594EF]">Foro</b> - {fecha}
+          <b className="text-[#2594EF]"> {usuario}</b>
         </span>
         <div className="flex gap-6 self-start pr-6">
           <div className="flex gap-2 ">
@@ -118,12 +118,8 @@ export default function CardForo({
             </span>
           </div>
 
-          <div className="flex  gap-2">
-            <RiMessage2Line
-              color="#0C6410"
-              size={25}
-              className="cursor-pointer"
-            />
+          <div className="flex gap-2">
+            <RiMessage2Line color="#0C6410" size={25} />
             <span className="text-[#0C6410] font-semibold text-lg self-end ">
               {message}
             </span>

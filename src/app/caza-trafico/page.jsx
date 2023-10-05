@@ -18,7 +18,7 @@ export default function page() {
         <MainCazatrafico images={[image2, image3, image4]} />
       </main>
 
-      <section className="bg-neutral-400 flex flex-col w-full gap-12 items-center justify-around py-8 md:px-6 md:flex-row md:gap-0 md:w-10/12">
+      <section className="bg-lightgray flex flex-col w-full gap-12 items-center justify-around py-8 md:px-6 md:flex-row md:gap-0 md:w-10/12">
         <Section2Caza_Trafico />
       </section>
     </div>
