@@ -3,33 +3,12 @@ import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 import { formDataConver } from "@/helpers/formDataConvert";
 
-export async function getPostForNuestraComunidad(option) {
-  try {
-    const response = await api.get(
-      `publication/community?filter=${option}&limit=${2}`
-    );
-
-    if (response.status === 200) {
-      const publications = response.data.publications;
-      return publications;
-    } else {
-      console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD");
-    }
-  } catch (error) {
-    console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD");
-  }
-}
-
 export async function getBannerImages() {
   try {
     const response = await api.get(`/news/banner`);
-
-    if (response.status !== 200) return null;
-
-    const banners = response.data.images.banners;
-    return banners;
+    return response.data.images.banners;
   } catch (error) {
-    console.log("error al obtener BANNER");
+    console.error("error al obtener BANNER");
   }
 }
 
@@ -145,11 +124,9 @@ export async function createNewItem(data) {
   }
 }
 
-
 export async function createCategory(name) {
   try {
-    return  api.post(`shop/category`, {name});
-    
+    return api.post(`shop/category`, { name });
   } catch (error) {
     console.log(error);
   }
@@ -174,7 +151,7 @@ export async function deleteShopItem(id) {
 export async function getCategories() {
   try {
     const request = await api.get(`/shop/category`);
-    return request.data.categories
+    return request.data.categories;
     console.log(request.data);
   } catch (error) {
     console.log(error);
