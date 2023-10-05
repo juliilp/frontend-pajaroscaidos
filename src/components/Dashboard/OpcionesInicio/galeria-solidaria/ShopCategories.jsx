@@ -1,7 +1,7 @@
 import { createCategory, getCategories } from "@/api/apiCall/functions";
 import { useState, useEffect } from "react";
 
-export default function ShopCategories({ newItem, setNewItem, setStartEdit, startEdit }) {
+export default function ShopCategories({ newItem, setNewItem, setStartEdit, startEdit ,setCategoriesToDelete,categoriesToDelete}) {
     const [categories, setCategories] = useState('')
     const [apicategories, setApiCategories] = useState([])
     const [newCategory, setNewCategory] = useState(false)
@@ -46,11 +46,13 @@ export default function ShopCategories({ newItem, setNewItem, setStartEdit, star
         const { value } = event.target
         const categories = [].concat(newItem.categories).concat(newItem.category);
         const updated = categories.filter(i => i !== value);
+        setCategoriesToDelete([...categoriesToDelete,value])
         setNewItem({
             ...newItem,
             category: updated.filter((item, index, updated) => updated.indexOf(item) === index),
             categories: updated.filter((item, index, updated) => updated.indexOf(item) === index)
         });
+        setStartEdit(true)
     }
 
     const handleCategories = (event) => {

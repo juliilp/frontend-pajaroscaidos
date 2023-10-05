@@ -5,7 +5,7 @@ import Alerts from "@/components/Alerts/Alerts";
 import FormShop from "./FormShop";
 import ShopCategories from "./ShopCategories";
 
-export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
+export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPage }) {
 
     useEffect(() => {
         const SideBarAdmin = document.getElementById('SideBarAdmin');
@@ -25,7 +25,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
             Body && (Body.style.overflow = 'auto')
         }
     }, [])
-    const [newItem, setNewItem] = useState({ image: "", title: "", description: "", categories: [""], category: [] ,price:"5"});
+    const [newItem, setNewItem] = useState({ image: "", title: "", description: "", categories: [""], category: [], price: "5" });
     useEffect(() => {
         itemToEdit ? setNewItem(itemToEdit) : null
     }, [])
@@ -38,35 +38,54 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
     const [startEdit, setStartEdit] = useState(false)
     const [seeAlert, setSeeAlert] = useState(false)
-
+    const [successFullAlert, setSuccesFullAlert] = useState({ state: false, message: '' })
+    const [categoriesToDelete,setCategoriesToDelete]=useState([])
+    const [imageToDelete,setimageToDelete]=useState([])
+    
     const handlePhotoChange = (event) => {
         const file = event.target.files[0];
         setNewItem({
             ...newItem,
             image: file,
-            newImage: file
-            // newImage:[file]
+            newImage: file,
         });
+        setimageToDelete([newItem.public_id])
         !startEdit && setStartEdit(true)
     };
+    const successFullChanges = () => {
+        const message = mode.create ? `Se ha creado con exito ${newItem.title}` :
+         mode.delete ? `Se ha eliminado con exito ${newItem.title}.` :
+          `Se ha editado con exito ${newItem.title}.`
+
+        setSeeAlert(false);
+        setSuccesFullAlert({ state: true, message: message })
+        setTimeout(() => {
+            closeModal()
+            refreshPage()
+        }, 3000);
+    }
     const handleCreate = () => {
-        console.log(newItem);
-        seeAlert ? createNewItem(newItem) : setSeeAlert(true)
+
+        seeAlert ? createNewItem(newItem).then((res) => successFullChanges()).catch(error => console.log(error)) :
+            setSeeAlert(true)
 
     }
     const closeAlert = () => {
         setSeeAlert(false)
+        closeModal()
         setMode({ ...mode, delete: false })
     }
     const handleEdit = () => {
-        // createCategory()
-        console.log(newItem);
-        seeAlert ? editShopItem(newItem.id, newItem) : setSeeAlert(true)
+        const edited={
+            ...newItem,
+            category:newItem.category.join()
+        }
+        seeAlert ? editShopItem(newItem.id, edited,categoriesToDelete,imageToDelete).then((res) => successFullChanges()).catch(error => console.log(error)) : setSeeAlert(true)
 
     }
     const handleDelete = () => {
         setMode({ ...mode, delete: true })
-        seeAlert ? deleteShopItem(newItem.id) : setSeeAlert(true)
+        seeAlert ? deleteShopItem(newItem.id).then((res) => successFullChanges()).catch(error => console.log(error)) : setSeeAlert(true)
     }
     let imagePreview = null;
 
@@ -79,8 +98,13 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
             {seeAlert && mode.delete && <Alerts title={`Eliminar ${newItem.title}`}
                 textdetails={'¿Desea borrar el producto?'} confirm={'Si Borrar'} callback={handleDelete}
+                closemodal={closeAlert} />
+            }
+            {successFullAlert.state && <Alerts title={`Exito!`}
+                textdetails={successFullAlert.message} confirm={'Entendido'}
                 closemodal={closeAlert} />}
-            {seeAlert && mode.edit && !mode.delete &&<Alerts title={`Confirmar edicion`}
+
+            {seeAlert && mode.edit && !mode.delete && <Alerts title={`Confirmar edicion`}
                 textdetails={'¿Desea editar el producto?'} confirm={'Si editar'} callback={handleEdit}
                 closemodal={closeAlert} />}
             {seeAlert && mode.create && <Alerts title={`Crear ${newItem.title}`}
@@ -120,7 +144,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                             newItem={newItem} mode={mode} />
 
                         <ShopCategories newItem={newItem} setNewItem={setNewItem}
-                            startEdit={startEdit} setStartEdit={setStartEdit} />
+                            startEdit={startEdit} setStartEdit={setStartEdit}setCategoriesToDelete={setCategoriesToDelete} categoriesToDelete={categoriesToDelete} />
                     </article>
 
                 </section>
