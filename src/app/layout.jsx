@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${baloo.variable} ${inter.variable}`}>
+    <html lang="es" className={`${baloo.variable} ${inter.variable}`}>
       <ProviderAuth>
         <body id="Body" className={`font-baloo`}>
           <ContextProvider>
