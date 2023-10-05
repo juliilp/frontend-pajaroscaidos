@@ -62,7 +62,7 @@ export default function MenuMobile({ closeMenu }) {
               </Link>,
               <Link
                 key="opcion3"
-                href="/actosmaltratoycrueldad"
+                href="/actos-maltrato-y-crueldad"
                 className="focus:underline"
                 onClick={closeMenu}
                 prefetch={false}
