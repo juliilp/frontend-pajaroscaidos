@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import ItemModal from "@/components/Dashboard/OpcionesInicio/galeria-solidaria/ItemModal";
-import { getItemsShop } from '@/api/apiCall/functions';
+import { getItemsShop } from "@/api/apiCall/functions";
 import ProductSection from "@/components/Dashboard/OpcionesInicio/galeria-solidaria/ProductSection";
 import Pagination from "@/components/Pagination/Pagination";
 
-function page() {
+export default function Page() {
   const [data, setData] = useState({});
   const [visibleModal, setVisibleModal] = useState(false);
   const [modalType, setModalType] = useState('')
@@ -17,22 +17,23 @@ function page() {
     const action = async () => {
       try {
         const data = await getItemsShop(actualPage);
-        setData(data.items)
-        setTotalPages(data.items.totalPages)
-        console.log(data.items.totalPages,'total apg');
+        setData(data.items);
+        setTotalPages(data.items.totalPages);
+        console.log(data.items.totalPages, "total apg");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     action();
   }, [actualPage,resresh])
   const openCreateModal = () => {
-    setItemToEdit(null)
-    setModalType('create');
-    setVisibleModal(true)
-  }
+    setItemToEdit(null);
+    setModalType("create");
+    setVisibleModal(true);
+  };
+
   const openEditModal = (event, data) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const itemprops = {
       id:data.id,
@@ -61,7 +62,9 @@ function page() {
      min-h-screen w-full flex flex-col justify-center items-center gap-6 pt-[90px] pb-10">
       {visibleModal && <ItemModal closeModal={closeModal} ModalType={modalType} itemToEdit={itemToEdit} refreshPage={refreshPage} />}
       <section>
-        <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">Galeria Solidaria</h1>
+        <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+          Galeria Solidaria
+        </h1>
       </section>
       
       <section className="   bg-[#4F4F4F] w-[95%] min-h-[20rem] flex flex-col gap-4 
@@ -74,4 +77,3 @@ function page() {
     </div>
   );
 }
-export default page;

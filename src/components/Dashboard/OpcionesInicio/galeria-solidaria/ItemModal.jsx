@@ -1,6 +1,10 @@
-import { createNewItem, deleteShopItem, editShopItem } from "@/api/apiCall/functions";
+import {
+  createNewItem,
+  deleteShopItem,
+  editShopItem,
+} from "@/api/apiCall/functions";
 import Image from "next/image";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import Alerts from "@/components/Alerts/Alerts";
 import FormShop from "./FormShop";
 import ShopCategories from "./ShopCategories";
@@ -89,9 +93,9 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
     }
     let imagePreview = null;
 
-    if (newItem.image && newItem.image instanceof Blob) {
-        imagePreview = URL.createObjectURL(newItem.image);
-    }
+  if (newItem.image && newItem.image instanceof Blob) {
+    imagePreview = URL.createObjectURL(newItem.image);
+  }
 
     return (
         <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">

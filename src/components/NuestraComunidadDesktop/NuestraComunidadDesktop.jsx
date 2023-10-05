@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
 import PostComunidadDesktop from "./PostComunidadDesktop";
-import { getPostForNuestraComunidad } from "@/api/apiCall/functions";
+import { getPostForNuestraComunidad } from "@/api/apiCall/PostRequests";
+
+const botonesOpciones = [
+  { etiqueta: "Hoy", valor: "day" },
+  { etiqueta: "Semana", valor: "week" },
+  { etiqueta: "Mes", valor: "month" },
+  { etiqueta: "Tops", valor: "likes" },
+];
+
 export default function NuestraComunidad() {
   const [publications, setPublications] = useState([]);
   const [option, setOption] = useState("day");
+
   useEffect(() => {
-    async function getPublications() {
+    async function fetchPosts() {
       const publicationsResponse = await getPostForNuestraComunidad(option); // NOTA: sacar 'limit' para que traiga todos los posts.
       setPublications(publicationsResponse);
     }
-    getPublications();
+    fetchPosts();
   }, [option]);
 
-  const handlerOption = (option) => {
+  const handleOptionChange = (option) => {
     setOption(option);
   };
-
-  const botonesOpciones = [
-    { etiqueta: "Hoy", valor: "day" },
-    { etiqueta: "Semana", valor: "week" },
-    { etiqueta: "Mes", valor: "month" },
-    { etiqueta: "Tops", valor: "likes" },
-  ];
 
   return (
     <section className="mt-4 hidden shadow-md w-full bg-[#d8d8d9] xl:flex flex-col items-center justify-center xl:max-w-[400px] h-max mr-4 py-6 rounded-lg">
@@ -36,7 +38,7 @@ export default function NuestraComunidad() {
               <button
                 key={valor}
                 className={`${option === valor && "text-[#434341] underline"}`}
-                onClick={() => handlerOption(valor)}
+                onClick={() => handleOptionChange(valor)}
               >
                 {etiqueta}
               </button>

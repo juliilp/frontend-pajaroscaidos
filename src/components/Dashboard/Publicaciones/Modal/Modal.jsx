@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Comentarios from "./Comentarios";
-import { deletePost } from "@/api/apiCall/PostFunctions";
+import { deletePost } from "@/api/apiCall/PostRequests";
 
 export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
   const handleDelete = async (postId) => {

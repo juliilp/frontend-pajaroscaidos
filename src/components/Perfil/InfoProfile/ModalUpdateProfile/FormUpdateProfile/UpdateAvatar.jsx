@@ -1,4 +1,4 @@
-import { UpdateUser } from "@/api/apiCall/UserFunctions";
+import { UpdateUser } from "@/api/apiCall/UserRequests";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
 import { useEffect, useState } from "react";
