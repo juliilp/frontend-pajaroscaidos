@@ -145,19 +145,37 @@ export async function createNewItem(data) {
   }
 }
 
-
 export async function createCategory(name) {
   try {
-    return  api.post(`shop/category`, {name});
-    
+    return api.post(`shop/category`, { name });
   } catch (error) {
     console.log(error);
   }
 }
-export async function editShopItem(id, data) {
+export async function deleteCategoryFromItem(id, category) {
   try {
-    const request = await api.put(`/shop/item/${id}`, data);
-    console.log(request.data, "aparentemente editado");
+    const request = await api.patch(`/shop/item/${id}`, category);
+    console.log(request.data, " categoia borrado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function editShopItem(id, data, categories, image) {
+  const formData = formDataConver(data);
+
+  try {
+    const request = await api.put(`/shop/item/${id}`, formData);
+    if (request.data && image.length) {
+      const deleteImage = await api.put(`/shop/item/${id}`, {
+        deleteImages: image,
+      });
+    }
+    if (request.data && categories.length) {
+      await categories.forEach((i) => {
+        deleteCategoryFromItem(id, { category: i });
+      });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -174,7 +192,7 @@ export async function deleteShopItem(id) {
 export async function getCategories() {
   try {
     const request = await api.get(`/shop/category`);
-    return request.data.categories
+    return request.data.categories;
     console.log(request.data);
   } catch (error) {
     console.log(error);
