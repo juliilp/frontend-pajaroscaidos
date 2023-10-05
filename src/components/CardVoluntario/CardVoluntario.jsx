@@ -5,7 +5,7 @@ export default function CardVoluntario({ imagen, titulo, texto }) {
   return (
     <>
       <div className="hidden md:block">
-        <div className="w-64 h-64 border border-gray-300 p-4 transition-transform hover:scale-105 relative rounded-lg">
+        <div className="w-44 h-44 border border-gray-300 p-4 transition-transform hover:scale-105 relative rounded-lg">
           <Image
             src={imagen}
             alt="Imagen"
