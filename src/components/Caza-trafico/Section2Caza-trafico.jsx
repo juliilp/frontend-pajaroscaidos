@@ -3,8 +3,8 @@ export default function Section2Caza_Trafico() {
   const videoID = "ZUFlRWmiVKM";
   return (
     <>
-      <article className="flex flex-col w-[95%] md:w-[48%] gap-8">
-        <h2>
+      <article className="flex flex-col w-[95%] md:w-[48%] gap-6 pr-3">
+        <h2 className="text-lg font-semibold">
           Historias de Rescates. GEGE, El Tucán que pudo volver a la selva.
         </h2>
         <p>
