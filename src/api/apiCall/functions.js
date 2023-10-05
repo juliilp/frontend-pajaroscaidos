@@ -21,7 +21,10 @@ export async function loginNextAuth(data) {
     const userBackEnd = response.data;
     return userBackEnd.user;
   } catch (error) {
-    console.log("error al obtener user del back: ", error);
+    console.error("Error inicio sesion:", error);
+    if (error.response && error.response.data && error.response.data.error) {
+      return error.response.data.error.code;
+    }
   }
 }
 
