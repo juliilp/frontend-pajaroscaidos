@@ -4,7 +4,7 @@ import {
   deleteReaction,
   createReaction,
   getAllPosts,
-} from "@/api/apiCall/PostFunctions";
+} from "@/api/apiCall/PostRequests";
 import Cookies from "js-cookie";
 
 export default function Likesbox({ idPost, postlikes, updateLikes }) {

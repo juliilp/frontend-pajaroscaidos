@@ -6,7 +6,7 @@ import { RiImageFill } from "react-icons/ri";
 import { CustomContext } from "@/store/ContextProvider";
 import Image from "next/image";
 import Alerts from "../Alerts/Alerts";
-import { createNewPost } from "@/api/apiCall/PostFunctions";
+import { createNewPost } from "@/api/apiCall/PostRequests";
 
 export default function ModalnewPost({ setvisible }) {
   const { UserContext } = CustomContext();

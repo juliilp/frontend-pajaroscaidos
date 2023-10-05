@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Comentarios from "@/components/Post/Comentarios";
-import { getPost } from "@/api/apiCall/PostFunctions";
+import { getPost } from "@/api/apiCall/PostRequests";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";

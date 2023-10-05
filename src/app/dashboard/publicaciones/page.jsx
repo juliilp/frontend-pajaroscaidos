@@ -5,7 +5,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import Loading from "../loading";
 import ListaPublicaciones from "@/components/Dashboard/Publicaciones/ListaPublicaciones";
 import ModalPublicacion from "@/components/Dashboard/Publicaciones/Modal/Modal";
-import { getAllPosts } from "@/api/apiCall/PostFunctions";
+import { getAllPosts } from "@/api/apiCall/PostRequests";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);

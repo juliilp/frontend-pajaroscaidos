@@ -1,4 +1,4 @@
-import { UpdateUser } from "@/api/apiCall/UserFunctions";
+import { UpdateUser } from "@/api/apiCall/UserRequests";
 import parseBackendDate from "@/helpers/FormatBackDate";
 import validateUpdateUser from "@/helpers/ValidateUpdateUser";
 import { CustomContext } from "@/store/ContextProvider";

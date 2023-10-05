@@ -12,7 +12,7 @@ import { CustomContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
 import Loading from "../loading";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
-import { getAllPosts } from "@/api/apiCall/PostFunctions";
+import { getAllPosts } from "@/api/apiCall/PostRequests";
 
 export default function Foros() {
   const router = useRouter();
