@@ -3,10 +3,10 @@ export default function ComodenunciarSecondSection() {
     <>
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article className="flex flex-col gap-8">
-          <h1 className="text-[#0C6410] 2xl:text-3xl xl:text-2xl lg:text-xl text-base">
+          <h1 className="text-[#0C6410] xl:text-2xl lg:text-xl text-base">
             FISCALIAS-DENUNCIAS ONLINE
           </h1>
-          <p>
+          <p className="text-xl">
             En las siguientes paginas de internet encontrarás información sobre
             las fiscalías penales de las provincias. En algunas podras realizar
             la denuncia a traves de un formulario desde la pagina de internet y
@@ -243,10 +243,10 @@ export default function ComodenunciarSecondSection() {
       </div>
 
       <div className="flex flex-col gap-4 w-full md:w-5/12">
-        <h1 className="text-[#0C6410] 2xl:text-3xl xl:text-2xl lg:text-xl text-base">
+        <h1 className="text-[#0C6410] xl:text-2xl lg:text-xl text-base">
           DENUNCIA ANTE EL MUNICIPIO O AUTORIDAD PROVINCIAL / NACIONAL
         </h1>
-        <p>
+        <p className="text-xl">
           En forma paralela a la formulación de la denuncia penal, se puede
           enviar copia de la misma a las Areas de Zoonosis de los municipios
           cuando se trate de maltrato o crueldad contra los animales, o bien
@@ -256,7 +256,7 @@ export default function ComodenunciarSecondSection() {
           silvestre.
         </p>
 
-        <p>
+        <p className="text-xl">
           <b>
             <i>
               Ministerio de Ambiente y Desarrollo Sostenible (Dirección de Fauna
@@ -272,7 +272,7 @@ export default function ComodenunciarSecondSection() {
           </a>
         </p>
 
-        <p>
+        <p className="text-xl">
           <b>
             <i>Unidad Fiscal de Investigaciones en Materia Ambiental (UFIMA)</i>
           </b>
@@ -286,7 +286,7 @@ export default function ComodenunciarSecondSection() {
             ufima@mpf.gov.ar
           </a>
         </p>
-        <p>
+        <p className="text-xl">
           <b>
             <i>Policía Federal</i>
           </b>
@@ -323,7 +323,7 @@ export default function ComodenunciarSecondSection() {
           </a>
         </p>
 
-        <p>
+        <p className="text-xl">
           <i>
             <b>Gendarmería Nacional</b>
           </i>
@@ -339,7 +339,7 @@ export default function ComodenunciarSecondSection() {
           .
         </p>
 
-        <p>
+        <p className="text-xl">
           <b>
             <i>Prefectura Naval Argentina</i>
           </b>
