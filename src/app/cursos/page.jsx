@@ -47,7 +47,9 @@ export default function page() {
         </h1>
         <a
           target="_blank"
-          href={"mailto:pajaroscaidos@yahoo.com.ar"}
+          href={
+            "https://mail.google.com/mail/u/0/?to=pajaroscaidos@yahoo.com.ar&fs=1&tf=cm"
+          }
           className=" text-center text-white bg-[#128117] py-2 px-4 w-[40%] md:w-[25%] lg:w-[15%] rounded hover:bg-[#13b113] duration-200"
         >
           Correo electronico
