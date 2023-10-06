@@ -20,7 +20,7 @@ export default function Shopping() {
 
   return (
     <div className="min-h-screen flex flex-col items-center pt-40 gap-10 pb-14">
-      <h1 className=" text-lettersgray font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+      <h1 className=" text-lettersgray font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl ">
         NUESTRA TIENDA
       </h1>
 
@@ -38,7 +38,7 @@ export default function Shopping() {
                      md:text-base md:leading-7
                      lg:text-lg lg:leading-8
                      xl:text-xl xl:leading-8
-                     2xl:text-2xl  2xl:leading-10
+                       2xl:leading-10
                      text-center"
           >
             <b className=" font-semibold ">
@@ -67,7 +67,7 @@ export default function Shopping() {
           ))}
         </section>
       ) : (
-        <h2 className="font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
+        <h2 className="font-semibold text-xl md:text-2xl lg:text-3xl ">
           No hay productos
         </h2>
       )}

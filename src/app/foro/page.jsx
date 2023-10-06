@@ -12,7 +12,8 @@ import { CustomContext } from "@/store/ContextProvider";
 import { useRouter } from "next/navigation";
 import Loading from "../loading";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
-import { getAllPosts } from "@/api/apiCall/PostFunctions";
+import { getAllPosts } from "@/api/apiCall/PostRequests";
+import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
 
 export default function Foros() {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function Foros() {
     };
 
     fetchPosts();
-  }, [pageNumber, order, logout, router]);
+  }, [pageNumber, order, logout, router, modal]);
 
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
@@ -53,14 +54,14 @@ export default function Foros() {
   }
 
   return (
-    <section className="font-baloo relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] ">
+    <article className="relative flex w-full flex-col gap-4 justify-center items-center xl:flex-row xl:items-start lg:gap-12 bg-[#e9e8e8] mt-[70px]">
       {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
 
-      <div className="bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-24">
-        <div className="flex sm:gap-6 mt-6 text-[#756F70] justify-around w-full  sm:border-white py-4">
+      <section className="sm:bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-2 sm:my-8">
+        <div className="flex sm:mt-3 text-[#756F70] justify-between w-full py-5 px-6">
           <button
             onClick={setvisibilitymodal}
-            className="bg-[#005DAB] py-3 px-3 sm:px-6 max-w text-white  rounded-[20px] flex items-center gap-2 font-semibold"
+            className="bg-[#005DAB] py-3 px-3 sm:px-6 max-w text-white rounded-lg flex gap-2 font-semibold"
           >
             <AiOutlineFileText color="white" size={20} />
             Crear foro
@@ -69,7 +70,7 @@ export default function Foros() {
             <CiClock2 size={30} className="hidden sm:block" />
             <span className="font-semibold hidden sm:block">Ordenar por:</span>
             <select
-              className="bg-gray-100 rounded p-1 border-none outline-none"
+              className="sm:bg-gray-100 rounded p-1 border-none outline-none"
               value={order}
               onChange={(e) => setOrder(e.target.value)}
             >
@@ -79,7 +80,7 @@ export default function Foros() {
           </div>
         </div>
 
-        <article className="flex flex-col gap-6  sm:px-6">
+        <article className="flex flex-col gap-6 sm:px-6">
           {posts.map((e, key) => {
             return (
               <CardForo
@@ -104,16 +105,20 @@ export default function Foros() {
             changePage={handlePageChange}
           />
         </div>
-      </div>
-      <div className="mt-24  justify-center items-center flex-col gap-6 max-w-[400px] hidden xl:flex">
+      </section>
+      <section className="flex-col gap-4 max-w-[400px] hidden xl:flex my-8">
         <Image
           src={ImagenForo}
-          alt="imagen"
-          className="object-cover w-[400px]"
-          width="400px"
+          alt="imagen_campañas"
+          width={400}
+          height={158}
+          className="w-full"
         />
         <NuestraComunidad />
+      </section>
+      <div className="flex w-full items-center justify-center xl:hidden">
+        <NuestraComunidadMobile />
       </div>
-    </section>
+    </article>
   );
 }

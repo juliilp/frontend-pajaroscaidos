@@ -1,11 +1,15 @@
-import { createNewItem, deleteShopItem, editShopItem } from "@/api/apiCall/functions";
+import {
+  createNewItem,
+  deleteShopItem,
+  editShopItem,
+} from "@/api/apiCall/functions";
 import Image from "next/image";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import Alerts from "@/components/Alerts/Alerts";
 import FormShop from "./FormShop";
 import ShopCategories from "./ShopCategories";
 
-export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
+export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPage }) {
 
     useEffect(() => {
         const SideBarAdmin = document.getElementById('SideBarAdmin');
@@ -25,7 +29,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
             Body && (Body.style.overflow = 'auto')
         }
     }, [])
-    const [newItem, setNewItem] = useState({ image: "", title: "", description: "", categories: [""], category: [] ,price:"5"});
+    const [newItem, setNewItem] = useState({ image: "", title: "", description: "", categories: [""], category: [], price: "5" });
     useEffect(() => {
         itemToEdit ? setNewItem(itemToEdit) : null
     }, [])
@@ -38,70 +42,96 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
     const [startEdit, setStartEdit] = useState(false)
     const [seeAlert, setSeeAlert] = useState(false)
-
+    const [successFullAlert, setSuccesFullAlert] = useState({ state: false, message: '' })
+    const [categoriesToDelete,setCategoriesToDelete]=useState([])
+    const [imageToDelete,setimageToDelete]=useState([])
+    
     const handlePhotoChange = (event) => {
         const file = event.target.files[0];
         setNewItem({
             ...newItem,
             image: file,
-            newImage: file
-            // newImage:[file]
+            newImage: file,
         });
+        setimageToDelete([newItem.public_id])
         !startEdit && setStartEdit(true)
     };
+    const successFullChanges = () => {
+        const message = mode.create ? `Se ha creado con exito ${newItem.title}` :
+         mode.delete ? `Se ha eliminado con exito ${newItem.title}.` :
+          `Se ha editado con exito ${newItem.title}.`
+
+        setSeeAlert(false);
+        setSuccesFullAlert({ state: true, message: message })
+        setTimeout(() => {
+            closeModal()
+            refreshPage()
+        }, 3000);
+    }
     const handleCreate = () => {
-        console.log(newItem);
-        seeAlert ? createNewItem(newItem) : setSeeAlert(true)
+
+        seeAlert ? createNewItem(newItem).then((res) => successFullChanges()).catch(error => console.log(error)) :
+            setSeeAlert(true)
 
     }
     const closeAlert = () => {
         setSeeAlert(false)
+        closeModal()
         setMode({ ...mode, delete: false })
     }
     const handleEdit = () => {
-        // createCategory()
-        console.log(newItem);
-        seeAlert ? editShopItem(newItem.id, newItem) : setSeeAlert(true)
+        const edited={
+            ...newItem,
+            category:newItem.category.join()
+        }
+        seeAlert ? editShopItem(newItem.id, edited,categoriesToDelete,imageToDelete).then((res) => successFullChanges()).catch(error => console.log(error)) : setSeeAlert(true)
 
     }
     const handleDelete = () => {
         setMode({ ...mode, delete: true })
-        seeAlert ? deleteShopItem(newItem.id) : setSeeAlert(true)
+        seeAlert ? deleteShopItem(newItem.id).then((res) => successFullChanges()).catch(error => console.log(error)) : setSeeAlert(true)
     }
     let imagePreview = null;
 
-    if (newItem.image && newItem.image instanceof Blob) {
-        imagePreview = URL.createObjectURL(newItem.image);
-    }
+  if (newItem.image && newItem.image instanceof Blob) {
+    imagePreview = URL.createObjectURL(newItem.image);
+  }
 
     return (
         <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
 
             {seeAlert && mode.delete && <Alerts title={`Eliminar ${newItem.title}`}
                 textdetails={'¿Desea borrar el producto?'} confirm={'Si Borrar'} callback={handleDelete}
+                closemodal={closeAlert} />
+            }
+            {successFullAlert.state && <Alerts title={`Exito!`}
+                textdetails={successFullAlert.message} confirm={'Entendido'}
                 closemodal={closeAlert} />}
-            {seeAlert && mode.edit && !mode.delete &&<Alerts title={`Confirmar edicion`}
+
+            {seeAlert && mode.edit && !mode.delete && <Alerts title={`Confirmar edicion`}
                 textdetails={'¿Desea editar el producto?'} confirm={'Si editar'} callback={handleEdit}
                 closemodal={closeAlert} />}
             {seeAlert && mode.create && <Alerts title={`Crear ${newItem.title}`}
                 textdetails={'¿Desea crear el nuevo producto?'} confirm={'Si crear'} callback={handleCreate}
                 closemodal={closeAlert} />}
 
-            <div className="flex flex-col items-center bg-[#C2C2C2] max-w-[45rem] min-w-[38rem] w-7/12 min-h-[28rem] gap-8 p-2">
+            <div className="flex flex-col items-center w-9/12 h-[20rem] overflow-auto sm:overflow-visible sm:h-auto 
+            bg-[#C2C2C2] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 
+             min-h-[28rem] gap-8 p-2">
 
                 <section className="flex justify-end  w-full p-1">
                     <button onClick={closeModal} className="text-red-700  text-xl font-bold ">X</button>
-                    <button onClick={() => console.log(newItem)}>ver</button>
                 </section>
 
-                <section className="flex justify-between w-full">
+                <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
+                  
                     <article className="w-6/12 flex flex-col justify-center items-center gap-6">
 
                         {mode.edit && newItem.image &&
-                            <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} priority={true} />
+                            <Image className="h-[12rem] sm:h-[15rem] w-auto" width={100} height={100} src={imagePreview ?? newItem.image} alt={`product`} priority={true} />
                         }
                         {
-                            mode.create && imagePreview && <Image className="h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
+                            mode.create && imagePreview && <Image className="h-[12rem] sm:h-[15rem] w-auto" width={100} height={100} src={imagePreview} alt={`product`} />
                         }
                         <input
                             type="file"
@@ -111,16 +141,16 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
                             className="hidden"
                             accept="image/*"
                         />
-                        <label htmlFor="selectimage">{newItem.image ? 'Cambiar' : 'Añadir'} imagen</label>
+                        <label htmlFor="selectimage" className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]">{newItem.image ? 'Cambiar' : 'Añadir'} imagen</label>
                     </article>
 
-                    <article className="w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
+                    <article className="w-11/12 h-[20rem] sm:w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
 
                         <FormShop setNewItem={setNewItem} startEdit={startEdit} setStartEdit={setStartEdit}
                             newItem={newItem} mode={mode} />
 
                         <ShopCategories newItem={newItem} setNewItem={setNewItem}
-                            startEdit={startEdit} setStartEdit={setStartEdit} />
+                            startEdit={startEdit} setStartEdit={setStartEdit}setCategoriesToDelete={setCategoriesToDelete} categoriesToDelete={categoriesToDelete} />
                     </article>
 
                 </section>

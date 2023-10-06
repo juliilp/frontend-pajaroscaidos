@@ -3,33 +3,12 @@ import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 import { formDataConver } from "@/helpers/formDataConvert";
 
-export async function getPostForNuestraComunidad(option) {
-  try {
-    const response = await api.get(
-      `publication/community?filter=${option}&limit=${2}`
-    );
-
-    if (response.status === 200) {
-      const publications = response.data.publications;
-      return publications;
-    } else {
-      console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD");
-    }
-  } catch (error) {
-    console.log("error al obtener publicaciones 'NUESTRA COMUNIDAD");
-  }
-}
-
 export async function getBannerImages() {
   try {
     const response = await api.get(`/news/banner`);
-
-    if (response.status !== 200) return null;
-
-    const banners = response.data.images.banners;
-    return banners;
+    return response.data.images.banners;
   } catch (error) {
-    console.log("error al obtener BANNER");
+    console.error("error al obtener BANNER");
   }
 }
 
@@ -42,7 +21,10 @@ export async function loginNextAuth(data) {
     const userBackEnd = response.data;
     return userBackEnd.user;
   } catch (error) {
-    console.log("error al obtener user del back: ", error);
+    console.error("Error inicio sesion:", error);
+    if (error.response && error.response.data && error.response.data.error) {
+      return error.response.data.error.code;
+    }
   }
 }
 
@@ -145,19 +127,37 @@ export async function createNewItem(data) {
   }
 }
 
-
 export async function createCategory(name) {
   try {
-    return  api.post(`shop/category`, {name});
-    
+    return api.post(`shop/category`, { name });
   } catch (error) {
     console.log(error);
   }
 }
-export async function editShopItem(id, data) {
+export async function deleteCategoryFromItem(id, category) {
   try {
-    const request = await api.put(`/shop/item/${id}`, data);
-    console.log(request.data, "aparentemente editado");
+    const request = await api.patch(`/shop/item/${id}`, category);
+    console.log(request.data, " categoia borrado");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function editShopItem(id, data, categories, image) {
+  const formData = formDataConver(data);
+
+  try {
+    const request = await api.put(`/shop/item/${id}`, formData);
+    if (request.data && image.length) {
+      const deleteImage = await api.put(`/shop/item/${id}`, {
+        deleteImages: image,
+      });
+    }
+    if (request.data && categories.length) {
+      await categories.forEach((i) => {
+        deleteCategoryFromItem(id, { category: i });
+      });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -174,7 +174,7 @@ export async function deleteShopItem(id) {
 export async function getCategories() {
   try {
     const request = await api.get(`/shop/category`);
-    return request.data.categories
+    return request.data.categories;
     console.log(request.data);
   } catch (error) {
     console.log(error);

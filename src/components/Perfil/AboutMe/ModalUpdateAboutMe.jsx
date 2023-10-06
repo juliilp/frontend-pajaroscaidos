@@ -1,5 +1,5 @@
 "use client";
-import { UpdateUser } from "@/api/apiCall/UserFunctions";
+import { UpdateUser } from "@/api/apiCall/UserRequests";
 import { CustomContext } from "@/store/ContextProvider";
 import React, { useState } from "react";
 import { BiSolidEditAlt } from "react-icons/bi";

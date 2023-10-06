@@ -16,8 +16,13 @@ export default function Page() {
   const [registroOk, setRegistroOk] = useState(false);
 
   const [switchPassword, setSwitchPassword] = useState(false);
+  const [switchPasswordConfirm, setSwitchPasswordConfirm] = useState(false);
   const handlerSwitchPassword = () => {
     setSwitchPassword((prev) => !prev);
+  };
+
+  const handlerSwitchPasswordConfirm = () => {
+    setSwitchPasswordConfirm((prev) => !prev);
   };
 
   useEffect(() => {}, [registroOk]);
@@ -26,8 +31,11 @@ export default function Page() {
     email: "",
     password: "",
     passwordConfirm: "",
-    nick_name: "",
+    first_name: "",
     last_name: "",
+    country: "",
+    city: "",
+    phone_number: "",
   });
 
   const handlerRegistro = (e) => {
@@ -59,7 +67,7 @@ export default function Page() {
 
       if (response.status == 200) {
         const user = response.data;
-        // console.log('newUser', user.newUser)
+        console.log("newUser", user.newUser);
 
         Cookies.set("newUserId", JSON.stringify({ id: user.newUser.id }), {
           expires: 7,
@@ -82,11 +90,11 @@ export default function Page() {
       email: "",
       password: "",
       passwordConfirm: "",
-      nick_name: "",
+      first_name: "",
       last_name: "",
-      pais: "",
-      estado: "",
-      telefono: "",
+      country: "",
+      city: "",
+      phone_number: "",
     });
   };
 
@@ -113,15 +121,15 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="nick_name"
+            name="first_name"
             onChange={handlerRegistro}
-            value={formRegister.nick_name}
+            value={formRegister.first_name}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.nick_name ? "visible" : "hidden" }}
+            style={{ visibility: errors.first_name ? "visible" : "hidden" }}
           >
-            {errors.nick_name}
+            {errors.first_name}
           </span>
         </div>
 
@@ -146,15 +154,15 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="pais"
+            name="country"
             onChange={handlerRegistro}
-            value={formRegister.pais}
+            value={formRegister.country}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.pais ? "visible" : "hidden" }}
+            style={{ visibility: errors.country ? "visible" : "hidden" }}
           >
-            {errors.pais}
+            {errors.country}
           </span>
         </div>
         <div className="flex flex-col mx-4">
@@ -162,13 +170,13 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="estado"
+            name="city"
             onChange={handlerRegistro}
-            value={formRegister.estado}
+            value={formRegister.city}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.estado ? "visible" : "hidden" }}
+            style={{ visibility: errors.city ? "visible" : "hidden" }}
           >
             {errors.estado}
           </span>
@@ -178,13 +186,13 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="telefono"
+            name="phone_number"
             onChange={handlerRegistro}
-            value={formRegister.telefono}
+            value={formRegister.phone_number}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.telefono ? "visible" : "hidden" }}
+            style={{ visibility: errors.phone_number ? "visible" : "hidden" }}
           >
             {errors.telefono}
           </span>
@@ -245,19 +253,22 @@ export default function Page() {
           <span>Confirmar Contraseña</span>
           <div className="relative">
             <input
-              type={switchPassword ? "text" : "password"}
+              type={switchPasswordConfirm ? "text" : "password"}
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="passwordConfirm"
               onChange={handlerRegistro}
               value={formRegister.passwordConfirm}
             />
             <div className="absolute top-[18%] right-2 cursor-pointer">
-              {switchPassword ? (
-                <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
+              {switchPasswordConfirm ? (
+                <AiOutlineEye
+                  size={30}
+                  onClick={handlerSwitchPasswordConfirm}
+                />
               ) : (
                 <AiOutlineEyeInvisible
                   size={30}
-                  onClick={handlerSwitchPassword}
+                  onClick={handlerSwitchPasswordConfirm}
                 />
               )}
             </div>
@@ -274,7 +285,7 @@ export default function Page() {
 
         <button
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
-          disabled={isRegistering}
+          //disabled={isRegistering}
         >
           {isRegistering ? "Registrando..." : "Registrate"}
         </button>

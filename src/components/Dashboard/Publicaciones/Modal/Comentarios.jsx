@@ -2,7 +2,7 @@ import Pagination from "@/components/Pagination/Pagination2";
 import formatDate from "@/helpers/FormatDate";
 import { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
-import { deleteComment } from "@/api/apiCall/PostFunctions";
+import { deleteComment } from "@/api/apiCall/PostRequests";
 
 export default function Comentarios({ post, onDataUpdate }) {
   const [currentPage, setCurrentPage] = useState(1);
