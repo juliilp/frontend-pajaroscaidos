@@ -84,7 +84,7 @@ function Campañas() {
         />
 
         <div className="flex justify-end w-[80%] mb-5">
-          <div className="flex justify-center items-center w-[18%] h-10 bg-[#60EA4A] font-bold rounded">
+          <div className="flex justify-center items-center w-[23%] h-10 bg-[#60EA4A] font-bold rounded">
             <button onClick={() => toggleModalPost()}>Añadir campaña +</button>
           </div>
         </div>

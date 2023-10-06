@@ -55,7 +55,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
 
   return (
     <>
-      <div className="w-[50%] h-[65%] bg-[#444] rounded-lg text-[#ffffff]">
+      <div className="w-[50%] h-[70%] bg-[#444] rounded-lg text-[#ffffff]">
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
           <h1>Crea tu campaña!</h1>
           <button className="text-[#D22929]" onClick={() => toggleModal({})}>
