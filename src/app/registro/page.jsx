@@ -16,8 +16,13 @@ export default function Page() {
   const [registroOk, setRegistroOk] = useState(false);
 
   const [switchPassword, setSwitchPassword] = useState(false);
+  const [switchPasswordConfirm, setSwitchPasswordConfirm] = useState(false);
   const handlerSwitchPassword = () => {
     setSwitchPassword((prev) => !prev);
+  };
+
+  const handlerSwitchPasswordConfirm = () => {
+    setSwitchPasswordConfirm((prev) => !prev);
   };
 
   useEffect(() => {}, [registroOk]);
@@ -248,19 +253,22 @@ export default function Page() {
           <span>Confirmar Contraseña</span>
           <div className="relative">
             <input
-              type={switchPassword ? "text" : "password"}
+              type={switchPasswordConfirm ? "text" : "password"}
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="passwordConfirm"
               onChange={handlerRegistro}
               value={formRegister.passwordConfirm}
             />
             <div className="absolute top-[18%] right-2 cursor-pointer">
-              {switchPassword ? (
-                <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
+              {switchPasswordConfirm ? (
+                <AiOutlineEye
+                  size={30}
+                  onClick={handlerSwitchPasswordConfirm}
+                />
               ) : (
                 <AiOutlineEyeInvisible
                   size={30}
-                  onClick={handlerSwitchPassword}
+                  onClick={handlerSwitchPasswordConfirm}
                 />
               )}
             </div>
