@@ -82,7 +82,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
     <>
       <div
         key={modal.infoModal.id}
-        className="w-[50%] h-[55%] bg-[#C2C2C2] rounded-lg"
+        className="w-[50%] h-[60%] bg-[#C2C2C2] rounded-lg"
       >
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
           <h1>Edita tu campaña!</h1>
