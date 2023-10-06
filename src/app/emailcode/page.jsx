@@ -68,19 +68,10 @@ export default function EmailCode() {
   };
 
   return (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2">
-      <Image
-        src={LoginImagen}
-        className="hidden md:block justify-self-end"
-        alt="imagen"
-      />
-      <form
-        className="w-[550px] bg-[#FFFFFF] pb-16 rounded-xl"
-        onSubmit={submitHandler}
-      >
-        <h2 className="font-bold text-2xl text-center mt-2 mb-12">
-          Validar e-mail
-        </h2>
+    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 mt-8">
+      <Image src={LoginImagen} className="hidden md:block justify-self-end" alt="imagen" />
+      <form className="w-full max-w-[500px] bg-[#FFFFFF] pb-16 rounded-xl" onSubmit={submitHandler}>
+        <h2 className="font-bold text-2xl text-center mt-2 mb-12">Validar e-mail</h2>
         <div className="flex flex-col px-4 gap-2">
           <span className="text-[#525252]">
             Ingrese el código para validar su correo electrónico
@@ -92,14 +83,8 @@ export default function EmailCode() {
             name="code"
             value={input.code}
           />
-          {errors && (
-            <span className="text-red-500">Código debe ser numérico.</span>
-          )}
-          {invalidCode && (
-            <span className="text-red-500">
-              El código ingresado es invalido
-            </span>
-          )}
+          {errors && <span className="text-red-500">Código debe ser numérico.</span>}
+          {invalidCode && <span className="text-red-500">El código ingresado es invalido</span>}
         </div>
         <div className="flex flex-col justify-center items-center my-10">
           <button
