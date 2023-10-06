@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import Loading from "../loading";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
 import { getAllPosts } from "@/api/apiCall/PostRequests";
+import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
 
 export default function Foros() {
   const router = useRouter();
@@ -53,7 +54,7 @@ export default function Foros() {
   }
 
   return (
-    <article className="relative flex w-full flex-col gap-4 justify-center items-center lg:flex-row lg:items-start lg:gap-12 bg-[#e9e8e8] mt-[70px]">
+    <article className="relative flex w-full flex-col gap-4 justify-center items-center xl:flex-row xl:items-start lg:gap-12 bg-[#e9e8e8] mt-[70px]">
       {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
 
       <section className="sm:bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-2 sm:my-8">
@@ -115,6 +116,9 @@ export default function Foros() {
         />
         <NuestraComunidad />
       </section>
+      <div className="flex w-full items-center justify-center xl:hidden">
+        <NuestraComunidadMobile />
+      </div>
     </article>
   );
 }
