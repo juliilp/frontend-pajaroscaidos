@@ -15,7 +15,7 @@ export default function MainHome({ banner }) {
         <Swiper
           navigation={true}
           modules={[Autoplay]}
-          className="mySwiper h-full"
+          className="mySwiper h-full cursor-grab active:cursor-grabbing"
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
