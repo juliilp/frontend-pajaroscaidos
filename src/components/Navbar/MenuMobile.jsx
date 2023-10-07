@@ -11,7 +11,7 @@ export default function MenuMobile({ closeMenu, admin }) {
   };
 
   return (
-    <ul className="flex md:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
+    <ul className="flex lg:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
         <Link href="/" className="focus:underline" onClick={closeMenu}>
           Inicio

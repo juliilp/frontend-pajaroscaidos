@@ -45,10 +45,10 @@ export default function Navbar() {
         <GiHamburgerMenu
           size={35}
           color="white"
-          className="md:hidden"
+          className="lg:hidden"
           onClick={handlerSwitchMenu}
         />
-        <div className="hidden md:flex gap-12 lg:gap-24">
+        <div className="hidden lg:flex gap-12 lg:gap-24">
           <Image
             src={Logo}
             alt="logo"
