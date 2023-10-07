@@ -15,12 +15,12 @@ export default function Navbar() {
   const { data: session } = useSession();
   const [switchMenu, setSwitchMenu] = useState(false);
   const [rendering, setRendering] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setRendering(true);
-    }
-  }, []);
+    setUser(UserContext);
+    setRendering(true);
+  }, [UserContext, user]);
 
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
@@ -59,23 +59,22 @@ export default function Navbar() {
           />
           <MenuDesktop />
         </div>
-
         {rendering && (
           <div className="flex items-center justify-center gap-3">
-            {UserContext ? (
-              <React.Fragment>
+            {user ? (
+              <>
                 <Link href={"/perfil"} prefetch={false}>
                   <span className="text-white font-semibold">
-                    {UserContext.nick_name}
+                    {user.nick_name}
                   </span>
                 </Link>
-                {UserContext.avatar.avatar_url !== "-" ? (
+                {user.avatar.avatar_url !== "-" ? (
                   <Link href={"/perfil"} prefetch={false}>
                     <Image
                       src={
-                        UserContext.avatar.avatar_url
-                          ? UserContext.avatar.avatar_url
-                          : UserContext.avatar.secure_url
+                        user.avatar.avatar_url
+                          ? user.avatar.avatar_url
+                          : user.avatar.secure_url
                       }
                       alt="Avatar"
                       width={50}
@@ -94,9 +93,9 @@ export default function Navbar() {
                 >
                   Cerrar sesión
                 </button>
-              </React.Fragment>
+              </>
             ) : (
-              <React.Fragment>
+              <>
                 <Link
                   href="/login"
                   className="text-white font-semibold"
@@ -105,7 +104,7 @@ export default function Navbar() {
                   Iniciar sesión
                 </Link>
                 <BiSolidUser size={35} color="white" />
-              </React.Fragment>
+              </>
             )}
           </div>
         )}
@@ -117,7 +116,7 @@ export default function Navbar() {
             : "-translate-y-8 opacity-0 pointer-events-none"
         }`}
       >
-        {<MenuMobile closeMenu={closeMenu} />}
+        <MenuMobile closeMenu={closeMenu} admin={user?.isAdmin} />
       </div>
     </header>
   );
