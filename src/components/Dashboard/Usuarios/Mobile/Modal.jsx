@@ -3,8 +3,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BiCheckbox, BiCheckboxChecked, BiLoaderAlt } from "react-icons/bi";
 
+const options = ["isVoluntary", "isAdmin", "isBanned"];
+
 export default function Modal({ toggleModal, userId, onDataUpdate }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   const fetchUser = async () => {
     const data = await getUserById(userId);
@@ -57,7 +59,7 @@ export default function Modal({ toggleModal, userId, onDataUpdate }) {
             X
           </button>
           {user ? (
-            <section className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <div className="w-full flex items-end gap-3 font-semibold text-lg">
                 <Image
                   src={
@@ -76,40 +78,21 @@ export default function Modal({ toggleModal, userId, onDataUpdate }) {
                 <span className="font-medium">Email: </span>
                 {user.email}
               </h3>
-              <div
-                className="flex gap-4 justify-between items-center w-full"
-                onClick={() => handleStatus("isVoluntary")}
-              >
-                <span className="font-medium">Voluntario</span>
-                {user.isVoluntary ? (
-                  <BiCheckboxChecked size={35} />
-                ) : (
-                  <BiCheckbox size={35} />
-                )}
-              </div>
-              <div
-                className="flex gap-4 justify-between items-center w-full"
-                onClick={() => handleStatus("isAdmin")}
-              >
-                <span className="font-medium">Admin</span>
-                {user.isAdmin ? (
-                  <BiCheckboxChecked size={35} />
-                ) : (
-                  <BiCheckbox size={35} />
-                )}
-              </div>
-              <div
-                className="flex gap-4 justify-between items-center w-full"
-                onClick={() => handleStatus("isBanned")}
-              >
-                <span className="font-medium">Baneado</span>
-                {user.isBanned ? (
-                  <BiCheckboxChecked size={35} />
-                ) : (
-                  <BiCheckbox size={35} />
-                )}
-              </div>
-            </section>
+              {options.map((option) => (
+                <div
+                  key={option}
+                  className="flex gap-4 justify-between items-center w-full"
+                  onClick={() => handleStatus(option)}
+                >
+                  <span className="font-medium">{option}</span>
+                  {user[option] ? (
+                    <BiCheckboxChecked size={35} />
+                  ) : (
+                    <BiCheckbox size={35} />
+                  )}
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="w-full py-3 flex justify-center">
               <BiLoaderAlt className="animate-spin" size={35} />

@@ -6,8 +6,8 @@ export default function TableMobile({ users, handleDataUpdate }) {
   const [modal, setModal] = useState({ toggle: false, userId: "" });
 
   const toggleModal = (id) => {
-    const user = users.find((user) => user.id === id) || "";
-    setModal({ toggle: !modal.toggle, userId: user.id });
+    const user = users.find((user) => user.id === id);
+    setModal({ toggle: !modal.toggle, userId: user ? user.id : "" });
   };
 
   return (

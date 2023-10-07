@@ -15,12 +15,13 @@ export default function Page() {
 
   const fetchUsersData = async () => {
     try {
-      const resp = await api.get(
+      const response = await api.get(
         `user/all?userPerPage=${userPerPage}&pageNumber=${pageNumber}`
       );
 
-      setUsers(resp.data.users.users);
-      setTotalPages(resp.data.users.totalPages);
+      const { users, totalPages } = response.data.users;
+      setUsers(users);
+      setTotalPages(totalPages);
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
     } finally {
