@@ -4,7 +4,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <section className="w-[80%]">{children}</section>
+      <section className="w-full lg:w-[80%]">{children}</section>
     </div>
   );
 }
