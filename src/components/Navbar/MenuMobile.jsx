@@ -3,7 +3,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
 import Link from "next/link";
 
-export default function MenuMobile({ closeMenu }) {
+export default function MenuMobile({ closeMenu, admin }) {
   const [openMenu, setOpenMenu] = useState(null);
 
   const toggleMenu = (menu) => {
@@ -36,8 +36,8 @@ export default function MenuMobile({ closeMenu }) {
         <div
           className={`transition-all duration-300 w-full pl-8 ${
             openMenu === "asociacion"
-              ? "opacity-100 h-[12rem]"
-              : "opacity-0 h-0"
+              ? "opacity-100 h-[12rem] pointer-events-auto"
+              : "opacity-0 h-0 pointer-events-none"
           }`}
         >
           <MenuInterno
@@ -100,7 +100,9 @@ export default function MenuMobile({ closeMenu }) {
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            openMenu === "comunidad" ? "opacity-100 h-[6rem]" : "opacity-0 h-0"
+            openMenu === "comunidad"
+              ? "opacity-100 h-[6rem] pointer-events-auto"
+              : "opacity-0 h-0 pointer-events-none"
           }`}
         >
           <MenuInterno
@@ -145,7 +147,9 @@ export default function MenuMobile({ closeMenu }) {
         </span>
         <div
           className={`transition-all duration-300 w-full pl-8 ${
-            openMenu === "servicio" ? "opacity-100 h-[12rem]" : "opacity-0 h-0"
+            openMenu === "servicio"
+              ? "opacity-100 h-[12rem] pointer-events-auto"
+              : "opacity-0 h-0 pointer-events-none"
           }`}
         >
           <MenuInterno
@@ -190,6 +194,69 @@ export default function MenuMobile({ closeMenu }) {
           />
         </div>
       </li>
+      {admin && (
+        <li
+          className="flex items-center justify-between px-4 bg-[#3D3D3D] flex-col "
+          data-menu="dashboard"
+        >
+          <span
+            className="flex items-center justify-between w-full"
+            onClick={() => toggleMenu("dashboard")}
+          >
+            Panel administrador
+            <IoIosArrowDown
+              size={55}
+              className={`${
+                openMenu === "dashboard" ? "rotate-180" : " rotate-0"
+              } duration-200`}
+            />
+          </span>
+          <div
+            className={`transition-all duration-300 w-full pl-8 ${
+              openMenu === "dashboard"
+                ? "opacity-100 h-[12rem] pointer-events-auto"
+                : "opacity-0 h-0 pointer-events-none"
+            }`}
+          >
+            <MenuInterno
+              opciones={[
+                <Link
+                  key="opcion1"
+                  href="/dashboard"
+                  className="focus:underline"
+                  onClick={closeMenu}
+                >
+                  Opciones de inicio
+                </Link>,
+                <Link
+                  key="opcion2"
+                  href="/dashboard/galeria-solidaria"
+                  className="focus:underline"
+                  onClick={closeMenu}
+                >
+                  Galeria solidaria
+                </Link>,
+                <Link
+                  key="opcion2"
+                  href="/dashboard/publicaciones"
+                  className="focus:underline"
+                  onClick={closeMenu}
+                >
+                  Publicaciones
+                </Link>,
+                <Link
+                  key="opcion2"
+                  href="/dashboard/usuarios"
+                  className="focus:underline"
+                  onClick={closeMenu}
+                >
+                  Usuarios
+                </Link>,
+              ]}
+            />
+          </div>
+        </li>
+      )}
     </ul>
   );
 }
