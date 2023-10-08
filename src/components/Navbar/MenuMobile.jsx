@@ -10,10 +10,15 @@ export default function MenuMobile({ closeMenu, admin }) {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
 
+  const handleCloseMenu = () => {
+    closeMenu();
+    setOpenMenu(null);
+  };
+
   return (
     <ul className="flex lg:hidden flex-col absolute w-full bg-[#2e2e2e] gap-1 text-white ">
       <li className="bg-[#3D3D3D] px-4 border-t-[4px] border-[#2e2e2e] h-[55px] flex items-center ">
-        <Link href="/" className="focus:underline" onClick={closeMenu}>
+        <Link href="/" className="focus:underline" onClick={handleCloseMenu}>
           Inicio
         </Link>
       </li>
@@ -46,7 +51,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion1"
                 href="/acciones"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Acciones
@@ -55,7 +60,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion2"
                 href="/caza-trafico"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Caza y tráfico de faunas
@@ -64,7 +69,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion3"
                 href="/actos-maltrato-y-crueldad"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Crueldad y maltrato
@@ -73,7 +78,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion4"
                 href="/legislacion"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Legislación
@@ -111,7 +116,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion1"
                 href="/voluntarios"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Voluntarios
@@ -120,7 +125,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion2"
                 href="/foro"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Foro
@@ -158,7 +163,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion1"
                 href="/contactanos"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Contacto
@@ -167,7 +172,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion2"
                 href="/como-denunciar"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Como Denunciar
@@ -176,7 +181,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion4"
                 href="/galeria-solidaria"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Galeria Solidaria
@@ -185,7 +190,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 key="opcion5"
                 href="/cursos"
                 className="focus:underline"
-                onClick={closeMenu}
+                onClick={handleCloseMenu}
                 prefetch={false}
               >
                 Cursos
@@ -224,7 +229,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                   key="opcion1"
                   href="/dashboard"
                   className="focus:underline"
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                 >
                   Opciones de inicio
                 </Link>,
@@ -232,7 +237,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                   key="opcion2"
                   href="/dashboard/galeria-solidaria"
                   className="focus:underline"
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                 >
                   Galeria solidaria
                 </Link>,
@@ -240,7 +245,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                   key="opcion2"
                   href="/dashboard/publicaciones"
                   className="focus:underline"
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                 >
                   Publicaciones
                 </Link>,
@@ -248,7 +253,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                   key="opcion2"
                   href="/dashboard/usuarios"
                   className="focus:underline"
-                  onClick={closeMenu}
+                  onClick={handleCloseMenu}
                 >
                   Usuarios
                 </Link>,
