@@ -1,4 +1,4 @@
-import ListaPublicaciones from "./ListaPublicaciones";
+import PostList from "./PostList";
 
 export default function TableDesktopPosts({
   posts,
@@ -27,7 +27,7 @@ export default function TableDesktopPosts({
         </tr>
       </thead>
       <tbody>
-        <ListaPublicaciones
+        <PostList
           posts={posts}
           toggleModal={toggleModal}
           fetchPostsData={fetchPostsData}

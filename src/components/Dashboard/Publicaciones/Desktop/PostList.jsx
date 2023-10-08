@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ListaPublicaciones({ posts, toggleModal }) {
+export default function PostList({ posts, toggleModal }) {
   return (
     <>
       {posts?.map((post) => (

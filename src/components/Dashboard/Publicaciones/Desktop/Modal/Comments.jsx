@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
 import { deleteComment } from "@/api/apiCall/PostRequests";
 
-export default function Comentarios({ post, onDataUpdate }) {
+export default function Comments({ post, onDataUpdate }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedComments, setDisplayedComments] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,7 +32,7 @@ export default function Comentarios({ post, onDataUpdate }) {
   };
 
   return (
-    <article className="flex flex-col w-[60%]">
+    <article className="flex flex-col w-full md:w-[60%]">
       <h2 className="font-semibold text-lg text-center">Comentarios</h2>
       {post.comments && post.comments.length !== 0 ? (
         <>
@@ -65,7 +65,7 @@ export default function Comentarios({ post, onDataUpdate }) {
           />
         </>
       ) : (
-        <h2 className="font-medium text-center">No hay comentarios</h2>
+        <h2 className="font-medium text-center pb-3">No hay comentarios</h2>
       )}
     </article>
   );
