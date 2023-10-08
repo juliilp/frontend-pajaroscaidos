@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Comentarios from "./Comentarios";
+import Comentarios from "./Modal/Comentarios";
 import { deletePost } from "@/api/apiCall/PostRequests";
 
-export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
+export default function ModalPost({ modal, toggleModal, onDataUpdate }) {
   const handleDelete = async (postId) => {
     const response = await deletePost(postId);
     alert(response);
