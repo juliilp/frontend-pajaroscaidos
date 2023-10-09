@@ -21,14 +21,31 @@ export default function ComodenunciarSecondSection() {
           </p>
         </article>
 
-        <article className="flex flex-col gap-6">
-          {ProvinciasComoDenunciar.map((p, key) => {
-            return (
-              <a href={p.href} target="_blank" key={key}>
+        <article className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            {ProvinciasComoDenunciar.slice(0, 12).map((p, key) => (
+              <a
+                href={p.href}
+                target="_blank"
+                key={key}
+                className="text-[blue] hover:text-gray-500 block"
+              >
                 {p.provincia}
               </a>
-            );
-          })}
+            ))}
+          </div>
+          <div className="">
+            {ProvinciasComoDenunciar.slice(12).map((p, key) => (
+              <a
+                href={p.href}
+                target="_blank"
+                key={key}
+                className="text-[blue] hover:text-gray-500 block "
+              >
+                {p.provincia}
+              </a>
+            ))}
+          </div>
         </article>
       </div>
 
