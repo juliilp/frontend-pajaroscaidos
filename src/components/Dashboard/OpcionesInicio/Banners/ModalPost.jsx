@@ -53,7 +53,7 @@ function ModalPostBanners({ toggleModal, handleDataUpdated }) {
 
   return (
     <>
-      <div className="w-[50%] h-[60%] bg-[#444] rounded-lg text-[#ffffff]">
+      <div className="lg:w-[50%] w-[90%] h-[410px] bg-[#444] rounded-lg text-[#ffffff]">
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
           <h1>Crea tu banner!</h1>
           <button className="text-[#D22929]" onClick={() => toggleModal({})}>
