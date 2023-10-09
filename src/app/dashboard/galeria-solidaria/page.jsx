@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { getItemsShop } from "@/api/apiCall/functions";
 import Pagination from "@/components/Pagination/Pagination";
 import Loading from "../loading";
-import ItemModal from "@/components/Dashboard/GaleriaSolidaria/Desktop/ItemModal";
-import ItemsSection from "@/components/Dashboard/GaleriaSolidaria/Desktop/ItemsSection";
+import ItemModal from "@/components/Dashboard/GaleriaSolidaria/ItemModal";
+import ItemsSection from "@/components/Dashboard/GaleriaSolidaria/ItemsSection";
 
 export default function Page() {
   const [items, setItems] = useState(null);
