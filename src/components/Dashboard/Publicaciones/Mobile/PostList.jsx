@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ListaPublicaciones({ posts, toggleModal }) {
+export default function PostList({ posts, toggleModal }) {
   return (
     <>
       {posts?.map((post) => (
@@ -19,10 +19,9 @@ export default function ListaPublicaciones({ posts, toggleModal }) {
               onError={(e) => (e.target.style.display = "none")}
             />
           </td>
-          <td>{post.title}</td>
-          <td>{post.user.nick_name}</td>
+          <td className="max-w-[130px] truncate">{post.title}</td>
           <td>{post.reactions.length}</td>
-          <td>{post.comments.length}</td>
+          <td className="hidden sm:table-cell">{post.comments.length}</td>
         </tr>
       ))}
     </>

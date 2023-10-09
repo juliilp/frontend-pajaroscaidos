@@ -1,10 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useState, useEffect } from "react";
-import ListaUsuarios from "@/components/Dashboard/Usuarios/ListaUsuarios";
 import Pagination from "@/components/Pagination/Pagination";
 import api from "@/api/api";
 import Loading from "../loading";
+import TableDesktop from "@/components/Dashboard/Usuarios/TableDesktop";
+import TableMobile from "@/components/Dashboard/Usuarios/TableMobile";
 
 export default function Page() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -15,12 +15,13 @@ export default function Page() {
 
   const fetchUsersData = async () => {
     try {
-      const resp = await api.get(
+      const response = await api.get(
         `user/all?userPerPage=${userPerPage}&pageNumber=${pageNumber}`
       );
 
-      setUsers(resp.data.users.users);
-      setTotalPages(resp.data.users.totalPages);
+      const { users, totalPages } = response.data.users;
+      setUsers(users);
+      setTotalPages(totalPages);
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
     } finally {
@@ -30,6 +31,7 @@ export default function Page() {
 
   useEffect(() => {
     fetchUsersData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
 
   const handleDataUpdate = async () => {
@@ -48,34 +50,8 @@ export default function Page() {
     <section className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
       <h1 className="text-center pt-6 text-2xl font-bold">Usuarios</h1>
       <div className="bg-[#4f4f4f] w-full flex flex-col gap-2 p-3 rounded-xl text-white">
-        <table className="w-full table-auto text-center border-separate border-spacing-y-2">
-          <thead>
-            <tr>
-              <th>
-                <strong>Avatar</strong>
-              </th>
-              <th>
-                <strong>Email</strong>
-              </th>
-              <th>
-                <strong>Nickname</strong>
-              </th>
-              <th>
-                <strong>Voluntario</strong>
-              </th>
-              <th>
-                <strong>Admin</strong>
-              </th>
-              <th>
-                <strong>Baneado</strong>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <ListaUsuarios users={users} onDataUpdate={handleDataUpdate} />
-          </tbody>
-        </table>
+        <TableDesktop users={users} handleDataUpdate={handleDataUpdate} />
+        <TableMobile users={users} handleDataUpdate={handleDataUpdate} />
       </div>
       <Pagination
         pageNumber={pageNumber}

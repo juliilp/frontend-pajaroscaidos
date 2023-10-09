@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
 import Pagination from "@/components/Pagination/Pagination";
 import Loading from "../loading";
-import ListaPublicaciones from "@/components/Dashboard/Publicaciones/ListaPublicaciones";
-import ModalPublicacion from "@/components/Dashboard/Publicaciones/Modal/Modal";
 import { getAllPosts } from "@/api/apiCall/PostRequests";
+import TableDesktopPosts from "@/components/Dashboard/Publicaciones/Desktop/TableDesktop";
+import TableMobilePosts from "@/components/Dashboard/Publicaciones/Mobile/TableMobile";
+import ModalPostDesktop from "@/components/Dashboard/Publicaciones/Desktop/ModalPostDesktop";
+import ModalPostMobile from "@/components/Dashboard/Publicaciones/Mobile/ModalPostMobile";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,48 +57,39 @@ export default function Page() {
   }
 
   return (
-    <section className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
+    <section className="h-full w-full px-4 sm:px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
       <h1 className="text-center pt-6 text-2xl font-bold">Publicaciones</h1>
       <div className="bg-[#4f4f4f] w-full flex flex-col py-3 rounded-xl text-white">
-        <table className="w-full table-auto text-center">
-          <thead>
-            <tr>
-              <th className="w-[10%]">
-                <strong>Imagen</strong>
-              </th>
-              <th className="w-[40%]">
-                <strong>Titulo</strong>
-              </th>
-              <th className="w-[20%]">
-                <strong>Usuario</strong>
-              </th>
-              <th className="w-[15%]">
-                <strong>Me gusta</strong>
-              </th>
-              <th className="w-[15%]">
-                <strong>Comentarios</strong>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <ListaPublicaciones
-              posts={posts}
-              toggleModal={toggleModal}
-              fetchPostsData={fetchPostsData}
-            />
-          </tbody>
-        </table>
+        <TableDesktopPosts
+          posts={posts}
+          toggleModal={toggleModal}
+          fetchPostsData={fetchPostsData}
+        />
+        <TableMobilePosts
+          posts={posts}
+          toggleModal={toggleModal}
+          fetchPostsData={fetchPostsData}
+        />
       </div>
       <Pagination
         pageNumber={pageNumber}
         totalPages={totalPages}
         changePage={handlePageChange}
       />
-      <ModalPublicacion
-        modal={modal}
-        toggleModal={toggleModal}
-        onDataUpdate={handleDataUpdate}
-      />
+      {modal.toggle && (
+        <>
+          <ModalPostDesktop
+            modal={modal}
+            toggleModal={toggleModal}
+            onDataUpdate={handleDataUpdate}
+          />
+          <ModalPostMobile
+            modal={modal}
+            toggleModal={toggleModal}
+            onDataUpdate={handleDataUpdate}
+          />
+        </>
+      )}
     </section>
   );
 }

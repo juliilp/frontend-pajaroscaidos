@@ -1,7 +1,7 @@
 import "@/styles/DropdownMenu.css";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import DropdownMenu from "./DropdownMenu/DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 import {
   BiSolidUser,
   BiDotsVerticalRounded,
@@ -9,7 +9,7 @@ import {
   BiCheckboxChecked,
 } from "react-icons/bi";
 
-export default function ListaUsuarios({ users, onDataUpdate }) {
+export default function UserList({ users, onDataUpdate }) {
   const [openMenus, setOpenMenus] = useState({});
   const menuRefs = useRef({});
 

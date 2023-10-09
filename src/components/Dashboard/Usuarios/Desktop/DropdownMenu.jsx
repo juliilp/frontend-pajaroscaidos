@@ -2,13 +2,6 @@ import api from "@/api/api";
 import "@/styles/DropdownMenu.css";
 import React from "react";
 
-/**
- * Renders a dropdown menu with options to change the status of a user.
- * @param {Object} props.user - The user object containing the user's information and status.
- * @param {Function} props.onDataUpdate - A callback function to be called when the data is updated.
- * @returns {JSX.Element} - The rendered dropdown menu component.
- */
-
 export default function DropdownMenu({ user, onDataUpdate }) {
   const changeStatus = async (option, newStatus) => {
     const body = { [option]: newStatus };
