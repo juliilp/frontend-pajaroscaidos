@@ -13,37 +13,44 @@ export default function Page() {
   const [itemToEdit, setItemToEdit] = useState({});
   const [actualPage, setActualPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [windowWidth, setWindowWidth] = useState(null);
+  const [itemsPerPage, setItemsPerPage] = useState(null);
 
   useEffect(() => {
-    const action = async () => {
-      try {
-        const data = await getItemsShop(actualPage, itemsPerPage);
-        setItems(data.items.items);
-        setTotalPages(data.items.totalPages);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     const updateItemsPerPage = () => {
-      if (window.innerWidth < 425) {
-        setItemsPerPage(1);
-      } else if (window.innerWidth >= 425 && window.innerWidth <= 768) {
-        setItemsPerPage(4);
+      const width = window.innerWidth;
+      let itemsPerPage = null;
+
+      if (width < 425) {
+        itemsPerPage = 1;
+      } else if (width >= 425 && width <= 768) {
+        itemsPerPage = 4;
       } else {
-        setItemsPerPage(3);
+        itemsPerPage = 3;
       }
+
+      setWindowWidth(width);
+      setItemsPerPage(itemsPerPage);
     };
 
     window.addEventListener("resize", updateItemsPerPage);
-
     updateItemsPerPage();
-    action();
 
     return () => {
       window.removeEventListener("resize", updateItemsPerPage);
     };
+  }, [windowWidth]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      if (itemsPerPage !== null) {
+        const data = await getItemsShop(actualPage, itemsPerPage);
+        setItems(data.items.items);
+        setTotalPages(data.items.totalPages);
+      }
+    };
+
+    fetchItems();
   }, [actualPage, itemsPerPage]);
 
   const openCreateModal = () => {
