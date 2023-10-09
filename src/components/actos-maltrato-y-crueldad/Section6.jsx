@@ -7,6 +7,7 @@ export default function Section6() {
       <p>
         <a
           className="underline font-semibold text-lg"
+           target="_blank"
           href="https://www.pajaroscaidos.org.ar/Ley-14346/"
         >
           Ley Nº 14.346:
@@ -18,6 +19,7 @@ export default function Section6() {
       <p>
         <a
           className="underline font-semibold text-lg"
+          target="_blank"
           href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/250000-254999/252228/norma.htm"
         >
           Ley Nº 27.711:

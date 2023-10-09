@@ -30,7 +30,7 @@ export default function CardAcciones({
         <p className="font-semibold max-w-[550px] px-4 ">{texto}</p>
         <div className="w-full justify-center items-center flex">
           <Link
-            className=" flex justify-center items-center text-center text-white bg-[#128117] px-4 h-[40px] w-[40%] md:w-[25%] rounded hover:bg-[#13b113] duration-200"
+            className=" flex justify-center min-w-[8rem] items-center text-center text-white bg-[#128117] px-4 h-[40px] w-[40%] md:w-[25%] rounded hover:bg-[#13b113] duration-200"
             href={redireccion}
             prefetch={false}
           >

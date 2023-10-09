@@ -1,8 +1,24 @@
 import Image from "next/image";
-import Comentarios from "./Comentarios";
 import { deletePost } from "@/api/apiCall/PostRequests";
+import Comments from "./Modal/Comments";
+import { useEffect } from "react";
 
-export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
+export default function ModalPostDesktop({ modal, toggleModal, onDataUpdate }) {
+  useEffect(() => {
+    const body = document.getElementById("Body");
+    body && (body.style.overflow = "hidden");
+
+    return () => {
+      body && (body.style.overflow = "auto");
+    };
+  }, []);
+
+  const handleCloseModal = (event) => {
+    if (event.target.id === "outside") {
+      toggleModal("");
+    }
+  };
+
   const handleDelete = async (postId) => {
     const response = await deletePost(postId);
     alert(response);
@@ -11,12 +27,12 @@ export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
   };
 
   return (
-    <div
-      className={`fixed top-0 left-0 w-screen h-screen bg-[#0000008a] ${
-        modal.toggle ? "block" : "hidden"
-      }`}
-    >
-      <div className="flex w-full h-full justify-center items-center">
+    <div className="bg-[#0000008a] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto hidden md:block">
+      <div
+        onClick={handleCloseModal}
+        id="outside"
+        className="flex justify-center items-center h-full"
+      >
         <div className="bg-[#D9D9D9] flex flex-col items-end px-6 py-4 rounded-xl gap-2 w-[80%]">
           <button
             className="text-2xl text-red-600 font-bold"
@@ -39,11 +55,11 @@ export default function ModalPublicacion({ modal, toggleModal, onDataUpdate }) {
                 )}
                 <h2 className="text-lg font-semibold">{modal.post.title}</h2>
               </div>
-              <p className="overflow-y-scroll w-80 flex-grow">
+              <p className="overflow-y-auto w-full flex-grow">
                 {modal.post.description}
               </p>
             </article>
-            <Comentarios post={modal.post} onDataUpdate={onDataUpdate} />
+            <Comments post={modal.post} onDataUpdate={onDataUpdate} />
           </div>
           <button
             className="py-1 px-3 bg-red-600 rounded-md"
