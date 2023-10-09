@@ -1,79 +1,116 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ItemModal from "@/components/Dashboard/OpcionesInicio/galeria-solidaria/ItemModal";
 import { getItemsShop } from "@/api/apiCall/functions";
-import ProductSection from "@/components/Dashboard/OpcionesInicio/galeria-solidaria/ProductSection";
 import Pagination from "@/components/Pagination/Pagination";
+import Loading from "../loading";
+import ItemModal from "@/components/Dashboard/GaleriaSolidaria/Desktop/ItemModal";
+import ItemsSection from "@/components/Dashboard/GaleriaSolidaria/Desktop/ItemsSection";
 
 export default function Page() {
-  const [data, setData] = useState({});
+  const [items, setItems] = useState(null);
   const [visibleModal, setVisibleModal] = useState(false);
-  const [modalType, setModalType] = useState('')
-  const [itemToEdit, setItemToEdit] = useState({})
-  const [actualPage,setActualPage]=useState(1)
-  const [totalPages,setTotalPages]=useState(0)
-  const [resresh,setResresh]=useState(0)
+  const [modalType, setModalType] = useState("");
+  const [itemToEdit, setItemToEdit] = useState({});
+  const [actualPage, setActualPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
   useEffect(() => {
     const action = async () => {
       try {
-        const data = await getItemsShop(actualPage);
-        setData(data.items);
+        const data = await getItemsShop(actualPage, itemsPerPage);
+        setItems(data.items.items);
         setTotalPages(data.items.totalPages);
-        console.log(data.items.totalPages, "total apg");
       } catch (error) {
         console.log(error);
       }
     };
+
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 425) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth >= 425 && window.innerWidth <= 768) {
+        setItemsPerPage(4);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+
+    window.addEventListener("resize", updateItemsPerPage);
+
+    updateItemsPerPage();
     action();
-  }, [actualPage,resresh])
+
+    return () => {
+      window.removeEventListener("resize", updateItemsPerPage);
+    };
+  }, [actualPage, itemsPerPage]);
+
   const openCreateModal = () => {
     setItemToEdit(null);
     setModalType("create");
     setVisibleModal(true);
   };
 
-  const openEditModal = (event, data) => {
+  const openEditModal = (event, items) => {
     event.preventDefault();
 
     const itemprops = {
-      id:data.id,
-      image: data?.image[0]?.secure_url,
-      public_id: data?.image[0]?.public_id,
-      title: data.title,
-      description: data.description,
-      categories: data.categories.map(i=>i.name),
-      category: data.categories.map(i=>i.name)
-    }
-    setItemToEdit(itemprops)
-    setModalType('edit');
-    setVisibleModal(true)
-  }
+      id: items.id,
+      image: items?.image[0]?.secure_url,
+      public_id: items?.image[0]?.public_id,
+      title: items.title,
+      description: items.description,
+      categories: items.categories.map((i) => i.name),
+      category: items.categories.map((i) => i.name),
+    };
+    setItemToEdit(itemprops);
+    setModalType("edit");
+    setVisibleModal(true);
+  };
+
   const closeModal = () => {
-    setVisibleModal(false)
+    setVisibleModal(false);
+  };
+
+  const changePage = (value) => {
+    setActualPage(value);
+  };
+
+  if (!items) {
+    return <Loading />;
   }
-  const changePage=(value)=>{
-    setActualPage(value)
-  }
- const refreshPage=()=>{
-  setResresh(resresh+1)
- }
+
   return (
-    <div className=" text-sm md:text-sm  lg:text-base xl:text-lg 2xl:text-xl 
-     min-h-screen w-full flex flex-col justify-center items-center gap-6 pt-[90px] pb-10">
-      {visibleModal && <ItemModal closeModal={closeModal} ModalType={modalType} itemToEdit={itemToEdit} refreshPage={refreshPage} />}
-      <section>
-        <h1 className="text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
-          Galeria Solidaria
-        </h1>
-      </section>
-      
-      <section className="   bg-[#4F4F4F] w-[95%] min-h-[20rem] flex flex-col gap-4 
-      items-center   p-6 pb-0 pt-12 rounded-lg ">
-        <ProductSection data={data} openCreateModal={openCreateModal} openEditModal={openEditModal} />
+    <section className="h-full w-full px-4 sm:px-6 flex flex-col items-center pt-[70px] pb-8">
+      {visibleModal && (
+        <ItemModal
+          closeModal={closeModal}
+          ModalType={modalType}
+          itemToEdit={itemToEdit}
+        />
+      )}
+      <h1 className="text-center pt-6 pb-4 text-2xl font-bold">
+        Galeria Solidaria
+      </h1>
 
-        <Pagination textcolor={'text-white'} pageNumber={actualPage} totalPages={totalPages} changePage={changePage} />
-      </section>
-
-    </div>
+      <div className="bg-[#4f4f4f] w-full flex flex-col px-3 py-5 rounded-xl items-center">
+        <ItemsSection items={items} openEditModal={openEditModal} />
+        <Pagination
+          textcolor={"text-white"}
+          pageNumber={actualPage}
+          totalPages={totalPages}
+          changePage={changePage}
+        />
+        <div className="flex justify-center sm:justify-end w-full">
+          <button
+            onClick={openCreateModal}
+            className="py-2 px-4 bg-[#60EA4A] rounded font-semibold"
+          >
+            Añadir item +
+          </button>
+        </div>
+      </div>
+    </section>
   );
 }
