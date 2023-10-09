@@ -3,9 +3,7 @@ export default function ComoDenunciarFirstSection() {
     <>
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article className="">
-          <h1 className="text-[#0C6410] xl:text-2xl lg:text-xl text-base">
-            DENUNCIA ANTE LA POLICIA
-          </h1>
+          <h1 className="text-[#0C6410] text-2xl">DENUNCIA ANTE LA POLICIA</h1>
         </article>
         <article>
           <p className="text-xl">
@@ -32,9 +30,7 @@ export default function ComoDenunciarFirstSection() {
 
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article>
-          <h1 className="text-[#0C6410]  xl:text-2xl lg:text-xl text-base">
-            DENUNCIA ANTE LA FISCALIA
-          </h1>
+          <h1 className="text-[#0C6410] text-2xl">DENUNCIA ANTE LA FISCALIA</h1>
         </article>
         <article>
           <p className="text-xl">

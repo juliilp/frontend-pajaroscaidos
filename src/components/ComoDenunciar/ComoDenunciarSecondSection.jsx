@@ -7,7 +7,7 @@ export default function ComodenunciarSecondSection() {
     <>
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article className="flex flex-col gap-8">
-          <h1 className="text-[#0C6410] xl:text-2xl lg:text-xl text-base">
+          <h1 className="text-[#0C6410] text-2xl ">
             FISCALIAS-DENUNCIAS ONLINE
           </h1>
           <p className="text-xl">
@@ -23,16 +23,17 @@ export default function ComodenunciarSecondSection() {
 
         <article className="flex flex-col gap-6">
           {ProvinciasComoDenunciar.map((p, key) => {
-            <a href={p.href} target="_blank" key={key}>
-              {p.provincia}
-            </a>;
-            <span>asddd</span>;
+            return (
+              <a href={p.href} target="_blank" key={key}>
+                {p.provincia}
+              </a>
+            );
           })}
         </article>
       </div>
 
       <div className="flex flex-col gap-4 w-full md:w-5/12">
-        <h1 className="text-[#0C6410] xl:text-2xl lg:text-xl text-base">
+        <h1 className="text-[#0C6410] text-2xl">
           DENUNCIA ANTE EL MUNICIPIO O AUTORIDAD PROVINCIAL / NACIONAL
         </h1>
         <p className="text-xl">

@@ -2,7 +2,7 @@ export default function ComoDenunciarMainSection() {
   return (
     <>
       <article className="w-full flex justify-center items-center">
-        <h1 className="text-[#0C6410] lg:text-2xl text-base">
+        <h1 className="text-[#0C6410] text-2xl">
           COMO DENUNCIAR UN ACTO DE CRUELDAD
         </h1>
       </article>

@@ -2,7 +2,7 @@ export default function ComoDenunciarThirdSection() {
   return (
     <>
       <article className="flex justify-center items-center">
-        <h1 className="text-[#0C6410] lg:text-2xl text-base">
+        <h1 className="text-[#0C6410] text-2xl">
           QUE DEBE CONTENER LA DENUNCIA
         </h1>
       </article>
