@@ -1,8 +1,8 @@
 "use client";
+import ContactoInfo from "./ContactoInfo";
 import ProvinciasComoDenunciar from "./ProvinciasComoDenunciar";
 
 export default function ComodenunciarSecondSection() {
-  console.log(ProvinciasComoDenunciar);
   return (
     <>
       <div className="flex flex-col gap-8 w-full md:w-5/12">
@@ -21,8 +21,8 @@ export default function ComodenunciarSecondSection() {
           </p>
         </article>
 
-        <article className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
+        <section className="grid grid-cols-2 gap-6 text-lg">
+          <article>
             {ProvinciasComoDenunciar.slice(0, 12).map((p, key) => (
               <a
                 href={p.href}
@@ -33,8 +33,8 @@ export default function ComodenunciarSecondSection() {
                 {p.provincia}
               </a>
             ))}
-          </div>
-          <div className="">
+          </article>
+          <article>
             {ProvinciasComoDenunciar.slice(12).map((p, key) => (
               <a
                 href={p.href}
@@ -45,8 +45,8 @@ export default function ComodenunciarSecondSection() {
                 {p.provincia}
               </a>
             ))}
-          </div>
-        </article>
+          </article>
+        </section>
       </div>
 
       <div className="flex flex-col gap-4 w-full md:w-5/12">
@@ -62,97 +62,43 @@ export default function ComodenunciarSecondSection() {
           o Prefectura Naval cuando se trate de tráfico ilegal de la fauna
           silvestre.
         </p>
-
-        <p className="text-xl">
-          <b>
-            <i>
-              Ministerio de Ambiente y Desarrollo Sostenible (Dirección de Fauna
-              Silvestre)
-            </i>
-          </b>
-          :
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:faunayfloradenuncia@ambiente.gob.ar"
-          >
-            faunayfloradenuncia@ambiente.gob.ar
-          </a>
-        </p>
-
-        <p className="text-xl">
-          <b>
-            <i>Unidad Fiscal de Investigaciones en Materia Ambiental (UFIMA)</i>
-          </b>
-          <br />
-          Teléfono: (011) 4342-9886 / 4342-9887 <br />
-          Correo eléctronico:{" "}
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:ufima@mpf.gov.ar"
-          >
-            ufima@mpf.gov.ar
-          </a>
-        </p>
-        <p className="text-xl">
-          <b>
-            <i>Policía Federal</i>
-          </b>
-          <br />
-          Teléfono: (011) 4370-5876 ó 4370-5811 <br />
-          Correos electronicos:
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:dto.unifed.ambientales@policiafederal.gov.ar"
-          >
-            {" "}
-            dto.unifed.ambientales@policiafederal.gov.ar
-          </a>
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:delitoambiental@yahoo.com.ar"
-          >
-            {" "}
-            delitoambiental@yahoo.com.ar{" "}
-          </a>
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:dto.unifed.ambientales@gmail.com"
-          >
-            {" "}
-            dto.unifed.ambientales@gmail.com{" "}
-          </a>
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:denunciasdelitosfederales@policiafederal.gov.ar"
-          >
-            {" "}
-            denunciasdelitosfederales@policiafederal.gov.ar{" "}
-          </a>
-        </p>
-
-        <p className="text-xl">
-          <i>
-            <b>Gendarmería Nacional</b>
-          </i>
-          <br />
-          Teléfono: 0800-888-8804 <br />
-          Correo electrónico: <br />{" "}
-          <a
-            className="text-[blue]  hover:text-gray-500"
-            href="mailto:0800denuncias@gendarmeria.gob.ar"
-          >
-            0800denuncias@gendarmeria.gob.ar
-          </a>{" "}
-          .
-        </p>
-
-        <p className="text-xl">
-          <b>
-            <i>Prefectura Naval Argentina</i>
-          </b>
-          <br />
-          Telefono: (011) 4576-7658 ó 106
-        </p>
+        {ContactoInfo.map((item, index) => (
+          <div key={index} className="text-xl">
+            <b>
+              <i>{item.title}</i>
+            </b>
+            {item.phone && (
+              <>
+                <br />
+                Teléfono: {item.phone}
+              </>
+            )}
+            {item.email && (
+              <>
+                <br />
+                Correo electrónico:{" "}
+                <a
+                  className="text-[blue] hover:text-gray-500"
+                  href={`mailto:${item.email}`}
+                >
+                  {item.email}
+                </a>
+              </>
+            )}
+            {item.emails &&
+              item.emails.map((email, subIndex) => (
+                <div key={subIndex}>
+                  Correo electrónico:{" "}
+                  <a
+                    className="text-[blue] hover:text-gray-500"
+                    href={`mailto:${email}`}
+                  >
+                    {email}
+                  </a>
+                </div>
+              ))}
+          </div>
+        ))}
       </div>
     </>
   );
