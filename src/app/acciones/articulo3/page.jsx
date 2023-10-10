@@ -15,7 +15,7 @@ export default function page() {
         CLUB PIGEON CLUB ARGENTINO
       </h2>
       <div className="flex flex-col justify-center items-center lg:items-stretch  w-full lg:grid grid-cols-7 gap-8">
-        <p className="font-semibold col-span-5 px-6 md:px-12 lg:px-18 justify-self-center max-w-[1000px] ">
+        <p className="col-span-5 px-6 md:px-12 lg:px-18 justify-self-center max-w-[1000px] ">
           El tiro al pichón o tiro a la paloma, es una actividad perversa que
           consiste en practicar tiro o realizar competencias utilizando aves y
           en particular palomas como blanco. <br /> Consiste en liberar palomas
