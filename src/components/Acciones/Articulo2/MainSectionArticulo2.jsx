@@ -4,7 +4,7 @@ export default function MainSectionArticulo2({ image1, image2 }) {
   return (
     <>
       <article>
-        <h1 className=" text-green 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl text-lg">
+        <h1 className=" text-green  lg:text-2xl md:text-xl text-lg">
           FERIA DE VILLA DOMINICO
         </h1>
       </article>
