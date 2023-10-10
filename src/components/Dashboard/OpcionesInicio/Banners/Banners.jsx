@@ -90,8 +90,8 @@ function Banners() {
           totalPages={totalPagesBanner}
           changePage={handlePageChangeBanner}
         />
-        <div className="flex justify-end w-[95%] mb-5">
-          <div className="flex justify-center items-center px-2 md:w-[30%] w-[50%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
+        <div className="flex md:justify-end justify-center w-[95%] mb-5">
+          <div className="flex justify-center items-center px-2 md:w-[30%] w-[45%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
             <button onClick={() => toggleModal()}>Añadir banner +</button>
           </div>
         </div>
