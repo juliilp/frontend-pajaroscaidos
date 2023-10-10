@@ -15,7 +15,7 @@ function Campañas() {
   const [totalPages, setTotalPages] = useState(0);
   const [campañas, setCampañas] = useState([]);
   const [windowWidth, setWindowWidth] = useState(null);
-  const [newsPerPage, setNewsPerPage] = useState(1);
+  const [newsPerPage, setNewsPerPage] = useState(null);
 
   const toggleModalPut = (infoModal) => {
     setModalPut({ toggle: !modalPut.toggle, infoModal: infoModal });
@@ -49,19 +49,21 @@ function Campañas() {
   }, [windowWidth]);
 
   const fetchCampañas = async () => {
-    try {
-      const response = await api.get(
-        `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
-      );
-      setCampañas(response.data.news);
-      setTotalPages(response.data.totalPages);
-    } catch (error) {
-      console.error("Error al obtener las campañas:", error);
+    if (newsPerPage !== null) {
+      try {
+        const response = await api.get(
+          `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
+        );
+        setCampañas(response.data.news);
+        setTotalPages(response.data.totalPages);
+      } catch (error) {
+        console.error("Error al obtener las campañas:", error);
+      }
     }
   };
   useEffect(() => {
     fetchCampañas();
-  }, [pageNumber]);
+  }, [pageNumber, newsPerPage]);
 
   const handleDataUpdated = async () => {
     await fetchCampañas();

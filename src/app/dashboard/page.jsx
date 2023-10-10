@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Banners from "@/components/Dashboard/OpcionesInicio/Banners/Banners";
 import Campañas from "@/components/Dashboard/OpcionesInicio/Campañas/Campañas";

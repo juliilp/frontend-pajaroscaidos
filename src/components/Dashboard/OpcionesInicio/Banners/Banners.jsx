@@ -11,7 +11,7 @@ function Banners() {
   const [pageNumberBanner, setPageNumberBanner] = useState(1);
   const [totalPagesBanner, setTotalPagesBanner] = useState(0);
   const [windowWidth, setWindowWidth] = useState(null);
-  const [bannersPerPage, setBannersPerPage] = useState(1);
+  const [bannersPerPage, setBannersPerPage] = useState(null);
 
   const toggleModal = (infoModal) => {
     setModal({ toggle: !modal.toggle, infoModal: infoModal });
@@ -53,15 +53,17 @@ function Banners() {
   }, [windowWidth]);
 
   const fetchBanners = async () => {
-    try {
-      const response = await api.get(
-        `/news/banner?bannerPerPage=${bannersPerPage}&pageNumber=${pageNumberBanner}`
-      );
+    if (bannersPerPage !== null) {
+      try {
+        const response = await api.get(
+          `/news/banner?bannerPerPage=${bannersPerPage}&pageNumber=${pageNumberBanner}`
+        );
 
-      setBanners(response.data.images.banners);
-      setTotalPagesBanner(response.data.images.totalPages);
-    } catch (error) {
-      console.error("Error al obtener los banners:", error);
+        setBanners(response.data.images.banners);
+        setTotalPagesBanner(response.data.images.totalPages);
+      } catch (error) {
+        console.error("Error al obtener los banners:", error);
+      }
     }
   };
 
@@ -71,7 +73,7 @@ function Banners() {
 
   useEffect(() => {
     fetchBanners();
-  }, [pageNumberBanner]);
+  }, [pageNumberBanner, bannersPerPage]);
 
   const handleDataUpdated = async () => {
     await fetchBanners();
