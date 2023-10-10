@@ -66,7 +66,10 @@ export default function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    const validationErrors = validateLogin(inputLogin.email, inputLogin.password);
+    const validationErrors = validateLogin(
+      inputLogin.email,
+      inputLogin.password
+    );
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     }
@@ -108,14 +111,25 @@ export default function Login() {
     });
   }
 
-  return sessionStatus === "loading" || sessionStatus === "authenticated" || loading ? (
+  return sessionStatus === "loading" ||
+    sessionStatus === "authenticated" ||
+    loading ? (
     <Loading />
   ) : (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 mt-8">
-      <Image src={LoginImagen} className="hidden md:block justify-self-end" alt="imagen" />
+    <section className="w-full h-[650px] flex mt-[70px] justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 ">
+      <Image
+        src={LoginImagen}
+        className="hidden md:block justify-self-end"
+        alt="imagen"
+      />
 
-      <form className="w-full max-w-[500px] pb-16 rounded-xl   bg-white " onSubmit={submitHandler}>
-        <h2 className="font-bold text-2xl text-center mt-4 mb-6">Inicia Sesión</h2>
+      <form
+        className="w-full max-w-[500px] pb-16 rounded-xl bg-white "
+        onSubmit={submitHandler}
+      >
+        <h2 className="font-bold text-2xl text-center mt-4 mb-6">
+          Inicia Sesión
+        </h2>
 
         <div className="flex flex-col px-4 gap-1 mb-4 ">
           <span className="text-[#525252]">Email o nombre de usuario</span>
@@ -128,7 +142,9 @@ export default function Login() {
             value={inputLogin.email}
           />
           {errors.email && <span className="text-red-500">{errors.email}</span>}
-          {userNotFound && <span className="text-red-500">Usuario no registrado</span>}
+          {userNotFound && (
+            <span className="text-red-500">Usuario no registrado</span>
+          )}
         </div>
         <div className="flex flex-col px-4 gap-1 mb-4 ">
           <span className="text-[#525252]">Contraseña</span>
@@ -145,13 +161,23 @@ export default function Login() {
               className="absolute right-2 top-[18%] cursor-pointer"
               onClick={() => setSwitchPassword((prev) => !prev)}
             >
-              {switchPassword ? <AiOutlineEye size={30} /> : <AiOutlineEyeInvisible size={30} />}
+              {switchPassword ? (
+                <AiOutlineEye size={30} />
+              ) : (
+                <AiOutlineEyeInvisible size={30} />
+              )}
             </div>
           </div>
-          {invalidPass && <span className="text-red-500">Contraseña invalida</span>}
-          {errors.password && <span className="text-red-500">{errors.password}</span>}
+          {invalidPass && (
+            <span className="text-red-500">Contraseña invalida</span>
+          )}
+          {errors.password && (
+            <span className="text-red-500">{errors.password}</span>
+          )}
           <Link href="/login/forget-password">
-            <span className="text-[#68A4FF] underline">Olvidé la contraseña</span>
+            <span className="text-[#68A4FF] underline">
+              Olvidé la contraseña
+            </span>
           </Link>
         </div>
         <div className="flex flex-col gap-4 justify-center items-center my-10">
@@ -176,7 +202,9 @@ export default function Login() {
         </div>
 
         <div className="w-full flex justify-center items-center">
-          <span className="text-[#525252]">¿No tienes cuenta en Pájaros Caídos?</span>
+          <span className="text-[#525252]">
+            ¿No tienes cuenta en Pájaros Caídos?
+          </span>
 
           <Link href="/registro">
             <span className="text-[#68A4FF] underline">Registrate</span>

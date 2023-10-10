@@ -82,7 +82,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
     <>
       <div
         key={modal.infoModal.id}
-        className="w-[50%] h-[60%] bg-[#C2C2C2] rounded-lg"
+        className="md:w-[50%] w-[90%] h-[370px] bg-[#C2C2C2] rounded-lg"
       >
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
           <h1>Edita tu campaña!</h1>
@@ -156,15 +156,15 @@ function ModalPutCampañas({ toggleModal, modal }) {
             />
           </div>
         </div>
-        <div className="flex justify-end w-[97%] gap-3 ">
+        <div className="flex md:justify-end justify-center w-[97%] gap-3 ">
           <button
-            className="bg-[#60EA4A] rounded flex justify-center items-center h-8 w-[20%] text-black "
+            className="bg-[#60EA4A] rounded flex justify-center items-center h-8 md:w-[20%] w-[30%] text-black "
             onClick={putCampañas}
           >
             Actualizar
           </button>
           <button
-            className="bg-[#D22929] rounded flex justify-center items-center h-8 w-[20%] text-white "
+            className="bg-[#D22929] rounded flex justify-center items-center h-8 md:w-[25%] w-[40%] text-white "
             onClick={deleteCampañas}
           >
             Borrar campaña

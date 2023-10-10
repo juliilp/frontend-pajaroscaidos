@@ -14,6 +14,8 @@ function Campañas() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [campañas, setCampañas] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(null);
+  const [newsPerPage, setNewsPerPage] = useState(1);
 
   const toggleModalPut = (infoModal) => {
     setModalPut({ toggle: !modalPut.toggle, infoModal: infoModal });
@@ -23,19 +25,40 @@ function Campañas() {
     setModalPost({ toggle: !modalPost.toggle, infoModal: infoModal });
   };
 
+  useEffect(() => {
+    const updateNewsPerPage = () => {
+      const width = window.innerWidth;
+      let newsPerPage = null;
+
+      if (width < 425) {
+        newsPerPage = 1;
+      } else {
+        newsPerPage = 3;
+      }
+
+      setWindowWidth(width);
+      setNewsPerPage(newsPerPage);
+    };
+
+    window.addEventListener("resize", updateNewsPerPage);
+    updateNewsPerPage();
+
+    return () => {
+      window.removeEventListener("resize", updateNewsPerPage);
+    };
+  }, [windowWidth]);
+
   const fetchCampañas = async () => {
     try {
       const response = await api.get(
-        `/news?pageNumber=${pageNumber}&newsPerPage=3`
+        `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
       );
-
       setCampañas(response.data.news);
       setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error("Error al obtener las campañas:", error);
     }
   };
-
   useEffect(() => {
     fetchCampañas();
   }, [pageNumber]);
@@ -52,10 +75,10 @@ function Campañas() {
     <>
       <h1 className="font-bold text-xl">Campañas</h1>
       <div className="flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] bg-[#444] mb-10">
-        <div className="flex justify-evenly items-center h-[80%] w-[100%]">
+        <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
             <section
-              className="bg-[#ccc] w-[30%] h-[250px] flex flex-col rounded-md cursor-pointer text-center"
+              className="bg-[#ccc] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
               onClick={() => toggleModalPut(campaña)}
               key={campaña.id}
             >
@@ -83,8 +106,8 @@ function Campañas() {
           changePage={handlePageChange}
         />
 
-        <div className="flex justify-end w-[80%] mb-5">
-          <div className="flex justify-center items-center w-[23%] h-10 bg-[#60EA4A] font-bold rounded">
+        <div className="flex md:justify-end justify-center w-[95%] md:w-[95%] mb-5">
+          <div className="flex justify-center items-center px-2 md:w-[22%] w-[53%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
             <button onClick={() => toggleModalPost()}>Añadir campaña +</button>
           </div>
         </div>
