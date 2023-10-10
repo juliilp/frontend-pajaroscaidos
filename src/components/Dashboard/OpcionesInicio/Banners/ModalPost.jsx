@@ -95,7 +95,7 @@ function ModalPostBanners({ toggleModal, handleDataUpdated }) {
                     </article>
                   </section>
                   <button
-                    className="bg-[#60EA4A] rounded flex justify-center items-center h-8 w-[20%] text-black "
+                    className="bg-[#60EA4A] rounded flex justify-center items-center h-8 w-[70px] text-black "
                     onClick={handleSubmit}
                   >
                     Crear

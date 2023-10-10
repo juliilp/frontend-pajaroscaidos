@@ -156,7 +156,7 @@ function ModalPutCampañas({ toggleModal, modal }) {
             />
           </div>
         </div>
-        <div className="flex justify-end w-[97%] gap-3 ">
+        <div className="flex md:justify-end justify-center w-[97%] gap-3 ">
           <button
             className="bg-[#60EA4A] rounded flex justify-center items-center h-8 md:w-[20%] w-[30%] text-black "
             onClick={putCampañas}

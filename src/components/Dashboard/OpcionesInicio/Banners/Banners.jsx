@@ -10,6 +10,8 @@ function Banners() {
   const [modal, setModal] = useState({ toggle: false, infoModal: {} });
   const [pageNumberBanner, setPageNumberBanner] = useState(1);
   const [totalPagesBanner, setTotalPagesBanner] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(null);
+  const [bannersPerPage, setBannersPerPage] = useState(1);
 
   const toggleModal = (infoModal) => {
     setModal({ toggle: !modal.toggle, infoModal: infoModal });
@@ -27,10 +29,33 @@ function Banners() {
     }
   };
 
+  useEffect(() => {
+    const updateBannersPerPage = () => {
+      const width = window.innerWidth;
+      let bannersPerPage = null;
+
+      if (width < 425) {
+        bannersPerPage = 1;
+      } else {
+        bannersPerPage = 2;
+      }
+
+      setWindowWidth(width);
+      setBannersPerPage(bannersPerPage);
+    };
+
+    window.addEventListener("resize", updateBannersPerPage);
+    updateBannersPerPage();
+
+    return () => {
+      window.removeEventListener("resize", updateBannersPerPage);
+    };
+  }, [windowWidth]);
+
   const fetchBanners = async () => {
     try {
       const response = await api.get(
-        `/news/banner?bannerPerPage=2&pageNumber=${pageNumberBanner}`
+        `/news/banner?bannerPerPage=${bannersPerPage}&pageNumber=${pageNumberBanner}`
       );
 
       setBanners(response.data.images.banners);
@@ -91,7 +116,7 @@ function Banners() {
           changePage={handlePageChangeBanner}
         />
         <div className="flex md:justify-end justify-center w-[95%] mb-5">
-          <div className="flex justify-center items-center px-2 md:w-[30%] w-[45%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
+          <div className="flex justify-center items-center px-2 md:w-[22%] w-[53%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
             <button onClick={() => toggleModal()}>Añadir banner +</button>
           </div>
         </div>
