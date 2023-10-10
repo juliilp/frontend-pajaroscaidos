@@ -12,7 +12,7 @@ export default function CardAcciones({
   redireccion,
 }) {
   return (
-    <section className="w-full flex flex-col justify-center items-center gap-12 md:gap-0 md:grid md:grid-cols-2">
+    <section className="w-full flex flex-col justify-center items-center gap-6 md:gap-0 md:grid md:grid-cols-2">
       <h2 className="text-[#0C6410] font-semibold md:hidden text-2xl">
         {titulo}
       </h2>
@@ -22,7 +22,7 @@ export default function CardAcciones({
         src={image}
       />
       <div
-        className={`${className} flex flex-col gap-12 md:justify-self-center ${distanciaDiv} `}
+        className={`${className} flex flex-col gap-6 md:justify-self-center ${distanciaDiv} `}
       >
         <h2 className="text-[#0C6410] font-semibold hidden md:block text-center text-2xl">
           {titulo}
