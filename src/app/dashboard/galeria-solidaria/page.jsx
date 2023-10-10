@@ -97,7 +97,7 @@ export default function Page() {
           itemToEdit={itemToEdit}
         />
       )}
-      <h1 className="text-center pt-6 pb-4 text-2xl font-bold">
+      <h1 className="text-center pt-6 text-2xl font-bold mb-4">
         Galeria Solidaria
       </h1>
 

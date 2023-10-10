@@ -75,7 +75,7 @@ function Campañas() {
 
   return (
     <>
-      <h1 className="font-bold text-xl">Campañas</h1>
+      <h1 className="text-center pt-6 text-2xl font-bold">Campañas</h1>
       <div className="flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] bg-[#444] mb-10">
         <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
