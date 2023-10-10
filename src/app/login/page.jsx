@@ -116,7 +116,7 @@ export default function Login() {
     loading ? (
     <Loading />
   ) : (
-    <section className="w-full h-[650px] flex mt-[70px] justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 ">
+    <section className="w-full h-[650px] flex mt-[70px] justify-center items-center md:grid md:grid-cols-2 px-4 md:px-8 md:gap-12 lg:gap-24 py-5">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
@@ -124,7 +124,7 @@ export default function Login() {
       />
 
       <form
-        className="w-full max-w-[500px] pb-16 rounded-xl bg-white "
+        className="w-full max-w-[500px] pt-4 pb-6 rounded-xl bg-white "
         onSubmit={submitHandler}
       >
         <h2 className="font-bold text-2xl text-center mt-4 mb-6">
