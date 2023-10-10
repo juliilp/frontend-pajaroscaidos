@@ -14,7 +14,7 @@ function Tiroalpichon() {
       <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8 ">
         CAZA DEPORTIVA TIRO AL PICHON
       </h1>
-      <p className="max-w-[1150px] md:px-12 font-semibold px-2">
+      <p className="max-w-[1150px] md:px-12 px-2">
         El “tiro al pichón” es una actividad perversa que se realiza en el marco
         de torneos donde el ganador es aquel que más palomas mata. Consiste en
         soltar este tipo de aves dentro de un espacio en forma de abanico que se
@@ -49,7 +49,7 @@ function Tiroalpichon() {
           className="w-full max-w-[300px] h-[250px]"
         />
       </div>
-      <p className="max-w-[1150px] md:px-12 font-semibold px-2">
+      <p className="max-w-[1150px] md:px-12 px-2">
         Esta práctica cruel, mal llamada &ldquo;deporte&rdquo;, está prohibida
         en la República Argentina, por diversas normas de protección de los
         animales. Los torneos o competencias de Tiro al Pichón o a la Paloma
