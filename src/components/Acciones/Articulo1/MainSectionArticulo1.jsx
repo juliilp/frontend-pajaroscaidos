@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function MainSectionArticulo1({ image }) {
   return (
     <>
-      <article className=" p-4 w-11/12 md:p-0 md:w-6/12">
+      <article className=" px-4 w-11/12 md:p-0 md:w-6/12">
         <p className=" break-words">
           Con tan solo tres semanas de vida, Gegé corrió la suerte que muchos
           animales salvajes padecen en manos de los humanos. Cazado en la selva
