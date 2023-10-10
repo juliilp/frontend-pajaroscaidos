@@ -12,9 +12,9 @@ export default function CardTiroAlPichon({
       <h2 className="text-[#0C6410] text-center font-semibold md:text-xl rounded-md ">
         {titulo}
       </h2>
-      <p className="font-semibold ">{parrafo}</p>
+      <p>{parrafo}</p>
       {listaVisible && (
-        <ul className="font-semibold ">
+        <ul>
           <li>
             Provincia de Buenos Aires:{" "}
             <span className="underline">Ley Nº 11.406</span>

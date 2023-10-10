@@ -5,7 +5,7 @@ import Spinner from "./Loading";
 export default function CardVoluntarioLoading() {
   return (
     <section>
-      <article className=" hidden md:block  w-44 mx-12 h-44 border border-gray-300 p-4 transition-transform relative rounded-lg">
+      <article className=" hidden md:block  w-44  h-44 border border-gray-300 p-4 transition-transform relative rounded-lg">
         <Image
           src={LoadingImagen}
           alt="Imagen"

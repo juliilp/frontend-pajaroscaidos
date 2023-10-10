@@ -7,7 +7,7 @@ import YoutubePlay from "@/components/YoutubePlay/YoutubePLay";
 export default function page() {
   const videoID = "jOGVnZJlURU";
   return (
-    <div className="min-h-screen flex flex-col items-center mt-[70px] gap-12 pb-8">
+    <div className="min-h-screen flex flex-col items-center mt-[70px] gap-8 pb-8">
       <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
         <Image src={imageBG} alt="bg-tucan" fill priority />
       </section>

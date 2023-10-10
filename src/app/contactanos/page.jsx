@@ -16,21 +16,21 @@ export default function page() {
           titulo="CONSULTAS SOBRE AVES"
           parrafo='MUY IMPORTANTE: Si queres realizar alguna consulta sobre aves, o recibir asistencia en casos de URGENCIA, accede al enlace que tenes a continuación y escribí tu consulta en la sección "Crear Publicación" de la Página de Facebook Refugio de Aves Pájaros Caídos, que te responderemos a la mayor brevedad posible.'
           image={Consultas}
-          nombreEnlace="CONTACTANOS"
+          nombreBoton="CONTACTANOS"
           enlace="https://www.facebook.com/refugio.de.aves.pajaros.caidos"
         />
         <CardComoColaborar
           titulo="CONTACTO"
           parrafo="Para cualquier propuesta, inquetud, ofrecimiento, donación, denuncia, voluntariado, o lo que quieras comunicarnos, podes realizarlo a través de nuestro correo electronico. Te contestaremos a la mayor brevedad posible. pajaroscaidos@yahoo.com.ar"
           image={Contacto}
-          nombreEnlace="CORREO ELECTRONICO"
+          nombreBoton="CORREO ELECTRONICO"
           enlace="mailto:pajaroscaidos@yahoo.com.ar"
         />
         <CardComoColaborar
           titulo="DONACIONES"
           parrafo="Para poder seguir trabajando por el bienestar de las aves y crecer, necesitamos de tu colaboracion. Desde acá podrás ayudarnos a construir nuevos refugios para aves, dictar cursos de capacitación, realizar campañas de concientización, formular denuncias por actos de maltrato o crueldad, trabajar contra el tráfico ilegal de animales, entre otras tantas cosas."
           image={Donaciones}
-          nombreEnlace="DONAR"
+          nombreBoton="DONAR"
           enlace="https://link.mercadopago.com.ar/pajaroscaidos"
         />
       </div>
