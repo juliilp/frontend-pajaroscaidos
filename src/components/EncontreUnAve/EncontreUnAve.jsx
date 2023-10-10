@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import React from "react";
 import YoutubePlay from "../YoutubePlay/YoutubePLay";
 
@@ -36,13 +35,14 @@ export default function EncontreUnAve({
             <p key={index} className="font-semibold text-sm pl-8">
               {paragraph}
               {blog && (
-                <Link
-                  href="#"
+                <a
+                  href="https://pajaros-caidos.blogspot.com/"
                   className="m1-1 text-sm font-semibold cursor-pointer underline block"
                   prefetch={false}
+                  target="_blank"
                 >
                   Acceder al blog
-                </Link>
+                </a>
               )}
             </p>
           );

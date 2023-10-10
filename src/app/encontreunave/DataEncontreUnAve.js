@@ -38,7 +38,7 @@ export const DataEncontreUnAve = [
     titulo: "COMO ALIMENTAR UN PICHON DE PALOMA",
     imagen: "",
     parrafo:
-      "Este video les va a dar un ayuda para alimentar un pichon de paloma de froma ilustratiba",
+      "Este video les va a dar un ayuda para alimentar un pichon de paloma de forma ilustrativa",
     video: true,
     blog: false,
   },

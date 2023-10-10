@@ -9,12 +9,7 @@ import Alerts from "@/components/Alerts/Alerts";
 import FormShop from "./FormShop";
 import ShopCategories from "./ShopCategories";
 
-export default function ItemModal({
-  closeModal,
-  ModalType,
-  itemToEdit,
-  refreshPage,
-}) {
+export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
   const [startEdit, setStartEdit] = useState(false);
   const [seeAlert, setSeeAlert] = useState(false);
   const [successFullAlert, setSuccesFullAlert] = useState({
@@ -85,7 +80,6 @@ export default function ItemModal({
     setSuccesFullAlert({ state: true, message: message });
     setTimeout(() => {
       closeModal();
-      refreshPage();
     }, 3000);
   };
 
@@ -131,7 +125,7 @@ export default function ItemModal({
   }
 
   return (
-    <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+    <div className="bg-[#0000008a] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto">
       {seeAlert && mode.delete && (
         <Alerts
           title={`Eliminar ${newItem.title}`}
@@ -168,104 +162,101 @@ export default function ItemModal({
           closemodal={closeAlert}
         />
       )}
-
-      <div
-        className="flex flex-col items-center w-9/12 h-[20rem] overflow-auto sm:overflow-visible sm:h-auto 
-            bg-[#C2C2C2] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 
-             min-h-[28rem] gap-8 p-2"
-      >
-        <section className="flex justify-end  w-full p-1">
-          <button
-            onClick={closeModal}
-            className="text-red-700  text-xl font-bold "
-          >
-            X
-          </button>
-        </section>
-
-        <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
-          <article className="w-6/12 flex flex-col justify-center items-center gap-6">
-            {mode.edit && newItem.image && (
-              <Image
-                className="h-[12rem] sm:h-[15rem] w-auto"
-                width={100}
-                height={100}
-                src={imagePreview ?? newItem.image}
-                alt={`product`}
-                priority={true}
-              />
-            )}
-            {mode.create && imagePreview && (
-              <Image
-                className="h-[12rem] sm:h-[15rem] w-auto"
-                width={100}
-                height={100}
-                src={imagePreview}
-                alt={`product`}
-              />
-            )}
-            <input
-              type="file"
-              name="image"
-              onChange={handlePhotoChange}
-              id="selectimage"
-              className="hidden"
-              accept="image/*"
-            />
-            <label
-              htmlFor="selectimage"
-              className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]"
-            >
-              {newItem.image ? "Cambiar" : "Añadir"} imagen
-            </label>
-          </article>
-
-          <article className="w-11/12 h-[20rem] sm:w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
-            <FormShop
-              setNewItem={setNewItem}
-              startEdit={startEdit}
-              setStartEdit={setStartEdit}
-              newItem={newItem}
-              mode={mode}
-            />
-
-            <ShopCategories
-              newItem={newItem}
-              setNewItem={setNewItem}
-              startEdit={startEdit}
-              setStartEdit={setStartEdit}
-              setCategoriesToDelete={setCategoriesToDelete}
-              categoriesToDelete={categoriesToDelete}
-            />
-          </article>
-        </section>
-        <article className="flex justify-end w-full">
-          {mode.create && (
+      <div className="flex items-center justify-center my-10 sm:my-0 sm:h-full">
+        <div className="bg-[#D9D9D9] flex flex-col items-center w-[90%] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 gap-8 px-2 pb-4 pt-2 rounded-xl">
+          <section className="flex justify-end w-full p-1">
             <button
-              className="bg-green text-white p-1 px-4 rounded-lg"
-              onClick={handleCreate}
+              onClick={closeModal}
+              className="text-red-600 text-2xl font-bold "
             >
-              Crear item
+              X
             </button>
-          )}
-          {mode.edit && !startEdit ? (
-            <button
-              className="bg-red-500 text-white p-1 px-4 rounded-lg"
-              onClick={handleDelete}
-            >
-              Borrar item
-            </button>
-          ) : (
-            mode.edit && (
-              <button
-                className="bg-green text-white p-1 px-4 rounded-lg"
-                onClick={handleEdit}
+          </section>
+
+          <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
+            <article className="w-6/12 flex flex-col justify-center items-center gap-6">
+              {mode.edit && newItem.image && (
+                <Image
+                  className="h-[12rem] sm:h-[15rem] w-auto"
+                  width={100}
+                  height={100}
+                  src={imagePreview ?? newItem.image}
+                  alt={`product`}
+                  priority={true}
+                />
+              )}
+              {mode.create && imagePreview && (
+                <Image
+                  className="h-[12rem] sm:h-[15rem] w-auto"
+                  width={100}
+                  height={100}
+                  src={imagePreview}
+                  alt={`product`}
+                />
+              )}
+              <input
+                type="file"
+                name="image"
+                onChange={handlePhotoChange}
+                id="selectimage"
+                className="hidden"
+                accept="image/*"
+              />
+              <label
+                htmlFor="selectimage"
+                className="bg-[#60EA4A] py-2 px-4 rounded font-semibold cursor-pointer"
               >
-                Editar item
+                {newItem.image ? "Cambiar" : "Añadir"} imagen
+              </label>
+            </article>
+
+            <article className="bg-[#4F4F4F] w-11/12 sm:w-6/12 flex flex-col gap-4 items-center p-4 rounded-xl">
+              <FormShop
+                setNewItem={setNewItem}
+                startEdit={startEdit}
+                setStartEdit={setStartEdit}
+                newItem={newItem}
+                mode={mode}
+              />
+
+              <ShopCategories
+                newItem={newItem}
+                setNewItem={setNewItem}
+                startEdit={startEdit}
+                setStartEdit={setStartEdit}
+                setCategoriesToDelete={setCategoriesToDelete}
+                categoriesToDelete={categoriesToDelete}
+              />
+            </article>
+          </section>
+          <article className="flex justify-end w-full">
+            {mode.create && (
+              <button
+                className="py-2 px-4 bg-[#60EA4A] rounded font-semibold"
+                onClick={handleCreate}
+              >
+                Crear item
               </button>
-            )
-          )}
-        </article>
+            )}
+            {mode.edit && !startEdit ? (
+              <button
+                className="bg-red-500 text-white rounded font-semibold p-1 px-4"
+                onClick={handleDelete}
+              >
+                Borrar item
+              </button>
+            ) : (
+              mode.edit && (
+                <button
+                  className="py-2 px-4 bg-[#60EA4A] rounded font-semibold"
+                  onClick={handleEdit}
+                >
+                  Editar item
+                </button>
+              )
+            )}
+          </article>
+        </div>
       </div>
     </div>
   );

@@ -3,12 +3,10 @@ export default function ComoDenunciarFirstSection() {
     <>
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article className="">
-          <h1 className="text-[#0C6410] 2xl:text-3xl xl:text-2xl lg:text-xl text-base">
-            DENUNCIA ANTE LA POLICIA
-          </h1>
+          <h1 className="text-[#0C6410] text-2xl">DENUNCIA ANTE LA POLICIA</h1>
         </article>
-        <article className="">
-          <p>
+        <article>
+          <p className="text-xl">
             Frente a una situacion de maltrato, crueldad o tráfico ilegal de
             fauna se puede realizar la denuncia ante la seccional policial más
             cercana al lugar del hecho o ante la Fiscalía Penal que corresponda
@@ -32,12 +30,10 @@ export default function ComoDenunciarFirstSection() {
 
       <div className="flex flex-col gap-8 w-full md:w-5/12">
         <article>
-          <h1 className="text-[#0C6410] 2xl:text-3xl xl:text-2xl lg:text-xl text-base">
-            DENUNCIA ANTE LA FISCALIA
-          </h1>
+          <h1 className="text-[#0C6410] text-2xl">DENUNCIA ANTE LA FISCALIA</h1>
         </article>
         <article>
-          <p>
+          <p className="text-xl">
             Frente a una situación de maltrato, crueldad o tráfico ilegal de
             fauna se puede realizar la denuncia ante la seccional policial más
             cercana al lugar del hecho. Las autoridades policiales tienen la

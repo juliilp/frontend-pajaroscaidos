@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { IoIosTrash } from "react-icons/io";
 import { deleteComment } from "@/api/apiCall/PostRequests";
 
-export default function Comments({ post, onDataUpdate }) {
+export default function Comments({ post, onDataUpdate, fetchPost }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedComments, setDisplayedComments] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -28,6 +28,7 @@ export default function Comments({ post, onDataUpdate }) {
   const handleDelete = async (commentId) => {
     const response = await deleteComment(commentId);
     alert(response);
+    fetchPost();
     onDataUpdate();
   };
 

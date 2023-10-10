@@ -46,7 +46,7 @@ export default function Voluntarios() {
                 />
               );
             })
-          : generateLoadingCards(7)}
+          : generateLoadingCards(8)}
       </article>
     </section>
   );
