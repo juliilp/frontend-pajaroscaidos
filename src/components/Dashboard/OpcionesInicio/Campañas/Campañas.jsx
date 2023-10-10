@@ -15,7 +15,7 @@ function Campañas() {
   const [totalPages, setTotalPages] = useState(0);
   const [campañas, setCampañas] = useState([]);
   const [windowWidth, setWindowWidth] = useState(null);
-  const [newsPerPage, setNewsPerPage] = useState(1);
+  const [newsPerPage, setNewsPerPage] = useState(null);
 
   const toggleModalPut = (infoModal) => {
     setModalPut({ toggle: !modalPut.toggle, infoModal: infoModal });
@@ -49,19 +49,21 @@ function Campañas() {
   }, [windowWidth]);
 
   const fetchCampañas = async () => {
-    try {
-      const response = await api.get(
-        `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
-      );
-      setCampañas(response.data.news);
-      setTotalPages(response.data.totalPages);
-    } catch (error) {
-      console.error("Error al obtener las campañas:", error);
+    if (newsPerPage !== null) {
+      try {
+        const response = await api.get(
+          `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
+        );
+        setCampañas(response.data.news);
+        setTotalPages(response.data.totalPages);
+      } catch (error) {
+        console.error("Error al obtener las campañas:", error);
+      }
     }
   };
   useEffect(() => {
     fetchCampañas();
-  }, [pageNumber]);
+  }, [pageNumber, newsPerPage]);
 
   const handleDataUpdated = async () => {
     await fetchCampañas();
@@ -73,12 +75,12 @@ function Campañas() {
 
   return (
     <>
-      <h1 className="font-bold text-xl">Campañas</h1>
-      <div className="flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] bg-[#444] mb-10">
+      <h1 className="text-center pt-6 text-2xl font-bold">Campañas</h1>
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] mb-10">
         <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
             <section
-              className="bg-[#ccc] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
+              className="bg-[#C2C2C2] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
               onClick={() => toggleModalPut(campaña)}
               key={campaña.id}
             >

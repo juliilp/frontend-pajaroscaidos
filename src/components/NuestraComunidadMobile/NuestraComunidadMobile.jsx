@@ -12,7 +12,7 @@ const botonesOpciones = [
 
 export default function NuestraComunidadMobile() {
   const [publications, setPublications] = useState([]);
-  const [option, setOption] = useState("day");
+  const [option, setOption] = useState("month");
 
   useEffect(() => {
     async function fetchPosts() {

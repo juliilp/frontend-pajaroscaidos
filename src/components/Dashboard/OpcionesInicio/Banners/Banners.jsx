@@ -11,7 +11,7 @@ function Banners() {
   const [pageNumberBanner, setPageNumberBanner] = useState(1);
   const [totalPagesBanner, setTotalPagesBanner] = useState(0);
   const [windowWidth, setWindowWidth] = useState(null);
-  const [bannersPerPage, setBannersPerPage] = useState(1);
+  const [bannersPerPage, setBannersPerPage] = useState(null);
 
   const toggleModal = (infoModal) => {
     setModal({ toggle: !modal.toggle, infoModal: infoModal });
@@ -53,15 +53,17 @@ function Banners() {
   }, [windowWidth]);
 
   const fetchBanners = async () => {
-    try {
-      const response = await api.get(
-        `/news/banner?bannerPerPage=${bannersPerPage}&pageNumber=${pageNumberBanner}`
-      );
+    if (bannersPerPage !== null) {
+      try {
+        const response = await api.get(
+          `/news/banner?bannerPerPage=${bannersPerPage}&pageNumber=${pageNumberBanner}`
+        );
 
-      setBanners(response.data.images.banners);
-      setTotalPagesBanner(response.data.images.totalPages);
-    } catch (error) {
-      console.error("Error al obtener los banners:", error);
+        setBanners(response.data.images.banners);
+        setTotalPagesBanner(response.data.images.totalPages);
+      } catch (error) {
+        console.error("Error al obtener los banners:", error);
+      }
     }
   };
 
@@ -71,7 +73,7 @@ function Banners() {
 
   useEffect(() => {
     fetchBanners();
-  }, [pageNumberBanner]);
+  }, [pageNumberBanner, bannersPerPage]);
 
   const handleDataUpdated = async () => {
     await fetchBanners();
@@ -79,12 +81,12 @@ function Banners() {
 
   return (
     <>
-      <h1 className="font-bold text-xl">Banners</h1>
-      <div className="flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%] bg-[#444] ">
+      <h1 className="text-center pt-6 text-2xl font-bold">Banners</h1>
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%]">
         <div className="flex justify-evenly items-center h-[80%] w-[95%]">
           {banners.map((banner, index) => (
             <section
-              className="bg-[#ccc] mx-3 flex flex-col rounded-md"
+              className="bg-[#C2C2C2] mx-3 flex flex-col rounded-md"
               key={index}
             >
               <div className="">
