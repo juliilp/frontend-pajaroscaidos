@@ -97,7 +97,7 @@ export default function Login() {
 
   async function loginWithGoogle(e) {
     e.preventDefault();
-    signIn();
+    signIn("google");
     setLoading(true);
     const nombreCompleto = session.user.name;
     const primerNombre = nombreCompleto.split(" ")[0];
