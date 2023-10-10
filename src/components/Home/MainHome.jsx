@@ -10,12 +10,12 @@ import DefaultBanner from "@/../public/images/Home/DefaultBanner.webp";
 
 export default function MainHome({ banner }) {
   return (
-    <div className="mySwiperContainer h-[350px] max-h-[600px] z-[-1]">
+    <div className="mySwiperContainer h-[180px] md:h-[350px] max-h-[600px] z-[-1]">
       {banner?.[0] ? (
         <Swiper
           navigation={true}
           modules={[Autoplay]}
-          className="mySwiper h-full cursor-grab active:cursor-grabbing"
+          className="mySwiper w-full h-full cursor-grab active:cursor-grabbing"
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
@@ -28,7 +28,7 @@ export default function MainHome({ banner }) {
                 src={e.image.secure_url}
                 alt={`Banner ${e.name}`}
                 fill
-                className="w-full h-full object-cover"
+                className="w-full h-auto"
                 // Priority to first banner
                 priority={e.id === banner[0].id}
               />
@@ -41,7 +41,7 @@ export default function MainHome({ banner }) {
           alt="DefaultBanner"
           height={350}
           width={1208}
-          className="w-full h-full"
+          className="w-full h-[180px] md:h-[350px]"
           priority
         />
       )}
