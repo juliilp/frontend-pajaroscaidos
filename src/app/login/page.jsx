@@ -201,7 +201,7 @@ export default function Login() {
           </button>
         </div>
 
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center">
           <span className="text-[#525252]">
             ¿No tienes cuenta en Pájaros Caídos?
           </span>
