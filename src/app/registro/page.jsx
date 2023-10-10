@@ -101,15 +101,19 @@ export default function Page() {
   if (registroOk) return <RegistroExitoso />;
 
   return (
-    <section className="w-full h-screen flex justify-center items-center gap-12 px-12 mt-8 font-baloo">
-      <Image
-        src={RegistroImagen}
-        alt="imagen"
-        className="hidden md:block justify-self-end"
-      />
+    <section className="w-full flex  justify-center md:gap-12 px-4 md:px-12 mt-[70px] py-5">
+      <div className="flex items-center justify-center">
+        <Image
+          src={RegistroImagen}
+          alt="imagen"
+          width={567}
+          height={440}
+          className="hidden md:block h-auto"
+        />
+      </div>
 
       <form
-        className="w-full max-w-[550px] md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl md:justify-self-start"
+        className="w-full md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl md:justify-self-start"
         onSubmit={handlerSubmit}
       >
         <h2 className="w-full text-center mt-6 lg:mt-10 font-bold text-xl md:text-2xl lg:text-3xl">
