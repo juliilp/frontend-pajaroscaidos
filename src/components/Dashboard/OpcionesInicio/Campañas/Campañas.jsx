@@ -76,11 +76,11 @@ function Campañas() {
   return (
     <>
       <h1 className="text-center pt-6 text-2xl font-bold">Campañas</h1>
-      <div className="flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] bg-[#444] mb-10">
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] mb-10">
         <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
             <section
-              className="bg-[#ccc] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
+              className="bg-[#C2C2C2] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
               onClick={() => toggleModalPut(campaña)}
               key={campaña.id}
             >

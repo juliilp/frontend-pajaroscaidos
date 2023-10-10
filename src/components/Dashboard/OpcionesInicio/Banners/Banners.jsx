@@ -82,11 +82,11 @@ function Banners() {
   return (
     <>
       <h1 className="text-center pt-6 text-2xl font-bold">Banners</h1>
-      <div className="flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%] bg-[#444] ">
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%]">
         <div className="flex justify-evenly items-center h-[80%] w-[95%]">
           {banners.map((banner, index) => (
             <section
-              className="bg-[#ccc] mx-3 flex flex-col rounded-md"
+              className="bg-[#C2C2C2] mx-3 flex flex-col rounded-md"
               key={index}
             >
               <div className="">
