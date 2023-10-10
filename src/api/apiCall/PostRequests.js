@@ -36,9 +36,9 @@ export const getAllPosts = async (pageNumber, order) => {
   }
 };
 
-export async function getPost(id) {
+export async function getPost(postId) {
   try {
-    const resp = await api.get(`/publication/${id}`);
+    const resp = await api.get(`/publication/${postId}`);
     return resp.data;
   } catch (error) {
     console.error(error.response);
@@ -98,9 +98,9 @@ export async function deleteReaction(id) {
 }
 
 //Comentarios
-export const createComment = async (body, idPost) => {
+export const createComment = async (body, postId) => {
   try {
-    await api.post(`comment/create/${idPost}`, body);
+    await api.post(`comment/create/${postId}`, body);
   } catch (error) {
     console.error(error.response);
     return MESSAGE_TYPES.ERROR;

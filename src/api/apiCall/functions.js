@@ -104,17 +104,16 @@ export async function newPassword(data) {
     }
   }
 }
+
 ///---shop
 export async function getItemsShop(pageNumber, itemPerPage) {
-  ///esperando que haya datos en el back para integrarla
   try {
     const items = await api.get(
       `shop/items?itemPerPage=${itemPerPage ?? 6}&pageNumber=${pageNumber ?? 1}`
     );
-    console.log(items.data.items.totalPages);
     return items.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 export async function createNewItem(data) {

@@ -61,7 +61,7 @@ export default function MyPosts({ user }) {
   const currentPosts = userPostsData.posts.slice(startIndex, endIndex);
 
   return (
-    <section className="flex p-6 flex-col justify-center gap-4 items-center mt-3 w-[90%] lg:w-[840px] rounded-xl border-[#C4C4C4] border-2 shadow-md">
+    <section className="flex sm:p-6 flex-col justify-center gap-4 items-center mt-6 sm:mt-3 w-[90%] lg:w-[840px] sm:rounded-xl sm:border-[#C4C4C4] sm:border-2 sm:shadow-md">
       <div className="flex justify-between w-full">
         <h3 className="text-left w-full text-2xl font-semibold">
           Mis publicaciones
@@ -82,7 +82,7 @@ export default function MyPosts({ user }) {
               />
             </span>
             <ul
-              className={`absolute transition-all duration-300 text-lg ${
+              className={`bg-[#D9D9D9] p-2 px-4 shadow-md rounded border-[#C4C4C4] border-2 absolute transition-all duration-300 text-lg ${
                 orderOptions
                   ? "translate-y-8 opacity-100 pointer-events-auto"
                   : "translate-y-0 opacity-0 pointer-events-none"

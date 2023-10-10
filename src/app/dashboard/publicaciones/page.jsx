@@ -17,7 +17,7 @@ export default function Page() {
   const [order, setOrder] = useState("desc");
   const [modal, setModal] = useState({
     toggle: false,
-    post: {},
+    postId: "",
   });
 
   const fetchPostsData = async () => {
@@ -40,11 +40,11 @@ export default function Page() {
     setPageNumber(pageNumber);
   };
 
-  const toggleModal = (post) => {
+  const toggleModal = (postId) => {
     setModal((prevModal) => ({
       ...prevModal,
       toggle: !prevModal.toggle,
-      post: post,
+      postId,
     }));
   };
 

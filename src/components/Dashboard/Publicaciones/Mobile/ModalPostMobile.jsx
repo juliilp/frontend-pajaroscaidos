@@ -1,17 +1,27 @@
 import Image from "next/image";
 import Comments from "../Desktop/Modal/Comments";
-import { deletePost } from "@/api/apiCall/PostRequests";
-import { useEffect } from "react";
+import { deletePost, getPost } from "@/api/apiCall/PostRequests";
+import { useEffect, useState } from "react";
 
 export default function ModalPostMobile({ modal, toggleModal, onDataUpdate }) {
+  const [post, setPost] = useState({});
+
+  const fetchPost = async () => {
+    const data = await getPost(modal.postId);
+    setPost(data.publication);
+  };
+
   useEffect(() => {
     const body = document.getElementById("Body");
     body && (body.style.overflow = "hidden");
 
+    fetchPost();
+
     return () => {
       body && (body.style.overflow = "auto");
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal.postId]);
 
   const handleCloseModal = (event) => {
     if (event.target.id === "outside") {
@@ -43,10 +53,10 @@ export default function ModalPostMobile({ modal, toggleModal, onDataUpdate }) {
           <div className="w-full flex flex-col gap-6">
             <article className="flex flex-col w-full">
               <div className="flex gap-2 items-center">
-                {modal.post.image && modal.post.image[0] && (
+                {post.image && post.image[0] && (
                   <Image
-                    src={modal.post.image[0].imageUrl}
-                    alt={`post: ${modal.post.id}`}
+                    src={post.image[0].secure_url}
+                    alt={`post: ${post.id}`}
                     width={300}
                     height={300}
                     className="h-[40px] w-[60px] rounded-lg my-2"
@@ -54,18 +64,22 @@ export default function ModalPostMobile({ modal, toggleModal, onDataUpdate }) {
                   />
                 )}
                 <h2 className="text-lg font-semibold line-clamp-2">
-                  {modal.post.title}
+                  {post.title}
                 </h2>
               </div>
               <p className="overflow-y-auto w-full flex-grow">
-                {modal.post.description}
+                {post.description}
               </p>
             </article>
-            <Comments post={modal.post} onDataUpdate={onDataUpdate} />
+            <Comments
+              post={post}
+              onDataUpdate={onDataUpdate}
+              fetchPost={fetchPost}
+            />
           </div>
           <button
             className="py-1 px-3 bg-red-600 rounded-md"
-            onClick={() => handleDelete(modal.post.id)}
+            onClick={() => handleDelete(post.id)}
           >
             <span className="text-white">Borrar publicación</span>
           </button>

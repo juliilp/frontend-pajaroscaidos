@@ -7,7 +7,7 @@ export default function PostList({ posts, toggleModal }) {
         <tr
           key={post.id}
           className="hover:bg-[#444444] cursor-pointer"
-          onClick={() => toggleModal(post)}
+          onClick={() => toggleModal(post.id)}
         >
           <td className="flex justify-center">
             <Image
