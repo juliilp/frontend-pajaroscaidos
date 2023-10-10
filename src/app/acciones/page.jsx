@@ -8,7 +8,7 @@ export default function Acciones() {
         <span className="text-[#0C6410] text-2xl font-medium mt-12 mb-6">
           ACCIONES
         </span>
-        <p className="px-6 max-w-[800px] font-semibold">
+        <p className="px-6 max-w-[800px]">
           La Asociación de Pájaros Caídos se destaca por su dedicación en la
           protección de aves en situaciones vulnerables. Rescatando,
           rehabilitando y preservando hábitats, el equipo de expertos y
