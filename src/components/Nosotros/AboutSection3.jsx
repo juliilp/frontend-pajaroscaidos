@@ -2,16 +2,16 @@ export default function AboutSection3() {
   return (
     <>
       <article
-        className=" flex justify-center p-4 w-11/12 md:w-9/12 text-[#0C6410] font-semibold border-b-2 border-[#0C6410]
+        className=" flex justify-center p-4 w-full md:max-w-[600px] text-[#0C6410] border-b-2 border-[#0C6410]
             
             "
       >
-        <h3 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl text-lg">
+        <h3 className=" xl:text-2xl md:text-xl text-lg">
           LAS ACCIONES DE PAJAROS CAIDOS
         </h3>
       </article>
 
-      <article className="flex flex-col gap-4">
+      <article className="flex flex-col gap-4 text-base">
         <p>
           Trabajamos conjuntamente con juzgados, fiscalías y organismos
           estatales en la asistencia de aves víctimas de maltrato o tráfico de
