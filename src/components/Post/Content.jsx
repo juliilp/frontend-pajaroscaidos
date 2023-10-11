@@ -12,9 +12,7 @@ export default function ContentPost({ publication }) {
       </article>
       <article className="w-full flex justify-center">
         <Suspense fallback={<p>Cargando...</p>}>
-          <h1 className=" font-semibold  sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl  w-11/12">
-            {title}
-          </h1>
+          <h1 className=" font-semibold  sm:text-2xl w-11/12">{title}</h1>
         </Suspense>
       </article>
       <div
@@ -24,7 +22,7 @@ export default function ContentPost({ publication }) {
 
       <article className=" w-full sm:w-11/12  md:w-10/12 ">
         <Suspense fallback={<p>Cargandoo....</p>}>
-          <p className="text-[#020000] sm:text-sm  md:text-base xl:text-xl 2xl:text-2xl">
+          <p className="text-[#020000] sm:text-sm  md:text-base xl:text-lg ">
             {description}
           </p>
         </Suspense>
@@ -36,9 +34,9 @@ export default function ContentPost({ publication }) {
             <Image
               src={image[0].secure_url}
               alt={image[0].public_id}
-              width={1000}
-              height={1000}
-              className="h-full w-full rounded-lg"
+              width={600}
+              height={600}
+              className=" rounded-lg"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
