@@ -4,17 +4,15 @@ export default function MainAboutSection() {
   const videoID = "biNrwxvKgjM";
   return (
     <>
-      <section className=" p-4 w-7/12 text-[#0C6410] font-semibold border-b-2 border-[#0C6410]">
-        <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl text-lg">
-          SOBRE NOSOTROS
-        </h1>
+      <section className="p-4 w-full md:max-w-[600px] text-[#0C6410] border-b-2 border-[#0C6410]">
+        <h1 className=" xl:text-2xl md:text-xl text-lg">SOBRE NOSOTROS</h1>
       </section>
 
       <article
         className=" w-full p-3
              min-[450px]:p-2 min-[450px]:w-11/12
              md:w-8/12  md:p-4 xl:p-5 
-             2xl:p-6 "
+             2xl:p-6 text-base "
       >
         <p>
           Pájaros Caídos es una asociación civil sin fines de lucro con
@@ -29,7 +27,7 @@ export default function MainAboutSection() {
         </p>
       </article>
 
-      <article className="w-10/12 md:w-9/12 bg-black md:h-[30rem] h-[22rem]">
+      <article className="w-10/12 md:w-9/12 max-w-[650px] bg-black h-[20rem]">
         <Suspense fallback={<p>Cargando video...</p>}>
           <YouTube
             videoId={videoID}
@@ -38,7 +36,7 @@ export default function MainAboutSection() {
               width: "100%",
               playerVars: {},
             }}
-            className="w-full h-full "
+            className="w-full h-full"
           />
         </Suspense>
       </article>
