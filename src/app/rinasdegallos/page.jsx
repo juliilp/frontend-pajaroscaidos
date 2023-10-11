@@ -14,7 +14,7 @@ export default function page() {
       <h2 className="text-[#0C6410] text-center text-2xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS
       </h2>
-      <p className="px-6 font-semibold">
+      <p className="px-6">
         Las riñas de gallos son otra de las actividaades crueles en la cual dos
         ejemplares de un mismo género o raza, especialmente preparados, combaten
         para el entretenimiento y apuestas de las personas humanas. <br />
@@ -68,9 +68,9 @@ export default function page() {
         cuerpos y que pueden experimentar dolor, placer, ansiedad y sufrimiento
         físico y psicológico en determinadas circunstancias&rdquo;.[3]
       </p>
-      <div className="w-[60%] my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo py-4-" />
-      <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12 pr-6  ">
-        <p className="font-semibold px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 ">
+      <div className="w-[60%] my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo py-4" />
+      <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12">
+        <p className="px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 pr-6">
           En la Provincia de San Luis, la Legislatura provincial sancionó en el
           año 2006 la Ley N° V-0546-2006 y el Poder Ejecutivo Provincial la
           promulgó mediante el Decreto N° 7500-MHP-2006. En la misma se
@@ -127,21 +127,21 @@ export default function page() {
           manifiesta violación al régimen legal federal de la República
           Argentina.
         </p>
-        <div className="flex flex-col gap-6  justify-center items-center lg:gap-0 lg:justify-between w-full col-span-2 ">
+        <div className="flex flex-col gap-3 sm:flex-wrap sm:flex-row lg:flex-col justify-center mt-12 lg:mt-0 items-center lg:justify-between w-full xl:w-[65%] col-span-2 ">
           <Image
             src={Imagen1}
             alt="imagen1"
-            className="w-[250px] h-[200px] object-cover "
+            className=" w-[250px] h-[200px] lg:w-[300px]  lg:h-[250px] object-cover "
           />
           <Image
             src={Imagen2}
             alt="imagen2"
-            className="w-[250px] h-[200px] object-cover "
+            className=" w-[250px] h-[200px] lg:w-[300px]  lg:h-[250px] object-cover "
           />
           <Image
             src={Imagen3}
             alt="imagen3"
-            className="w-[250px] h-[200px] object-cover "
+            className=" w-[250px] h-[200px] lg:w-[300px]  lg:h-[250px] object-cover "
           />
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function page() {
         <h2 className="text-[#0C6410] text-xl text-center font-semibold py-8 md:py-12">
           UN FALLO EJEMPLAR CONTRA LAS RIÑAS DE GALLOS
         </h2>
-        <p className="px-6 font-semibold">
+        <p className="px-6">
           Las provincias de Santiago del Estero, Tucumán y San Luis,
           desconociendo el sistema legal vigente en la Argentina por el cual
           compete a la Nación dictar los códigos de fondo como es el Código
@@ -180,7 +180,7 @@ export default function page() {
         <h2 className="text-[#0C6410] text-xl text-center font-semibold my-8 md:my-12">
           REFERENCIAS DE LAS LEYES{" "}
         </h2>
-        <p className="font-semibold px-6  ">
+        <p className="px-6">
           [1] La Ley N°14346 fue dictada en virtud de las atribuciones que la
           Constitución Nacional de 1853 le otorgaba al Congreso Nacional, en el
           artículo 67 inciso 11, actual artículo 75 inciso 12 de la Constitución
