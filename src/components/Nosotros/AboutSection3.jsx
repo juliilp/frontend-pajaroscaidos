@@ -11,7 +11,7 @@ export default function AboutSection3() {
         </h3>
       </article>
 
-      <article className="flex flex-col gap-4 text-base">
+      <article className="flex flex-col gap-4 text-base max-w-[1000px]">
         <p>
           Trabajamos conjuntamente con juzgados, fiscalías y organismos
           estatales en la asistencia de aves víctimas de maltrato o tráfico de
