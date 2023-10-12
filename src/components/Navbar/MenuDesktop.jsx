@@ -64,7 +64,7 @@ export default function MenuDesktop() {
               </Link>,
               <Link
                 key="opcion3"
-                href="/actos-maltrato-y-crueldad"
+                href="/crueldad-maltrato"
                 onClick={closeMenu}
                 prefetch={false}
               >
