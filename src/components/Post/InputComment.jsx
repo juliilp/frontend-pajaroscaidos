@@ -7,6 +7,7 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
   const userCookie = Cookies.get("user");
   const user = userCookie ? JSON.parse(userCookie) : null;
   const [comment, setComment] = useState("");
+  const [upLoadingComment, setUpLoadingComment] = useState(false);
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -19,14 +20,20 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
     };
 
     try {
-      if (comment.trim() !== "") {
-        await createComment(body, idPost);
-        const updatedPostData = await getPost(idPost);
-        onCommentSubmit(updatedPostData.publication.comments);
-        setComment("");
+      if (comment.trim() !== ""&&!upLoadingComment) {
+        setUpLoadingComment(true)
+        await createComment(body, idPost)
+        await getPost(idPost).then(res=>{
+          onCommentSubmit(res.publication.comments);
+          setComment("");
+          setUpLoadingComment(false)
+        });
       }
     } catch (error) {
+      alert('No se pudo crear el comentario')
       console.error("Error updating comment:", error);
+    }finally{
+      setUpLoadingComment(false)
     }
   };
 
@@ -42,6 +49,7 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
       <button
         className="px-3 bg-gray-300 rounded-r-lg"
         onClick={handleCommentSubmit}
+        disabled={upLoadingComment}
       >
         <Image
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3VsQkCQRSE4Q8NrUFjcxMjazAxOOzARGxEsAdNbEJEbUEjixCEg0tWBAURwfPgcYkDEy7/7s7bWf76QQccMUFLgNKLL1igHQV4usAa/ShAevEeIzSjAOnhM6ZVcioLSG85dcoC8gqQ9Mhphd43QIYltjjhWgF2XztEo+ypWuhigDFmmJfYyKYWQBZ9RXl0yCl6TFPdD20fURVFVNmF1PUu+sP5yyfdABfusvOmwtUYAAAAAElFTkSuQmCC"

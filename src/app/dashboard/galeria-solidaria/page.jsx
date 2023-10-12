@@ -13,6 +13,7 @@ export default function Page() {
   const [itemToEdit, setItemToEdit] = useState({});
   const [actualPage, setActualPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+
   const [windowWidth, setWindowWidth] = useState(null);
   const [itemsPerPage, setItemsPerPage] = useState(null);
 
@@ -64,7 +65,7 @@ export default function Page() {
 
     const itemprops = {
       id: items.id,
-      image: items?.image[0]?.secure_url,
+      image: items?.image,
       public_id: items?.image[0]?.public_id,
       title: items.title,
       description: items.description,
@@ -91,24 +92,20 @@ export default function Page() {
   return (
     <section className="h-full w-full px-4 sm:px-6 flex flex-col items-center pt-[70px] pb-8">
       {visibleModal && (
-        <ItemModal
-          closeModal={closeModal}
-          ModalType={modalType}
-          itemToEdit={itemToEdit}
-        />
+        <ItemModal closeModal={closeModal} ModalType={modalType} itemToEdit={itemToEdit} />
       )}
-      <h1 className="text-center pt-6 text-2xl font-bold mb-4">
-        Galeria Solidaria
-      </h1>
+      <h1 className="text-center pt-6 text-2xl font-bold mb-4">Galeria Solidaria</h1>
 
       <div className="bg-[#4f4f4f] w-full flex flex-col px-3 py-5 rounded-xl items-center">
         <ItemsSection items={items} openEditModal={openEditModal} />
+
         <Pagination
           textcolor={"text-white"}
           pageNumber={actualPage}
           totalPages={totalPages}
           changePage={changePage}
         />
+
         <div className="flex justify-center sm:justify-end w-full">
           <button
             onClick={openCreateModal}
