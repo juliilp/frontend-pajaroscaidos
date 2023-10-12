@@ -2,6 +2,7 @@ import api from "../../api/api";
 import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 import { formDataConver } from "@/helpers/formDataConvert";
+import axios from "axios";
 
 export async function getBannerImages() {
   try {
@@ -111,6 +112,7 @@ export async function getItemsShop(pageNumber, itemPerPage) {
     const items = await api.get(
       `shop/items?itemPerPage=${itemPerPage ?? 6}&pageNumber=${pageNumber ?? 1}`
     );
+
     return items.data;
   } catch (error) {
     console.error(error);
@@ -119,8 +121,9 @@ export async function getItemsShop(pageNumber, itemPerPage) {
 export async function createNewItem(data) {
   try {
     const formData = formDataConver(data);
+
     const request = await api.post(`/shop/item`, formData);
-    console.log(request.data);
+    // const request = await axios.post(`http://localhost:3001/shop/item`, formData);
   } catch (error) {
     console.log(error);
   }
@@ -136,7 +139,6 @@ export async function createCategory(name) {
 export async function deleteCategoryFromItem(id, category) {
   try {
     const request = await api.patch(`/shop/item/${id}`, category);
-    console.log(request.data, " categoia borrado");
   } catch (error) {
     console.log(error);
   }
@@ -165,7 +167,6 @@ export async function editShopItem(id, data, categories, image) {
 export async function deleteShopItem(id) {
   try {
     const request = await api.delete(`/shop/item/${id}`);
-    console.log(request.data, "aparentemente borrado");
   } catch (error) {
     console.log(error);
   }
@@ -175,6 +176,26 @@ export async function getCategories() {
     const request = await api.get(`/shop/category`);
     return request.data.categories;
     console.log(request.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getItemShopById(id) {
+  try {
+    const request = await api.get(`/shop/item/${id}`);
+
+    return request.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getItemLimit(limit) {
+  try {
+    const request = await api.get(`/shop/items?limit=${limit}`);
+
+    return request.data.items;
   } catch (error) {
     console.log(error);
   }
