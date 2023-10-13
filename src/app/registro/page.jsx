@@ -16,8 +16,13 @@ export default function Page() {
   const [registroOk, setRegistroOk] = useState(false);
 
   const [switchPassword, setSwitchPassword] = useState(false);
+  const [switchPasswordConfirm, setSwitchPasswordConfirm] = useState(false);
   const handlerSwitchPassword = () => {
     setSwitchPassword((prev) => !prev);
+  };
+
+  const handlerSwitchPasswordConfirm = () => {
+    setSwitchPasswordConfirm((prev) => !prev);
   };
 
   useEffect(() => {}, [registroOk]);
@@ -28,6 +33,9 @@ export default function Page() {
     passwordConfirm: "",
     first_name: "",
     last_name: "",
+    country: "",
+    city: "",
+    phone_number: "",
   });
 
   const handlerRegistro = (e) => {
@@ -59,7 +67,7 @@ export default function Page() {
 
       if (response.status == 200) {
         const user = response.data;
-        // console.log('newUser', user.newUser)
+        console.log("newUser", user.newUser);
 
         Cookies.set("newUserId", JSON.stringify({ id: user.newUser.id }), {
           expires: 7,
@@ -84,21 +92,28 @@ export default function Page() {
       passwordConfirm: "",
       first_name: "",
       last_name: "",
+      country: "",
+      city: "",
+      phone_number: "",
     });
   };
 
   if (registroOk) return <RegistroExitoso />;
 
   return (
-    <section className="w-full h-screen flex justify-center items-center gap-12 px-12 mt-8 font-baloo">
-      <Image
-        src={RegistroImagen}
-        alt="imagen"
-        className="hidden md:block justify-self-end"
-      />
+    <section className="w-full flex  justify-center md:gap-12 px-4 md:px-12 mt-[70px] py-5">
+      <div className="flex items-center justify-center">
+        <Image
+          src={RegistroImagen}
+          alt="imagen"
+          width={567}
+          height={440}
+          className="hidden md:block h-auto"
+        />
+      </div>
 
       <form
-        className="w-full max-w-[550px] md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl md:justify-self-start"
+        className="w-full md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl md:justify-self-start"
         onSubmit={handlerSubmit}
       >
         <h2 className="w-full text-center mt-6 lg:mt-10 font-bold text-xl md:text-2xl lg:text-3xl">
@@ -136,6 +151,54 @@ export default function Page() {
             style={{ visibility: errors.last_name ? "visible" : "hidden" }}
           >
             {errors.last_name}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Pais</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="country"
+            onChange={handlerRegistro}
+            value={formRegister.country}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.country ? "visible" : "hidden" }}
+          >
+            {errors.country}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Estado/Provincia</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="city"
+            onChange={handlerRegistro}
+            value={formRegister.city}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.city ? "visible" : "hidden" }}
+          >
+            {errors.estado}
+          </span>
+        </div>
+        <div className="flex flex-col mx-4">
+          <span>Telefono</span>
+          <input
+            type="text"
+            className="bg-[#EEEEEE] outline-none py-3 pl-1"
+            name="phone_number"
+            onChange={handlerRegistro}
+            value={formRegister.phone_number}
+          />
+          <span
+            className="text-red-500"
+            style={{ visibility: errors.phone_number ? "visible" : "hidden" }}
+          >
+            {errors.telefono}
           </span>
         </div>
 
@@ -194,19 +257,22 @@ export default function Page() {
           <span>Confirmar Contraseña</span>
           <div className="relative">
             <input
-              type={switchPassword ? "text" : "password"}
+              type={switchPasswordConfirm ? "text" : "password"}
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="passwordConfirm"
               onChange={handlerRegistro}
               value={formRegister.passwordConfirm}
             />
             <div className="absolute top-[18%] right-2 cursor-pointer">
-              {switchPassword ? (
-                <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
+              {switchPasswordConfirm ? (
+                <AiOutlineEye
+                  size={30}
+                  onClick={handlerSwitchPasswordConfirm}
+                />
               ) : (
                 <AiOutlineEyeInvisible
                   size={30}
-                  onClick={handlerSwitchPassword}
+                  onClick={handlerSwitchPasswordConfirm}
                 />
               )}
             </div>
@@ -221,22 +287,9 @@ export default function Page() {
           </span>
         </div>
 
-        {/*<div className="flex flex-col mx-4">
-
-          <span>Tipo de voluntario</span>
-          <input
-            type="text"
-            className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="voluntario"
-            onChange={handlerRegistro}
-            value={formRegister.voluntario}
-          />
-
-        </div>*/}
-
         <button
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
-          disabled={isRegistering}
+          //disabled={isRegistering}
         >
           {isRegistering ? "Registrando..." : "Registrate"}
         </button>

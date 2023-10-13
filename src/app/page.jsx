@@ -5,36 +5,29 @@ import NuestraComunidadDesktop from "@/components/NuestraComunidadDesktop/Nuestr
 import React, { useState, useEffect } from "react";
 import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraComunidadMobile";
 import { getBannerImages } from "@/api/apiCall/functions";
-import Loading from "./loading";
 
 export default function Home() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    async function getImages() {
+    async function fetchBanners() {
       const banners = await getBannerImages();
-      banners ? setImages(banners) : console.log("Error al obtener banners");
+      setImages(banners);
     }
-    getImages();
+
+    fetchBanners();
   }, []);
 
   return (
-    <>
-      {images && images[0] ? (
-        <section className="mt-[70px]">
-          <MainHome banner={images} />
-          <div className="w-full justify-center items-center flex flex-col gap-0 xl:gap-6 xl:flex-row lg:items-start xl:px-8">
-            <Campañas />
-            <NuestraComunidadDesktop />
-            {/* Necesito centrarlo de ésta manera ya que no tiene nada mas que lo contenga */}
-            <div className="flex w-full items-center justify-center xl:hidden">
-              <NuestraComunidadMobile />
-            </div>
-          </div>
-        </section>
-      ) : (
-        <Loading />
-      )}
-    </>
+    <section className="mt-[70px]">
+      <MainHome banner={images} />
+      <div className="w-full justify-center items-center flex flex-col gap-0 xl:gap-6 xl:flex-row lg:items-start xl:px-8">
+        <Campañas />
+        <NuestraComunidadDesktop />
+        <div className="flex w-full items-center justify-center xl:hidden">
+          <NuestraComunidadMobile />
+        </div>
+      </div>
+    </section>
   );
 }

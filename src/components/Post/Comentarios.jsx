@@ -73,14 +73,14 @@ export default function Comentarios({ comments }) {
             sm:flex-row  sm:items-stretch  sm:justify-between   sm:w-[95%] "
       >
         <article className="flex w-full sm:w-fit justify-start items-end sm:items-center min-h-[3rem] sm:min-h-[3rem]">
-          <h3 className=" text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-semibold">
+          <h3 className=" text-lg md:text-xl lg:text-2xl font-semibold">
             Comentarios
           </h3>
         </article>
 
         <article
           className="flex items-center  min-h-[3rem] justify-between w-full min-w-fit max-w-full  
-                text-xs  min-[370px]:text-lg  md:text-base lg:text-lg  xl:text-xl 2xl:text-2xl
+                text-xs  min-[370px]:text-lg  md:text-base lg:text-lg  
                 md:min-w-[20rem] sm:w-8/12 md:w-6/12 "
         >
           <h4

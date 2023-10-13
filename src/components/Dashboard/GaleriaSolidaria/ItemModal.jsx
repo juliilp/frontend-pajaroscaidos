@@ -1,0 +1,255 @@
+import { createNewItem, deleteShopItem, editShopItem } from "@/api/apiCall/functions";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import Alerts from "@/components/Alerts/Alerts";
+import FormShop from "./FormShop";
+import ShopCategories from "./ShopCategories";
+
+export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPage }) {
+  useEffect(() => {
+    const SideBarAdmin = document.getElementById("SideBarAdmin");
+    const footer = document.getElementById("footer");
+    const Body = document.getElementById("Body");
+    const effect = () => {
+      SideBarAdmin && (SideBarAdmin.style.zIndex = "20");
+      footer && (footer.style.zIndex = "20");
+      footer && (footer.style.position = "relative");
+      Body && (Body.style.overflow = "hidden");
+    };
+    effect();
+    return () => {
+      SideBarAdmin && (SideBarAdmin.style.zIndex = "0");
+      footer && (footer.style.zIndex = "0");
+      footer && (footer.style.position = "static");
+      Body && (Body.style.overflow = "auto");
+    };
+  }, []);
+  const objetItem = {
+    image: [],
+    title: "",
+    description: "",
+    categories: [""],
+    category: [],
+    price: 5,
+  };
+  const [newItem, setNewItem] = useState(objetItem);
+  useEffect(() => {
+    itemToEdit ? setNewItem(itemToEdit) : null;
+  }, []);
+
+  const [mode, setMode] = useState({
+    create: ModalType === "create",
+    edit: ModalType === "edit",
+    delete: false,
+  });
+
+  const [startEdit, setStartEdit] = useState(false);
+  const [seeAlert, setSeeAlert] = useState(false);
+  const [successFullAlert, setSuccesFullAlert] = useState({ state: false, message: "" });
+  const [categoriesToDelete, setCategoriesToDelete] = useState([]);
+  const [imageToDelete, setimageToDelete] = useState([]);
+
+  const handlePhotoChange = (event) => {
+    const files = event.target.files;
+    const imageArray = Array.from(files);
+
+    setNewItem({
+      ...newItem,
+      image: imageArray,
+    });
+
+    if (itemToEdit) {
+      const publicsIds = itemToEdit.image.map((e) => e.public_id);
+      setimageToDelete(publicsIds);
+    }
+    !startEdit && setStartEdit(true);
+  };
+
+  const successFullChanges = () => {
+    const message = mode.create
+      ? `Se ha creado con exito ${newItem.title}`
+      : mode.delete
+      ? `Se ha eliminado con exito ${newItem.title}.`
+      : `Se ha editado con exito ${newItem.title}.`;
+
+    setSeeAlert(false);
+    setSuccesFullAlert({ state: true, message: message });
+    setTimeout(() => {
+      closeModal();
+      setNewItem(objetItem);
+      // refreshPage();
+    }, 3000);
+  };
+  const handleCreate = () => {
+    seeAlert
+      ? createNewItem(newItem)
+          .then((res) => successFullChanges())
+          .catch((error) => console.log(error))
+      : setSeeAlert(true);
+  };
+  const closeAlert = () => {
+    setSeeAlert(false);
+    closeModal();
+    setMode({ ...mode, delete: false });
+  };
+  const handleEdit = () => {
+    const edited = {
+      ...newItem,
+      newImage: newItem.image,
+      category: newItem.category.join(),
+    };
+    seeAlert
+      ? editShopItem(newItem.id, edited, categoriesToDelete, imageToDelete)
+          .then((res) => successFullChanges())
+          .catch((error) => console.log(error))
+      : setSeeAlert(true);
+  };
+  const handleDelete = () => {
+    setMode({ ...mode, delete: true });
+    seeAlert
+      ? deleteShopItem(newItem.id)
+          .then((res) => successFullChanges())
+          .catch((error) => console.log(error))
+      : setSeeAlert(true);
+  };
+  let imagePreview = [];
+
+  if (newItem.image && newItem.image[0] instanceof Blob) {
+    for (const e of newItem.image) {
+      imagePreview.push(URL.createObjectURL(e));
+    }
+  }
+
+  return (
+    <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+      {seeAlert && mode.delete && (
+        <Alerts
+          title={`Eliminar ${newItem.title}`}
+          textdetails={"¿Desea borrar el producto?"}
+          confirm={"Si Borrar"}
+          callback={handleDelete}
+          closemodal={closeAlert}
+        />
+      )}
+      {successFullAlert.state && (
+        <Alerts
+          title={`Exito!`}
+          textdetails={successFullAlert.message}
+          confirm={"Entendido"}
+          closemodal={closeAlert}
+        />
+      )}
+
+      {seeAlert && mode.edit && !mode.delete && (
+        <Alerts
+          title={`Confirmar edicion`}
+          textdetails={"¿Desea editar el producto?"}
+          confirm={"Si editar"}
+          callback={handleEdit}
+          closemodal={closeAlert}
+        />
+      )}
+      {seeAlert && mode.create && (
+        <Alerts
+          title={`Crear ${newItem.title}`}
+          textdetails={"¿Desea crear el nuevo producto?"}
+          confirm={"Si crear"}
+          callback={handleCreate}
+          closemodal={closeAlert}
+        />
+      )}
+
+      <div
+        className="flex flex-col items-center w-9/12 h-[20rem] overflow-auto sm:overflow-visible sm:h-auto 
+            bg-[#C2C2C2] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 
+             min-h-[28rem] gap-8 p-2"
+      >
+        <section className="flex justify-end  w-full p-1">
+          <button onClick={closeModal} className="text-red-700  text-xl font-bold ">
+            X
+          </button>
+        </section>
+
+        <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
+          <article className="w-6/12 flex flex-col justify-center items-center gap-6">
+            {mode.edit && newItem.image && newItem.image.length > 0 && (
+              <div className="flex gap-4">
+                {newItem.image?.map((e, index) => (
+                  <div key={index}>
+                    <Image
+                      src={imagePreview[0] ? imagePreview[index] : e.secure_url}
+                      alt={`Imagen ${index}`}
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+            {mode.create && imagePreview[0] && (
+              <div className="flex gap-4">
+                {imagePreview.map((e, index) => (
+                  <div key={index}>
+                    <Image src={e} alt={`ImagenDos ${index}`} width={100} height={100} />
+                  </div>
+                ))}
+              </div>
+            )}
+            <input
+              type="file"
+              name="image"
+              onChange={handlePhotoChange}
+              id="selectimage"
+              className="hidden"
+              accept="image/*"
+              multiple
+            />
+            <label
+              htmlFor="selectimage"
+              className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]"
+            >
+              {newItem.image && newItem.image.length > 0 ? "Cambiar" : "Añadir"} imagen
+            </label>
+          </article>
+
+          <article className="w-11/12 h-[20rem] sm:w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
+            <FormShop
+              setNewItem={setNewItem}
+              startEdit={startEdit}
+              setStartEdit={setStartEdit}
+              newItem={newItem}
+              mode={mode}
+            />
+
+            <ShopCategories
+              newItem={newItem}
+              setNewItem={setNewItem}
+              startEdit={startEdit}
+              setStartEdit={setStartEdit}
+              setCategoriesToDelete={setCategoriesToDelete}
+              categoriesToDelete={categoriesToDelete}
+            />
+          </article>
+        </section>
+        <article className="flex justify-end w-full">
+          {mode.create && (
+            <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleCreate}>
+              Crear item
+            </button>
+          )}
+          {mode.edit && !startEdit ? (
+            <button className="bg-red-500 text-white p-1 px-4 rounded-lg" onClick={handleDelete}>
+              Borrar item
+            </button>
+          ) : (
+            mode.edit && (
+              <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleEdit}>
+                Editar item
+              </button>
+            )
+          )}
+        </article>
+      </div>
+    </div>
+  );
+}

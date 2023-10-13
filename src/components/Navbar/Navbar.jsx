@@ -15,12 +15,12 @@ export default function Navbar() {
   const { data: session } = useSession();
   const [switchMenu, setSwitchMenu] = useState(false);
   const [rendering, setRendering] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setRendering(true);
-    }
-  }, []);
+    setUser(UserContext);
+    setRendering(true);
+  }, [UserContext, user]);
 
   const handlerSwitchMenu = () => {
     setSwitchMenu((prev) => !prev);
@@ -39,17 +39,16 @@ export default function Navbar() {
       });
     }
   };
-
   return (
     <header className="bg-[#3D3D3D] h-[70px] w-full fixed top-0 left-0 z-[999999] ">
       <nav className="w-full h-full flex items-center justify-between px-3">
         <GiHamburgerMenu
           size={35}
           color="white"
-          className="md:hidden"
+          className="lg:hidden"
           onClick={handlerSwitchMenu}
         />
-        <div className="hidden md:flex gap-12 lg:gap-24">
+        <div className="hidden lg:flex gap-12 lg:gap-24">
           <Image
             src={Logo}
             alt="logo"
@@ -60,23 +59,24 @@ export default function Navbar() {
           />
           <MenuDesktop />
         </div>
-
         {rendering && (
           <div className="flex items-center justify-center gap-3">
-            {UserContext && UserContext.first_name ? (
-              <React.Fragment>
-                <Link href={"/perfil"}>
-                  <span className="text-white font-semibold">
-                    {UserContext.first_name}
+            {user ? (
+              <>
+                <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
+                  <span className="text-white font-semibold w-[100px] truncate">
+                    {user.nick_name.length > 12
+                      ? user.nick_name.slice(0, 9) + "..."
+                      : user.nick_name}
                   </span>
                 </Link>
-                {UserContext.avatar.avatar_url !== "-" ? (
-                  <Link href={"/perfil"}>
+                {user.avatar.avatar_url !== "-" ? (
+                  <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                     <Image
                       src={
-                        UserContext.avatar.avatar_url
-                          ? UserContext.avatar.avatar_url
-                          : UserContext.avatar.secure_url
+                        user.avatar.avatar_url
+                          ? user.avatar.avatar_url
+                          : user.avatar.secure_url
                       }
                       alt="Avatar"
                       width={50}
@@ -85,7 +85,7 @@ export default function Navbar() {
                     />
                   </Link>
                 ) : (
-                  <Link href={"/perfil"}>
+                  <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                     <BiSolidUser size={35} color="white" />
                   </Link>
                 )}
@@ -95,18 +95,19 @@ export default function Navbar() {
                 >
                   Cerrar sesión
                 </button>
-              </React.Fragment>
+              </>
             ) : (
-              <React.Fragment>
+              <>
                 <Link
                   href="/login"
                   className="text-white font-semibold"
                   prefetch={false}
+                  onClick={closeMenu}
                 >
                   Iniciar sesión
                 </Link>
                 <BiSolidUser size={35} color="white" />
-              </React.Fragment>
+              </>
             )}
           </div>
         )}
@@ -118,7 +119,7 @@ export default function Navbar() {
             : "-translate-y-8 opacity-0 pointer-events-none"
         }`}
       >
-        {<MenuMobile closeMenu={closeMenu} />}
+        <MenuMobile closeMenu={closeMenu} admin={user?.isAdmin} />
       </div>
     </header>
   );

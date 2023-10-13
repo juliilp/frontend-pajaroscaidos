@@ -1,51 +1,53 @@
 "use client";
 import Image from "next/image";
 import image1 from "../../../public/images/voluntarios1.png";
-import image2 from "../../../public/images/Emma.png";
-
+import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
+import api from "@/api/api";
+import { useEffect, useState } from "react";
+import CardVoluntarioLoading from "@/components/CardVoluntario/CardVoluntarioLoading";
 export default function Voluntarios() {
+  const [users, setUsers] = useState();
+  useEffect(() => {
+    async function users() {
+      const { data } = await api("user/all?userStatus=isVoluntary");
+      setUsers(data.users.users);
+    }
+    users();
+  }, []);
+
+  function generateLoadingCards(count) {
+    const loadingCards = [];
+    for (let i = 0; i < count; i++) {
+      loadingCards.push(<CardVoluntarioLoading key={i} />);
+    }
+    return loadingCards;
+  }
   return (
-    <div className=" min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
+    <section className=" min-h-screen w-full flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
       <section className="w-full h-28 md:h-[14rem] relative">
-        <Image src={image1} alt="banner" fill priority={true} />
+        <Image
+          src={image1}
+          alt="banner"
+          fill
+          priority={true}
+          className="w-full h-28 md:h-[14rem] "
+        />
       </section>
 
-      <div className="hidden md:block">
-        <div className="w-64 h-64 border border-gray-300 p-4 transition-transform hover:scale-105 relative rounded-lg">
-          <Image
-            src={image2}
-            alt="Imagen"
-            width={500}
-            height={500}
-            className="w-full h-full object-cover absolute inset-0 rounded-lg "
-          />
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-70 opacity-0 transition-opacity hover:opacity-100 border rounded-lg ">
-            <h3 className="text-2xl font-bold text-white">Título</h3>
-            <p className="text-white">Texto</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="md:hidden">
-        <div className="flex p-4 border rounded-lg shadow-md">
-          <div className="w-1/3 pr-4">
-            <Image
-              src={image2}
-              alt="Imagen"
-              width={500}
-              height={500}
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-          <div className="w-2/3">
-            <h2 className="text-2xl font-bold mb-2">Título de la Tarjeta</h2>
-            <p className="text-gray-700">
-              Este es el contenido de la tarjeta. Puede ser cualquier texto que
-              desees mostrar.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <article className="flex flex-col md:grid grid-cols-2 gap-12 lg:grid-cols-3 lg:gap-20 xl:grid-cols-4">
+        {users && users.length > 1
+          ? users.map(({ description, first_name, avatar }, key) => {
+              return (
+                <CardVoluntario
+                  key={key}
+                  texto={description}
+                  titulo={first_name}
+                  imagen={avatar.secure_url}
+                />
+              );
+            })
+          : generateLoadingCards(8)}
+      </article>
+    </section>
   );
 }

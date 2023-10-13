@@ -53,13 +53,11 @@ export default function EmailCode() {
         alt="imagen"
       />
       <form
-        className="w-[550px]  bg-[#FFFFFF] pb-16 rounded-xl"
+        className="w-[90%] mx-[5%] max-w-[550px]  bg-[#FFFFFF] rounded-xl md:mx-0 flex flex-col gap-8 py-8 "
         onSubmit={submitHandler}
       >
-        <h2 className="font-bold  text-2xl text-center mt-2 mb-12">
-          Recupera tu cuenta
-        </h2>
-        <div className="flex flex-col px-4 gap-2 ">
+        <h2 className="font-bold  text-2xl text-center ">Recupera tu cuenta</h2>
+        <div className="flex flex-col px-4 ">
           <span className="text-[#525252]">
             Ingrese su correo electrónico para recibir su nueva contraseña
           </span>
@@ -78,7 +76,7 @@ export default function EmailCode() {
           )}
         </div>
 
-        <div className="flex flex-col justify-center items-center mt-10">
+        <div className="flex flex-col justify-center items-center">
           <button
             type="submit"
             className="bg-[#008000] h-[65px] w-[180px] font-bold text-[#FFFFFF] text-lg rounded"

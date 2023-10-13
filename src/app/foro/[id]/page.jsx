@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Comentarios from "@/components/Post/Comentarios";
-import { getPosts } from "@/libs/PostFunctions";
+import { getPost } from "@/api/apiCall/PostRequests";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import OtherContent from "@/components/Post/OtherContent";
@@ -9,6 +9,7 @@ import InputComment from "@/components/Post/InputComment";
 import Image from "next/image";
 import ImgPortada from "@/../public/images/foro-id/Portada.png";
 import { BiSolidUser } from "react-icons/bi";
+import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
 
 export default function Page({ params }) {
   const [publication, setPublication] = useState(null);
@@ -16,7 +17,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getPosts(params.id);
+      const data = await getPost(params.id);
       setPublication(data.publication);
     }
 
@@ -48,7 +49,7 @@ export default function Page({ params }) {
   }
 
   return (
-    <div
+    <section
       className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
          pl-0 pr-0
          sm:pl-2 sm:pr-2
@@ -89,7 +90,7 @@ export default function Page({ params }) {
         </div>
       </header>
 
-      <div className="flex min-h-[20rem] gap-3 relative  h-auto ">
+      <article className="flex min-h-[20rem] gap-3 relative justify-center   h-auto ">
         <main
           className="w-full lg:w-8/12 relative h-full bg-lightgray rounded-[10px] text-[#2B2B2B] 
                 p-8 pt-4 pb-6 flex flex-col items-center gap-7 "
@@ -114,13 +115,11 @@ export default function Page({ params }) {
             </div>
           </div>
         </main>
-        <OtherContent desktop={true} />
-      </div>
-      <section className="w-full  bg-lightgray min-h-[15rem] h-full  sm:p-6">
+        <NuestraComunidad />
+      </article>
+      <section className=" w-[90%] mx-[5%] p-4 md:p-0 md:w-full md:mx-0 bg-lightgray min-h-[15rem] h-full sm:p-6">
         <Comentarios comments={publication.comments} />
       </section>
-
-      <OtherContent mobile={true} />
-    </div>
+    </section>
   );
 }

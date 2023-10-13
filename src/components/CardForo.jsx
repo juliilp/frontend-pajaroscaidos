@@ -80,8 +80,8 @@ export default function CardForo({
     <section className="flex w-full h-[150px] items-center justify-start shadow-primary sm:shadow-none ">
       {image?.secure_url && (
         <Image
-          src={image.secure_url}
-          alt={image.public_id}
+          src={image.imageUrl || image.secure_url}
+          alt="post"
           width={300}
           height={300}
           className="h-full max-w-[160px]"
@@ -92,12 +92,12 @@ export default function CardForo({
       )}
 
       <article className="w-4/6 h-[100px] flex flex-col px-3 gap-1 justify-center font-inter ">
-        <Link href={`/foro/${id}`}>
+        <Link href={`/foro/${id}`} prefetch={false}>
           <h2 className="font-bold  text-sm sm:text-2xl">{titulo}</h2>
         </Link>
         <span className="text-sm">
-          <b className="text-[#2594EF] cursor-pointer ">Foro</b> - {fecha}
-          <b className="text-[#2594EF] cursor-pointer "> {usuario}</b>
+          <b className="text-[#2594EF]">Foro</b> - {fecha}
+          <b className="text-[#2594EF]"> {usuario}</b>
         </span>
         <div className="flex gap-6 self-start pr-6">
           <div className="flex gap-2 ">
@@ -118,12 +118,8 @@ export default function CardForo({
             </span>
           </div>
 
-          <div className="flex  gap-2">
-            <RiMessage2Line
-              color="#0C6410"
-              size={25}
-              className="cursor-pointer"
-            />
+          <div className="flex gap-2">
+            <RiMessage2Line color="#0C6410" size={25} />
             <span className="text-[#0C6410] font-semibold text-lg self-end ">
               {message}
             </span>

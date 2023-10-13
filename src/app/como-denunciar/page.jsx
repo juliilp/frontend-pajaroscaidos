@@ -11,7 +11,7 @@ import image4 from "../../../public/images/como-denunciar-image4.png";
 export default function page() {
   return (
     <div
-      className={`break-words font-semibold  flex flex-col items-center gap-14 w-full pt-[70px] pb-[5rem] sm:text-sm md:text-base xl:text-xl 2xl:text-2xl`}
+      className={`break-words  flex flex-col items-center gap-14 w-full pt-[70px] pb-[5rem] sm:text-sm md:text-base xl:text-xl 2xl:text-2xl`}
     >
       <section className="w-full relative h-[7rem] min-[300px]:h-[9rem] min-[450px]:h-[10rem]  min-[550px]:h-[12rem] md:h-[15rem]">
         <Image src={bgimage1} alt="bg-image-1" fill />

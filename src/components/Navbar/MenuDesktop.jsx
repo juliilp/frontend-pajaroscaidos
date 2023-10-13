@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function MenuDesktop() {
   const [openMenu, setOpenMenu] = useState(null);
 
-  const handlerMenu = (menu) => {
+  const toggleMenu = (menu) => {
     setOpenMenu((prevOpenMenu) => (prevOpenMenu === menu ? null : menu));
   };
 
@@ -27,7 +27,7 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={() => handlerMenu("asociacion")}
+          onClick={() => toggleMenu("asociacion")}
         >
           Asociación
           <IoIosArrowUp
@@ -46,7 +46,12 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/acciones" onClick={closeMenu}>
+              <Link
+                key="opcion1"
+                href="/acciones"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Acciones
               </Link>,
               <Link
@@ -59,7 +64,7 @@ export default function MenuDesktop() {
               </Link>,
               <Link
                 key="opcion3"
-                href="/actosmaltratoycrueldad"
+                href="/crueldad-maltrato"
                 onClick={closeMenu}
                 prefetch={false}
               >
@@ -84,7 +89,7 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={() => handlerMenu("comunidad")}
+          onClick={() => toggleMenu("comunidad")}
         >
           Comunidad
           <IoIosArrowUp
@@ -111,7 +116,12 @@ export default function MenuDesktop() {
               >
                 Voluntarios
               </Link>,
-              <Link key="opcion2" href="/foro" onClick={closeMenu}>
+              <Link
+                key="opcion2"
+                href="/foro"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Foro
               </Link>,
             ]}
@@ -125,7 +135,7 @@ export default function MenuDesktop() {
       >
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
-          onClick={() => handlerMenu("servicio")}
+          onClick={() => toggleMenu("servicio")}
         >
           Servicios
           <IoIosArrowUp
@@ -144,7 +154,12 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link key="opcion1" href="/contactanos" onClick={closeMenu}>
+              <Link
+                key="opcion1"
+                href="/contactanos"
+                onClick={closeMenu}
+                prefetch={false}
+              >
                 Contactanos
               </Link>,
               <Link

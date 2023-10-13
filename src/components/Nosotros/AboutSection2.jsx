@@ -4,18 +4,18 @@ import image2 from "../../../public/images/about_us 3.png";
 export default function AboutSection2() {
   return (
     <>
-      <article className=" p-4 w-7/12 text-[#0C6410] font-semibold border-b-2 border-[#0C6410] text-center ">
-        <h2 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl text-lg">
+      <article className=" flex justify-center p-4 w-full md:max-w-[600px] text-[#0C6410] border-b-2 border-[#0C6410] ">
+        <h2 className="xl:text-2xl md:text-xl text-lg">
           Como nacio pajaros caidos.
         </h2>
       </article>
 
       <article
-        className="flex flex-col items-center justify-between gap-8
-            md:flex-row md:gap-0
+        className="flex flex-col items-center justify-center gap-8
+            md:flex-row md:items-start
              "
       >
-        <p className=" w-11/12 md:w-6/12 lg:w-6/12 2xl:w-6/12">
+        <p className=" w-6/12 md:max-w-[630px] text-base">
           Clara Correa, fundadora y actual presidenta de &quot;Pájaros
           Caídos&quot;, comenzó su camino de ayuda a las aves a partir de la
           necesidad de resolver situaciones de asistencia a palomas y otras aves
@@ -41,16 +41,16 @@ export default function AboutSection2() {
           Inspección General de Justicia de la Nación, Resolución N° 5449/2015
           del 15 de abril de 2015.
         </p>
-        <div className=" gap-12 md:gap-32  flex flex-col  justify-between ">
+        <div className=" gap-12 flex flex-col  justify-between ">
           <Image
             src={image1}
             alt="picture1"
-            className=" w-full h-auto sm:w-auto  sm:h-[14rem] md:h-[10rem] lg:h-[14rem] xl:h-[16rem] 2xl:h-[17rem]"
+            className=" w-full h-auto sm:w-auto  sm:h-[14rem] md:h-[7rem] lg:h-[12rem] "
           />
           <Image
             src={image2}
             alt="picture2"
-            className=" w-full h-auto sm:w-auto  sm:h-[14rem] md:h-[10rem] lg:h-[14rem] xl:h-[16rem] 2xl:h-[17rem]"
+            className=" w-full h-auto sm:w-auto  sm:h-[14rem] md:h-[10rem] lg:h-[14rem] "
           />
         </div>
       </article>

@@ -8,9 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ["var(--font-roboto)"],
-        baloo: ["Baloo Bhaijaan 2", "sans"],
-        inter: ["--font-inter"],
+        baloo: ["var(--font-baloo)"],
+        inter: ["var(--font-inter)"],
       },
       boxShadow: {
         primary: "0px 4px 4px 0px #00000040;",

@@ -12,6 +12,7 @@ import { validateLogin } from "@/utils/auxfunctions";
 import { useSession, signIn } from "next-auth/react";
 import Loading from "../loading";
 import { loginNextAuth, loginUser } from "@/api/apiCall/functions";
+import api from "@/api/api";
 import { MESSAGE_TYPES } from "@/api/dictionary/dictionary";
 
 export default function Login() {
@@ -40,7 +41,9 @@ export default function Login() {
       const authenticateUser = async () => {
         const user = await loginNextAuth(data);
 
-        if (user) {
+        if (user === MESSAGE_TYPES.USER_BANNED) {
+          return router.push("/ban");
+        } else if (user) {
           setUserContext(user);
           router.push("/foro");
         } else {
@@ -79,6 +82,8 @@ export default function Login() {
       setUserNotFound(true);
     } else if (user === MESSAGE_TYPES.INVALID_PASSWORD) {
       setInvalidPass(true);
+    } else if (user === MESSAGE_TYPES.USER_BANNED) {
+      return router.push("/ban");
     } else {
       setUserContext(user);
       router.push("/foro");
@@ -90,10 +95,20 @@ export default function Login() {
     });
   };
 
-  function loginWithGoogle(e) {
+  async function loginWithGoogle(e) {
     e.preventDefault();
-    signIn();
+    signIn("google");
     setLoading(true);
+    const nombreCompleto = session.user.name;
+    const primerNombre = nombreCompleto.split(" ")[0];
+    await api.post("/user/login-auth0", {
+      email: session.user.email,
+      avatar: {
+        secure_url: session.user.avatar,
+      },
+      first_name: primerNombre,
+      nick_name: primerNombre,
+    });
   }
 
   return sessionStatus === "loading" ||
@@ -101,7 +116,7 @@ export default function Login() {
     loading ? (
     <Loading />
   ) : (
-    <section className="w-full h-screen flex justify-center items-center md:grid md:grid-cols-2 md:px-8 md:gap-12 lg:gap-24 mt-8">
+    <section className="w-full h-[650px] flex mt-[70px] justify-center items-center md:grid md:grid-cols-2 px-4 md:px-8 md:gap-12 lg:gap-24 py-5">
       <Image
         src={LoginImagen}
         className="hidden md:block justify-self-end"
@@ -109,7 +124,7 @@ export default function Login() {
       />
 
       <form
-        className="w-full max-w-[500px] pb-16 rounded-xl   bg-white "
+        className="w-full max-w-[500px] pt-4 pb-6 rounded-xl bg-white "
         onSubmit={submitHandler}
       >
         <h2 className="font-bold text-2xl text-center mt-4 mb-6">
@@ -186,7 +201,7 @@ export default function Login() {
           </button>
         </div>
 
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center">
           <span className="text-[#525252]">
             ¿No tienes cuenta en Pájaros Caídos?
           </span>

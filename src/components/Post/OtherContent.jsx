@@ -26,7 +26,7 @@ export default function OtherContent({ mobile, desktop }) {
     <>
       {!responsive && desktop && (
         <section
-          className=" md:w-8/12 lg:w-4/12 flex justify-center  bg-lightgray h-auto min-h-[30rem]  overflow-y-scroll "
+          className=" flex justify-center  bg-lightgray h-auto min-h-[30rem]  overflow-y-scroll "
           id="Uscomunitysection"
         >
           <NuestraComunidad />

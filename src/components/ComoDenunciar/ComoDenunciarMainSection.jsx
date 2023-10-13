@@ -2,12 +2,12 @@ export default function ComoDenunciarMainSection() {
   return (
     <>
       <article className="w-full flex justify-center items-center">
-        <h1 className="text-[#0C6410] 2xl:text-4xl xl:text-3xl lg:text-2xl text-base">
+        <h1 className="text-[#0C6410] text-2xl">
           COMO DENUNCIAR UN ACTO DE CRUELDAD
         </h1>
       </article>
       <article className="w-full">
-        <p>
+        <p className="text-xl max-w-[1000px] mx-auto ">
           Las aves, como el resto de los animales, son víctimas de actos crueles
           y maltrato por parte de los seres humanos. Existen leyes, normas que
           protegen a las aves asi como a todos los animales, aunque en muchos

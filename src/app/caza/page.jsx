@@ -8,9 +8,9 @@ export default function page() {
       <div className="w-full xl:h-56 sm:h-48 h-32 relative">
         <Image src={Banner} alt="Banner caza" fill priority={true} />
       </div>
-      <h2 className="text-[#0C6410] font-semibold">CAZA DE AVES</h2>
+      <h2 className="text-[#0C6410] font-semibold text-2xl">CAZA DE AVES</h2>
       <div className="md:grid md:grid-cols-2">
-        <p className="px-6 mb-8 md:mb-16 max-w-[500px] ">
+        <p className="px-6 mb-8 md:mb-10 max-w-[500px] ">
           La caza en sí misma es una actividad cruel que en algunas
           circunstancias lamentablemente se encuentra autorizada por la ley y
           aunque ello no configure un delito penal o infracción contravencional,
@@ -37,8 +37,8 @@ export default function page() {
         </p>
         <Image src={Caza} alt="caza" className="mx-auto" />
       </div>
-      <div className="bg-[#C2C2C2] mx-6 max-w-[1000px] flex flex-col gap-8 md:gap-24  h-[450px]  mb-10">
-        <span className="text-[#0C6410] text-xl md:text-2xl mx-auto mt-6 ">
+      <div className="bg-[#C2C2C2] mx-6 max-w-[1000px] flex flex-col gap-8 md:gap-24  h-[300px]  mb-10">
+        <span className="text-[#0C6410] md:text-2xl mx-auto mt-6 text-2xl">
           Legislación
         </span>
         <p className="font-bold  self-center justify-self-center mx-6  ">

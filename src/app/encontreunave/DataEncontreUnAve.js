@@ -1,6 +1,6 @@
-import Imagen1 from "@/../public/images/encontreunave/imagen1.png";
-import Imagen2 from "@/../public/images/encontreunave/imagen2.png";
-import Imagen3 from "@/../public/images/encontreunave/imagen3.png";
+import Imagen1 from "@/../public/images/encontreunave/Imagen1.png";
+import Imagen2 from "@/../public/images/encontreunave/Imagen2.png";
+import Imagen3 from "@/../public/images/encontreunave/Imagen3.png";
 
 export const DataEncontreUnAve = [
   {
@@ -38,7 +38,7 @@ export const DataEncontreUnAve = [
     titulo: "COMO ALIMENTAR UN PICHON DE PALOMA",
     imagen: "",
     parrafo:
-      "Este video les va a dar un ayuda para alimentar un pichon de paloma de froma ilustratiba",
+      "Este video les va a dar un ayuda para alimentar un pichon de paloma de forma ilustrativa",
     video: true,
     blog: false,
   },

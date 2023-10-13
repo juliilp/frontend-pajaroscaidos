@@ -1,123 +1,63 @@
 "use client";
-
-import React from "react";
-import Usuarios from "./usuarios.json";
-import Image from "next/image";
-import {
-  BiSolidUser,
-  BiDotsVerticalRounded,
-  BiCheckbox,
-  BiCheckboxChecked,
-} from "react-icons/bi";
+import React, { useState, useEffect } from "react";
+import Pagination from "@/components/Pagination/Pagination";
+import api from "@/api/api";
+import Loading from "../loading";
+import TableDesktop from "@/components/Dashboard/Usuarios/TableDesktop";
+import TableMobile from "@/components/Dashboard/Usuarios/TableMobile";
 
 export default function Page() {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const userPerPage = 6;
+
+  const fetchUsersData = async () => {
+    try {
+      const response = await api.get(
+        `user/all?userPerPage=${userPerPage}&pageNumber=${pageNumber}`
+      );
+
+      const { users, totalPages } = response.data.users;
+      setUsers(users);
+      setTotalPages(totalPages);
+    } catch (error) {
+      console.error("Error al obtener usuarios:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsersData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNumber]);
+
+  const handleDataUpdate = async () => {
+    await fetchUsersData();
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setPageNumber(pageNumber);
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <section className="h-full w-full p-5 flex-col items-center gap-3">
-      <h1 className="text-center py-2 text-2xl font-bold">Usuarios</h1>
-      <div className="bg-[#4f4f4f] flex flex-col gap-2 p-3 rounded-2xl text-white">
-        <table className=" w-full table-auto text-center border-separate border-spacing-y-2">
-          <thead>
-            <tr>
-              <th>
-                <strong>Avatar</strong>
-              </th>
-              <th>
-                <strong>Email</strong>
-              </th>
-              <th>
-                <strong>Nickname</strong>
-              </th>
-              <th>
-                <strong>Voluntario</strong>
-              </th>
-              <th>
-                <strong>Admin</strong>
-              </th>
-              <th>
-                <strong>Baneado</strong>
-              </th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {Usuarios.users.map((usuario) => (
-              <tr key={usuario.id}>
-                <td className="flex justify-center">
-                  {usuario.avatar.avatar_url !== "-" ? (
-                    <Image
-                      src={
-                        usuario.avatar.avatar_url
-                          ? usuario.avatar.avatar_url
-                          : usuario.avatar.secure_url
-                      }
-                      alt={usuario.id}
-                      width={100}
-                      height={100}
-                      className="h-[50px] w-[50px] rounded-lg"
-                    />
-                  ) : (
-                    <BiSolidUser size={50} color="white" />
-                  )}
-                </td>
-                <td className="truncate">{usuario.email}</td>
-                <td className="truncate">{usuario.nick_name}</td>
-                <td>
-                  {usuario.isVoluntary ? (
-                    <BiCheckboxChecked
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  ) : (
-                    <BiCheckbox
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  )}
-                </td>
-                <td>
-                  {usuario.isAdmin ? (
-                    <BiCheckboxChecked
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  ) : (
-                    <BiCheckbox
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  )}
-                </td>
-                <td>
-                  {usuario.isBanned ? (
-                    <BiCheckboxChecked
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  ) : (
-                    <BiCheckbox
-                      size={30}
-                      color="white"
-                      className="w-full flex justify-center"
-                    />
-                  )}
-                </td>
-                <td>
-                  <BiDotsVerticalRounded
-                    size={30}
-                    color="white"
-                    className="w-full flex justify-center"
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <section className="h-full w-full px-6 flex flex-col items-center justify-between gap-2 pt-[70px]">
+      <h1 className="text-center pt-6 text-2xl font-bold">Usuarios</h1>
+      <div className="bg-[#4f4f4f] w-full flex flex-col gap-2 p-3 rounded-xl text-white">
+        <TableDesktop users={users} handleDataUpdate={handleDataUpdate} />
+        <TableMobile users={users} handleDataUpdate={handleDataUpdate} />
       </div>
+      <Pagination
+        pageNumber={pageNumber}
+        totalPages={totalPages}
+        changePage={handlePageChange}
+      />
     </section>
   );
 }
