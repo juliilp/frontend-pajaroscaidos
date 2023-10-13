@@ -80,7 +80,7 @@ function Campañas() {
         <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
             <section
-              className="bg-[#C2C2C2] w-full h-[250px] flex flex-col rounded-md cursor-pointer text-center"
+              className="bg-[#C2C2C2] w-[30%] h-[250px] flex flex-col rounded-md cursor-pointer text-center"
               onClick={() => toggleModalPut(campaña)}
               key={campaña.id}
             >

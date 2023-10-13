@@ -4,6 +4,7 @@ import {
   deleteReaction,
   createReaction,
   getAllPosts,
+  getPost,
 } from "@/api/apiCall/PostRequests";
 import Cookies from "js-cookie";
 
@@ -16,10 +17,9 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
 
   useEffect(() => {
     if (!user) return;
-
     const isUserReacted = postlikes.some((like) => like.userId === user.id);
     setUserLike(isUserReacted);
-  }, [postlikes, user]);
+  }, [likes, user]);
 
   const likepost = async (reaction) => {
     if (!user || likeInProgress) return;
@@ -33,17 +33,14 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     };
 
     try {
-      const updatedLikes = userLike ? likes - 1 : likes + 1;
-      setLikes(updatedLikes);
-
-      if (userLike) {
+      if (userLike && !likeInProgress) {
         const likeId = postlikes.find((like) => like.userId === user.id).id;
-        await deleteReaction(likeId);
+        await deleteReaction(likeId).then((res) => setLikes(userLike ? likes - 1 : likes + 1))
       } else {
-        await createReaction(data);
+        await createReaction(data).then(res => setLikes(userLike ? likes - 1 : likes + 1))
       }
 
-      const updatedPostData = await getAllPosts(idPost);
+      const updatedPostData = await getPost(idPost);
       updateLikes(updatedPostData.publication.reactions);
     } catch (error) {
       console.error("Error updating reaction:", error);
