@@ -12,6 +12,8 @@ export default function ModalnewPost({ setvisible }) {
   const { UserContext } = CustomContext();
   const [seeAlert, setSeeAlert] = useState(false);
   const [visibleErrors, setVisibleError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   let imagePreview = null;
 
   const closeAlert = () => {
@@ -69,6 +71,10 @@ export default function ModalnewPost({ setvisible }) {
       setVisibleError(true);
       return alert("Revisa los errores");
     }
+    if (isSubmitting) {
+      return;
+    }
+    setIsSubmitting(true);
     if (!Object.entries(errors).length) {
       setVisibleError(false);
 
@@ -86,6 +92,8 @@ export default function ModalnewPost({ setvisible }) {
         }
       } catch (error) {
         console.error("Error:", error);
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -160,22 +168,6 @@ export default function ModalnewPost({ setvisible }) {
                   <span className="cursor-pointer text-[#989898] ">Imagen</span>
                 </label>
               </div>
-              <div>
-                <input
-                  type="file"
-                  name=""
-                  id="SelectVideo"
-                  className="hidden"
-                  accept="video/*"
-                />
-                <label
-                  htmlFor="SelectVideo"
-                  className="flex items-center gap-2 "
-                >
-                  <AiOutlinePlayCircle className="cursor-pointer text-2xl" />
-                  <span className="cursor-pointer text-[#989898]">Video</span>
-                </label>
-              </div>
             </section>
             {imagePreview && (
               <div className="w-full text-center">
@@ -193,8 +185,9 @@ export default function ModalnewPost({ setvisible }) {
                 onClick={handleSubmit}
                 type="submit"
                 className="w-full h-full text-center font-semibold"
+                disabled={isSubmitting}
               >
-                Publica tu post
+                {isSubmitting ? "Publicando..." : "Publica tu post"}
               </button>
             </section>
           </form>
