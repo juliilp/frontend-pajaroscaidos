@@ -47,7 +47,7 @@ export default function Page({ params }) {
   if (!publication) {
     return;
   }
-    console.log(publication);
+    //console.log(publication);
   return (
     <section
       className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
