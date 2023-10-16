@@ -8,30 +8,29 @@ export async function middleware(req) {
   const otherRoutes = ["/login", "/registro"];
   const resquestedPage = req.nextUrl.pathname;
   const inAdminPages = resquestedPage.includes("/dashboard");
-  const value = JSON.parse(sesion?.value);
-  const isAdmin = value?.isAdmin;
-  const isPrincipalAdmin = value?.isPrincipalAdmin;
+
+  let isAdmin = null;
+
+  if (sesion && sesion?.value !== "null") {
+    const value = JSON.parse(sesion?.value);
+
+    isAdmin = value?.isAdmin;
+    const isPrincipalAdmin = value?.isPrincipalAdmin; // ?
+  }
   const url = req.nextUrl.clone();
   url.pathname = "/";
-  if (existCookie&&inAdminPages && !isAdmin) {///validacion admins
+  if (existCookie && inAdminPages && !isAdmin) {
+    ///validacion admins
     return NextResponse.redirect(url);
   }
-  if (
-    privateRoutes.includes(resquestedPage) &&
-    !isActiveSesion &&
-    existCookie
-  ) {
+  if (privateRoutes.includes(resquestedPage) && !isActiveSesion && existCookie) {
     return NextResponse.redirect(url);
-  } else if (
-    existCookie &&
-    isActiveSesion &&
-    otherRoutes.includes(resquestedPage)
-  ) {
+  } else if (existCookie && isActiveSesion && otherRoutes.includes(resquestedPage)) {
     return NextResponse.redirect(url);
   }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/login", "/registro", "/perfil", '/dashboard',"/dashboard/((?!general).*)"],
+  matcher: ["/login", "/registro", "/perfil", "/dashboard", "/dashboard/((?!general).*)"],
 };
