@@ -47,7 +47,7 @@ export default function Page({ params }) {
   if (!publication) {
     return;
   }
-
+    //console.log(publication);
   return (
     <section
       className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
@@ -70,7 +70,7 @@ export default function Page({ params }) {
           <div className="flex items-center gap-3 h-full">
             <div className="rounded-full overflow-hidden w-20 h-20 relative">
               <Image
-                src={publication.user.avatar.avatar_url}
+                src={publication.user.avatar?.secure_url}
                 alt="User Avatar"
                 width={1000}
                 height={1000}
@@ -79,8 +79,8 @@ export default function Page({ params }) {
                   e.target.style.display = "none";
                 }}
               />
-              {!publication?.user.avatar?.avatar_url && (
-                <BiSolidUser color="white" size={35} />
+              {!publication?.user.avatar?.secure_url && (
+                <BiSolidUser color="red" size={35} />
               )}
             </div>
             <span className="text-black font-bold text-2xl ml-2">
