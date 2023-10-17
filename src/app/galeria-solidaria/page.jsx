@@ -7,7 +7,7 @@ import ShoppingCards from "@/components/Shop/ShoppingCards";
 import api from "@/api/api";
 import Pagination from "@/components/Pagination/Pagination";
 import LoadingCardHome from "@/components/LoadingCardHome/LoadingCardHome";
-import Link from "next/link";
+import DonarButton from "@/components/Shop/DonarButton";
 
 export default function Shopping() {
   const [products, setProducts] = useState([]);
@@ -56,11 +56,7 @@ export default function Shopping() {
         </article>
       </main>
       <section className="w-10/12 flex justify-center md:justify-end">
-        <Link href={"https://www.mercadopago.com.ar/"}>
-          <button className="  text-white bg-green p-2 w-[8rem] md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
-            Donar
-          </button>
-        </Link>
+        <DonarButton />
       </section>
 
       <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3 justify-center items-center lg:justify-normal lg:items-stretch">

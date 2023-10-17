@@ -11,6 +11,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar, Pagination } from "swiper/modules";
+import DonarButton from "@/components/Shop/DonarButton";
+import ContactUsButton from "@/components/Shop/ContactUsbutton";
 
 export default function Page({ params }) {
   const [item, setItem] = useState(null);
@@ -37,9 +39,7 @@ export default function Page({ params }) {
       </h1>
 
       <section className="w-10/12 flex justify-center md:justify-end">
-        <button className="text-white bg-green p-2 w-[8rem] md:p-3 hover:text-gray-100 hover:bg-[#13b113]">
-          Donar
-        </button>
+        <DonarButton />
       </section>
 
       <main className="flex flex-col items-center gap-6 md:gap-0 md:flex-row md:items-start justify-between w-[95%] text-black">
@@ -84,12 +84,7 @@ export default function Page({ params }) {
           </article>
 
           <article className="w-full flex justify-center">
-            <Link
-              href={``}
-              className="text-sm min-[350px]:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white bg-green p-2 md:p-3 hover:text-gray-100 hover:bg-[#13b113] flex items-center justify-center "
-            >
-              contáctenos
-            </Link>
+            <ContactUsButton />
           </article>
         </section>
       </main>

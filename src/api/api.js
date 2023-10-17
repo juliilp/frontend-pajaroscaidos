@@ -1,8 +1,9 @@
-import axios from 'axios'
+import axios from "axios";
 
 const api = axios.create({
-  baseURL: 'https://pajaros-caidos-backend.onrender.com',
+  // baseURL: 'https://pajaros-caidos-backend.onrender.com', // BACK RENDER
+  baseURL: "https://pajaros-caidos-back-end2-0-git-main-maxmdr2022.vercel.app", // BACK VERCEL
   withCredentials: true,
-})
+});
 
-export default api
+export default api;
