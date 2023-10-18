@@ -34,7 +34,7 @@ export default function Page() {
     first_name: "",
     last_name: "",
     country: "",
-    city: "",
+    province: "",
     phone_number: "",
   });
 
@@ -67,8 +67,6 @@ export default function Page() {
 
       if (response.status == 200) {
         const user = response.data;
-        console.log("newUser", user.newUser);
-
         Cookies.set("newUserId", JSON.stringify({ id: user.newUser.id }), {
           expires: 7,
         });
@@ -93,7 +91,7 @@ export default function Page() {
       first_name: "",
       last_name: "",
       country: "",
-      city: "",
+      province: "",
       phone_number: "",
     });
   };
@@ -174,13 +172,13 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="city"
+            name="province"
             onChange={handlerRegistro}
-            value={formRegister.city}
+            value={formRegister.province}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.city ? "visible" : "hidden" }}
+            style={{ visibility: errors.province ? "visible" : "hidden" }}
           >
             {errors.estado}
           </span>
