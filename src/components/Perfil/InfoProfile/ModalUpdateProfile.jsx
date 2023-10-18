@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FormUpdateProfile from "./ModalUpdateProfile/FormUpdateProfile";
+import { FormUpdatePasword } from "./ModalUpdateProfile/FormUpdatePasword";
 
 export default function ModalUpdateProfile({ user, toggleModal }) {
+  const [changeView, setChangeView] = useState("UpdateProfile");
+
   const handleCloseModal = (event) => {
     if (event.target.id === "outside") {
       toggleModal();
@@ -31,7 +34,12 @@ export default function ModalUpdateProfile({ user, toggleModal }) {
           >
             X
           </button>
-          <FormUpdateProfile user={user} />
+          {changeView == "UpdateProfile" && (
+            <FormUpdateProfile user={user} setChangeView={setChangeView} />
+          )}
+          {changeView == "UpdatePassword" && (
+            <FormUpdatePasword user={user} setChangeView={setChangeView} />
+          )}
         </div>
       </section>
     </article>

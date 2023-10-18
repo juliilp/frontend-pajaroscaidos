@@ -15,7 +15,7 @@ const fieldLabels = {
   phone_number: "Telefono",
 };
 
-export default function FormUpdateProfile({ user }) {
+export default function FormUpdateProfile({ user, setChangeView }) {
   const { setUserContext } = CustomContext();
   const [userUpdated, setUserUpdated] = useState({});
   const [errors, setErrors] = useState({});
@@ -27,6 +27,7 @@ export default function FormUpdateProfile({ user }) {
       ...userPrev,
       [id]: value,
     }));
+
     validateUpdateUser(id, value, errors, setErrors);
   };
 
@@ -50,11 +51,17 @@ export default function FormUpdateProfile({ user }) {
     }
   };
 
+  const changeView = (event) => {
+    event.preventDefault();
+
+    setChangeView("UpdatePassword");
+  };
+
   return (
     <section className="flex flex-col justify-center items-center w-full">
       {user.avatar && user.avatar.secure_url && <UpdateAvatar user={user} />}
 
-      <h2 className="t text-xl font-semibold mt-2">Editar perfil</h2>
+      <h2 className="text-xl font-semibold mt-2">Editar perfil</h2>
       <form
         className="flex flex-col items-center gap-1 w-full"
         onSubmit={handleSubmit}
@@ -76,9 +83,21 @@ export default function FormUpdateProfile({ user }) {
             )}
           </div>
         ))}
-        <div className="w-full flex justify-end">
+        <div
+          className={`w-full flex mt-4 ${
+            user.registerWithAuth0 ? "justify-end" : "justify-between"
+          }`}
+        >
+          {!user.registerWithAuth0 && (
+            <button
+              className="py-1 px-3 rounded-md bg-[#7e7e7e]"
+              onClick={changeView}
+            >
+              <span className="font-semibold">Cambiar contraseña</span>
+            </button>
+          )}
           <button
-            className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2 disabled:bg-[#56af48] disabled:cursor-not-allowed"
+            className="py-1 px-3 rounded-md bg-[#60EA4A] disabled:bg-[#56af48] disabled:cursor-not-allowed"
             type="submit"
             disabled={Object.keys(errors).length > 0}
           >
