@@ -14,10 +14,10 @@ export default function Page() {
         <Image src={Banner} alt="banner-tucan" fill priority />
       </header>
       <section className="font-semibold text-center">
-        <h1 className="text-[#0C6410] text-xl md:text-2xl pt-8 pb-4">
+        <h1 className="text-[#0C6410] text-xl md:text-3xl pt-8 pb-4">
           ACTOS DE CRUELDAD Y MALTRATO
         </h1>
-        <p>
+        <p className="text-lg">
           Existen diversas formas de crueldad y maltrato que sería imposible
           identificarlas a todas, sin embargo, algunas de ellas pueden consistir
           en:

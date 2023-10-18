@@ -22,7 +22,7 @@ export default function page() {
         </article>
       </section>
 
-      <section>
+      <section className="lg:mx-20">
         <TituloCrueldadMaltrato />
       </section>
       <section>

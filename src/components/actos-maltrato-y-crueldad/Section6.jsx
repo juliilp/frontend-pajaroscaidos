@@ -1,13 +1,13 @@
 export default function Section6() {
   return (
     <section className="px-6 md:px-24 py-6">
-      <h2 className="text-[#0C6410] underline font-semibold text-xl mb-3 uppercase">
+      <h2 className="text-[#0C6410] underline font-semibold text-2xl mb-3 uppercase">
         Legislacion
       </h2>
-      <p>
+      <p className="text-lg">
         <a
           className="underline font-semibold text-lg"
-           target="_blank"
+          target="_blank"
           href="https://www.pajaroscaidos.org.ar/Ley-14346/"
         >
           Ley Nº 14.346:
@@ -16,7 +16,7 @@ export default function Section6() {
         actos de crueldad a los animales. Ley Nº 27.711 Actividad deportiva.
         Colombofilia.
       </p>
-      <p>
+      <p className="text-lg">
         <a
           className="underline font-semibold text-lg"
           target="_blank"
