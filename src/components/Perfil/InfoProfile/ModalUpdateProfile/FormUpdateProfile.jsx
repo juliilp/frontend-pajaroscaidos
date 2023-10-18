@@ -4,13 +4,14 @@ import validateUpdateUser from "@/helpers/ValidateUpdateUser";
 import { CustomContext } from "@/store/ContextProvider";
 import { useState } from "react";
 import UpdateAvatar from "./FormUpdateProfile/UpdateAvatar";
+import { BiLoaderAlt } from "react-icons/bi";
 
 const fieldLabels = {
   nick_name: "Nickname",
   first_name: "Nombre",
   last_name: "Apellido",
   country: "Pais",
-  city: "Ciudad",
+  province: "Estado/Provincia",
   birth_date: "Fecha de nacimiento",
   phone_number: "Telefono",
 };
@@ -19,6 +20,7 @@ export default function FormUpdateProfile({ user, setChangeView }) {
   const { setUserContext } = CustomContext();
   const [userUpdated, setUserUpdated] = useState({});
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUserUpdated = (event) => {
     const { id, value } = event.target;
@@ -34,20 +36,28 @@ export default function FormUpdateProfile({ user, setChangeView }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (Object.keys(errors).length === 0) {
-      if (userUpdated.birth_date) {
-        setUserUpdated((userPrev) => ({
-          ...userPrev,
-          birth_date: parseBackendDate(userUpdated.birth_date),
-        }));
-      }
+    try {
+      setIsLoading(true);
 
-      const data = await UpdateUser(userUpdated, user.id);
-      if (data.status === "success") {
-        setUserContext(data.userUpdated);
-        setUserUpdated({});
-        alert("El usuario se ha actualizado correctamente!");
+      if (Object.keys(errors).length === 0) {
+        if (userUpdated.birth_date) {
+          setUserUpdated((userPrev) => ({
+            ...userPrev,
+            birth_date: parseBackendDate(userUpdated.birth_date),
+          }));
+        }
+
+        const data = await UpdateUser(userUpdated, user.id);
+        if (data.status === "success") {
+          setUserContext(data.userUpdated);
+          setUserUpdated({});
+          alert("El usuario se ha actualizado correctamente!");
+        }
       }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -101,7 +111,15 @@ export default function FormUpdateProfile({ user, setChangeView }) {
             type="submit"
             disabled={Object.keys(errors).length > 0}
           >
-            <span className="font-semibold">Actualizar</span>
+            {isLoading ? (
+              <BiLoaderAlt
+                className="animate-spin mx-4"
+                size={20}
+                color="#0C6410"
+              />
+            ) : (
+              <span className="font-semibold">Actualizar</span>
+            )}
           </button>
         </div>
       </form>
