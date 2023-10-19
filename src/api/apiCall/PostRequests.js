@@ -48,6 +48,7 @@ export async function getPost(postId) {
 
 export const createNewPost = async (userId, newPost) => {
   try {
+    if(!userId) throw new Error( 'UserId is required')
     const formData = new FormData();
     formData.append("title", newPost.title);
     formData.append("description", newPost.description);
