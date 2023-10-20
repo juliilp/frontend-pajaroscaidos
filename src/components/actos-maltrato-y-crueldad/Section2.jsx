@@ -4,10 +4,10 @@ import Bird from "@/../public/images/Actos de Maltrato y crueldad/actosmaltratoy
 export default function EntretenimientoYDiversion() {
   return (
     <section className="px-6 md:px-24 pt-6">
-      <h2 className="text-[#0C6410] underline font-semibold text-xl mb-3 uppercase">
+      <h2 className="text-[#0C6410] underline font-semibold text-2xl mb-3 uppercase">
         Entretenimiento y diversion
       </h2>
-      <p>
+      <p className="text-lg">
         <strong>
           La utilización de animales y por consiguiente de aves en espectáculos,
           ferias y cualquier otra actividad de entretenimiento puede constituir

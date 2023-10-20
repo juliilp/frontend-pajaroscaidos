@@ -5,7 +5,7 @@ export default function TituloCrueldadMaltrato() {
         <h2 className="m-auto font-bold text-3xl leading-16 text-green">
           CRUELDAD Y MALTRATO{" "}
         </h2>
-        <p className="p-2 m-auto font-bold text-xl leading-10 text-gray-600">
+        <p className="p-2 m-auto font-medium text-lg  ">
           Las aves, como el resto de los animales, son víctimas de actos crueles
           y maltrato por parte de los seres humanos. Existen leyes, normas que
           protegen a las aves asi como a todos los animales, aunque en muchos
