@@ -65,9 +65,12 @@ export default function Navbar() {
               <>
                 <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                   <span className="text-white font-semibold w-[100px] truncate">
-                    {user.nick_name.length > 12
-                      ? user.nick_name.slice(0, 9) + "..."
-                      : user.nick_name}
+                    {user != undefined 
+                      ? user.nick_name.length > 12
+                        ? user.nick_name.slice(0, 9) + "..."
+                        : user.nick_name
+                      : "..."
+                    }
                   </span>
                 </Link>
                 {user.avatar.avatar_url !== "-" ? (
