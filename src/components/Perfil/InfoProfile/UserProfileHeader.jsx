@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Banner from "@/../public/images/Perfil/BannerPerfil.webp";
+import Banner from "@/../public/images/Perfil/bannerPerfil.webp";
 
 export default function UserProfileHeader({ avatar, admin }) {
   return (
