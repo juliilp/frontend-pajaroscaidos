@@ -8,7 +8,7 @@ import Image from "next/image";
 import Alerts from "../Alerts/Alerts";
 import { createNewPost } from "@/api/apiCall/PostRequests";
 
-export default function ModalnewPost({ setvisible }) {
+export default function ModalnewPost({ setvisible, setLoading, setRefresh }) {
   const { UserContext } = CustomContext();
   const [seeAlert, setSeeAlert] = useState(false);
   const [visibleErrors, setVisibleError] = useState(false);
@@ -89,6 +89,7 @@ export default function ModalnewPost({ setvisible }) {
 
         if (response) {
           setSeeAlert(true);
+          
         }
       } catch (error) {
         console.error("Error:", error);
@@ -97,9 +98,16 @@ export default function ModalnewPost({ setvisible }) {
       }
     }
   };
-
+  
   if (newPost.image && newPost.image instanceof Blob) {
     imagePreview = URL.createObjectURL(newPost.image);
+  }
+  const closeEffect=()=>{
+    setvisible()
+    setLoading(true)
+    setTimeout(() => {
+      setRefresh(Math.random())
+    }, 5000);
   }
 
   return (
@@ -109,7 +117,7 @@ export default function ModalnewPost({ setvisible }) {
           title={"Exito!"}
           textdetails={"El post fue subido correctamente"}
           closemodal={closeAlert}
-          callback={setvisible}
+          callback={closeEffect}
         />
       )}
       <div className="flex justify-center my-6">
