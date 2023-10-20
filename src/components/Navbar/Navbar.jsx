@@ -69,7 +69,7 @@ export default function Navbar() {
                       user.nick_name.length > 12
                         ? user.nick_name.slice(0, 9) + "..."
                         : user.nick_name
-                    ) : null}
+                    ) : ""}
                   </span>
                 </Link>
                 {user && user.avatar && user.avatar.avatar_url !== "-" ? (
