@@ -34,7 +34,7 @@ export default function Page() {
     first_name: "",
     last_name: "",
     country: "",
-    city: "",
+    province: "",
     phone_number: "",
   });
 
@@ -93,7 +93,7 @@ export default function Page() {
       first_name: "",
       last_name: "",
       country: "",
-      city: "",
+      province: "",
       phone_number: "",
     });
   };
@@ -174,13 +174,13 @@ export default function Page() {
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
-            name="city"
+            name="province"
             onChange={handlerRegistro}
-            value={formRegister.city}
+            value={formRegister.province}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.city ? "visible" : "hidden" }}
+            style={{ visibility: errors.province ? "visible" : "hidden" }}
           >
             {errors.estado}
           </span>
