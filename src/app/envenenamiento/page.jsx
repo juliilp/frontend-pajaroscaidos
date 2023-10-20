@@ -33,6 +33,7 @@ export default function page() {
             establecer que: “El/la que fabrique, venda, o utilice cebos tóxicos
             que provoquen el envenenamiento de aves es sancionado/a con multa de
             cien (100) a setecientas cincuenta (750) unidades fijas”.
+            <br />
           </p>
           <Image
             src={EnvenenamientoFoto}
