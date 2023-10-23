@@ -2,7 +2,10 @@ import api from "../../api/api";
 import Cookies from "js-cookie";
 import { MESSAGE_TYPES } from "../dictionary/dictionary";
 import { formDataConver } from "@/helpers/formDataConvert";
+import jwt from "jsonwebtoken";
 import axios from "axios";
+
+const key = process.env.NEXT_PUBLIC_SECRET_KEY_DATA_JWT;
 
 export async function getBannerImages() {
   try {
@@ -38,8 +41,10 @@ export async function loginUser(data) {
     if (response.status == 200) {
       const userBackEnd = response.data;
 
-      if (userBackEnd.user.userEmailValidate === false) {
-        Cookies.set("newUserId", JSON.stringify({ id: userBackEnd.user.id }), {
+      const JWTDecoded = jwt.verify(userBackEnd.user, key);
+
+      if (JWTDecoded.user.userEmailValidate === false) {
+        Cookies.set("newUserId", JSON.stringify({ id: JWTDecoded.user.id }), {
           expires: 7,
         });
 
