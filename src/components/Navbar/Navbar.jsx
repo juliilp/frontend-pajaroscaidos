@@ -73,11 +73,7 @@ export default function Navbar() {
                 {user.avatar.avatar_url !== "-" ? (
                   <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                     <Image
-                      src={
-                        user.avatar.avatar_url
-                          ? user.avatar.avatar_url
-                          : user.avatar.secure_url
-                      }
+                      src={user.avatar.avatar_url ? user.avatar.avatar_url : user.avatar.secure_url}
                       alt="Avatar"
                       width={50}
                       height={50}
@@ -89,10 +85,7 @@ export default function Navbar() {
                     <BiSolidUser size={35} color="white" />
                   </Link>
                 )}
-                <button
-                  onClick={(e) => handleLogout(e)}
-                  className="text-white font-semibold"
-                >
+                <button onClick={(e) => handleLogout(e)} className="text-white font-semibold">
                   Cerrar sesión
                 </button>
               </>
