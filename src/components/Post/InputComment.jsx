@@ -1,13 +1,18 @@
-import { createComment, getPost } from "@/api/apiCall/PostRequests";
-import Cookies from "js-cookie";
 import React, { useState } from "react";
+import { createComment, getPost } from "@/api/apiCall/PostRequests";
 import Image from "next/image";
+import { CustomContext } from "@/store/ContextProvider";
+import { useEffect } from "react";
 
 const InputComment = ({ onCommentSubmit, idPost }) => {
-  const userCookie = Cookies.get("user");
-  const user = userCookie ? JSON.parse(userCookie) : null;
+  const { UserContext } = CustomContext();
+  const [user, setUser] = useState();
   const [comment, setComment] = useState("");
   const [upLoadingComment, setUpLoadingComment] = useState(false);
+
+  useEffect(() => {
+    setUser(UserContext);
+  }, [UserContext]);
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
@@ -20,20 +25,20 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
     };
 
     try {
-      if (comment.trim() !== ""&&!upLoadingComment) {
-        setUpLoadingComment(true)
-        await createComment(body, idPost)
-        await getPost(idPost).then(res=>{
+      if (comment.trim() !== "" && !upLoadingComment) {
+        setUpLoadingComment(true);
+        await createComment(body, idPost);
+        await getPost(idPost).then((res) => {
           onCommentSubmit(res.publication.comments);
           setComment("");
-          setUpLoadingComment(false)
+          setUpLoadingComment(false);
         });
       }
     } catch (error) {
-      alert('No se pudo crear el comentario')
+      alert("No se pudo crear el comentario");
       console.error("Error updating comment:", error);
-    }finally{
-      setUpLoadingComment(false)
+    } finally {
+      setUpLoadingComment(false);
     }
   };
 

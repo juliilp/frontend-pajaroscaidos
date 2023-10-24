@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
+import { CustomContext } from "@/store/ContextProvider";
 import {
   deleteReaction,
   createReaction,
   getPost,
 } from "@/api/apiCall/PostRequests";
-import Cookies from "js-cookie";
 
 export default function Likesbox({ idPost, postlikes, updateLikes }) {
-  const userCookie = Cookies.get("user");
-  const user = userCookie ? JSON.parse(userCookie) : null;
+  const { UserContext } = CustomContext();
+  const [user, setUser] = useState();
   const [likes, setLikes] = useState(postlikes.length);
   const [userLike, setUserLike] = useState(false);
   const [likeInProgress, setLikeInProgress] = useState(false);
+
+  useEffect(() => {
+    setUser(UserContext);
+  }, [UserContext]);
 
   useEffect(() => {
     if (!user) return;
@@ -28,7 +32,7 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     const data = {
       idPost,
       reaction: reaction,
-      idUser: user?.id,
+      idUser: user.id,
     };
 
     try {
