@@ -3,7 +3,6 @@ import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
 import {
   deleteReaction,
   createReaction,
-  getAllPosts,
   getPost,
 } from "@/api/apiCall/PostRequests";
 import Cookies from "js-cookie";
@@ -19,7 +18,7 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     if (!user) return;
     const isUserReacted = postlikes.some((like) => like.userId === user.id);
     setUserLike(isUserReacted);
-  }, [likes, user]);
+  }, [likes, postlikes, user]);
 
   const likepost = async (reaction) => {
     if (!user || likeInProgress) return;
@@ -35,9 +34,13 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     try {
       if (userLike && !likeInProgress) {
         const likeId = postlikes.find((like) => like.userId === user.id).id;
-        await deleteReaction(likeId).then((res) => setLikes(userLike ? likes - 1 : likes + 1))
+        await deleteReaction(likeId).then((res) =>
+          setLikes(userLike ? likes - 1 : likes + 1)
+        );
       } else {
-        await createReaction(data).then(res => setLikes(userLike ? likes - 1 : likes + 1))
+        await createReaction(data).then((res) =>
+          setLikes(userLike ? likes - 1 : likes + 1)
+        );
       }
 
       const updatedPostData = await getPost(idPost);
