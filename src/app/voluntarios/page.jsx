@@ -9,7 +9,7 @@ export default function Voluntarios() {
   const [users, setUsers] = useState();
   useEffect(() => {
     async function users() {
-      const { data } = await api("user/all?userStatus=isVoluntary");
+      const { data } = await api("user/voluntary");
       setUsers(data.users.users);
     }
     users();
@@ -35,7 +35,7 @@ export default function Voluntarios() {
       </section>
 
       <article className="flex flex-col md:grid grid-cols-2 gap-12 lg:grid-cols-3 lg:gap-20 xl:grid-cols-4">
-        {users && users.length > 1
+        {users && users.length > 0
           ? users.map(({ description, first_name, avatar }, key) => {
               return (
                 <CardVoluntario
