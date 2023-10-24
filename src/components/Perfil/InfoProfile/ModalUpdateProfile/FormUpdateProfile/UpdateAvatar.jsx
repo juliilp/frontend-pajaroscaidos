@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { BiEditAlt } from "react-icons/bi";
 
 export default function UpdateAvatar({ user }) {
-  const { setUserContext } = CustomContext();
+  const { setJWTContext } = CustomContext();
   const [toggleIcon, setToggleIcon] = useState(false);
   const [newAvatar, setNewAvatar] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -27,7 +27,7 @@ export default function UpdateAvatar({ user }) {
 
       const data = await UpdateUser(formData, user.id);
       if (data.status === "success") {
-        setUserContext(data.userUpdated);
+        setJWTContext(data.user);
         setNewAvatar(null);
         setImagePreview(null);
         alert("La imagen se ha actualizado correctamente!");
@@ -87,10 +87,7 @@ export default function UpdateAvatar({ user }) {
         </div>
       )}
       {imagePreview && (
-        <button
-          onClick={handleSubmit}
-          className="py-1 px-3 rounded-md bg-[#60EA4A]"
-        >
+        <button onClick={handleSubmit} className="py-1 px-3 rounded-md bg-[#60EA4A]">
           <span className="font-semibold">Subir imagen</span>
         </button>
       )}
