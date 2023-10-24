@@ -4,7 +4,7 @@ import Comentarios from "@/components/Post/Comentarios";
 import { getPost } from "@/api/apiCall/PostRequests";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
-import OtherContent from "@/components/Post/OtherContent";
+import OtherContent from "@/components/Post/OtherContent"; //Para borrar??
 import InputComment from "@/components/Post/InputComment";
 import Image from "next/image";
 import ImgPortada from "@/../public/images/foro-id/Portada.png";
@@ -47,7 +47,7 @@ export default function Page({ params }) {
   if (!publication) {
     return;
   }
-    //console.log(publication);
+
   return (
     <section
       className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
