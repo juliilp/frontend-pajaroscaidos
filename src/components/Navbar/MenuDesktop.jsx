@@ -172,11 +172,11 @@ export default function MenuDesktop() {
               </Link>,
               <Link
                 key="opcion4"
-                href="/galeria-solidaria"
+                href="/tienda-solidaria"
                 onClick={closeMenu}
                 prefetch={false}
               >
-                Galeria Solidaria
+                Tienda Solidaria
               </Link>,
               <Link
                 key="opcion5"
