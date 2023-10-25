@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { BsFillSuitHeartFill, BsSuitHeart } from "react-icons/bs";
+import { CustomContext } from "@/store/ContextProvider";
 import {
   deleteReaction,
   createReaction,
-  getAllPosts,
   getPost,
 } from "@/api/apiCall/PostRequests";
-import Cookies from "js-cookie";
 
 export default function Likesbox({ idPost, postlikes, updateLikes }) {
-  const userCookie = Cookies.get("user");
-  const user = userCookie ? JSON.parse(userCookie) : null;
+  const { UserContext } = CustomContext();
+  const [user, setUser] = useState();
   const [likes, setLikes] = useState(postlikes.length);
   const [userLike, setUserLike] = useState(false);
   const [likeInProgress, setLikeInProgress] = useState(false);
 
   useEffect(() => {
+    setUser(UserContext);
+  }, [UserContext]);
+
+  useEffect(() => {
     if (!user) return;
     const isUserReacted = postlikes.some((like) => like.userId === user.id);
     setUserLike(isUserReacted);
-  }, [likes, user]);
+  }, [likes, postlikes, user]);
 
   const likepost = async (reaction) => {
     if (!user || likeInProgress) return;
@@ -29,15 +32,19 @@ export default function Likesbox({ idPost, postlikes, updateLikes }) {
     const data = {
       idPost,
       reaction: reaction,
-      idUser: user?.id,
+      idUser: user.id,
     };
 
     try {
       if (userLike && !likeInProgress) {
         const likeId = postlikes.find((like) => like.userId === user.id).id;
-        await deleteReaction(likeId).then((res) => setLikes(userLike ? likes - 1 : likes + 1))
+        await deleteReaction(likeId).then((res) =>
+          setLikes(userLike ? likes - 1 : likes + 1)
+        );
       } else {
-        await createReaction(data).then(res => setLikes(userLike ? likes - 1 : likes + 1))
+        await createReaction(data).then((res) =>
+          setLikes(userLike ? likes - 1 : likes + 1)
+        );
       }
 
       const updatedPostData = await getPost(idPost);

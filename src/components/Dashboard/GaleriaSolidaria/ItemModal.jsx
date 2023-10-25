@@ -1,11 +1,33 @@
-import { createNewItem, deleteShopItem, editShopItem } from "@/api/apiCall/functions";
+import {
+  createNewItem,
+  deleteShopItem,
+  editShopItem,
+} from "@/api/apiCall/functions";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Alerts from "@/components/Alerts/Alerts";
 import FormShop from "./FormShop";
 import ShopCategories from "./ShopCategories";
 
-export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPage }) {
+const objetItem = {
+  image: [],
+  title: "",
+  description: "",
+  categories: [""],
+  category: [],
+  price: 5,
+};
+
+export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
+  const [startEdit, setStartEdit] = useState(false);
+  const [seeAlert, setSeeAlert] = useState(false);
+  const [successFullAlert, setSuccesFullAlert] = useState({
+    state: false,
+    message: "",
+  });
+  const [categoriesToDelete, setCategoriesToDelete] = useState([]);
+  const [imageToDelete, setimageToDelete] = useState([]);
+
   useEffect(() => {
     const SideBarAdmin = document.getElementById("SideBarAdmin");
     const footer = document.getElementById("footer");
@@ -16,7 +38,9 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
       footer && (footer.style.position = "relative");
       Body && (Body.style.overflow = "hidden");
     };
+
     effect();
+
     return () => {
       SideBarAdmin && (SideBarAdmin.style.zIndex = "0");
       footer && (footer.style.zIndex = "0");
@@ -24,30 +48,17 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
       Body && (Body.style.overflow = "auto");
     };
   }, []);
-  const objetItem = {
-    image: [],
-    title: "",
-    description: "",
-    categories: [""],
-    category: [],
-    price: 5,
-  };
+
   const [newItem, setNewItem] = useState(objetItem);
   useEffect(() => {
     itemToEdit ? setNewItem(itemToEdit) : null;
-  }, []);
+  }, [itemToEdit]);
 
   const [mode, setMode] = useState({
     create: ModalType === "create",
     edit: ModalType === "edit",
     delete: false,
   });
-
-  const [startEdit, setStartEdit] = useState(false);
-  const [seeAlert, setSeeAlert] = useState(false);
-  const [successFullAlert, setSuccesFullAlert] = useState({ state: false, message: "" });
-  const [categoriesToDelete, setCategoriesToDelete] = useState([]);
-  const [imageToDelete, setimageToDelete] = useState([]);
 
   const handlePhotoChange = (event) => {
     const files = event.target.files;
@@ -77,21 +88,23 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
     setTimeout(() => {
       closeModal();
       setNewItem(objetItem);
-      // refreshPage();
     }, 3000);
   };
+
   const handleCreate = () => {
     seeAlert
       ? createNewItem(newItem)
-          .then((res) => successFullChanges())
+          .then(() => successFullChanges())
           .catch((error) => console.log(error))
       : setSeeAlert(true);
   };
+
   const closeAlert = () => {
     setSeeAlert(false);
     closeModal();
     setMode({ ...mode, delete: false });
   };
+
   const handleEdit = () => {
     const edited = {
       ...newItem,
@@ -100,18 +113,20 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
     };
     seeAlert
       ? editShopItem(newItem.id, edited, categoriesToDelete, imageToDelete)
-          .then((res) => successFullChanges())
+          .then(() => successFullChanges())
           .catch((error) => console.log(error))
       : setSeeAlert(true);
   };
+
   const handleDelete = () => {
     setMode({ ...mode, delete: true });
     seeAlert
       ? deleteShopItem(newItem.id)
-          .then((res) => successFullChanges())
+          .then(() => successFullChanges())
           .catch((error) => console.log(error))
       : setSeeAlert(true);
   };
+
   let imagePreview = [];
 
   if (newItem.image && newItem.image[0] instanceof Blob) {
@@ -165,7 +180,10 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
              min-h-[28rem] gap-8 p-2"
       >
         <section className="flex justify-end  w-full p-1">
-          <button onClick={closeModal} className="text-red-700  text-xl font-bold ">
+          <button
+            onClick={closeModal}
+            className="text-red-700  text-xl font-bold "
+          >
             X
           </button>
         </section>
@@ -190,7 +208,12 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
               <div className="flex gap-4">
                 {imagePreview.map((e, index) => (
                   <div key={index}>
-                    <Image src={e} alt={`ImagenDos ${index}`} width={100} height={100} />
+                    <Image
+                      src={e}
+                      alt={`ImagenDos ${index}`}
+                      width={100}
+                      height={100}
+                    />
                   </div>
                 ))}
               </div>
@@ -208,7 +231,8 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
               htmlFor="selectimage"
               className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]"
             >
-              {newItem.image && newItem.image.length > 0 ? "Cambiar" : "Añadir"} imagen
+              {newItem.image && newItem.image.length > 0 ? "Cambiar" : "Añadir"}{" "}
+              imagen
             </label>
           </article>
 
@@ -233,17 +257,26 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit, refreshPa
         </section>
         <article className="flex justify-end w-full">
           {mode.create && (
-            <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleCreate}>
+            <button
+              className="bg-green text-white p-1 px-4 rounded-lg"
+              onClick={handleCreate}
+            >
               Crear item
             </button>
           )}
           {mode.edit && !startEdit ? (
-            <button className="bg-red-500 text-white p-1 px-4 rounded-lg" onClick={handleDelete}>
+            <button
+              className="bg-red-500 text-white p-1 px-4 rounded-lg"
+              onClick={handleDelete}
+            >
               Borrar item
             </button>
           ) : (
             mode.edit && (
-              <button className="bg-green text-white p-1 px-4 rounded-lg" onClick={handleEdit}>
+              <button
+                className="bg-green text-white p-1 px-4 rounded-lg"
+                onClick={handleEdit}
+              >
                 Editar item
               </button>
             )
