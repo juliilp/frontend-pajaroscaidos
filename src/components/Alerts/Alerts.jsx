@@ -12,9 +12,9 @@ export default function Alerts({
   //para usar close modal:  crear funcion que cambie ese estado a false, y pasar esa funcion a este componente Alerts;
   //callback por si hay que ejecutar otra funcion cuando se pone en confirmar.
 
-  const onClick = () => {
+  const onClick = (result) => {
     if (callback) {
-      return callback();
+      return callback(result);
     }
     closemodal();
   };
@@ -41,14 +41,14 @@ export default function Alerts({
               {showCancelButton && (
                 <button
                   className=" bg-red-500 text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md"
-                  onClick={closemodal}
+                  onClick={() => onClick(false)}
                 >
                   {noConfirm ?? "Cancelar"}
                 </button>
               )}
               <button
                 className="bg-[#43851dc9] text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md"
-                onClick={onClick}
+                onClick={() => onClick(true)}
               >
                 {confirm ?? "Aceptar"}
               </button>

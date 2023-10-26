@@ -5,6 +5,7 @@ import { convertirFecha } from "@/utils/auxfunctions";
 import { CustomContext } from "@/store/ContextProvider";
 import { IoIosTrash } from "react-icons/io";
 import { deletePost } from "@/api/apiCall/PostRequests";
+import Alerts from "../Alerts/Alerts";
 
 export default function ContentPost({ publication, postId }) {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function ContentPost({ publication, postId }) {
   const { UserContext } = CustomContext();
   const [user, setUser] = useState();
   const [owner, setOwner] = useState();
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     setUser(UserContext);
@@ -20,15 +22,34 @@ export default function ContentPost({ publication, postId }) {
     }
   }, [UserContext, publication, user, userId]);
 
-  const handleDelete = async () => {
-    const response = await deletePost(postId);
-    console.log(response);
-    alert(response);
-    router.push("/foro");
+  const toggleAlert = () => {
+    setAlert(!alert);
+  };
+
+  const handleDelete = async (confirm) => {
+    if (confirm) {
+      try {
+        const response = await deletePost(postId);
+        console.log(response);
+        router.push("/foro");
+      } catch (error) {
+        console.error(error.message);
+      }
+    } else {
+      toggleAlert();
+    }
   };
 
   return (
     <>
+      {alert && (
+        <Alerts
+          title={"Confirmar"}
+          textdetails={"¿Estas seguro de borrar la publicación?"}
+          closemodal={toggleAlert}
+          callback={handleDelete}
+        />
+      )}
       <article className="flex w-full justify-end">
         <span className="text-[#727272]">Fecha :</span>
         <span className="text-[#727272]">{convertirFecha(createdAt)}</span>
@@ -42,7 +63,7 @@ export default function ContentPost({ publication, postId }) {
         {owner && (
           <button
             className="whitespace-nowrap text-red-600 font-medium"
-            onClick={handleDelete}
+            onClick={toggleAlert}
           >
             <IoIosTrash
               size={30}
