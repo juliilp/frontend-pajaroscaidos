@@ -89,7 +89,6 @@ export default function ModalnewPost({ setvisible, setLoading, setRefresh }) {
 
         if (response) {
           setSeeAlert(true);
-          
         }
       } catch (error) {
         console.error("Error:", error);
@@ -98,23 +97,23 @@ export default function ModalnewPost({ setvisible, setLoading, setRefresh }) {
       }
     }
   };
-  
+
   if (newPost.image && newPost.image instanceof Blob) {
     imagePreview = URL.createObjectURL(newPost.image);
   }
-  const closeEffect=()=>{
-    setvisible()
-    setLoading(true)
+  const closeEffect = () => {
+    setvisible();
+    setLoading(true);
     setTimeout(() => {
-      setRefresh(Math.random())
+      setRefresh(Math.random());
     }, 5000);
-  }
+  };
 
   return (
     <main className="bg-[#0000008a] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto">
       {seeAlert && (
         <Alerts
-          title={"Exito!"}
+          title={"Éxito!"}
           textdetails={"El post fue subido correctamente"}
           closemodal={closeAlert}
           callback={closeEffect}
