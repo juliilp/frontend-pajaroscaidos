@@ -1,19 +1,58 @@
-import { Suspense } from "react";
-import { convertirFecha } from "@/utils/auxfunctions";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { convertirFecha } from "@/utils/auxfunctions";
+import { CustomContext } from "@/store/ContextProvider";
+import { IoIosTrash } from "react-icons/io";
+import { deletePost } from "@/api/apiCall/PostRequests";
 
-export default function ContentPost({ publication }) {
-  const { title, createdAt, description, image } = publication;
+export default function ContentPost({ publication, postId }) {
+  const router = useRouter();
+  const { title, createdAt, description, image, userId } = publication;
+  const { UserContext } = CustomContext();
+  const [user, setUser] = useState();
+  const [owner, setOwner] = useState();
+
+  useEffect(() => {
+    setUser(UserContext);
+    if (user) {
+      setOwner(userId === user.id);
+    }
+  }, [UserContext, publication, user, userId]);
+
+  const handleDelete = async () => {
+    const response = await deletePost(postId);
+    console.log(response);
+    alert(response);
+    router.push("/foro");
+  };
+
   return (
     <>
       <article className="flex w-full justify-end">
         <span className="text-[#727272]">Fecha :</span>
         <span className="text-[#727272]">{convertirFecha(createdAt)}</span>
       </article>
-      <article className="w-full flex justify-center">
-        <Suspense fallback={<p>Cargando...</p>}>
-          <h1 className=" font-semibold  sm:text-2xl w-11/12">{title}</h1>
-        </Suspense>
+      <article
+        className={`w-full flex pl-3 items-center ${
+          owner ? "justify-between" : "justify-start"
+        }`}
+      >
+        <h1 className="font-semibold text-xl sm:text-2xl w-11/12">{title}</h1>
+        {owner && (
+          <button
+            className="whitespace-nowrap text-red-600 font-medium"
+            onClick={handleDelete}
+          >
+            <IoIosTrash
+              size={30}
+              className="cursor-pointer fill-red-600 block sm:hidden"
+            />
+            <span className="text-red-600 font-medium hidden sm:block">
+              Borrar publicación
+            </span>
+          </button>
+        )}
       </article>
       <div
         className="w-full bg-[#c2c2c2] h-[0.7rem]  border-2 border-lightgray rounded-lg"
@@ -21,11 +60,9 @@ export default function ContentPost({ publication }) {
       />
 
       <article className=" w-full sm:w-11/12  md:w-10/12 ">
-        <Suspense fallback={<p>Cargandoo....</p>}>
-          <p className="text-[#020000] sm:text-sm  md:text-base xl:text-lg ">
-            {description}
-          </p>
-        </Suspense>
+        <p className="text-[#020000] sm:text-sm  md:text-base xl:text-lg ">
+          {description}
+        </p>
       </article>
 
       {image[0].secure_url && (
