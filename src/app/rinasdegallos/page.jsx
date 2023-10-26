@@ -11,10 +11,10 @@ export default function page() {
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
         <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
       </section>
-      <h2 className="text-[#0C6410] text-center text-2xl md:text-3xl font-semibold my-12 ">
+      <h2 className="text-[#0C6410] text-center text-3xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS
       </h2>
-      <p className="px-6">
+      <p className="px-6 text-lg mx-4">
         Las riñas de gallos son otra de las actividaades crueles en la cual dos
         ejemplares de un mismo género o raza, especialmente preparados, combaten
         para el entretenimiento y apuestas de las personas humanas. <br />
@@ -68,9 +68,12 @@ export default function page() {
         cuerpos y que pueden experimentar dolor, placer, ansiedad y sufrimiento
         físico y psicológico en determinadas circunstancias&rdquo;.[3]
       </p>
-      <div className="w-[60%] my-6 mx-auto h-[5px] bg-[#C2C2C2] shadow-cardForo py-4" />
-      <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12">
-        <p className="px-6 max-w-[800px] col-span-4 lg:mx-auto lg:px-0 pr-6">
+      <div className="w-[60%] my-6 mx-auto h-[5px] " />
+      <div class=" border-4 border-gray-300 shadow-gray-700  w-auto  mx-10">
+        {""}
+      </div>
+      <div className="w-full flex flex-col lg:grid lg:grid-cols-6 mb-12 pt-6">
+        <p className="px-6 max-w-[800px] text-lg col-span-4 lg:mx-auto lg:px-0 pr-6">
           En la Provincia de San Luis, la Legislatura provincial sancionó en el
           año 2006 la Ley N° V-0546-2006 y el Poder Ejecutivo Provincial la
           promulgó mediante el Decreto N° 7500-MHP-2006. En la misma se

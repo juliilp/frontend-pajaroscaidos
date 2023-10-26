@@ -179,12 +179,12 @@ export default function MenuMobile({ closeMenu, admin }) {
               </Link>,
               <Link
                 key="opcion4"
-                href="/galeria-solidaria"
+                href="/tienda-solidaria"
                 className="focus:underline"
                 onClick={handleCloseMenu}
                 prefetch={false}
               >
-                Galeria Solidaria
+                Tienda Solidaria
               </Link>,
               <Link
                 key="opcion5"

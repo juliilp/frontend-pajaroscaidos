@@ -1,10 +1,10 @@
 export default function Section4() {
   return (
     <section className="px-6 md:px-24 pt-6">
-      <h2 className="text-[#0C6410] underline font-semibold text-xl mb-3 uppercase">
+      <h2 className="text-[#0C6410] underline font-semibold text-2xl mb-3 uppercase">
         Palomas mensajeras
       </h2>
-      <p>
+      <p className="text-lg">
         <strong>
           Si bien la Ley Nacional N° 27.171 declara a la Colombofilia como una
           actividad deportiva basada en competencias con palomas mensajeras de

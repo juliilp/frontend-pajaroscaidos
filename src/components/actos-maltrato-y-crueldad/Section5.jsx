@@ -1,10 +1,10 @@
 export default function Section5() {
   return (
     <section className="px-6 md:px-24 pt-6">
-      <h2 className="text-[#0C6410] underline font-semibold text-xl mb-3 uppercase">
+      <h2 className="text-[#0C6410] underline font-semibold text-2xl mb-3 uppercase">
         Tinturas / Coloracion
       </h2>
-      <p>
+      <p className="text-lg">
         Teñir o cambiar el color de las plumas, piel o pelaje de los animales es
         un acto de crueldad vedado por la Ley N° 14.346 en su artículo 3 inciso
         7) que prohíbe causarles torturas o sufrimientos innecesarios. <br />{" "}

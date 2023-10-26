@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import ContactUsButton from "./ContactUsbutton";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -9,6 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar, Pagination } from "swiper/modules";
+import VerMasButton from "./VerMasButton";
 
 export default function ShoppingCards({ id, title, image, description, redirect }) {
   return (
@@ -53,7 +53,7 @@ export default function ShoppingCards({ id, title, image, description, redirect 
         </p>
       </article>
 
-      <ContactUsButton id={id} />
+      <VerMasButton id={id} />
     </div>
   );
 }

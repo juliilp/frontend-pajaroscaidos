@@ -9,10 +9,10 @@ export default function page() {
         <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
       </section>
       <h2 className="text-[#0C6410] font-semibold text-center  text-2xl ">
-        CAZA DE AVES
+        SACRIFICIOS RELIGIOSOS
       </h2>
       <div className="md:grid md:grid-cols-5">
-        <p className="px-6 mb-8 md:mb-16 max-w-[800px] md:col-span-3 ">
+        <p className="px-6 mb-8 md:mb-16 max-w-[800px] md:col-span-3 text-lg">
           Los sacrificios religiosos son actos que llevan a cabo los seres
           humanos, mediante los cuales ofrecen a sus dioses la vida de animales
           para expiar sus culpas, pedir por cuestiones particulares o

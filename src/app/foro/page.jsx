@@ -18,9 +18,6 @@ import NuestraComunidadMobile from "@/components/NuestraComunidadMobile/NuestraC
 export default function Foros() {
   const router = useRouter();
   const [modal, setModal] = useState(false);
-  const setvisibilitymodal = () => {
-    setModal(!modal);
-  };
 
   const { logout } = CustomContext();
 
@@ -28,34 +25,46 @@ export default function Foros() {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [posts, setPosts] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(0);
 
+  const setvisibilitymodal = () => {
+    setModal(!modal);
+  };
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await getAllPosts(pageNumber, order);
 
       if (response === MESSAGE_TYPES.ERROR) {
         await logout();
-        router.push("/login");
+        router.push("/registro");
       } else {
         setPosts(response.publications);
         setTotalPages(response.totalPages);
+        setLoading(false);
       }
     };
 
     fetchPosts();
-  }, [pageNumber, order, logout, router, modal]);
+  }, [pageNumber, order, logout, router, refresh]);
 
   const handlePageChange = (pageNumber) => {
     setPageNumber(pageNumber);
   };
 
-  if (posts == undefined) {
+  if (posts == undefined || loading) {
     return <Loading />;
   }
 
   return (
     <article className="relative flex w-full flex-col gap-4 justify-center items-center xl:flex-row xl:items-start lg:gap-12 bg-[#e9e8e8] mt-[70px]">
-      {modal && <ModalnewPost setvisible={setvisibilitymodal} />}
+      {modal && (
+        <ModalnewPost
+          setvisible={setvisibilitymodal}
+          setLoading={setLoading}
+          setRefresh={setRefresh}
+        />
+      )}
 
       <section className="sm:bg-[#D9D9D9] rounded-lg w-full max-w-[800px] flex justify-center flex-col my-2 sm:my-8">
         <div className="flex sm:mt-3 text-[#756F70] justify-between w-full py-5 px-6">

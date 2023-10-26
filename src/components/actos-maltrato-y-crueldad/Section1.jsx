@@ -1,20 +1,20 @@
 export default function ActosDeCrueldadYMaltrato() {
   return (
     <section className="px-6 md:px-24 pt-6">
-      <h2 className="text-[#0C6410] underline font-semibold text-xl  mb-3 uppercase">
+      <h2 className="text-[#0C6410] underline font-semibold text-2xl  mb-3 uppercase">
         Actos de crueldad y maltrato - Ley Nacional Nº 14.346
       </h2>
-      <p>
+      <p className="text-lg">
         <strong>
           La Republica Argentina cuenta con una ley nacional, de aplicación en
           tdo su territorio, en el cual se describen los actos qe son
           considerado maltrato o crueldad hacia los animales.
         </strong>
       </p>
-      <h3 className="mb-2 font-semibold">
+      <h3 className="mb-2 font-semibold text-lg">
         Son considerados actos de maltrato:
       </h3>
-      <ul className="flex flex-col ml-3">
+      <ul className="flex flex-col ml-3 text-lg">
         <li>
           <strong>1°</strong> No alimentar en cantidad y calidad suficiente a
           los animales domésticos o cautivos.
@@ -41,10 +41,10 @@ export default function ActosDeCrueldadYMaltrato() {
           excedan notoriamente sus fuerzas.
         </li>
       </ul>
-      <h3 className="my-2 font-semibold">
+      <h3 className="my-2 font-semibold text-lg">
         Son considerados actos de crueldad:
       </h3>
-      <ul className="flex flex-col ml-3">
+      <ul className="flex flex-col ml-3 text-lg ">
         <li>
           <strong>1°</strong> Practicar la vivisección con fines que no sean
           científicamente demostrables y en lugares o por personas que no estén

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { BiSolidEditAlt } from "react-icons/bi";
 
 export default function ModalUpdateAboutMe({ user, toggleModal }) {
-  const { setUserContext } = CustomContext();
+  const { setJWTContext } = CustomContext();
   const [description, setDescription] = useState({});
 
   const handleCloseModal = (event) => {
@@ -26,7 +26,7 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
 
     const data = await UpdateUser(description, user.id);
     if (data.status === "success") {
-      setUserContext(data.userUpdated);
+      setJWTContext(data.user);
       setDescription({});
       alert("La descripcion se ha actualizado correctamente!");
     }
@@ -40,10 +40,7 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
         className="flex min-h-full items-center justify-center"
       >
         <div className="bg-[#D9D9D9] flex flex-col items-end px-6 pb-4 pt-3 rounded-xl w-[85%] md:w-[480px]">
-          <button
-            className="text-2xl text-red-600 font-bold"
-            onClick={toggleModal}
-          >
+          <button className="text-2xl text-red-600 font-bold" onClick={toggleModal}>
             X
           </button>
           <section className="flex flex-col items-center w-full gap-4">
@@ -58,10 +55,7 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
                 onChange={handleDescription}
                 className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
-              <button
-                onClick={handleSubmit}
-                className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2"
-              >
+              <button onClick={handleSubmit} className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2">
                 <span className="font-semibold">Actualizar</span>
               </button>
             </form>
