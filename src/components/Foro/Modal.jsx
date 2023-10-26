@@ -117,6 +117,7 @@ export default function ModalnewPost({ setvisible, setLoading, setRefresh }) {
           textdetails={"El post fue subido correctamente"}
           closemodal={closeAlert}
           callback={closeEffect}
+          showCancelButton={false}
         />
       )}
       <div className="flex justify-center my-6">
