@@ -287,7 +287,7 @@ export default function Page() {
 
         <button
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
-          //disabled={isRegistering}
+          disabled={isRegistering}
         >
           {isRegistering ? "Registrando..." : "Registrate"}
         </button>
