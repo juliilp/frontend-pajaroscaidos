@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
-import Imagen1 from "@/../public/images/rinasDeGallos/Imagen1.png";
-import Imagen2 from "@/../public/images/rinasDeGallos/Imagen2.png";
-import Imagen3 from "@/../public/images/rinasDeGallos/Imagen3.png";
-import bgimage from "@/../public/images/rinasDeGallos/Rinas.png";
+import Imagen1 from "@/../public/images/rinasDeGallos/Imagen1.webp";
+import Imagen2 from "@/../public/images/rinasDeGallos/Imagen2.webp";
+import Imagen3 from "@/../public/images/rinasDeGallos/Imagen3.webp";
+import bgimage from "@/../public/images/rinasDeGallos/Rinas.webp";
 
 export default function page() {
   return (
     <section className="mt-[70px] w-full bg-[#d8d8d8] h-full pb-16">
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+        <Image src={bgimage} alt="bg-tucan" fill priority className="w-full " />
       </section>
       <h2 className="text-[#0C6410] text-center text-3xl md:text-3xl font-semibold my-12 ">
         RIÑAS DE GALLOS

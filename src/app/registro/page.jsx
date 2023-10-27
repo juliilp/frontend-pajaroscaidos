@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import RegistroImagen from "../../assets/registro-login.png";
+import RegistroImagen from "@/assets/registro-login.webp";
 import Image from "next/image";
 import api from "@/api/api";
 import { validateCreateUser } from "@/utils/auxfunctions";

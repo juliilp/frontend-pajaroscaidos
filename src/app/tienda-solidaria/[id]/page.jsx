@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import ShoppingCards from "@/components/Shop/ShoppingCards";
 import { getItemShopById, getItemLimit } from "@/api/apiCall/functions";
 import Image from "next/image";
@@ -80,7 +79,9 @@ export default function Page({ params }) {
           </article>
 
           <article className="flex flex-col gap-3">
-            <span>tallas disponibles : {item.categories.map((e) => e.name)} </span>
+            <span>
+              tallas disponibles : {item.categories.map((e) => e.name)}{" "}
+            </span>
           </article>
 
           <article className="w-full flex justify-center">

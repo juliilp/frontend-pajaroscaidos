@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import image1 from "../../../public/images/about_us 1.png";
+import image1 from "@/../public/images/Nosotros/about_us 1.webp";
 import AboutSection2 from "@/components/Nosotros/AboutSection2";
 import AboutSection3 from "@/components/Nosotros/AboutSection3";
 import AboutSection4 from "@/components/Nosotros/AboutSection4";

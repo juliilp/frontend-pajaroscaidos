@@ -1,15 +1,15 @@
 import CardTiroAlPichon from "@/components/CardTiroAlPichon/CardTiroAlPichon";
 import Image from "next/image";
-import Imagen1 from "@/../public/images/tiroalpichon/Imagen1.png";
-import Imagen2 from "@/../public/images/tiroalpichon/Imagen2.png";
-import Imagen3 from "@/../public/images/tiroalpichon/Imagen3.png";
-import bgimage from "@/../public/images/tiroalpichon/TiroAlPichon.png";
+import Imagen1 from "@/../public/images/tiroalpichon/Imagen1.webp";
+import Imagen2 from "@/../public/images/tiroalpichon/Imagen2.webp";
+import Imagen3 from "@/../public/images/tiroalpichon/Imagen3.webp";
+import bgimage from "@/../public/images/tiroalpichon/TiroAlPichon.webp";
 
 function Tiroalpichon() {
   return (
     <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8  md:px-0 ">
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+        <Image src={bgimage} alt="bg-tucan" fill priority className="w-full " />
       </section>
       <h1 className="text-center font-semibold  text-2xl text-[#0C6410] mt-5 ">
         CAZA DEPORTIVA TIRO AL PICHON

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser } from "react-icons/bi";
-import Logo from "../../../public/images/navbar-logo.png";
+import Logo from "@/../public/images/Navbar/navbar-logo.webp";
 import MenuDesktop from "./MenuDesktop";
 import MenuMobile from "./MenuMobile";
 import Image from "next/image";
@@ -73,7 +73,11 @@ export default function Navbar() {
                 {user.avatar.avatar_url !== "-" ? (
                   <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                     <Image
-                      src={user.avatar.avatar_url ? user.avatar.avatar_url : user.avatar.secure_url}
+                      src={
+                        user.avatar.avatar_url
+                          ? user.avatar.avatar_url
+                          : user.avatar.secure_url
+                      }
                       alt="Avatar"
                       width={50}
                       height={50}
@@ -85,7 +89,10 @@ export default function Navbar() {
                     <BiSolidUser size={35} color="white" />
                   </Link>
                 )}
-                <button onClick={(e) => handleLogout(e)} className="text-white font-semibold">
+                <button
+                  onClick={(e) => handleLogout(e)}
+                  className="text-white font-semibold"
+                >
                   Cerrar sesión
                 </button>
               </>

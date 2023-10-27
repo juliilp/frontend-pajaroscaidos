@@ -1,9 +1,9 @@
 import Image from "next/image";
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
-import Consultas from "@/../public/images/contactanos-consultas.png";
-import Donaciones from "@/../public/images/contactanos-donaciones.png";
-import Contacto from "@/../public/images/contactanos-contacto.png";
-import Banner from "@/../public/images/contactanos/Banner-min.png";
+import Consultas from "@/../public/images/contactanos/contactanos-consultas.webp";
+import Donaciones from "@/../public/images/contactanos/contactanos-donaciones.webp";
+import Contacto from "@/../public/images/contactanos/contactanos-contacto.webp";
+import Banner from "@/../public/images/contactanos/Banner-min.webp";
 
 export default function page() {
   return (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bgimage from "../../../../public/images/Feria Villa Dominico/villa-dominico-BG.png";
+import bgimage from "@/../public/images/Feria Villa Dominico/villa-dominico-BG.webp";
 import ArraySection from "@/components/Acciones/Articulo2/ArraySection";
 
 export default function page() {

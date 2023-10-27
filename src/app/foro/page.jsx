@@ -1,7 +1,7 @@
 "use client";
 import CardForo from "@/components/CardForo";
 import React, { useState, useEffect } from "react";
-import ImagenForo from "../../../public/images/imagen-foro.png";
+import ImagenForo from "@/../public/images/Foro/imagen-foro.webp";
 import { CiClock2 } from "react-icons/ci";
 import { AiOutlineFileText } from "react-icons/ai";
 import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";

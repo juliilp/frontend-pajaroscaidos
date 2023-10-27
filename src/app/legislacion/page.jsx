@@ -1,8 +1,9 @@
 import LeyesNacionales from "@/components/Legislacion/LeyesNacionales";
 import LeyesProvinciales from "@/components/Legislacion/LeyesProvinciales";
 import Image from "next/image";
-import image1 from "../../../public/images/legislacion_1.png";
+import image1 from "@/../public/images/Legislacion/legislacion_1.webp";
 import Link from "next/link";
+
 export default function page() {
   return (
     <div className="font-semibold flex flex-col items-center gap-12 pt-[69px] pb-[5rem]">
