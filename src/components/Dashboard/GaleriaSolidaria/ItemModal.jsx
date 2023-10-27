@@ -136,7 +136,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
   }
 
   return (
-    <div className="bg-[#686868cc]  min-h-screen fixed h-full w-full flex justify-center items-center top-0 overflow-scroll">
+    <div className="bg-[#0000009c] fixed w-full h-full top-0 left-0 z-[9999999] duration-300 overflow-y-auto">
       {seeAlert && mode.delete && (
         <Alerts
           title={`Eliminar ${newItem.title}`}
@@ -174,114 +174,117 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
         />
       )}
 
-      <div
-        className="flex flex-col items-center w-9/12 h-[20rem] overflow-auto sm:overflow-visible sm:h-auto 
-            bg-[#C2C2C2] md:max-w-[45rem] md:min-w-[38rem] md:w-7/12 
-             min-h-[28rem] gap-8 p-2"
-      >
-        <section className="flex justify-end  w-full p-1">
-          <button
-            onClick={closeModal}
-            className="text-red-700  text-xl font-bold "
-          >
-            X
-          </button>
-        </section>
-
-        <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
-          <article className="w-6/12 flex flex-col justify-center items-center gap-6">
-            {mode.edit && newItem.image && newItem.image.length > 0 && (
-              <div className="flex gap-4">
-                {newItem.image?.map((e, index) => (
-                  <div key={index}>
-                    <Image
-                      src={imagePreview[0] ? imagePreview[index] : e.secure_url}
-                      alt={`Imagen ${index}`}
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-            {mode.create && imagePreview[0] && (
-              <div className="flex gap-4">
-                {imagePreview.map((e, index) => (
-                  <div key={index}>
-                    <Image
-                      src={e}
-                      alt={`ImagenDos ${index}`}
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-            <input
-              type="file"
-              name="image"
-              onChange={handlePhotoChange}
-              id="selectimage"
-              className="hidden"
-              accept="image/*"
-              multiple
-            />
-            <label
-              htmlFor="selectimage"
-              className=" cursor-pointer bg-green p-2 text-white hover:bg-[#337e33]"
-            >
-              {newItem.image && newItem.image.length > 0 ? "Cambiar" : "Añadir"}{" "}
-              imagen
-            </label>
-          </article>
-
-          <article className="w-11/12 h-[20rem] sm:w-6/12 bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
-            <FormShop
-              setNewItem={setNewItem}
-              startEdit={startEdit}
-              setStartEdit={setStartEdit}
-              newItem={newItem}
-              mode={mode}
-            />
-
-            <ShopCategories
-              newItem={newItem}
-              setNewItem={setNewItem}
-              startEdit={startEdit}
-              setStartEdit={setStartEdit}
-              setCategoriesToDelete={setCategoriesToDelete}
-              categoriesToDelete={categoriesToDelete}
-            />
-          </article>
-        </section>
-        <article className="flex justify-end w-full">
-          {mode.create && (
+      <div className="flex justify-center items-center h-full my-6">
+        <div className="flex flex-col items-end font-semibold rounded-xl pb-4 pt-3 px-6 max-w-[95%] bg-[#D9D9D9] lg:w-[720px]">
+          <section className="flex justify-end w-full p-1">
             <button
-              className="bg-green text-white p-1 px-4 rounded-lg"
-              onClick={handleCreate}
+              onClick={closeModal}
+              className="text-2xl text-red-600 font-bold"
             >
-              Crear item
+              X
             </button>
-          )}
-          {mode.edit && !startEdit ? (
-            <button
-              className="bg-red-500 text-white p-1 px-4 rounded-lg"
-              onClick={handleDelete}
-            >
-              Borrar item
-            </button>
-          ) : (
-            mode.edit && (
-              <button
-                className="bg-green text-white p-1 px-4 rounded-lg"
-                onClick={handleEdit}
+          </section>
+
+          <section className="flex flex-col items-center sm:flex-row sm:justify-between w-full">
+            <article className="w-[38%] flex flex-col justify-center items-center gap-6">
+              {mode.edit && newItem.image && newItem.image.length > 0 && (
+                <div className="flex gap-4 w-full">
+                  {newItem.image?.map((e, index) => (
+                    <div key={index} className="w-full">
+                      <Image
+                        src={
+                          imagePreview[0] ? imagePreview[index] : e.secure_url
+                        }
+                        alt={`Imagen ${index}`}
+                        width={100}
+                        height={100}
+                        className="w-full "
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+              {mode.create && imagePreview[0] && (
+                <div className="flex gap-4">
+                  {imagePreview.map((e, index) => (
+                    <div key={index}>
+                      <Image
+                        src={e}
+                        alt={`ImagenDos ${index}`}
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+              <input
+                type="file"
+                name="image"
+                onChange={handlePhotoChange}
+                id="selectimage"
+                className="hidden"
+                accept="image/*"
+                multiple
+              />
+              <label
+                htmlFor="selectimage"
+                className="bg-[#43851dc9] text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md cursor-pointer"
               >
-                Editar item
+                {newItem.image && newItem.image.length > 0
+                  ? "Cambiar"
+                  : "Añadir"}{" "}
+                imagen
+              </label>
+            </article>
+
+            <article className="w-[60%] bg-[#4F4F4F] flex flex-col gap-4  items-center p-4 min-h-[18rem] rounded-xl">
+              <FormShop
+                setNewItem={setNewItem}
+                startEdit={startEdit}
+                setStartEdit={setStartEdit}
+                newItem={newItem}
+                mode={mode}
+              />
+
+              <ShopCategories
+                newItem={newItem}
+                setNewItem={setNewItem}
+                startEdit={startEdit}
+                setStartEdit={setStartEdit}
+                setCategoriesToDelete={setCategoriesToDelete}
+                categoriesToDelete={categoriesToDelete}
+              />
+            </article>
+          </section>
+          <article className="flex justify-end w-full mt-4">
+            {mode.create && (
+              <button
+                className="bg-[#43851dc9] text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md"
+                onClick={handleCreate}
+              >
+                Crear item
               </button>
-            )
-          )}
-        </article>
+            )}
+            {mode.edit && !startEdit ? (
+              <button
+                className="bg-red-500 text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md"
+                onClick={handleDelete}
+              >
+                Borrar item
+              </button>
+            ) : (
+              mode.edit && (
+                <button
+                  className="bg-[#43851dc9] text-white py-1 px-3 sm:px-4 sm:py-2 rounded-md"
+                  onClick={handleEdit}
+                >
+                  Editar item
+                </button>
+              )
+            )}
+          </article>
+        </div>
       </div>
     </div>
   );

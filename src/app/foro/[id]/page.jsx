@@ -96,7 +96,7 @@ export default function Page({ params }) {
                 p-8 pt-4 pb-6 flex flex-col items-center gap-7 "
           id="Post"
         >
-          <ContentPost publication={publication} />
+          <ContentPost publication={publication} postId={params.id} />
           <div className="flex items-center gap-6 w-full justify-between flex-col sm:flex-row">
             <div className="w-full sm:w-[80%]">
               <InputComment
