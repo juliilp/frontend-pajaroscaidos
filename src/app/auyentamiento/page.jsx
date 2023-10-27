@@ -1,11 +1,12 @@
 import Image from "next/image";
-import auyentamientoFoto from "@/../public/images/auyentamiento/auyentamientoFoto.jpg";
-import bgimage from "@/../public/images/auyentamiento/auyentamiento.jpg";
-export default function page() {
+import auyentamientoFoto from "@/../public/images/auyentamiento/auyentamientoFoto.webp";
+import bgimage from "@/../public/images/auyentamiento/auyentamiento.webp";
+
+export default function Page() {
   return (
-    <section className="w-full flex flex-col justify-center items-center gap-8 pb-16 ">
+    <section className="w-full flex flex-col justify-center items-center gap-8 pb-16 mt-[70px]">
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+        <Image src={bgimage} alt="bg-tucan" fill priority className="w-full " />
       </section>
       <h2 className="text-[#0C6410] text-center text-3xl md:text-3xl font-semibold my-4 ">
         AUYENTAMIENTO

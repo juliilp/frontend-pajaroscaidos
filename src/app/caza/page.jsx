@@ -1,12 +1,12 @@
-import Caza from "@/../public/images/caza/caza.png";
-import Banner from "@/../public/images/caza/caza-banner-min.png";
+import Caza from "@/../public/images/caza/caza.webp";
+import Banner from "@/../public/images/caza/caza-banner-min.webp";
 import Image from "next/image";
 
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
-      <div className="w-full xl:h-56 sm:h-48 h-32 relative">
-        <Image src={Banner} alt="Banner caza" fill priority={true} />
+      <div className="w-full 2xl:h-80 xl:h-56 sm:h-48 h-32 relative">
+        <Image src={Banner} alt="Banner caza" fill priority />
       </div>
       <h2 className="text-[#0C6410] font-semibold text-3xl">CAZA DE AVES</h2>
       <div className="md:grid md:grid-cols-2">

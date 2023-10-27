@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import LoginImagen from "../../../assets/registro-login.png";
+import LoginImagen from "@/assets/registro-login.webp";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { validateEmail } from "@/utils/auxfunctions";

@@ -1,10 +1,11 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import image1 from "../../../public/images/voluntarios1.png";
-import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
 import api from "@/api/api";
-import { useEffect, useState } from "react";
+import image1 from "../../../public/images/Voluntarios/voluntarios1.webp";
+import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
 import CardVoluntarioLoading from "@/components/CardVoluntario/CardVoluntarioLoading";
+
 export default function Voluntarios() {
   const [users, setUsers] = useState();
   useEffect(() => {

@@ -2,11 +2,12 @@ import EncontreUnAve from "@/components/EncontreUnAve/EncontreUnAve";
 import Image from "next/image";
 import React from "react";
 import { DataEncontreUnAve } from "./DataEncontreUnAve";
-import bgimage from "@/../public/images/encontreunave/EncontreUnAve.png";
+import bgimage from "@/../public/images/encontreunave/EncontreUnAve.webp";
+
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col w-full gap-8">
-      <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[17rem]">
+      <section className="w-full relative h-[8rem] min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[20rem]">
         <Image src={bgimage} alt="bg-tucan" fill className="" />
       </section>
       <h1 className="text-xl text-[#0C6410] text-center font-semibold mt-8 ">

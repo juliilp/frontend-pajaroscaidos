@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Banner from "@/../public/images/cursos/banner.jpg";
-import Card1 from "@/../public/images/cursos/card1.jpg";
-import Card2 from "@/../public/images/cursos/card2.jpg";
-import Card3 from "@/../public/images/cursos/card3.jpg";
+import Banner from "@/../public/images/cursos/banner.webp";
+import Card1 from "@/../public/images/cursos/card1.webp";
+import Card2 from "@/../public/images/cursos/card2.webp";
+import Card3 from "@/../public/images/cursos/card3.webp";
 import CardCursos from "@/components/cursos/CardCursos";
 
 export default function page() {

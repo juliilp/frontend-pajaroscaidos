@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";
@@ -10,7 +9,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar, Pagination } from "swiper/modules";
 import VerMasButton from "./VerMasButton";
 
-export default function ShoppingCards({ id, title, image, description, redirect }) {
+export default function ShoppingCards({
+  id,
+  title,
+  image,
+  description,
+  redirect,
+}) {
   return (
     <div
       key={id}

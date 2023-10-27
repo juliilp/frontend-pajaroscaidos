@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useState } from "react";
-import shopimage from "../../../public/images/shopimage.png";
+import shopimage from "@/../public/images/TiendaSolidaria/shopimage.webp";
 import Image from "next/image";
 import ShoppingCards from "@/components/Shop/ShoppingCards";
 import api from "@/api/api";
@@ -16,7 +16,9 @@ export default function Shopping() {
 
   useEffect(() => {
     const getAllProducts = async () => {
-      const resp = await api.get(`shop/items?itemPerPage=6&pageNumber=${pageNumber}`);
+      const resp = await api.get(
+        `shop/items?itemPerPage=6&pageNumber=${pageNumber}`
+      );
       setProducts(resp.data.items.items);
       setTotalPages(resp.data.items.totalPages);
     };
@@ -36,7 +38,11 @@ export default function Shopping() {
 
       <main className="w-full flex justify-between items-center">
         <article className=" hidden sm:flex w-6/12  justify-center ">
-          <Image src={shopimage} alt="shopimage" className=" w-[30rem] h-auto" />
+          <Image
+            src={shopimage}
+            alt="shopimage"
+            className=" w-[30rem] h-auto"
+          />
         </article>
         <article className="w-full p-1 sm:w-5/12 lg:px-6 xl:px-10 2xl:px-12">
           <p
@@ -48,9 +54,9 @@ export default function Shopping() {
                      text-center"
           >
             <b className=" font-semibold ">
-              Contamos con una gran variedad de productos con Sentido Social que contribuyen de
-              manera significativa al sostenimiento de la labor social. Todos nuestros productos son
-              pensados con amor.
+              Contamos con una gran variedad de productos con Sentido Social que
+              contribuyen de manera significativa al sostenimiento de la labor
+              social. Todos nuestros productos son pensados con amor.
             </b>
           </p>
         </article>

@@ -1,7 +1,8 @@
 import CardVoluntariado from "@/components/CardVoluntariado/CardVoluntariado";
 import { dataVoluntario } from "@/components/CardVoluntariado/dataVoluntario";
 import Image from "next/image";
-import bgimage from "@/../public/images/Voluntariado/Voluntariado.png";
+import bgimage from "@/../public/images/Voluntariado/Voluntariado.webp";
+
 export default function page() {
   return (
     <section className="mt-[70px]">

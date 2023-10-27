@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Bird from "@/../public/images/Actos de Maltrato y crueldad/actosmaltratoycrueldad.png";
+import Bird from "@/../public/images/Actos de Maltrato y crueldad/actosmaltratoycrueldad.webp";
 
 export default function EntretenimientoYDiversion() {
   return (

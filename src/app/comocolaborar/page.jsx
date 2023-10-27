@@ -1,9 +1,9 @@
 import CardComoColaborar from "@/components/ComoColaborar/CardComoColaborar";
 import Image from "next/image";
-import Construccion from "@/../public/images/Como Colaborar/como colaborar2.jpg";
-import Donaciones from "@/../public/images/Como Colaborar/como colaborar.jpg";
-import Voluntarios from "@/../public/images/Como Colaborar/como colaborar3.jpg";
-import bgimage from "@/../public/images/Como Colaborar/ComoColaborar.png";
+import Construccion from "@/../public/images/Como Colaborar/como colaborar2.webp";
+import Donaciones from "@/../public/images/Como Colaborar/como colaborar.webp";
+import Voluntarios from "@/../public/images/Como Colaborar/como colaborar3.webp";
+import bgimage from "@/../public/images/Como Colaborar/ComoColaborar.webp";
 
 export default function page() {
   return (
