@@ -1,6 +1,7 @@
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { AiOutlineYoutube } from "react-icons/ai";
+import {  SiLinktree} from "react-icons/si";
 import logo from "@/../public/images/Footer/LogoFooter.webp";
 import Image from "next/image";
 
@@ -60,12 +61,23 @@ export default function Footer() {
         </article>
         <article>
           <a
+            href="https://linktr.ee/pajaroscaidos"
+            target="_blank"
+            className="flex items-center gap-3 w-fit hover:text-white"
+            title="linktree"
+          >
+            <SiLinktree className="text-4xl" />
+            <span className={`${textStyles}`}></span>
+          </a>
+        </article>
+        <article>
+          <a
             href="https://www.youtube.com/channel/UChNlf6DgNLxdnuJ47uwAjXA"
             target="_blank"
             className="flex items-center gap-3 w-fit hover:text-white"
             title="Youtube"
           >
-            <AiOutlineYoutube className="text-4xl" />
+            <AiOutlineYoutube className="text-4xl" /> 
             <span className={`${textStyles}`}></span>
           </a>
         </article>
