@@ -5,15 +5,19 @@ import api from "@/api/api";
 import image1 from "../../../public/images/Voluntarios/voluntarios1.webp";
 import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
 import CardVoluntarioLoading from "@/components/CardVoluntario/CardVoluntarioLoading";
+import Modal from "@/components/CardVoluntario/Modal";
 
 export default function Voluntarios() {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("Sin descripción");
+
   useEffect(() => {
-    async function users() {
+    async function fetchUsers() {
       const { data } = await api("user/voluntary");
       setUsers(data.users.users);
     }
-    users();
+    fetchUsers();
   }, []);
 
   function generateLoadingCards(count) {
@@ -23,15 +27,25 @@ export default function Voluntarios() {
     }
     return loadingCards;
   }
+
+  const openModal = (text) => {
+    setModalText(text ? text : "Sin descripción");
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <section className=" min-h-screen w-full flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
+    <section className="min-h-screen w-full flex flex-col mt-[70px] pb-[5rem] items-center gap-12">
       <section className="w-full h-28 md:h-[14rem] relative">
         <Image
           src={image1}
           alt="banner"
           fill
           priority={true}
-          className="w-full h-28 md:h-[14rem] "
+          className="w-full h-28 md:h-[14rem]"
         />
       </section>
 
@@ -41,14 +55,15 @@ export default function Voluntarios() {
               return (
                 <CardVoluntario
                   key={key}
-                  texto={description}
                   titulo={first_name}
                   imagen={avatar.secure_url}
+                  onClick={() => openModal(description)}
                 />
               );
             })
           : generateLoadingCards(8)}
       </article>
+      {modalOpen && <Modal isOpen={modalOpen} closeModal={closeModal} text={modalText} />}
     </section>
   );
 }
