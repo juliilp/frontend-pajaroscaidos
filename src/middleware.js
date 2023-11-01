@@ -11,13 +11,12 @@ export async function middleware(req) {
   const inAdminPages = requestedPage.includes("/dashboard");
   let isAdmin = null;
 
-  if (token) {
+  // console.log("token: ", token); // => token:  { name: 'user', value: 'null' }
+
+  if (token?.value !== "null") {
     try {
       const JWT = JSON.parse(token.value);
-      const decodedToken = await jwtVerify(
-        JWT,
-        new TextEncoder().encode(JWT_SECRET)
-      );
+      const decodedToken = await jwtVerify(JWT, new TextEncoder().encode(JWT_SECRET));
       isAdmin = decodedToken.payload.user.isAdmin;
     } catch (error) {
       console.error("Token no válido:", error.message);
@@ -47,11 +46,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: [
-    "/login",
-    "/registro",
-    "/perfil",
-    "/dashboard",
-    "/dashboard/((?!general).*)",
-  ],
+  matcher: ["/login", "/registro", "/perfil", "/dashboard", "/dashboard/((?!general).*)"],
 };
