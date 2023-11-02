@@ -11,6 +11,7 @@ import colibri from "../../../public/images/alimentacion/colibri.jpg";
 import cotorra from "../../../public/images/alimentacion/cotorra.jpg";
 import atajacamino from "../../../public/images/alimentacion/atajacamino.jpg";
 import listaCompleta from "../../../public/images/alimentacion/listaCompleta.jpg";
+import Dietas from "@/../public/images/alimentacion/Dietas.jpeg";
 const data = [
   {
     imageUrl: pichon,
@@ -113,9 +114,7 @@ function Alimentacion() {
     <section>
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[22rem]">
         <Image
-          src={
-            "https://res.cloudinary.com/di5mf85h3/image/upload/v1698705759/alimentacion_ld3se5.png"
-          }
+          src={Dietas}
           alt="bg-alimentacion"
           fill
           priority
@@ -124,7 +123,7 @@ function Alimentacion() {
       </section>
       <div className="grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 grid-rows-3 gap-4 row-span-2 py-16 ">
         {data.map((item, index) => (
-          <div className="card mx-auto relative group">
+          <div className="card mx-auto relative group" key={index}>
             <div className="card-image rounded-xl">
               <Image
                 src={item.imageUrl}
