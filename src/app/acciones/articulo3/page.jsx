@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import Image1 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen1.png";
-import Image2 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen2.png";
-import Image3 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen3.png";
-import Image4 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen4.png";
-import bgimage from "../../../../public/images/AccionesClubPigeionClubArgentino/NoMatanza.png";
+import Image1 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen1.webp";
+import Image2 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen2.webp";
+import Image3 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen3.webp";
+import Image4 from "@/../public/images/AccionesClubPigeionClubArgentino/Imagen4.webp";
+import bgimage from "@/../public/images/AccionesClubPigeionClubArgentino/NoMatanza.webp";
+
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col gap-8 w-full">

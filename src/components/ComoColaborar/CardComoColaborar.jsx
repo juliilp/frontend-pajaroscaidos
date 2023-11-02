@@ -9,7 +9,7 @@ export default function CardComoColaborar({
   enlace,
 }) {
   return (
-    <section className="w-full max-w-[450px] h-[800px] flex items-center justify-between flex-col ga bg-[#C2C2C2] py-8 px-6 rounded-md">
+    <section className="w-full max-w-[450px] h-[800px] flex items-center justify-between flex-col ga bg-[#C2C2C2] py-8 px-8 rounded-md">
       <div className="flex flex-col items-center justify-center gap-8">
         <span className="text-[#0C6410] text-xl font-semibold">{titulo}</span>
         <Image
@@ -17,7 +17,7 @@ export default function CardComoColaborar({
           alt="imagen"
           className="object-cover w-full h-full rounded-md "
         />
-        <p className="w-full max-w-[350px]">{parrafo}</p>
+        <div className="w-full max-w-[350px]">{parrafo}</div>
       </div>
       {nombreBoton && (
         <a

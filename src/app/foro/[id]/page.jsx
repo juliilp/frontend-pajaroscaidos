@@ -4,10 +4,9 @@ import Comentarios from "@/components/Post/Comentarios";
 import { getPost } from "@/api/apiCall/PostRequests";
 import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
-import OtherContent from "@/components/Post/OtherContent"; //Para borrar??
 import InputComment from "@/components/Post/InputComment";
 import Image from "next/image";
-import ImgPortada from "@/../public/images/foro-id/Portada.png";
+import ImgPortada from "@/../public/images/foro-id/Portada.webp";
 import { BiSolidUser } from "react-icons/bi";
 import NuestraComunidad from "@/components/NuestraComunidadDesktop/NuestraComunidadDesktop";
 
@@ -49,15 +48,7 @@ export default function Page({ params }) {
   }
 
   return (
-    <section
-      className="min-h-full gap-3 flex flex-col p-6 mt-[70px]
-         pl-0 pr-0
-         sm:pl-2 sm:pr-2
-         md:pl-6 md:pr-6
-         lg:pl-12 lg:pr-12
-         xl:pl-14  xl:pr-14 
-         2xl:pl-20 2xl:pr-20 text-white"
-    >
+    <section className="min-h-full gap-3 flex flex-col pb-6 mt-[70px] text-white">
       <header className="w-full h-40 relative">
         <Image
           src={ImgPortada}
@@ -90,13 +81,13 @@ export default function Page({ params }) {
         </div>
       </header>
 
-      <article className="flex min-h-[20rem] gap-3 relative justify-center   h-auto ">
+      <article className="flex min-h-[20rem] gap-3 relative justify-center h-auto ">
         <main
           className="w-full lg:w-8/12 relative h-full bg-lightgray rounded-[10px] text-[#2B2B2B] 
                 p-8 pt-4 pb-6 flex flex-col items-center gap-7 "
           id="Post"
         >
-          <ContentPost publication={publication} />
+          <ContentPost publication={publication} postId={params.id} />
           <div className="flex items-center gap-6 w-full justify-between flex-col sm:flex-row">
             <div className="w-full sm:w-[80%]">
               <InputComment
@@ -117,7 +108,7 @@ export default function Page({ params }) {
         </main>
         <NuestraComunidad />
       </article>
-      <section className=" w-[90%] mx-[5%] p-4 md:p-0 md:w-full md:mx-0 bg-lightgray min-h-[15rem] h-full sm:p-6">
+      <section className="p-4 md:p-0 md:mx-6 bg-lightgray min-h-[15rem] h-full sm:p-6 rounded-[10px] 2xl:mx-20">
         <Comentarios comments={publication.comments} />
       </section>
     </section>

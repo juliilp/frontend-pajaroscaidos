@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import RegistroImagen from "../../assets/registro-login.png";
+import RegistroImagen from "@/assets/registro-login.webp";
 import Image from "next/image";
 import api from "@/api/api";
 import { validateCreateUser } from "@/utils/auxfunctions";
@@ -287,7 +287,7 @@ export default function Page() {
 
         <button
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
-          //disabled={isRegistering}
+          disabled={isRegistering}
         >
           {isRegistering ? "Registrando..." : "Registrate"}
         </button>

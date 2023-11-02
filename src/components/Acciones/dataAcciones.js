@@ -1,6 +1,7 @@
-import PrimerImagen from "@/../public/Acciones/PrimerImagen.png";
-import SegundaImagen from "@/../public/Acciones/SegundaImagen.png";
-import TercerImagen from "@/../public/Acciones/TercerImagen.png";
+import PrimerImagen from "@/../public/images/Acciones/PrimerImagen.webp";
+import SegundaImagen from "@/../public/images/Acciones/SegundaImagen.webp";
+import TercerImagen from "@/../public/images/Acciones/TercerImagen.webp";
+
 export const dataAcciones = [
   {
     id: 1,

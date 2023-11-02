@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import clapimage from "../../../public/images/clap_image.png";
+import clapimage from "@/assets/clap_image.webp";
 import { useRouter } from "next/navigation";
 import Loading from "@/app/loading";
 

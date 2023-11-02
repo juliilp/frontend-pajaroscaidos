@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { AiOutlineGoogle } from "react-icons/ai";
-import LoginImagen from "../../assets/registro-login.png";
+import LoginImagen from "@/assets/registro-login.webp";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

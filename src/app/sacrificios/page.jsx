@@ -1,12 +1,12 @@
-import Caza from "@/../public/images/Sacrificios/sacrificios.png";
 import Image from "next/image";
-import bgimage from "@/../public/images/Sacrificios/SacrificiosBg.png";
+import Caza from "@/../public/images/Sacrificios/sacrificios.webp";
+import bgimage from "@/../public/images/Sacrificios/SacrificiosBg.webp";
 
 export default function page() {
   return (
     <section className="mt-[70px] flex flex-col items-center justify-center w-full gap-8 md:gap-16 ">
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+        <Image src={bgimage} alt="bg-tucan" fill priority className="w-full " />
       </section>
       <h2 className="text-[#0C6410] font-semibold text-center  text-2xl ">
         SACRIFICIOS RELIGIOSOS

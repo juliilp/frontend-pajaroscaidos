@@ -1,12 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import Banner from "@/../public/images/Actos de Maltrato y crueldad/ActosdeMaltratoycrueldad.png";
+import Banner from "@/../public/images/Actos de Maltrato y crueldad/ActosdeMaltratoycrueldad.webp";
 import Section1 from "@/components/actos-maltrato-y-crueldad/Section1";
 import Section2 from "@/components/actos-maltrato-y-crueldad/Section2";
 import Section3 from "@/components/actos-maltrato-y-crueldad/Section3";
 import Section4 from "@/components/actos-maltrato-y-crueldad/Section4";
 import Section5 from "@/components/actos-maltrato-y-crueldad/Section5";
 import Section6 from "@/components/actos-maltrato-y-crueldad/Section6";
+
 export default function Page() {
   return (
     <article className="mt-[70px]">

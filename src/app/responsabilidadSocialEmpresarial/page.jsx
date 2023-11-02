@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Imagen1 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen1.png";
-import Imagen2 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen2.png";
-import Imagen3 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen3.png";
-import Imagen4 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen4.png";
-import bgimage from "@/../public/images/ResponsabilidadSocialEmpresarial/ResponsabilidadSocialEmpresarial.png";
+import Imagen1 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen1.webp";
+import Imagen2 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen2.webp";
+import Imagen3 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen3.webp";
+import Imagen4 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen4.webp";
+import bgimage from "@/../public/images/ResponsabilidadSocialEmpresarial/ResponsabilidadSocialEmpresarial.webp";
 
 function ResponsabilidadSocialEmpresarial() {
   return (

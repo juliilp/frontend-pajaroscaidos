@@ -1,8 +1,9 @@
 import { BsInstagram, BsTwitter } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { AiOutlineYoutube } from "react-icons/ai";
-import logo from "../../../public/images/Logo.png";
+import logo from "@/../public/images/Footer/LogoFooter.webp";
 import Image from "next/image";
+
 export default function Footer() {
   const textStyles = " 2xl:text-2xl xl:text-xl lg:text-lg";
   return (

@@ -1,6 +1,7 @@
 import Image from "next/image";
-import image1 from "../../../public/images/about_us 2.png";
-import image2 from "../../../public/images/about_us 3.png";
+import image1 from "@/../public/images/Nosotros/about_us 2.webp";
+import image2 from "@/../public/images/Nosotros/about_us 3.webp";
+
 export default function AboutSection2() {
   return (
     <>

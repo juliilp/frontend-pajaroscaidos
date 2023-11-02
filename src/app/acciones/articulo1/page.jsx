@@ -1,10 +1,11 @@
 "use client";
 import MainSectionArticulo1 from "@/components/Acciones/Articulo1/MainSectionArticulo1";
-import image1 from "../../../../public/images/Action_Tucan.png";
-import imageBG from "../../../../public/images/Action_Tucan_BG.png";
+import image1 from "@/../public/images/Acciones/Articulo1/Action_Tucan.webp";
+import imageBG from "@/../public/images/Acciones/Articulo1/Action_Tucan_BG.webp";
 import Image from "next/image";
 import YoutubePlay from "@/components/YoutubePlay/YoutubePLay";
-export default function page() {
+
+export default function Page() {
   const videoID = "jOGVnZJlURU";
   return (
     <div className="min-h-screen flex flex-col items-center mt-[70px] gap-8 pb-8">
