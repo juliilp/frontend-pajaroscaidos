@@ -1,10 +1,21 @@
 "use client";
 import { UpdateUser } from "@/api/apiCall/UserRequests";
 import { CustomContext } from "@/store/ContextProvider";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiSolidEditAlt } from "react-icons/bi";
 
 export default function ModalUpdateAboutMe({ user, toggleModal }) {
+  const [userDescription, setUserDescription] = useState("");
+  const [userLabor, setUserLabor] = useState("");
+
+  useEffect(() => {
+    if (user.description) {
+      const [description, labor] = user.description.split("Mi labor en la ONG:");
+      setUserDescription(description);
+      setUserLabor(labor);
+    }
+  }, [user.description]);
+
   const { setJWTContext } = CustomContext();
   const [description, setDescription] = useState({});
 
@@ -16,19 +27,23 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
 
   const handleDescription = (event) => {
     const { id, value } = event.target;
-    setDescription({
-      [id]: value,
-    });
+    if (id === "description") {
+      setUserDescription(value);
+    } else if (id === "labor") {
+      setUserLabor(value);
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const updatedDescription = `${userDescription} Mi labor en la ONG:${userLabor}`;
 
-    const data = await UpdateUser(description, user.id);
+    const data = await UpdateUser({ description: updatedDescription }, user.id);
+
     if (data.status === "success") {
       setJWTContext(data.user);
       setDescription({});
-      alert("La descripcion se ha actualizado correctamente!");
+      alert("La descripción se ha actualizado correctamente.");
     }
   };
 
@@ -46,12 +61,20 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
           <section className="flex flex-col items-center w-full gap-4">
             <div className="flex gap-3">
               <BiSolidEditAlt size={20} />
-              <h2 className="text-xl font-bold">Editar descripcion</h2>
+              <h2 className="text-xl font-bold">Editar descripción</h2>
             </div>
             <form className="flex flex-col items-center w-full gap-2">
+              <label>Sobre vos</label>
               <textarea
-                defaultValue={user.description}
+                value={userDescription}
                 id="description"
+                onChange={handleDescription}
+                className="w-full rounded-md px-3 py-2 h-40"
+              ></textarea>
+              <label>Tu labor en la ONG</label>
+              <textarea
+                value={userLabor}
+                id="labor"
                 onChange={handleDescription}
                 className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
