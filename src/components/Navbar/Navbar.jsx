@@ -65,18 +65,22 @@ export default function Navbar() {
               <>
                 <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                   <span className="text-white font-semibold w-[100px] truncate">
-                    {user.nick_name.length > 12
-                      ? user.nick_name.slice(0, 9) + "..."
-                      : user.nick_name}
+                    {user && user.nick_name ? (
+                      user.nick_name.length > 12
+                        ? user.nick_name.slice(0, 9) + "..."
+                        : user.nick_name
+                    ) : ""}
                   </span>
                 </Link>
-                {user.avatar.avatar_url !== "-" ? (
+                {user && user.avatar && user.avatar.avatar_url !== "-" ? (
                   <Link href={"/perfil"} prefetch={false} onClick={closeMenu}>
                     <Image
                       src={
-                        user.avatar.avatar_url
-                          ? user.avatar.avatar_url
-                          : user.avatar.secure_url
+                        user &&
+                        user.avatar &&
+                        (user.avatar.avatar_url || user.avatar.secure_url)
+                          ? user.avatar.avatar_url || user.avatar.secure_url
+                          : null
                       }
                       alt="Avatar"
                       width={50}
@@ -113,11 +117,10 @@ export default function Navbar() {
         )}
       </nav>
       <div
-        className={`transition-all duration-300 ${
-          switchMenu
+        className={`transition-all duration-300 ${switchMenu
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "-translate-y-8 opacity-0 pointer-events-none"
-        }`}
+          }`}
       >
         <MenuMobile closeMenu={closeMenu} admin={user?.isAdmin} />
       </div>
