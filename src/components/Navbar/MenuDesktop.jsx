@@ -124,6 +124,14 @@ export default function MenuDesktop() {
               >
                 Foro
               </Link>,
+              <Link
+                key="opcion3"
+                href="/responsabilidadSocialEmpresarial"
+                onClick={closeMenu}
+                prefetch={false}
+              >
+                RSE
+              </Link>,
             ]}
             tamaño="lg:w-[180%] md:w-[150%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
           />
@@ -185,6 +193,14 @@ export default function MenuDesktop() {
                 prefetch={false}
               >
                 Cursos
+              </Link>,
+              <Link
+                key="opcion6"
+                href="/dietas"
+                onClick={closeMenu}
+                prefetch={false}
+              >
+                Dietas
               </Link>,
             ]}
             tamaño="md:w-[130%] md:py-4 md:rounded-br-[10px] md:rounded-bl-[10px]"
