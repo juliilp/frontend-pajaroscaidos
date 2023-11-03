@@ -106,7 +106,7 @@ export default function MenuMobile({ closeMenu, admin }) {
         <div
           className={`transition-all duration-300 w-full pl-8 ${
             openMenu === "comunidad"
-              ? "opacity-100 h-[6rem] pointer-events-auto"
+              ? "opacity-100 h-[9rem] pointer-events-auto"
               : "opacity-0 h-0 pointer-events-none"
           }`}
         >
@@ -129,6 +129,14 @@ export default function MenuMobile({ closeMenu, admin }) {
                 prefetch={false}
               >
                 Foro
+              </Link>,
+              <Link
+                key="opcion3"
+                href="/responsabilidadSocialEmpresarial"
+                onClick={closeMenu}
+                prefetch={false}
+              >
+                RSE
               </Link>,
             ]}
           />
@@ -153,7 +161,7 @@ export default function MenuMobile({ closeMenu, admin }) {
         <div
           className={`transition-all duration-300 w-full pl-8 ${
             openMenu === "servicio"
-              ? "opacity-100 h-[12rem] pointer-events-auto"
+              ? "opacity-100 h-[15rem] pointer-events-auto"
               : "opacity-0 h-0 pointer-events-none"
           }`}
         >
@@ -194,6 +202,15 @@ export default function MenuMobile({ closeMenu, admin }) {
                 prefetch={false}
               >
                 Cursos
+              </Link>,
+              <Link
+                key="opcion6"
+                href="/dietas"
+                className="focus:underline"
+                onClick={handleCloseMenu}
+                prefetch={false}
+              >
+                Dietas
               </Link>,
             ]}
           />
