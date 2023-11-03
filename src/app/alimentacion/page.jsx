@@ -124,7 +124,7 @@ function Alimentacion() {
       </section>
       <div className="grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 grid-rows-3 gap-4 row-span-2 py-16 ">
         {data.map((item, index) => (
-          <div className="card mx-auto relative group">
+          <div className="card mx-auto relative group" key={index}>
             <div className="card-image rounded-xl">
               <Image
                 src={item.imageUrl}
