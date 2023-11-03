@@ -14,7 +14,7 @@ export default function page() {
         <Image src={image1} alt="banner" fill priority />
       </section>
 
-      <main className="w-full flex flex-col items-center gap-12 ">
+      <main className="w-full flex flex-col items-center gap-12   ">
         <MainCazatrafico images={[image2, image3, image4]} />
       </main>
 
