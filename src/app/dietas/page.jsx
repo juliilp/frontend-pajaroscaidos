@@ -136,12 +136,12 @@ function Alimentacion() {
             <div className="absolute inset-0 flex items-center justify-center bg-opacity-80 bg-gray-800 transition duration-300 ease-in-out opacity-0 group-hover:opacity-100 rounded-xl">
               <div className="text-white text-center">
                 <h2 className="text-sm lg:text-2xl font-bold">{item.titulo}</h2>
-                <a href={item.linkUrlCuidado} key={index}>
+                <a href={item.linkUrlCuidado} key={index} target="_blank">
                   <p className="text-sm lg:text-xl">
                     {item.descripcionCuidado}
                   </p>
                 </a>
-                <a href={item.linkUrlAlimentacion} key={index}>
+                <a href={item.linkUrlAlimentacion} key={index} target="_blank">
                   <p className="text-sm lg:text-xl pt-2">
                     {item.descripcionAlimentacion}
                   </p>
