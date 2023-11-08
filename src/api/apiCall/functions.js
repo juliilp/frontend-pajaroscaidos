@@ -47,6 +47,7 @@ export async function loginUser(data) {
         Cookies.set("newUserId", JSON.stringify({ id: JWTDecoded.user.id }), {
           expires: 7,
         });
+        Cookies.remove("JWT");
 
         return MESSAGE_TYPES.VALIDATE_EMAIL;
       } else {
