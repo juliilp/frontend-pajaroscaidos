@@ -48,6 +48,14 @@ export default function MenuDesktop() {
             opciones={[
               <Link
                 key="opcion1"
+                href="/nosotros"
+                onClick={closeMenu}
+                prefetch={false}
+              >
+                Nosotros
+              </Link>,
+              <Link
+                key="opcion2"
                 href="/acciones"
                 onClick={closeMenu}
                 prefetch={false}
@@ -55,7 +63,7 @@ export default function MenuDesktop() {
                 Acciones
               </Link>,
               <Link
-                key="opcion2"
+                key="opcion3"
                 href="/caza-trafico"
                 onClick={closeMenu}
                 prefetch={false}
@@ -63,7 +71,7 @@ export default function MenuDesktop() {
                 Caza y tráfico de faunas
               </Link>,
               <Link
-                key="opcion3"
+                key="opcion4"
                 href="/crueldad-maltrato"
                 onClick={closeMenu}
                 prefetch={false}
@@ -71,7 +79,7 @@ export default function MenuDesktop() {
                 Crueldad y maltrato
               </Link>,
               <Link
-                key="opcion4"
+                key="opcion5"
                 href="/legislacion"
                 onClick={closeMenu}
                 prefetch={false}
