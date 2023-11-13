@@ -4,6 +4,8 @@ import Imagen2 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen2
 import Imagen3 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen3.webp";
 import Imagen4 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen4.webp";
 import bgimage from "@/../public/images/ResponsabilidadSocialEmpresarial/ResponsabilidadSocialEmpresarial.webp";
+import dataEmpresas from "@/components/EmpresasParticipantesRCE/dataEmpresas";
+import EmpresasParticipantesRCE from "@/components/EmpresasParticipantesRCE/EmpresasParticipantesRCE";
 
 function ResponsabilidadSocialEmpresarial() {
   return (
@@ -11,7 +13,7 @@ function ResponsabilidadSocialEmpresarial() {
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
         <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
       </section>
-      <h1 className="text-center font-semibold  text-2xl text-[#0C6410] my-8 ">
+      <h1 className="text-center font-semibold  text-2xl md:text-3xl text-[#0C6410] my-2  ">
         RESPONSABILIDAD SOCIAL EMPRESARIAL{" "}
       </h1>
       <p className="px-6 font-semibold">
@@ -89,6 +91,23 @@ function ResponsabilidadSocialEmpresarial() {
           className="w-full max-w-[414px] h-[701px]"
         />
       </div>
+      <article>
+        <h1 className="text-center font-semibold  text-2xl md:text-3xl text-[#0C6410] my-8">
+          Empresas que participan de responsabilidad social empresaria
+        </h1>
+        <div className="flex gap-10 flex-col px-6 md:flex-wrap md:flex-row justify-center items-center mb-8">
+          {dataEmpresas.map(({ titulo, imagen, texto }, key) => {
+            return (
+              <EmpresasParticipantesRCE
+                key={key}
+                titulo={titulo}
+                imagen={imagen}
+                texto={texto}
+              />
+            );
+          })}
+        </div>
+      </article>
     </section>
   );
 }
