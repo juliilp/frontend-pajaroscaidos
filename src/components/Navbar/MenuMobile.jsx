@@ -49,6 +49,15 @@ export default function MenuMobile({ closeMenu, admin }) {
             opciones={[
               <Link
                 key="opcion1"
+                href="/nosotros"
+                className="focus:underline"
+                onClick={handleCloseMenu}
+                prefetch={false}
+              >
+                Nosotros
+              </Link>,
+              <Link
+                key="opcion2"
                 href="/acciones"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -57,7 +66,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Acciones
               </Link>,
               <Link
-                key="opcion2"
+                key="opcion3"
                 href="/caza-trafico"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -66,7 +75,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Caza y tráfico de faunas
               </Link>,
               <Link
-                key="opcion3"
+                key="opcion4"
                 href="/crueldad-maltrato"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -75,7 +84,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Crueldad y maltrato
               </Link>,
               <Link
-                key="opcion4"
+                key="opcion5"
                 href="/legislacion"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -186,7 +195,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Como Denunciar
               </Link>,
               <Link
-                key="opcion4"
+                key="opcion3"
                 href="/tienda-solidaria"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -195,7 +204,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Tienda Solidaria
               </Link>,
               <Link
-                key="opcion5"
+                key="opcion4"
                 href="/cursos"
                 className="focus:underline"
                 onClick={handleCloseMenu}
@@ -204,7 +213,7 @@ export default function MenuMobile({ closeMenu, admin }) {
                 Cursos
               </Link>,
               <Link
-                key="opcion6"
+                key="opcion5"
                 href="/dietas"
                 className="focus:underline"
                 onClick={handleCloseMenu}
