@@ -18,6 +18,7 @@ export default function ContextProvider({ children }) {
 
       if (response.status === 200) {
         Cookies.remove("user");
+        Cookies.remove("JWT");
         router.push("/");
 
         setUserContext(null);
