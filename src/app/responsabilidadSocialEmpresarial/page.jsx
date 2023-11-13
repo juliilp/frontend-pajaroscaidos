@@ -3,15 +3,15 @@ import Imagen1 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen1
 import Imagen2 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen2.webp";
 import Imagen3 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen3.webp";
 import Imagen4 from "@/../public/images/ResponsabilidadSocialEmpresarial/imagen4.webp";
-import bgimage from "@/../public/images/ResponsabilidadSocialEmpresarial/ResponsabilidadSocialEmpresarial.webp";
+import banner from "@/../public/images/ResponsabilidadSocialEmpresarial/ResponsabilidadSocialEmpresarial.webp";
 import dataEmpresas from "@/components/EmpresasParticipantesRCE/dataEmpresas";
 import EmpresasParticipantesRCE from "@/components/EmpresasParticipantesRCE/EmpresasParticipantesRCE";
 
 function ResponsabilidadSocialEmpresarial() {
   return (
     <section className=" mt-[70px] flex justify-center items-center w-full flex-col gap-8  md:px-0 ">
-      <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[24rem]">
-        <Image src={bgimage} alt="bg-tucan" fill className="w-full " />
+      <section className="w-full md:px-[10%]">
+        <Image src={banner} alt="banner" width={2000} height={600} priority />
       </section>
       <h1 className="text-center font-semibold  text-2xl md:text-3xl text-[#0C6410] my-2  ">
         RESPONSABILIDAD SOCIAL EMPRESARIAL{" "}
