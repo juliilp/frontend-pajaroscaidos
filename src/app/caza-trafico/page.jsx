@@ -10,8 +10,14 @@ import image4 from "../../../public/images/Caza y trafico/caza_trafico 4.webp";
 export default function page() {
   return (
     <div className=" font-baloo min-h-screen flex flex-col mt-[70px] pb-[5rem] items-center gap-12 ">
-      <section className="w-full h-32 md:h-[14rem] xl:h-72 relative">
-        <Image src={image1} alt="banner" fill priority />
+      <section className="w-full md:px-[10%]">
+        <Image
+          src={image1}
+          alt="banner"
+          width={2000}
+          height={600}
+          priority
+        />
       </section>
 
       <main className="w-full flex flex-col items-center gap-12   ">

@@ -1,13 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
+import api from "@/api/api";
+import DonarButton from "@/components/Shop/DonarButton";
+import Image from "next/image";
+import LoadingCardHome from "@/components/LoadingCardHome/LoadingCardHome";
+import Pagination from "@/components/Pagination/Pagination";
 import React, { useEffect, useState } from "react";
 import shopimage from "@/../public/images/TiendaSolidaria/shopimage.webp";
-import Image from "next/image";
 import ShoppingCards from "@/components/Shop/ShoppingCards";
-import api from "@/api/api";
-import Pagination from "@/components/Pagination/Pagination";
-import LoadingCardHome from "@/components/LoadingCardHome/LoadingCardHome";
-import DonarButton from "@/components/Shop/DonarButton";
+import banner from "@/../public/images/TiendaSolidaria/banner-shop.webp";
 
 export default function Shopping() {
   const [products, setProducts] = useState([]);
@@ -31,7 +31,10 @@ export default function Shopping() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center pt-[7rem] gap-[1.5rem] pb-14">
+    <div className="min-h-screen flex flex-col items-center pt-[70px] gap-[1.5rem] pb-14">
+      <section className="w-full md:px-[10%]">
+        <Image src={banner} alt="banner" width={2000} height={600} priority />
+      </section>
       <h1 className="text-[#0C6410]  font-semibold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">
         NUESTRA TIENDA
       </h1>
