@@ -5,7 +5,7 @@ import TextoMobile from "./TextoMobile";
 export default function PostComunidadMobile({ publications }) {
   return (
     <section className="flex flex-col gap-6  w-full mt-4 ">
-      {publications.length > 0 ? (
+      {publications?.length > 0 ? (
         publications.map(({ title, image, user, description }, index) => (
           <article key={index} className="flex gap-6 h-[80px] ">
             <div className="flex gap-4 items-center justify-center">

@@ -135,29 +135,3 @@ export default function CardForo({
     </section>
   );
 }
-
-/*
-
- <div className="relative">
-        {image?.secure_url && (
-          <div className="flex items-end mb-5">
-            <Link className="cursor:pointer" href={`/foro/${id}`}>
-              <Image
-                src={image.imageUrl || image.secure_url}
-                alt="post"
-                width={600}
-                height={600}
-                className="max-w-[750px] rounded-md object-cover ml-5"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                }}
-              />
-            </Link>
-
-            <IconsReactions id={id} commentsQuantity={commentsQuantity} reactions={reactions} />
-          </div>
-        )}
-      </div>
-
-
-*/
