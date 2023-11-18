@@ -4,9 +4,7 @@ import { MESSAGE_TYPES } from "../dictionary/dictionary";
 // Publicaciones
 export const getPostForNuestraComunidad = async (option) => {
   try {
-    const response = await api.get(
-      `publication/community?filter=${option}&limit=${2}`
-    );
+    const response = await api.get(`publication/community?filter=${option}&limit=${2}`);
 
     if (response.status === 200) {
       const publications = response.data.publications;
@@ -22,7 +20,7 @@ export const getPostForNuestraComunidad = async (option) => {
 export const getAllPosts = async (pageNumber, order) => {
   try {
     const response = await api.get(
-      `/publication/all?pageNumber=${pageNumber}&postPerPage=${6}&orderCreate=${order}`
+      `/publication/all?pageNumber=${pageNumber}&postPerPage=${6}&orderCreate=${order}&limitComments=${2}`
     );
     const post = {};
 
@@ -48,15 +46,12 @@ export async function getPost(postId) {
 
 export const createNewPost = async (userId, newPost) => {
   try {
-    if(!userId) throw new Error( 'UserId is required')
+    if (!userId) throw new Error("UserId is required");
     const formData = new FormData();
     formData.append("title", newPost.title);
     formData.append("description", newPost.description);
     formData.append("image", newPost.image);
-    const { data: response } = await api.post(
-      `publication/create/${userId}`,
-      formData
-    );
+    const { data: response } = await api.post(`publication/create/${userId}`, formData);
     return response;
   } catch (error) {
     console.log(error);
@@ -72,7 +67,7 @@ export const deletePost = async (postId) => {
     }
   } catch (error) {
     console.error(error);
-    return "Error al eliminar la publicacion, intentelo mas tarde.";
+    return "Error al eliminar la publicacion, intentelo mas tarde. XD";
   }
 };
 

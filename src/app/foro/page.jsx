@@ -1,5 +1,5 @@
 "use client";
-import CardForo from "@/components/CardForo";
+import CardForo from "@/components/Foro/CardForo/CardForo";
 import React, { useState, useEffect } from "react";
 import ImagenForo from "@/../public/images/Foro/imagen-foro.webp";
 import { CiClock2 } from "react-icons/ci";
@@ -37,7 +37,7 @@ export default function Foros() {
 
       if (response === MESSAGE_TYPES.ERROR) {
         await logout();
-        router.push("/registro");
+        router.push("/login");
       } else {
         setPosts(response.publications);
         setTotalPages(response.totalPages);
@@ -94,14 +94,17 @@ export default function Foros() {
             return (
               <CardForo
                 key={key}
-                titulo={e.title}
-                tiempo={e.createdAt}
-                usuario={e.user.nick_name}
-                like={e.reactions.length}
-                message={e.comments.length}
+                created={e.createdAt}
+                userNickPost={e.user.nick_name}
+                commentsQuantity={e.commentsQuantity}
+                comments={e.comments}
                 image={e.image[0]}
                 id={e.id}
                 reactions={e.reactions}
+                userAvatar={e.user.avatar.imageUrl}
+                description={e.description}
+                isAdmin={e.user.isAdmin}
+                isVoluntary={e.user.isVoluntary}
               />
             );
           })}
@@ -116,13 +119,7 @@ export default function Foros() {
         </div>
       </section>
       <section className="flex-col gap-4 max-w-[400px] hidden xl:flex my-8">
-        <Image
-          src={ImagenForo}
-          alt="imagen_campañas"
-          width={400}
-          height={158}
-          className="w-full"
-        />
+        <Image src={ImagenForo} alt="imagen_campañas" width={400} height={158} className="w-full" />
         <NuestraComunidad />
       </section>
       <div className="flex w-full items-center justify-center xl:hidden">

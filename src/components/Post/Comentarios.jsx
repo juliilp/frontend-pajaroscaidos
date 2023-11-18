@@ -1,31 +1,15 @@
 "use client";
 import { convertirFecha } from "@/utils/auxfunctions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { BiSolidUser } from "react-icons/bi";
-import api from "@/api/api";
-import {
-  orderByAntiguos,
-  orderByDestacados,
-  orderByRecientes,
-} from "@/helpers/orderComments";
+import { orderByAntiguos, orderByDestacados, orderByRecientes } from "@/helpers/orderComments";
+import { MdVerifiedUser } from "react-icons/md";
+import { GoVerified } from "react-icons/go";
 
 export default function Comentarios({ comments }) {
-  const [users, setUsers] = useState([]);
   const [orderComments, setOrderComments] = useState("Antiguos");
   const [sortedComments, setSortedComments] = useState(comments);
-
-  useEffect(() => {
-    async function fetchUsers() {
-      const userIds = comments.map((comment) => comment.userId);
-      const userRequests = userIds.map((id) => api.get(`user/${id}`));
-      const userResponses = await Promise.all(userRequests);
-      const usersData = userResponses.map((response) => response.data);
-      setUsers(usersData);
-    }
-
-    fetchUsers();
-  }, [comments]);
 
   const setComments = (event) => {
     const selectedOrder = event.target.id;
@@ -73,9 +57,7 @@ export default function Comentarios({ comments }) {
             sm:flex-row  sm:items-stretch  sm:justify-between   sm:w-[95%] "
       >
         <article className="flex w-full sm:w-fit justify-start items-end sm:items-center min-h-[3rem] sm:min-h-[3rem]">
-          <h3 className=" text-lg md:text-xl lg:text-2xl font-semibold">
-            Comentarios
-          </h3>
+          <h3 className=" text-lg md:text-xl lg:text-2xl font-semibold">Comentarios</h3>
         </article>
 
         <article
@@ -120,17 +102,17 @@ export default function Comentarios({ comments }) {
 
       {sortedComments.length ? (
         <div className=" w-[95%] flex flex-col gap-5 ">
-          {sortedComments?.map((i, key) => (
-            <section className="flex flex-col  gap-4 items-start" key={key}>
+          {sortedComments?.map((e, i) => (
+            <section className="flex flex-col  gap-4 items-start" key={i}>
               <article className="flex gap-4">
-                <figure className=" rounded-full bg-black h-[2rem] w-[2rem] overflow-hidden justify-center items-center">
-                  {users[key]?.avatar ? (
+                <figure className=" rounded-full h-[2rem] w-[2rem] overflow-hidden justify-center items-center">
+                  {e.user.avatar ? (
                     <Image
-                      src={users[key]?.user.avatar}
+                      src={e.user.avatar.secure_url}
                       alt="Avatar"
                       width={50}
                       height={50}
-                      layout="fixed"
+                      // layout="fixed"
                       className="rounded-full"
                     />
                   ) : (
@@ -140,19 +122,23 @@ export default function Comentarios({ comments }) {
                     />
                   )}
                 </figure>
-                <div className="flex flex-col gap-1">
-                  <h5 className=" text-xl font-medium">
-                    {users[key]?.user.nick_name}
+                <div className=" flex items-center align-center gap-1">
+                  <h5 className=" text-xl font-medium">{e.user.nick_name}</h5>
+                  <h5 title={e.user.isAdmin ? "Administrador" : "Voluntario"}>
+                    {e.user.isAdmin ? (
+                      <MdVerifiedUser />
+                    ) : e.user.isVoluntary ? (
+                      <GoVerified />
+                    ) : null}
                   </h5>
-                  <span className=" text-sm">{commentMonth(i.createdAt)}</span>
                 </div>
+                <span className="flex items-end items-center text-sm">
+                  {commentMonth(e.createdAt)}
+                </span>
               </article>
 
-              <article
-                title="comment"
-                className=" font-semibold w-full sm:w-8/12"
-              >
-                <p className=" break-words">{i.comment}</p>
+              <article title="comment" className=" font-semibold w-full sm:w-8/12">
+                <p className=" break-words">{e.comment}</p>
               </article>
               <div
                 className={`  m-auto w-full sm:w-11/12 md:w-10/12 bg-[#c2c2c2] h-[0.1rem]  border-2 border-lightgray rounded-lg  `}
