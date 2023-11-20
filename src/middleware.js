@@ -5,7 +5,7 @@ const JWT_SECRET = process.env.NEXT_PUBLIC_SECRET_KEY_DATA_JWT;
 
 export async function middleware(req) {
   const token = req.cookies.get("user");
-  const privateRoutes = ["/perfil", "foro"];
+  const privateRoutes = ["/perfil", "/foro"];
   const otherRoutes = ["/login", "/registro"];
   const requestedPage = req.nextUrl.pathname;
   const inAdminPages = requestedPage.includes("/dashboard");
