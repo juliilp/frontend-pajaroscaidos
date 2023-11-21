@@ -56,7 +56,16 @@ export default function Comentarios({ comments }) {
 
   useEffect(() => {
     setSortedComments(comments);
-  }, [comments]);
+    let sortedCommentsCopy = [...comments];
+    if (orderComments === "Recientes") {
+      sortedCommentsCopy.sort(orderByRecientes);
+    } else if (orderComments === "Destacados") {
+      sortedCommentsCopy.sort(orderByDestacados);
+    } else if (orderComments === "Antiguos") {
+      sortedCommentsCopy.sort(orderByAntiguos);
+    }
+    setSortedComments(sortedCommentsCopy);
+  }, [comments, orderComments]);
   return (
     <div className="w-full  h-full text-lettersgray flex flex-col items-center gap-3">
       <section
