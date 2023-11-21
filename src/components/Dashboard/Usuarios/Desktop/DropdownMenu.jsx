@@ -17,7 +17,16 @@ export default function DropdownMenu({ user, onDataUpdate }) {
   };
 
   const handleStatusClick = (option) => {
-    changeStatus(option, !user[option]);
+    if (option === "isAdmin" && !user.isPrincipalAdmin) {
+      return changeStatus(option, !user[option]);
+    }
+
+    if (option === "isBanned" && !user.isPrincipalAdmin) {
+      return changeStatus(option, !user[option]);
+    }
+    if (option === "isVoluntary") {
+      changeStatus(option, !user[option]);
+    }
   };
 
   return (
@@ -35,13 +44,23 @@ export default function DropdownMenu({ user, onDataUpdate }) {
           className="dropdownItem"
           onClick={() => handleStatusClick("isAdmin")}
         >
-          <button>{user.isAdmin ? "Eliminar Admin" : "Convertir Admin"}</button>
+          {user.isPrincipalAdmin ? (
+            <button disabled={true}>Error: Admin Principal</button>
+          ) : (
+            <button>
+              {user.isAdmin ? "Eliminar Admin" : "Convertir Admin"}
+            </button>
+          )}
         </li>
         <li
           className="dropdownItem"
           onClick={() => handleStatusClick("isBanned")}
         >
-          <button>{user.isBanned ? "Desbanear" : "Banear"}</button>
+          {user.isPrincipalAdmin ? (
+            <button disabled={true}>Error: Admin Principal</button>
+          ) : (
+            <button>{user.isBanned ? "Desbanear" : "Banear"}</button>
+          )}
         </li>
       </ul>
     </div>
