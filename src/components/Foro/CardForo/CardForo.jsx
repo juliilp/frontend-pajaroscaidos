@@ -35,7 +35,11 @@ export default function CardForo({
                 title={isAdmin ? "Administrador" : "Voluntario"}
                 className="ml-1 text-[#2594EF] text-xl font-bold"
               >
-                {isAdmin ? <MdVerifiedUser /> : isVoluntary ? <GoVerified /> : null}
+                {isAdmin ? (
+                  <MdVerifiedUser />
+                ) : isVoluntary ? (
+                  <GoVerified />
+                ) : null}
               </div>
             ) : null}
           </div>
@@ -83,7 +87,11 @@ export default function CardForo({
 
         <div className="mt-5 hidden lg:flex lg:items-start lg:justify-end">
           <div className="hidden lg:flex lg:flex-col lg:items-start lg:justify-end border border-gray-400 p-2 rounded-md">
-            <IconsReactions id={id} commentsQuantity={commentsQuantity} reactions={reactions} />
+            <IconsReactions
+              id={id}
+              commentsQuantity={commentsQuantity}
+              reactions={reactions}
+            />
           </div>
         </div>
 
@@ -109,9 +117,16 @@ export default function CardForo({
                 height={50}
                 className="rounded-full w-[50px] h-[50px]"
               />
-              <p title={e.user.isAdmin ? "Administrador" : "Voluntario"} className="font-bold">
+              <p
+                title={e.user.isAdmin ? "Administrador" : "Voluntario"}
+                className="font-bold"
+              >
                 {e.user.nick_name}
-                {e.user.isAdmin ? <MdVerifiedUser /> : e.user.isVoluntary ? <GoVerified /> : null}
+                {e.user.isAdmin ? (
+                  <MdVerifiedUser />
+                ) : e.user.isVoluntary ? (
+                  <GoVerified />
+                ) : null}
               </p>
 
               <p className="text-gray-500">{convertirFecha(e.createdAt)}</p>

@@ -119,7 +119,13 @@ export default function Foros() {
         </div>
       </section>
       <section className="flex-col gap-4 max-w-[400px] hidden xl:flex my-8">
-        <Image src={ImagenForo} alt="imagen_campañas" width={400} height={158} className="w-full" />
+        <Image
+          src={ImagenForo}
+          alt="imagen_campañas"
+          width={400}
+          height={158}
+          className="w-full"
+        />
         <NuestraComunidad />
       </section>
       <div className="flex w-full items-center justify-center xl:hidden">

@@ -36,7 +36,11 @@ export default function Page({ params }) {
   return (
     <section className="min-h-full gap-3 flex flex-col pb-6 mt-[70px] text-white">
       <header className="w-full h-40 relative">
-        <Image src={ImgPortada} alt="ImgPortada" className="object-cover w-full h-full" />
+        <Image
+          src={ImgPortada}
+          alt="ImgPortada"
+          className="object-cover w-full h-full"
+        />
         <div className="absolute inset-0 flex items-center sm:ml-16 ml-6">
           <div className="flex items-center gap-3 h-full">
             <div className="rounded-full overflow-hidden w-20 h-20 relative">
@@ -50,9 +54,13 @@ export default function Page({ params }) {
                   e.target.style.display = "none";
                 }}
               />
-              {!publication?.user.avatar?.secure_url && <BiSolidUser color="red" size={35} />}
+              {!publication?.user.avatar?.secure_url && (
+                <BiSolidUser color="red" size={35} />
+              )}
             </div>
-            <span className="text-black font-bold text-2xl ml-2">{publication.user.nick_name}</span>
+            <span className="text-black font-bold text-2xl ml-2">
+              {publication.user.nick_name}
+            </span>
           </div>
         </div>
       </header>
@@ -66,7 +74,11 @@ export default function Page({ params }) {
           <ContentPost publication={publication} postId={params.id} />
           <div className="flex items-center gap-6 w-full justify-between flex-col sm:flex-row">
             <div className="w-full sm:w-[80%]">
-              <InputComment onCommentSubmit={onCommentSubmit} idPost={params.id} />
+              <InputComment
+                onCommentSubmit={onCommentSubmit}
+                idPost={params.id}
+                allComents={publication.comments}
+              />
             </div>
           </div>
         </main>

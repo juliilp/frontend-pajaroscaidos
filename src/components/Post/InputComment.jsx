@@ -4,7 +4,7 @@ import Image from "next/image";
 import { CustomContext } from "@/store/ContextProvider";
 import { useEffect } from "react";
 
-const InputComment = ({ onCommentSubmit, idPost }) => {
+const InputComment = ({ onCommentSubmit, idPost, allComents }) => {
   const { UserContext } = CustomContext();
   const [user, setUser] = useState();
   const [comment, setComment] = useState("");
@@ -13,6 +13,10 @@ const InputComment = ({ onCommentSubmit, idPost }) => {
   useEffect(() => {
     setUser(UserContext);
   }, [UserContext]);
+
+  useEffect(() => {
+    console.log(allComents);
+  }, [allComents]);
 
   const handleCommentChange = (event) => {
     setComment(event.target.value);
