@@ -18,16 +18,18 @@ export default function PostComunidad({ publications }) {
                   height={50}
                   className="rounded-full w-[50px] h-[50px]"
                   priority
-                  layout
+                  // layout
                 />
               ) : (
-                <BiSolidUser size={35} color="white" layout />
+                <BiSolidUser size={35} color="white" />
               )}
 
               <span className="text-[#707070] font-semibold">{post.user.nick_name}</span>
             </div>
             <div className="h-[2px] w-[100%] bg-[#D9D9D9] shadow-login rounded-2xl  " />
-            <p className="text-[#707070] font-semibold text-xl pl-5 pt-5">{post.description}</p>
+            <p className="text-[#707070] font-semibold text-xl pl-5 pt-5 line-clamp-3">
+              {post.description}
+            </p>
 
             <Image
               src={post.image[0].imageUrl}
@@ -35,7 +37,7 @@ export default function PostComunidad({ publications }) {
               width={200}
               height={200}
               className="w-full h-[200px] p-6 object-contain flex-shrink-0"
-              layout
+              // layout
             />
           </div>
         ))

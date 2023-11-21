@@ -6,6 +6,8 @@ import { CustomContext } from "@/store/ContextProvider";
 import { IoIosTrash } from "react-icons/io";
 import { deletePost } from "@/api/apiCall/PostRequests";
 import Alerts from "../Alerts/Alerts";
+import IconsReactions from "../Foro/CardForo/IconsReactions";
+import IconsReactionsMobile from "../Foro/CardForo/IconsReactionsMobile";
 
 export default function ContentPost({ publication, postId }) {
   const router = useRouter();
@@ -88,7 +90,7 @@ export default function ContentPost({ publication, postId }) {
 
       {image[0].secure_url && (
         <article className="flex justify-center w-10/12">
-          <div className="h-auto w-full flex items-center justify-center relative">
+          <div className="relative lg:flex lg:flex-row gap-2 lg:items-start lg:justify-between">
             <Image
               src={image[0].secure_url}
               alt={image[0].public_id}
@@ -99,6 +101,26 @@ export default function ContentPost({ publication, postId }) {
                 e.target.style.display = "none";
               }}
             />
+
+            <div className="mt-5  hidden lg:flex lg:items-start lg:justify-end">
+              <div className=" hidden lg:flex lg:flex-col lg:items-start lg:justify-end border border-gray-400 p-2 rounded-md">
+                <IconsReactions
+                  id={postId}
+                  commentsQuantity={publication.comments.length}
+                  reactions={publication.reactions}
+                />
+              </div>
+            </div>
+
+            <div className="mt-5 lg:hidden flex justify-center w-full overflow-x-auto">
+              <div className="flex flex-row items-center border border-gray-400 p-2 rounded-md max-w-full lg:max-w-[750px]">
+                <IconsReactionsMobile
+                  id={postId}
+                  commentsQuantity={publication.comments.length}
+                  reactions={publication.reactions}
+                />
+              </div>
+            </div>
           </div>
         </article>
       )}

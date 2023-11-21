@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api/api";
 import sortPostsByDate from "@/helpers/orderPosts";
-import CardForo from "../CardForo";
 import Pagination from "../Pagination/Pagination2";
 import { BiTime } from "react-icons/bi";
 import { IoIosArrowUp } from "react-icons/io";
+import CardForoProfile from "../Foro/CardForo/CardForoProfile";
 
 export default function MyPosts({ user }) {
   const [userPostsData, setUserPostsData] = useState({
@@ -63,9 +63,7 @@ export default function MyPosts({ user }) {
   return (
     <section className="flex sm:p-6 flex-col justify-center gap-4 items-center mt-6 sm:mt-3 w-[90%] lg:w-[840px] sm:rounded-xl sm:border-[#C4C4C4] sm:border-2 sm:shadow-md">
       <div className="flex justify-between w-full">
-        <h3 className="text-left w-full text-2xl font-semibold">
-          Mis publicaciones
-        </h3>
+        <h3 className="text-left w-full text-2xl font-semibold">Mis publicaciones</h3>
         <div className="flex gap-2 pr-2">
           <BiTime size={25} />
           <div className="flex flex-col">
@@ -76,9 +74,7 @@ export default function MyPosts({ user }) {
               {userPostsData.order === "recent" ? "Recientes" : "Antiguos"}
               <IoIosArrowUp
                 size={25}
-                className={`${
-                  orderOptions ? "rotate-180" : " rotate-0"
-                } duration-200 ml-1`}
+                className={`${orderOptions ? "rotate-180" : " rotate-0"} duration-200 ml-1`}
               />
             </span>
             <ul
@@ -108,7 +104,7 @@ export default function MyPosts({ user }) {
         <div className="w-full">
           {currentPosts.map((post) => {
             return (
-              <CardForo
+              <CardForoProfile
                 key={post.id}
                 titulo={post.title}
                 tiempo={post.updatedAt}

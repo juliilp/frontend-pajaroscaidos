@@ -1,10 +1,6 @@
 import PostList from "./PostList";
 
-export default function TableMobilePosts({
-  posts,
-  toggleModal,
-  fetchPostsData,
-}) {
+export default function TableMobilePosts({ posts, toggleModal, fetchPostsData }) {
   return (
     <table className="w-full table-auto text-center md:hidden">
       <thead>
@@ -16,7 +12,7 @@ export default function TableMobilePosts({
             <strong>Titulo</strong>
           </th>
           <th>
-            <strong>Me gusta</strong>
+            <strong>Reacciones</strong>
           </th>
           <th className="hidden sm:table-cell">
             <strong>Comentarios</strong>
@@ -24,11 +20,7 @@ export default function TableMobilePosts({
         </tr>
       </thead>
       <tbody>
-        <PostList
-          posts={posts}
-          toggleModal={toggleModal}
-          fetchPostsData={fetchPostsData}
-        />
+        <PostList posts={posts} toggleModal={toggleModal} fetchPostsData={fetchPostsData} />
       </tbody>
     </table>
   );

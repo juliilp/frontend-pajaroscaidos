@@ -1,10 +1,6 @@
 import PostList from "./PostList";
 
-export default function TableDesktopPosts({
-  posts,
-  toggleModal,
-  fetchPostsData,
-}) {
+export default function TableDesktopPosts({ posts, toggleModal, fetchPostsData }) {
   return (
     <table className="w-full table-auto text-center hidden md:table">
       <thead>
@@ -19,7 +15,7 @@ export default function TableDesktopPosts({
             <strong>Usuario</strong>
           </th>
           <th className="w-[15%]">
-            <strong>Me gusta</strong>
+            <strong>Reacciones</strong>
           </th>
           <th className="w-[15%]">
             <strong>Comentarios</strong>
@@ -27,11 +23,7 @@ export default function TableDesktopPosts({
         </tr>
       </thead>
       <tbody>
-        <PostList
-          posts={posts}
-          toggleModal={toggleModal}
-          fetchPostsData={fetchPostsData}
-        />
+        <PostList posts={posts} toggleModal={toggleModal} fetchPostsData={fetchPostsData} />
       </tbody>
     </table>
   );

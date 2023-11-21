@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Comentarios from "@/components/Post/Comentarios";
 import { getPost } from "@/api/apiCall/PostRequests";
-import Likesbox from "@/components/Post/Likesbox";
 import ContentPost from "@/components/Post/Content";
 import InputComment from "@/components/Post/InputComment";
 import Image from "next/image";
@@ -23,24 +22,11 @@ export default function Page({ params }) {
     fetchData();
   }, [params.id]);
 
-  const updateLikes = (newLikes) => {
-    setPublication((prevPublication) => ({
-      ...prevPublication,
-      reactions: newLikes,
-    }));
-    setLikeInProgress(false);
-  };
-
   const onCommentSubmit = (newComments) => {
     setPublication((prevPublication) => ({
       ...prevPublication,
       comments: newComments,
     }));
-  };
-
-  const handleLikeClick = async (reaction) => {
-    if (likeInProgress) return;
-    setLikeInProgress(true);
   };
 
   if (!publication) {
@@ -53,9 +39,7 @@ export default function Page({ params }) {
         <Image
           src={ImgPortada}
           alt="ImgPortada"
-          layout="fill"
-          objectFit="cover"
-          className=""
+          className="object-cover w-full h-full"
         />
         <div className="absolute inset-0 flex items-center sm:ml-16 ml-6">
           <div className="flex items-center gap-3 h-full">
@@ -93,15 +77,7 @@ export default function Page({ params }) {
               <InputComment
                 onCommentSubmit={onCommentSubmit}
                 idPost={params.id}
-              />
-            </div>
-            <div className="flex-grow items-start">
-              <Likesbox
-                postlikes={publication.reactions}
-                idPost={params.id}
-                updateLikes={updateLikes}
-                likeInProgress={likeInProgress}
-                onLikeClick={handleLikeClick}
+                allComents={publication.comments}
               />
             </div>
           </div>

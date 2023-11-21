@@ -14,8 +14,8 @@ export default function Campañas() {
   useEffect(() => {
     const fetchNews = async () => {
       const data = await getNews(pageNumber, newsPerPage);
-      setNews(data.news);
-      setTotalPages(data.totalPages);
+      setNews(data?.news);
+      setTotalPages(data?.totalPages);
     };
 
     fetchNews();
@@ -41,9 +41,7 @@ export default function Campañas() {
               className=" h-[150px] w-[200px]"
             />
 
-            <span className="text-[#727272] text-sm ">
-              {formatDate(e.createdAt)}
-            </span>
+            <span className="text-[#727272] text-sm ">{formatDate(e.createdAt)}</span>
             <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
             <p className="text-sm  ">{e.description}</p>
           </div>
@@ -60,11 +58,7 @@ export default function Campañas() {
       )}
 
       <div className="w-full md:col-span-3 md:row-start-3 flex justify-center mt-4 md:mt-0">
-        <Pagination
-          pageNumber={pageNumber}
-          totalPages={totalPages}
-          changePage={handlePageChange}
-        />
+        <Pagination pageNumber={pageNumber} totalPages={totalPages} changePage={handlePageChange} />
       </div>
     </div>
   );
