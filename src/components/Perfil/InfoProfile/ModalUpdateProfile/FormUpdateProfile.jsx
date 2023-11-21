@@ -72,7 +72,10 @@ export default function FormUpdateProfile({ user, setChangeView }) {
       {user.avatar && user.avatar.secure_url && <UpdateAvatar user={user} />}
 
       <h2 className="text-xl font-semibold mt-2">Editar perfil</h2>
-      <form className="flex flex-col items-center gap-1 w-full" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col items-center gap-1 w-full"
+        onSubmit={handleSubmit}
+      >
         {Object.keys(fieldLabels).map((fieldName) => (
           <div key={fieldName} className="flex flex-col w-full">
             <label htmlFor={fieldName} className="pl-1 font-medium">
@@ -85,7 +88,9 @@ export default function FormUpdateProfile({ user, setChangeView }) {
               className="rounded-md px-2 py-1"
               onChange={handleUserUpdated}
             />
-            {errors[fieldName] && <p className="text-red-500">{errors[fieldName]}</p>}
+            {errors[fieldName] && (
+              <p className="text-red-500">{errors[fieldName]}</p>
+            )}
           </div>
         ))}
         <div
@@ -94,17 +99,27 @@ export default function FormUpdateProfile({ user, setChangeView }) {
           }`}
         >
           {!user.registerWithAuth0 && (
-            <button className="py-1 px-3 rounded-md bg-[#7e7e7e]" onClick={changeView}>
+            <button
+              className="py-1 px-3 rounded-md bg-[#7e7e7e]"
+              onClick={changeView}
+            >
               <span className="font-semibold">Cambiar contraseña</span>
             </button>
           )}
           <button
-            className="py-1 px-3 rounded-md bg-[#60EA4A] disabled:bg-[#56af48] disabled:cursor-not-allowed"
+            className="py-1 px-3 rounded-md bg-[#60EA4A] disabled:bg-[#ff5e5e] disabled:cursor-not-allowed"
             type="submit"
-            disabled={Object.keys(errors).length > 0}
+            disabled={
+              Object.keys(errors).length > 0 ||
+              Object.keys(userUpdated).length === 0
+            }
           >
             {isLoading ? (
-              <BiLoaderAlt className="animate-spin mx-4" size={20} color="#0C6410" />
+              <BiLoaderAlt
+                className="animate-spin mx-4"
+                size={20}
+                color="#0C6410"
+              />
             ) : (
               <span className="font-semibold">Actualizar</span>
             )}
