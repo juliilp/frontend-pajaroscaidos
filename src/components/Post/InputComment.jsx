@@ -14,10 +14,6 @@ const InputComment = ({ onCommentSubmit, idPost, allComents }) => {
     setUser(UserContext);
   }, [UserContext]);
 
-  useEffect(() => {
-    console.log(allComents);
-  }, [allComents]);
-
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };
