@@ -21,13 +21,21 @@ export default function CardAcciones({
         alt="imagen"
         src={image}
       />
-      <div
-        className={`${className} flex flex-col gap-6 md:justify-self-center ${distanciaDiv} `}
+      <p className="max-w-[550px] px-4 md:hidden">{texto}</p>
+      <Link
+        className=" flex justify-center min-w-[8rem] items-center text-center text-white bg-[#128117] px-4 h-[40px] w-[40%] md:w-[25%] rounded hover:bg-[#13b113] duration-200 md:hidden"
+        href={redireccion}
+        prefetch={false}
       >
-        <h2 className="text-[#0C6410] font-semibold hidden md:block text-center text-2xl">
+        Saber más
+      </Link>
+      <article
+        className={`${className} flex flex-col gap-6 md:justify-self-center ${distanciaDiv} hidden md:block `}
+      >
+        <h2 className="text-[#0C6410] font-semibold  text-center text-2xl">
           {titulo}
         </h2>
-        <p className="max-w-[550px] px-4">{texto}</p>
+        <p className="max-w-[550px] px-4 ">{texto}</p>
         <div className="w-full justify-center items-center flex">
           <Link
             className=" flex justify-center min-w-[8rem] items-center text-center text-white bg-[#128117] px-4 h-[40px] w-[40%] md:w-[25%] rounded hover:bg-[#13b113] duration-200"
@@ -37,7 +45,7 @@ export default function CardAcciones({
             Saber más
           </Link>
         </div>
-      </div>
+      </article>
     </section>
   );
 }
