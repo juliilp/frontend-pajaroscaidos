@@ -35,29 +35,30 @@ export default function FormUpdateProfile({ user, setChangeView }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (Object.keys(userUpdated).length !== 0) {
+      try {
+        setIsLoading(true);
 
-    try {
-      setIsLoading(true);
+        if (Object.keys(errors).length === 0) {
+          if (userUpdated.birth_date) {
+            setUserUpdated((userPrev) => ({
+              ...userPrev,
+              birth_date: parseBackendDate(userUpdated.birth_date),
+            }));
+          }
 
-      if (Object.keys(errors).length === 0) {
-        if (userUpdated.birth_date) {
-          setUserUpdated((userPrev) => ({
-            ...userPrev,
-            birth_date: parseBackendDate(userUpdated.birth_date),
-          }));
+          const data = await UpdateUser(userUpdated, user.id);
+          if (data.status === "success") {
+            setJWTContext(data.user);
+            setUserUpdated({});
+            alert("El usuario se ha actualizado correctamente!");
+          }
         }
-
-        const data = await UpdateUser(userUpdated, user.id);
-        if (data.status === "success") {
-          setJWTContext(data.user);
-          setUserUpdated({});
-          alert("El usuario se ha actualizado correctamente!");
-        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
