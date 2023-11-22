@@ -43,6 +43,7 @@ export default function Acciones() {
                   : "lg:justify-self-start"
               }
               className={card.id % 2 !== 0 && "order-[-2]"}
+              textoPersonalizado={card.textoPersonalizado}
             />
           );
         })}
