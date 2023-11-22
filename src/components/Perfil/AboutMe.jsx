@@ -15,7 +15,11 @@ export default function AboutMe({ user }) {
         <h3 className="text-2xl font-semibold">Sobre mi</h3>
         <BiEditAlt size={30} className="cursor-pointer" onClick={toggleModal} />
       </div>
-      <p className="w-full">{user.description || "No hay descripcion"}</p>
+      <p className="w-full">
+        {user.description
+          ? `${user?.description.aboutMe}. Mi labor en la ONG: ${user?.description.work}`
+          : "No hay descripción"}
+      </p>
       {modal && <ModalUpdateAboutMe user={user} toggleModal={toggleModal} />}
     </section>
   );
