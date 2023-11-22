@@ -41,7 +41,7 @@ export default function MenuMobile({ closeMenu, admin }) {
         <div
           className={`transition-all duration-300 w-full pl-8 ${
             openMenu === "asociacion"
-              ? "opacity-100 h-[12rem] pointer-events-auto"
+              ? "opacity-100 h-[15rem] pointer-events-auto"
               : "opacity-0 h-0 pointer-events-none"
           }`}
         >
