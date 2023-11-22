@@ -5,19 +5,21 @@ import React, { useState, useEffect } from "react";
 import { BiSolidEditAlt } from "react-icons/bi";
 
 export default function ModalUpdateAboutMe({ user, toggleModal }) {
-  const [userDescription, setUserDescription] = useState("");
-  const [userLabor, setUserLabor] = useState("");
+  const [description, setDescription] = useState({
+    aboutMe: "",
+    work: "",
+  });
 
   useEffect(() => {
     if (user.description) {
-      const [description, labor] = user.description.split("Mi labor en la ONG:");
-      setUserDescription(description);
-      setUserLabor(labor);
+      setDescription({
+        aboutMe: user.description.aboutMe,
+        work: user.description.work,
+      });
     }
   }, [user.description]);
 
   const { setJWTContext } = CustomContext();
-  const [description, setDescription] = useState({});
 
   const handleCloseModal = (event) => {
     if (event.target.id === "outside") {
@@ -27,22 +29,20 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
 
   const handleDescription = (event) => {
     const { id, value } = event.target;
-    if (id === "description") {
-      setUserDescription(value);
-    } else if (id === "labor") {
-      setUserLabor(value);
+    if (id === "aboutMe") {
+      setDescription({ ...description, aboutMe: value });
+    } else if (id === "work") {
+      setDescription({ ...description, work: value });
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const updatedDescription = `${userDescription} Mi labor en la ONG:${userLabor}`;
 
-    const data = await UpdateUser({ description: updatedDescription }, user.id);
+    const data = await UpdateUser({ description }, user.id);
 
     if (data.status === "success") {
       setJWTContext(data.user);
-      setDescription({});
       alert("La descripción se ha actualizado correctamente.");
     }
   };
@@ -66,15 +66,15 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
             <form className="flex flex-col items-center w-full gap-2">
               <label>Sobre vos</label>
               <textarea
-                value={userDescription}
-                id="description"
+                value={description.aboutMe}
+                id="aboutMe"
                 onChange={handleDescription}
                 className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
               <label>Tu labor en la ONG</label>
               <textarea
-                value={userLabor}
-                id="labor"
+                value={description.work}
+                id="work"
                 onChange={handleDescription}
                 className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
