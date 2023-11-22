@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 import Image from "next/image";
 import api from "@/api/api";
 import { Autoplay } from "swiper/modules";
@@ -10,37 +10,57 @@ import Imagen3 from "@/../public/images/QuieroSerVoluntario/3.png";
 import Imagen4 from "@/../public/images/QuieroSerVoluntario/4.png";
 import Imagen5 from "@/../public/images/QuieroSerVoluntario/5.png";
 import "swiper/css";
+import CardQuieroSerVoluntario from "@/components/CardQuieroSerVoluntario/CardQuieroSerVoluntario";
 export default function Page() {
   const [voluntarios, setVoluntarios] = useState([]);
+  const [typesVoluntarios, setTypesVoluntarios] = useState([]);
   const imagenes = [
     {
+      id: "1",
       imagen: Imagen1,
     },
     {
+      id: "2",
       imagen: Imagen2,
     },
     {
+      id: "3",
       imagen: Imagen3,
     },
     {
+      id: "4",
       imagen: Imagen4,
     },
     {
+      id: "5",
       imagen: Imagen5,
     },
   ];
-
+  const idCard = useId();
   useEffect(() => {
-    async function apiVoluntarios() {
-      const result = await api("/user/voluntary");
-      const data = result.data;
-      setVoluntarios(data);
+    async function fetchData() {
+      try {
+        const [voluntariosResult, typesVoluntariosResult] = await Promise.all([
+          api("/user/voluntary"),
+          api("/user/voluntary-types"),
+        ]);
+
+        const voluntariosData = voluntariosResult.data;
+        const typesVoluntariosData = typesVoluntariosResult.data.types;
+
+        setVoluntarios(voluntariosData);
+        setTypesVoluntarios(typesVoluntariosData);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
     }
-    apiVoluntarios();
+
+    fetchData();
   }, []);
+
   return (
     <section>
-      <header className="mySwiperContainer h-[180px] md:h-[350px] max-h-[600px]">
+      <header className="mySwiperContainer h-full ">
         <Swiper
           navigation={true}
           modules={[Autoplay]}
@@ -53,18 +73,25 @@ export default function Page() {
         >
           {imagenes.map((i) => {
             return (
-              <SwiperSlide key={imagenes.keys}>
-                <Image src={i.imagen} alt="imagen" />
+              <SwiperSlide key={i.id}>
+                <Image src={i.imagen} alt="imagen" priority />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </header>
-      <article className="flex flex-col w-full">
+      <section className="flex flex-col w-full pb-12">
         <h1 className="text-center my-12 xl:text-2xl md:text-xl text-lg">
           Tipo de voluntariado
         </h1>
-      </article>
+        <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-end justify-center gap-10 mx-auto justify-items-center">
+          {typesVoluntarios.map((t) => {
+            return (
+              <CardQuieroSerVoluntario key={t} titulo={t} imagen={Imagen1} />
+            );
+          })}
+        </article>
+      </section>
     </section>
   );
 }
