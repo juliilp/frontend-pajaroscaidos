@@ -10,11 +10,9 @@ import { GoVerified } from "react-icons/go";
 export default function Comentarios({ comments }) {
   const [orderComments, setOrderComments] = useState("Antiguos");
   const [sortedComments, setSortedComments] = useState(comments);
-
   const setComments = (event) => {
     const selectedOrder = event.target.id;
     setOrderComments(selectedOrder);
-
     let sortedCommentsCopy = [...comments];
     if (selectedOrder === "Recientes") {
       sortedCommentsCopy.sort(orderByRecientes);
@@ -52,6 +50,7 @@ export default function Comentarios({ comments }) {
 
   useEffect(() => {
     setSortedComments(comments);
+
     let sortedCommentsCopy = [...comments];
     if (orderComments === "Recientes") {
       sortedCommentsCopy.sort(orderByRecientes);
@@ -144,7 +143,7 @@ export default function Comentarios({ comments }) {
                     ) : null}
                   </h5>
                 </div>
-                <span className="flex items-end items-center text-sm">
+                <span className="flex  items-center text-sm">
                   {commentMonth(e.createdAt)}
                 </span>
               </article>

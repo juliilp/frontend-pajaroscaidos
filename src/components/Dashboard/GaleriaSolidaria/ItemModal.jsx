@@ -21,6 +21,7 @@ const objetItem = {
 export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
   const [startEdit, setStartEdit] = useState(false);
   const [seeAlert, setSeeAlert] = useState(false);
+  const [iteminprogress, setIteminprogress] = useState(false);
   const [successFullAlert, setSuccesFullAlert] = useState({
     state: false,
     message: "",
@@ -80,8 +81,8 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     const message = mode.create
       ? `Se ha creado con exito ${newItem.title}`
       : mode.delete
-      ? `Se ha eliminado con exito ${newItem.title}.`
-      : `Se ha editado con exito ${newItem.title}.`;
+        ? `Se ha eliminado con exito ${newItem.title}.`
+        : `Se ha editado con exito ${newItem.title}.`;
 
     setSeeAlert(false);
     setSuccesFullAlert({ state: true, message: message });
@@ -92,11 +93,15 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
   };
 
   const handleCreate = () => {
-    seeAlert
-      ? createNewItem(newItem)
-          .then(() => successFullChanges())
-          .catch((error) => console.log(error))
-      : setSeeAlert(true);
+    if (seeAlert && !iteminprogress) {
+      setIteminprogress(true)
+      createNewItem(newItem)
+        .then(() => (successFullChanges()))
+        .catch((error) => console.log(error))
+    }
+    if (!seeAlert) {
+      setSeeAlert(true)
+    }
   };
 
   const closeAlert = () => {
@@ -113,8 +118,8 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     };
     seeAlert
       ? editShopItem(newItem.id, edited, categoriesToDelete, imageToDelete)
-          .then(() => successFullChanges())
-          .catch((error) => console.log(error))
+        .then(() => successFullChanges())
+        .catch((error) => console.log(error))
       : setSeeAlert(true);
   };
 
@@ -122,8 +127,8 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     setMode({ ...mode, delete: true });
     seeAlert
       ? deleteShopItem(newItem.id)
-          .then(() => successFullChanges())
-          .catch((error) => console.log(error))
+        .then(() => successFullChanges())
+        .catch((error) => console.log(error))
       : setSeeAlert(true);
   };
 
