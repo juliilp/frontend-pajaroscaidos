@@ -32,7 +32,7 @@ export default function Campañas() {
         news.map((e) => (
           <div
             key={e.id}
-            className="w-full  max-w-[300px] font-roboto bg-[#d9d9d9] p-4 lg:p-0  rounded-md my-6 justify-self-center hover:bg-[#cdcdcd] rounded-lg shadow-md"
+            className="w-full max-w-[300px] font-roboto bg-[#d9d9d9] p-4 lg:p-4 rounded-md my-6 justify-self-center hover:bg-[#cdcdcd] rounded-lg shadow-md flex flex-col items-center"
           >
             <Link href={`${e.id}`}>
               <Image
@@ -40,10 +40,10 @@ export default function Campañas() {
                 alt="auto"
                 width={250}
                 height={200}
-                className=" h-[150px] w-[200px]"
+                className=" h-[200px] w-[200px] w-full rounded-md"
               />
 
-              <span className="text-[#727272] text-sm ">{formatDate(e.createdAt)}</span>
+              <span className="text-[#727272] text-sm w-full">{formatDate(e.createdAt)}</span>
               <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
               <p className="text-sm  ">{e.description}</p>
             </Link>
@@ -66,3 +66,5 @@ export default function Campañas() {
     </div>
   );
 }
+
+// className="w-full  max-w-[300px] font-roboto bg-[#d9d9d9] p-4 lg:p-4 rounded-md my-6 justify-self-center hover:bg-[#cdcdcd] rounded-lg shadow-md"
