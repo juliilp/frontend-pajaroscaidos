@@ -45,7 +45,7 @@ export default function Campañas() {
 
               <span className="text-[#727272] text-sm w-full">{formatDate(e.createdAt)}</span>
               <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
-              <p className="text-sm  ">{e.description}</p>
+              <p className="text-sm line-clamp-5">{e.description}</p>
             </Link>
           </div>
         ))
