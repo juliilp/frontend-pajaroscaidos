@@ -34,9 +34,8 @@ export default function ContextProvider({ children }) {
     if (storedUser) {
       const decodedUser = decodeURIComponent(storedUser);
 
-      const JWT = JSON.parse(decodedUser);
-
       try {
+        const JWT = JSON.parse(decodedUser);
         jwt.verify(JWT, key);
         return JWT;
       } catch (error) {
