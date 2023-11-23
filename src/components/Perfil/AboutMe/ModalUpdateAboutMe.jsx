@@ -8,6 +8,8 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
   const [description, setDescription] = useState({
     aboutMe: "",
     work: "",
+    dev: "",
+    contact: [],
   });
 
   useEffect(() => {
@@ -15,6 +17,8 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
       setDescription({
         aboutMe: user.description.aboutMe,
         work: user.description.work,
+        dev: user.description.dev,
+        contact: user.description.contact || [],
       });
     }
   }, [user.description]);
@@ -33,6 +37,10 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
       setDescription({ ...description, aboutMe: value });
     } else if (id === "work") {
       setDescription({ ...description, work: value });
+    } else if (id === "dev") {
+      setDescription({ ...description, dev: value });
+    } else if (id === "contact") {
+      setDescription({ ...description, contact: value });
     }
   };
 
@@ -45,6 +53,42 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
       setJWTContext(data.user);
       alert("La descripción se ha actualizado correctamente.");
     }
+  };
+
+  const handleContactChange = (index, field, value) => {
+    const updatedContacts = [...description.contact];
+    updatedContacts[index] = {
+      ...updatedContacts[index],
+      [field]: value,
+    };
+    setDescription({
+      ...description,
+      contact: updatedContacts,
+    });
+  };
+
+  const handleAddContact = (e) => {
+    e.preventDefault();
+    setDescription({
+      ...description,
+      contact: [
+        ...description.contact,
+        {
+          name: "",
+          url: "",
+        },
+      ],
+    });
+  };
+
+  const handleRemoveContact = (e, index) => {
+    e.preventDefault();
+    const updatedContacts = [...description.contact];
+    updatedContacts.splice(index, 1);
+    setDescription({
+      ...description,
+      contact: updatedContacts,
+    });
   };
 
   return (
@@ -78,6 +122,48 @@ export default function ModalUpdateAboutMe({ user, toggleModal }) {
                 onChange={handleDescription}
                 className="w-full rounded-md px-3 py-2 h-40"
               ></textarea>
+              {user.isDeveloper ? (
+                <>
+                  <label>Tu desarrollo en la pagina</label>
+                  <textarea
+                    value={description.dev}
+                    id="dev"
+                    onChange={handleDescription}
+                    className="w-full rounded-md px-3 py-2 h-40"
+                  ></textarea>
+                  <label> Tus contactos</label>
+                  {description.contact.map((contact, index) => (
+                    <div key={index} className="flex flex-col gap-2 md:flex-row md:items-center">
+                      <input
+                        type="text"
+                        value={contact.name}
+                        onChange={(e) => handleContactChange(index, "name", e.target.value)}
+                        placeholder="Nombre del contacto"
+                        className="rounded-md px-3 py-2"
+                      />
+                      <input
+                        type="text"
+                        value={contact.url}
+                        onChange={(e) => handleContactChange(index, "url", e.target.value)}
+                        placeholder="URL del contacto"
+                        className="rounded-md px-3 py-2"
+                      />
+                      <button
+                        className="bg-red-500 text-white px-1 py-1 rounded-md"
+                        onClick={(e) => handleRemoveContact(e, index)}
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    className="bg-gray-500 text-white px-1 py-1 rounded-md"
+                    onClick={(e) => handleAddContact(e)}
+                  >
+                    Agregar contacto
+                  </button>
+                </>
+              ) : null}
               <button onClick={handleSubmit} className="py-1 px-3 rounded-md bg-[#60EA4A] mt-2">
                 <span className="font-semibold">Actualizar</span>
               </button>
