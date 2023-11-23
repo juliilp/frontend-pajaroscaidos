@@ -55,7 +55,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
 
   return (
     <>
-      <div className="lg:w-[50%] w-[90%] h-[450px] bg-[#444] rounded-lg text-[#ffffff]">
+      <div className="lg:w-[50%] w-[90%] h-[550px] bg-[#444] rounded-lg text-[#ffffff]">
         <div className="flex justify-between p-6 mb-4 text-xl font-bold ">
           <h1>Crea tu campaña!</h1>
           <button className="text-[#D22929]" onClick={() => toggleModal({})}>
@@ -74,7 +74,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
             <label htmlFor="description">Descripción</label>
             <textarea
               onChange={handleChange}
-              className="mb-[60px] px-4 bg-[#ccc] rounded h-[50px] text-black flex items-center"
+              className="mb-[60px] px-4 bg-[#ccc] rounded h-[150px] text-black flex items-center"
               type="text"
               name="description"
             />
@@ -110,12 +110,7 @@ function ModalPostCampañas({ toggleModal, handleDataUpdated }) {
                 </div>
                 {imagePreview && (
                   <div>
-                    <Image
-                      src={imagePreview}
-                      alt="Preview"
-                      width={200}
-                      height={100}
-                    />
+                    <Image src={imagePreview} alt="Preview" width={200} height={100} />
                   </div>
                 )}
               </div>
