@@ -29,7 +29,11 @@ export default function Voluntarios() {
   }
 
   const openModal = (text, imagen) => {
-    setModalText(text ? text : "Sin descripción");
+    if (text === null) {
+      text = "Sin descripción";
+    }
+    const texto = text.aboutMe;
+    setModalText(texto ? texto : "Sin descripción");
     setModalOpen(true);
     setModalImagen(imagen);
   };
@@ -37,7 +41,6 @@ export default function Voluntarios() {
   const closeModal = () => {
     setModalOpen(false);
   };
-
   return (
     <section className="min-h-screen w-full flex flex-col mt-[70px] pb-[5rem] items-center gap-12">
       <section className="w-full md:px-[10%]">
@@ -52,7 +55,6 @@ export default function Voluntarios() {
       <article className="flex flex-col md:grid grid-cols-2 gap-12 lg:grid-cols-3 lg:gap-20 xl:grid-cols-4">
         {users && users.length > 0
           ? users.map(({ description, first_name, avatar }, key) => {
-              console.log(users);
               return (
                 <CardVoluntario
                   key={key}
