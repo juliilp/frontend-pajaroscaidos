@@ -16,7 +16,7 @@ export default function AboutSection2() {
             md:flex-row md:items-start
              "
       >
-        <p className=" w-6/12 md:max-w-[630px] text-base">
+        <p className=" md:w-6/12 md:max-w-[630px] text-base p-3 md:p-0">
           Clara Correa, fundadora y actual presidenta de &quot;Pájaros
           Caídos&quot;, comenzó su camino de ayuda a las aves a partir de la
           necesidad de resolver situaciones de asistencia a palomas y otras aves

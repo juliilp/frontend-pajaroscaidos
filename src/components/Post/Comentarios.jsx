@@ -3,11 +3,7 @@ import { convertirFecha } from "@/utils/auxfunctions";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BiSolidUser } from "react-icons/bi";
-import {
-  orderByAntiguos,
-  orderByDestacados,
-  orderByRecientes,
-} from "@/helpers/orderComments";
+import { orderByAntiguos, orderByDestacados, orderByRecientes } from "@/helpers/orderComments";
 import { MdVerifiedUser } from "react-icons/md";
 import { GoVerified } from "react-icons/go";
 
@@ -72,9 +68,7 @@ export default function Comentarios({ comments }) {
             sm:flex-row  sm:items-stretch  sm:justify-between   sm:w-[95%] "
       >
         <article className="flex w-full sm:w-fit justify-start items-end sm:items-center min-h-[3rem] sm:min-h-[3rem]">
-          <h3 className=" text-lg md:text-xl lg:text-2xl font-semibold">
-            Comentarios
-          </h3>
+          <h3 className=" text-lg md:text-xl lg:text-2xl font-semibold">Comentarios</h3>
         </article>
 
         <article
@@ -100,7 +94,7 @@ export default function Comentarios({ comments }) {
           >
             RECIENTES
           </h4>
-          <h4
+          {/* <h4
             id="Destacados"
             onClick={setComments}
             className={`transition-all duration-150 w-full ${
@@ -108,7 +102,7 @@ export default function Comentarios({ comments }) {
             } hover:font-extrabold cursor-pointer`}
           >
             DESTACADOS
-          </h4>
+          </h4> */}
         </article>
       </section>
 
@@ -154,10 +148,7 @@ export default function Comentarios({ comments }) {
                 </span>
               </article>
 
-              <article
-                title="comment"
-                className=" font-semibold w-full sm:w-8/12"
-              >
+              <article title="comment" className=" font-semibold w-full sm:w-8/12">
                 <p className=" break-words">{e.comment}</p>
               </article>
               <div

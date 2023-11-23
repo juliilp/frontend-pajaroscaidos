@@ -51,5 +51,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/login", "/registro", "/perfil", "/dashboard", "/dashboard/((?!general).*)"],
+  matcher: ["/foro", "/login", "/registro", "/perfil", "/dashboard", "/dashboard/((?!general).*)"],
 };
