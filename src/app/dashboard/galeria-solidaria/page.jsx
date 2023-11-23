@@ -41,7 +41,6 @@ export default function Page() {
       window.removeEventListener("resize", updateItemsPerPage);
     };
   }, [windowWidth]);
-
   useEffect(() => {
     const fetchItems = async () => {
       if (itemsPerPage !== null) {
@@ -50,9 +49,12 @@ export default function Page() {
         setTotalPages(data.items.totalPages);
       }
     };
-
     fetchItems();
   }, [actualPage, itemsPerPage]);
+
+  useEffect(() => {
+    setItems(items);
+  }, [items]);
 
   const openCreateModal = () => {
     setItemToEdit(null);
@@ -60,6 +62,7 @@ export default function Page() {
     setVisibleModal(true);
   };
 
+  console.log(items);
   const openEditModal = (event, items) => {
     event.preventDefault();
 
@@ -92,9 +95,15 @@ export default function Page() {
   return (
     <section className="h-full w-full px-4 sm:px-6 flex flex-col items-center pt-[70px] pb-8">
       {visibleModal && (
-        <ItemModal closeModal={closeModal} ModalType={modalType} itemToEdit={itemToEdit} />
+        <ItemModal
+          closeModal={closeModal}
+          ModalType={modalType}
+          itemToEdit={itemToEdit}
+        />
       )}
-      <h1 className="text-center pt-6 text-2xl font-bold mb-4">Galeria Solidaria</h1>
+      <h1 className="text-center pt-6 text-2xl font-bold mb-4">
+        Galeria Solidaria
+      </h1>
 
       <div className="bg-[#4f4f4f] w-full flex flex-col px-3 py-5 rounded-xl items-center">
         <ItemsSection items={items} openEditModal={openEditModal} />

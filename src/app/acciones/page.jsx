@@ -24,7 +24,12 @@ export default function Acciones() {
             <CardAcciones
               key={card.id}
               titulo={card.titulo}
-              texto={card.texto}
+              texto={card.texto.split("\n").map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  {paragraph}
+                  <br />
+                </React.Fragment>
+              ))}
               image={card.image}
               redireccion={card.redireccion}
               distanciaImagen={
@@ -38,6 +43,7 @@ export default function Acciones() {
                   : "lg:justify-self-start"
               }
               className={card.id % 2 !== 0 && "order-[-2]"}
+              textoPersonalizado={card.textoPersonalizado}
             />
           );
         })}
