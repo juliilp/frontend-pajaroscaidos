@@ -49,3 +49,36 @@ export async function UpdatePassword(userId, body) {
     alert("Ha ocurrido un error, intentelo mas tarde.");
   }
 }
+
+export async function getVoluntaryTypes() {
+  try {
+    const response = await api.get(`user/voluntary-types`);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error("Error al recibir los tipos de voluntarios", error);
+  }
+}
+
+export async function adminActions(id, body) {
+  try {
+    const resp = await api.patch(`user/admin/${id}/action`, body);
+    if (resp.status === 200) {
+      onDataUpdate();
+    }
+  } catch (error) {
+    console.error("Error al cambiar el estado:", error);
+  }
+}
+
+export async function getUsersDevelopers() {
+  try {
+    const response = await api.get(`user/developers`);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error("Error al recibir los usuarios desarrolladores", error);
+  }
+}
