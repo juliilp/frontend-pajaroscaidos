@@ -36,7 +36,7 @@ export default function PostComunidad({ publications }) {
               alt="post"
               width={200}
               height={200}
-              className="w-full h-[200px] p-6 object-contain flex-shrink-0"
+              className="w-full h-[200px] p-6 object-contain flex-shrink-0 rounded-md"
               // layout
             />
           </div>
