@@ -17,3 +17,12 @@ export const getNewsById = async (id) => {
     console.error("Error al obtener la noticia:", error);
   }
 };
+
+export const getAdvertising = async () => {
+  try {
+    const response = await api.get(`/advertising`);
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener las publicidades:", error);
+  }
+};
