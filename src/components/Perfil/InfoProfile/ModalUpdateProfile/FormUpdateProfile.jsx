@@ -1,10 +1,10 @@
 import { UpdateUser } from "@/api/apiCall/UserRequests";
+import parseBackendDate from "@/helpers/FormatBackDate";
 import validateUpdateUser from "@/helpers/ValidateUpdateUser";
 import { CustomContext } from "@/store/ContextProvider";
-import { useState, useEffect } from "react";
-import { BiEditAlt, BiLoaderAlt } from "react-icons/bi";
-import Image from "next/image";
-import parseBackendDate from "@/helpers/FormatBackDate";
+import { useState } from "react";
+import UpdateAvatar from "./FormUpdateProfile/UpdateAvatar";
+import { BiLoaderAlt } from "react-icons/bi";
 
 const fieldLabels = {
   nick_name: "Nickname",
@@ -18,85 +18,47 @@ const fieldLabels = {
 
 export default function FormUpdateProfile({ user, setChangeView }) {
   const { setJWTContext } = CustomContext();
+  const [userUpdated, setUserUpdated] = useState({});
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [toggleIcon, setToggleIcon] = useState(false);
-  const [newAvatar, setNewAvatar] = useState(null);
 
-  const [avatarData, setAvatarData] = useState({
-    image: user.avatar.secure_url,
-    preview: null,
-  });
-
-  const handleNewAvatar = (event) => {
-    const file = event.target.files[0];
-    setNewAvatar(file);
-  };
-
-  useEffect(() => {
-    if (newAvatar) {
-      setAvatarData({
-        image: newAvatar,
-        preview: URL.createObjectURL(newAvatar),
-      });
-    }
-  }, [newAvatar]);
-
-  const [updatedUserData, setUpdatedUserData] = useState({});
   const handleUserUpdated = (event) => {
     const { id, value } = event.target;
 
-    setUpdatedUserData((prevData) => ({
-      ...prevData,
+    setUserUpdated((userPrev) => ({
+      ...userPrev,
       [id]: value,
     }));
 
     validateUpdateUser(id, value, errors, setErrors);
   };
 
-  const handleToggleIcon = () => {
-    setToggleIcon(!toggleIcon);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (Object.keys(userUpdated).length !== 0) {
+      try {
+        setIsLoading(true);
 
-    try {
-      setIsLoading(true);
+        if (Object.keys(errors).length === 0) {
+          if (userUpdated.birth_date) {
+            setUserUpdated((userPrev) => ({
+              ...userPrev,
+              birth_date: parseBackendDate(userUpdated.birth_date),
+            }));
+          }
 
-      if (Object.keys(errors).length === 0) {
-        if (updatedUserData.birth_date) {
-          setUpdatedUserData((userPrev) => ({
-            ...userPrev,
-            birth_date: parseBackendDate(updatedUserData.birth_date),
-          }));
+          const data = await UpdateUser(userUpdated, user.id);
+          if (data.status === "success") {
+            setJWTContext(data.user);
+            setUserUpdated({});
+            alert("El usuario se ha actualizado correctamente!");
+          }
         }
-        const formData = new FormData();
-
-        Object.entries(updatedUserData).forEach(([key, value]) => {
-          formData.append(key, value);
-        });
-
-        if (avatarData.preview) {
-          formData.append("avatar", avatarData.image);
-        }
-
-        const data = await UpdateUser(formData, user.id);
-        if (data.status === "success") {
-          setJWTContext(data.user);
-          setUpdatedUserData({});
-          setAvatarData({
-            // image: data.user.avatar.secure_url,
-            preview: null,
-          });
-          setErrors({});
-          alert("El usuario se ha actualizado correctamente!");
-        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.log("error al actualizar perfil: ", error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -108,52 +70,13 @@ export default function FormUpdateProfile({ user, setChangeView }) {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="relative cursor-pointer flex flex-col items-center gap-1">
-        {avatarData.preview ? (
-          <Image
-            src={avatarData.preview}
-            alt="Profile Image"
-            width={100}
-            height={100}
-            className="h-[100px] w-[100px] rounded-full"
-            onMouseEnter={handleToggleIcon}
-          />
-        ) : (
-          <Image
-            src={user.avatar.secure_url}
-            alt="Profile Image"
-            width={100}
-            height={100}
-            className="h-[100px] w-[100px] rounded-full"
-            onMouseEnter={handleToggleIcon}
-          />
-        )}
-        {toggleIcon && (
-          <div
-            className="bg-[#00000079] h-[100px] w-[100px] absolute z-10 top-0 rounded-full"
-            onMouseLeave={handleToggleIcon}
-          >
-            <label htmlFor="avatarInput" className="cursor-pointer">
-              <BiEditAlt
-                size={30}
-                color="white"
-                className="cursor-pointer block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              />
-            </label>
-            <input
-              type="file"
-              id="avatarInput"
-              name="image"
-              onChange={handleNewAvatar}
-              className="hidden"
-              accept="image/*"
-            />
-          </div>
-        )}
-      </div>
+      {user.avatar && user.avatar.secure_url && <UpdateAvatar user={user} />}
 
       <h2 className="text-xl font-semibold mt-2">Editar perfil</h2>
-      <form className="flex flex-col items-center gap-1 w-full">
+      <form
+        className="flex flex-col items-center gap-1 w-full"
+        onSubmit={handleSubmit}
+      >
         {Object.keys(fieldLabels).map((fieldName) => (
           <div key={fieldName} className="flex flex-col w-full">
             <label htmlFor={fieldName} className="pl-1 font-medium">
@@ -166,7 +89,9 @@ export default function FormUpdateProfile({ user, setChangeView }) {
               className="rounded-md px-2 py-1"
               onChange={handleUserUpdated}
             />
-            {errors[fieldName] && <p className="text-red-500">{errors[fieldName]}</p>}
+            {errors[fieldName] && (
+              <p className="text-red-500">{errors[fieldName]}</p>
+            )}
           </div>
         ))}
         <div
@@ -175,22 +100,27 @@ export default function FormUpdateProfile({ user, setChangeView }) {
           }`}
         >
           {!user.registerWithAuth0 && (
-            <button className="py-1 px-3 rounded-md bg-[#7e7e7e]" onClick={changeView}>
+            <button
+              className="py-1 px-3 rounded-md bg-[#7e7e7e]"
+              onClick={changeView}
+            >
               <span className="font-semibold">Cambiar contraseña</span>
             </button>
           )}
-
           <button
-            onClick={handleSubmit}
             className="py-1 px-3 rounded-md bg-[#60EA4A] disabled:bg-[#ff5e5e] disabled:cursor-not-allowed"
             type="submit"
             disabled={
               Object.keys(errors).length > 0 ||
-              (Object.keys(updatedUserData).length === 0 && !avatarData.preview)
+              Object.keys(userUpdated).length === 0
             }
           >
             {isLoading ? (
-              <BiLoaderAlt className="animate-spin mx-4" size={20} color="#0C6410" />
+              <BiLoaderAlt
+                className="animate-spin mx-4"
+                size={20}
+                color="#0C6410"
+              />
             ) : (
               <span className="font-semibold">Actualizar</span>
             )}
