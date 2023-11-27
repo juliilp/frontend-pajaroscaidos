@@ -1,28 +1,10 @@
 "use client";
-
-import { getNewsById } from "@/api/apiCall/NewsRequests";
 import formatDate from "@/helpers/FormatDate";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-const News = ({ id }) => {
-  const [news, setNews] = useState();
-
-  useEffect(() => {
-    const call = async () => {
-      const response = await getNewsById(id);
-
-      setNews(response.news);
-    };
-    call();
-  }, [id]);
-
-  if (!news) {
-    return <div>loading..</div>;
-  }
-
+const News = ({ news }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md max-w-[800px] mx-auto mt-15">
+    <div className="col-span-5 lg:col-span-4 flex flex-col items-center justify-center bg-white p-6 rounded-lg shadow-md max-w-[800px] mx-auto mt-15">
       <div className="flex flex-col items-center justify-center">
         <div>
           <h2 className="mt-5 text-3xl font-bold">{news.title}</h2>
