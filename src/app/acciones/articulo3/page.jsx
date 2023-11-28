@@ -1,7 +1,7 @@
 "use client";
-import MainSectionArticulo1 from "@/components/Acciones/Articulo1/MainSectionArticulo1";
-import image1 from "@/../public/images/Acciones/Articulo1/Action_Tucan.webp";
-import imageBG from "@/../public/images/Acciones/Articulo1/Action_Tucan_BG.webp";
+import MainSectionArticulo3 from "@/components/Acciones/Articulo3/MainSectionArticulo3";
+import image1 from "@/../public/images/Acciones/Articulo3/Action_Tucan.webp";
+import imageBG from "@/../public/images/Acciones/Articulo3/Action_Tucan_BG.webp";
 import Image from "next/image";
 import YoutubePlay from "@/components/YoutubePlay/YoutubePLay";
 
@@ -16,7 +16,7 @@ export default function Page() {
         GEGE VOLVIO A LA SELVA
       </h1>
       <main className="flex w-full md:w-11/12 justify-center">
-        <MainSectionArticulo1 image={image1} />
+        <MainSectionArticulo3 image={image1} />
       </main>
       <section className=" w-9/12 h-[20rem] md:w-10/12 md:h-[25rem] xl:w-11/12 xl:h-[30rem] 2xl:w-full 2xl:h-[35rem] justify-center items-center">
         <YoutubePlay videoID={videoID} />

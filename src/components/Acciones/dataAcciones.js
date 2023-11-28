@@ -1,8 +1,8 @@
-import GegeVolvioALaSelva from "@/../public/images/Acciones/PrimerImagen.webp";
-import FeriaDeVillaDominico from "@/../public/images/Acciones/SegundaImagen.webp";
-import PigeonClubArgentino from "@/../public/images/Acciones/TercerImagen.webp";
-import HistoriaDeCocoElMono from "@/../public/images/Acciones/Articulo1/coco.jpg";
-import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/Articulo1/Guacamayos.jpg";
+import GegeVolvioALaSelva from "@/../public/images/Acciones/ImagenGegeElTucan.webp";
+import FeriaDeVillaDominico from "@/../public/images/Acciones/ImagenFeriaDeVillaDominico.webp";
+import PigeonClubArgentino from '@/../public/images/Acciones/ImagenPigeonClubArgentino.webp' 
+import HistoriaDeCocoElMono from "@/../public/images/Acciones/ImagenDeCoco.jpg";
+import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/ImagenDeGuacamayos.jpg";
 export const dataAcciones = [
   {
     id: 1,
