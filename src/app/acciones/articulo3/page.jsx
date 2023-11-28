@@ -1,7 +1,7 @@
 "use client";
 import MainSectionArticulo3 from "@/components/Acciones/Articulo3/MainSectionArticulo3";
-import image1 from "@/../public/images/Acciones/Articulo1/Action_Tucan.webp";
-import imageBG from "@/../public/images/Acciones/Articulo1/Action_Tucan_BG.webp";
+import image1 from "@/../public/images/Acciones/Articulo3/Action_Tucan.webp";
+import imageBG from "@/../public/images/Acciones/Articulo3/Action_Tucan_BG.webp";
 import Image from "next/image";
 import YoutubePlay from "@/components/YoutubePlay/YoutubePLay";
 
