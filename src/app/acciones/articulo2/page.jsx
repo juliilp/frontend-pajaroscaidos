@@ -1,7 +1,7 @@
 "use client";
 import MainSectionArticulo2 from "@/components/Acciones/Articulo2/MainSectionArticulo2";
-import image1 from "@/../public/images/Acciones/Articulo1/Guacamayos.jpg";
-import imageBG from "@/../public/images/Acciones/Articulo1/Action_Tucan_BG.webp";
+import image1 from "@/../public/images/Acciones/ImagenDeGuacamayos.jpg";
+import imageBG from "@/../public/images/Acciones/Articulo3/Action_Tucan_BG.webp";
 import Image from "next/image";
 
 export default function Page() {

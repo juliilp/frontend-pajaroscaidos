@@ -1,7 +1,7 @@
 "use client";
 import MainSectionArticulo1 from "@/components/Acciones/Articulo1/MainSectionArticulo1";
-import image1 from "@/../public/images/Acciones/Articulo1/coco.jpg";
-import imageBG from "@/../public/images/Acciones/Articulo1/Action_Tucan_BG.webp";
+import image1 from "@/../public/images/Acciones/ImagenDeCoco.jpg";
+import imageBG from "@/../public/images/Acciones/Articulo3/Action_Tucan_BG.webp";
 import Image from "next/image";
 
 export default function Page() {
