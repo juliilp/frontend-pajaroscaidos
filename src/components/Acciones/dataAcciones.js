@@ -1,6 +1,6 @@
 import GegeVolvioALaSelva from "@/../public/images/Acciones/ImagenGegeElTucan.webp";
 import FeriaDeVillaDominico from "@/../public/images/Acciones/ImagenFeriaDeVillaDominico.webp";
-import PigeonClubArgentino from "@/../public/images/Acciones/ImagenDePigeionClubArgentino.webp";
+import PigeonClubArgentino from '@/../public/images/Acciones/ImagenPigeonClubArgentino.webp' 
 import HistoriaDeCocoElMono from "@/../public/images/Acciones/ImagenDeCoco.jpg";
 import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/ImagenDeGuacamayos.jpg";
 export const dataAcciones = [
