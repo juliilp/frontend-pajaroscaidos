@@ -36,7 +36,9 @@ const CardDev = ({ title, description, image }) => {
         {description.contact && description.contact[0]
           ? description.contact.map((e, i) => (
               <div key={i}>
-                <a href={`${e.url}`}>{e.name}</a>
+                <a href={`${e.url}`} target="_blank">
+                  {e.name}
+                </a>
               </div>
             ))
           : null}
