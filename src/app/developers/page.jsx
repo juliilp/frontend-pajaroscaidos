@@ -9,7 +9,9 @@ const Developers = () => {
   useEffect(() => {
     const call = async () => {
       const response = await getUsersDevelopers();
-      setUsers(response.users.users);
+      if (Array.isArray(response.users?.users)) {
+        setUsers(response.users.users.reverse());
+      }
     };
     call();
   }, []);
