@@ -7,19 +7,30 @@ import CardVoluntario from "@/components/CardVoluntario/CardVoluntario";
 import CardVoluntarioLoading from "@/components/CardVoluntario/CardVoluntarioLoading";
 import Modal from "@/components/CardVoluntario/Modal";
 import Link from "next/link";
+import Pagination from "@/components/Pagination/Pagination";
 
 export default function Voluntarios() {
   const [users, setUsers] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState("Sin descripción");
   const [modalImagen, setModalImagen] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     async function fetchUsers() {
-      const { data } = await api("user/voluntary");
+      const { data } = await api(
+        `user/voluntary?verbose=simple&userStatus=isVoluntary&userPerPage=${8}&pageNumber=${pageNumber}`
+      );
       setUsers(data.users.users);
+      setTotalPages(data.users.totalPages);
     }
     fetchUsers();
-  }, []);
+  }, [pageNumber]);
+
+  const handlePageChange = (pageNumber) => {
+    setPageNumber(pageNumber);
+  };
+
   function generateLoadingCards(count) {
     const loadingCards = [];
     for (let i = 0; i < count; i++) {
@@ -66,13 +77,11 @@ export default function Voluntarios() {
             })
           : generateLoadingCards(8)}
       </article>
+      <div className="flex justify-center w-full">
+        <Pagination pageNumber={pageNumber} totalPages={totalPages} changePage={handlePageChange} />
+      </div>
       {modalOpen && (
-        <Modal
-          isOpen={modalOpen}
-          closeModal={closeModal}
-          text={modalText}
-          imagen={modalImagen}
-        />
+        <Modal isOpen={modalOpen} closeModal={closeModal} text={modalText} imagen={modalImagen} />
       )}
     </section>
   );
