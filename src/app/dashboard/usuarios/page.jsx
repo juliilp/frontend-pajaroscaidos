@@ -5,13 +5,17 @@ import api from "@/api/api";
 import Loading from "../loading";
 import TableDesktop from "@/components/Dashboard/Usuarios/TableDesktop";
 import TableMobile from "@/components/Dashboard/Usuarios/TableMobile";
+import { CustomContext } from "@/store/ContextProvider";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const userPerPage = 6;
+  const { logout } = CustomContext();
 
   const fetchUsersData = async () => {
     try {
@@ -24,6 +28,8 @@ export default function Page() {
       setTotalPages(totalPages);
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
+      await logout();
+      router.push("/login");
     } finally {
       setIsLoading(false);
     }
@@ -53,11 +59,7 @@ export default function Page() {
         <TableDesktop users={users} handleDataUpdate={handleDataUpdate} />
         <TableMobile users={users} handleDataUpdate={handleDataUpdate} />
       </div>
-      <Pagination
-        pageNumber={pageNumber}
-        totalPages={totalPages}
-        changePage={handlePageChange}
-      />
+      <Pagination pageNumber={pageNumber} totalPages={totalPages} changePage={handlePageChange} />
     </section>
   );
 }

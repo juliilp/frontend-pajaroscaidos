@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import MenuInterno from "./MenuInterno";
 import Link from "next/link";
@@ -13,6 +13,20 @@ export default function MenuDesktop() {
   const closeMenu = () => {
     setOpenMenu(null);
   };
+
+  const handleOutsideClick = (event) => {
+    if (openMenu && !event.target.closest("[data-menu]")) {
+      closeMenu();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [openMenu]);
 
   return (
     <ul className="flex gap-8 text-white bg-[#3D3D3D] lg:gap-16">
@@ -32,9 +46,7 @@ export default function MenuDesktop() {
           Asociación
           <IoIosArrowUp
             size={25}
-            className={`${
-              openMenu === "asociacion" ? "rotate-180" : " rotate-0"
-            } duration-200`}
+            className={`${openMenu === "asociacion" ? "rotate-180" : " rotate-0"} duration-200`}
           />
         </span>
         <div
@@ -46,44 +58,19 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/nosotros"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion1" href="/nosotros" onClick={closeMenu} prefetch={false}>
                 Nosotros
               </Link>,
-              <Link
-                key="opcion2"
-                href="/acciones"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion2" href="/acciones" onClick={closeMenu} prefetch={false}>
                 Acciones
               </Link>,
-              <Link
-                key="opcion3"
-                href="/caza-trafico"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion3" href="/caza-trafico" onClick={closeMenu} prefetch={false}>
                 Caza y tráfico de faunas
               </Link>,
-              <Link
-                key="opcion4"
-                href="/crueldad-maltrato"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion4" href="/crueldad-maltrato" onClick={closeMenu} prefetch={false}>
                 Crueldad y maltrato
               </Link>,
-              <Link
-                key="opcion5"
-                href="/legislacion"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion5" href="/legislacion" onClick={closeMenu} prefetch={false}>
                 Legislación
               </Link>,
             ]}
@@ -91,10 +78,7 @@ export default function MenuDesktop() {
           />
         </div>
       </li>
-      <li
-        className="flex gap-1 items-center cursor-pointer relative"
-        data-menu="comunidad"
-      >
+      <li className="flex gap-1 items-center cursor-pointer relative" data-menu="comunidad">
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
           onClick={() => toggleMenu("comunidad")}
@@ -102,9 +86,7 @@ export default function MenuDesktop() {
           Comunidad
           <IoIosArrowUp
             size={25}
-            className={`${
-              openMenu === "comunidad" ? "rotate-180" : " rotate-0"
-            } duration-200`}
+            className={`${openMenu === "comunidad" ? "rotate-180" : " rotate-0"} duration-200`}
           />
         </span>
         <div
@@ -116,20 +98,10 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/voluntarios"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion1" href="/voluntarios" onClick={closeMenu} prefetch={false}>
                 Voluntarios
               </Link>,
-              <Link
-                key="opcion2"
-                href="/foro"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion2" href="/foro" onClick={closeMenu} prefetch={false}>
                 Foro
               </Link>,
               <Link
@@ -145,10 +117,7 @@ export default function MenuDesktop() {
           />
         </div>
       </li>
-      <li
-        className="flex gap-1 items-center cursor-pointer relative "
-        data-menu="servicios"
-      >
+      <li className="flex gap-1 items-center cursor-pointer relative " data-menu="servicios">
         <span
           className="flex items-center gap-2 text-white hover:text-gray-300 focus:outline-none"
           onClick={() => toggleMenu("servicio")}
@@ -156,9 +125,7 @@ export default function MenuDesktop() {
           Servicios
           <IoIosArrowUp
             size={25}
-            className={`${
-              openMenu === "servicio" ? "rotate-180" : " rotate-0"
-            } duration-200`}
+            className={`${openMenu === "servicio" ? "rotate-180" : " rotate-0"} duration-200`}
           />
         </span>
         <div
@@ -170,44 +137,19 @@ export default function MenuDesktop() {
         >
           <MenuInterno
             opciones={[
-              <Link
-                key="opcion1"
-                href="/contactanos"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion1" href="/contactanos" onClick={closeMenu} prefetch={false}>
                 Contactanos
               </Link>,
-              <Link
-                key="opcion2"
-                href="/como-denunciar"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion2" href="/como-denunciar" onClick={closeMenu} prefetch={false}>
                 Como Denunciar
               </Link>,
-              <Link
-                key="opcion4"
-                href="/tienda-solidaria"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion4" href="/tienda-solidaria" onClick={closeMenu} prefetch={false}>
                 Tienda Solidaria
               </Link>,
-              <Link
-                key="opcion5"
-                href="/cursos"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion5" href="/cursos" onClick={closeMenu} prefetch={false}>
                 Cursos
               </Link>,
-              <Link
-                key="opcion6"
-                href="/dietas"
-                onClick={closeMenu}
-                prefetch={false}
-              >
+              <Link key="opcion6" href="/dietas" onClick={closeMenu} prefetch={false}>
                 Dietas
               </Link>,
             ]}
