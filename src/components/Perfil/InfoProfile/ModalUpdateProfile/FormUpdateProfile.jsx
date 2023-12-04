@@ -33,7 +33,7 @@ export default function FormUpdateProfile({ user, setChangeView }) {
     const bytes = file.size;
     const mb = Math.round(bytes / 1024)
     if (mb > 4400) {
-      alert("La imagen no puede pesar mas de 1MB")
+      alert("La imagen no puede pesar mas de 4.5MB")
       return
     }
     setNewAvatar(file);
