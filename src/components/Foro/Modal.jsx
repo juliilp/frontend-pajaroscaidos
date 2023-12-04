@@ -46,6 +46,12 @@ export default function ModalnewPost({ setvisible, setLoading, setRefresh }) {
 
   const handlePhotoChange = (event) => {
     const file = event.target.files[0];
+    const bytes = file.size;
+    const mb = Math.round(bytes / 1024)
+    if (mb > 4500) {
+      alert("La imagen no puede pesar mas de 4.5MB")
+      return
+    }
     setNewPost({
       ...newPost,
       image: file,
