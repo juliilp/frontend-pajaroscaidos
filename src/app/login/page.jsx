@@ -25,6 +25,7 @@ export default function Login() {
   const [switchPassword, setSwitchPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [userNotFound, setUserNotFound] = useState(false);
+  const [userGoogle, setUserGoogle] = useState(false);
   const [invalidPass, setInvalidPass] = useState(false);
   const [inputLogin, setInputLogin] = useState({
     email: "",
@@ -77,10 +78,14 @@ export default function Login() {
       return router.push("/emailcode");
     } else if (user === MESSAGE_TYPES.USER_NOT_FOUND) {
       setUserNotFound(true);
+    } else if (user === MESSAGE_TYPES.USER_GOOGLE) {
+      setUserGoogle(true);
     } else if (user === MESSAGE_TYPES.INVALID_PASSWORD) {
       setInvalidPass(true);
     } else if (user === MESSAGE_TYPES.USER_BANNED) {
       return router.push("/ban");
+    } else if (user === MESSAGE_TYPES.INVALID_BODY) {
+      return;
     } else {
       setJWTContext(user);
       router.push("/foro");
@@ -132,6 +137,9 @@ export default function Login() {
           />
           {errors.email && <span className="text-red-500">{errors.email}</span>}
           {userNotFound && <span className="text-red-500">Usuario no registrado</span>}
+          {userGoogle && (
+            <span className="text-red-500">Con ese email debe iniciar sesión con Google</span>
+          )}
         </div>
         <div className="flex flex-col px-4 gap-1 mb-4 ">
           <span className="text-[#525252]">Contraseña</span>
