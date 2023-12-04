@@ -114,7 +114,7 @@ function Alimentacion() {
       <section className="w-full relative min-[320px]:h-[9rem] min-[400px]:h-[10rem] min-[500px]:h-[12rem] sm:h-[13rem]  md:h-[14rem] lg:h-[15rem] 2xl:h-[22rem]">
         <Image
           src={
-            "https://res.cloudinary.com/di5mf85h3/image/upload/v1698705759/alimentacion_ld3se5.png"
+            "https://res.cloudinary.com/de5xjegp3/image/upload/v1701653811/STATIC%20IMAGE/alimentacion_ld3se5_oakdub.png"
           }
           alt="bg-alimentacion"
           fill

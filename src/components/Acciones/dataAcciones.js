@@ -1,14 +1,14 @@
-import GegeVolvioALaSelva from "@/../public/images/Acciones/PrimerImagen.webp";
-import FeriaDeVillaDominico from "@/../public/images/Acciones/SegundaImagen.webp";
-import PigeonClubArgentino from "@/../public/images/Acciones/TercerImagen.webp";
-import HistoriaDeCocoElMono from "@/../public/images/Acciones/Articulo1/coco.jpg";
-import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/Articulo1/Guacamayos.jpg";
+import GegeVolvioALaSelva from "@/../public/images/Acciones/ImagenGegeElTucan.webp";
+import FeriaDeVillaDominico from "@/../public/images/Acciones/ImagenFeriaDeVillaDominico.webp";
+import PigeonClubArgentino from '@/../public/images/Acciones/ImagenPigeonClubArgentino.webp' 
+import HistoriaDeCocoElMono from "@/../public/images/Acciones/ImagenDeCoco.jpg";
+import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/ImagenDeGuacamayos.jpg";
 export const dataAcciones = [
   {
     id: 1,
     titulo: "Historia de coco el mono",
     texto:
-      'COCO EL MONO RESCATADO DE UNA FIESTA EN BELGRANO El dia 5 de diciembre de 2021, la Unidad Fiscal Especializada en Delitos Ambientales (UFEMA) de la Ciudad de Buenos Aires solicitó ayuda a nuestra Asociación para poder derivar un mono carayá que había sido descubierto en un procedimiento judicial en una vivienda en el barrio de Belgrano, en la Ciudad de Buenos Aires. Ante la emergencia y frente a la inexistencia de otros centros de rescate que se pudieran hacer cargo, accedimos a recibir a Coco, quien tiene unos 5 años de edad, una salud muy frágil por años de desatención y maltrato, quien se encuentra ahora controlado por veterinarios. "Coco" es un mono carayá de al menos 5 años, que se encontraba encerrado en un armario sin luz, agua, ni ventilación. Esta especie está protegida y es ilegal tenerla de mascota. Coco además tiene tetraparesia, una atrofia muscular que le impide moverse dinámicamente. Luego la Justicia dispuso la LIBERTAD total y absoluta de “COCO”  y lo declaró libre de cualquier medida  DE RESTRICCION LEGAL Y/O INJERENCIA EN SU CARACTER DE ANIMAL NO HUMANO SUJETO DE DERECHOS Desde la Asociación Pájaros Caídos estamos muy felices de haber sido parte de este proceso que se inició con el rescate de Coco por parte de la Unidad Fiscal Especializada de Delitos Ambientales (UFEMA) de la Ciudad de Buenos Aires, y con los miles de personas que están tomando conciencia que los animales son seres sintientes, que tienen derechos y que los animales silvestres deben estar en su hábitat natural y no encerrados como mascotas. Y luego su traslado, para que pueda tener una mejor vida.',
+      'COCO EL MONO RESCATADO DE UNA FIESTA EN BELGRANO El dia 5 de diciembre de 2021, la Unidad Fiscal Especializada en Delitos Ambientales (UFEMA) de la Ciudad de Buenos Aires solicitó ayuda a nuestra Asociación para poder derivar un mono carayá que había sido descubierto en un procedimiento judicial en una vivienda en el barrio de Belgrano, en la Ciudad de Buenos Aires.',
     image: HistoriaDeCocoElMono,
     redireccion: "/acciones/articulo1",
     textoPersonalizado: true,
@@ -19,12 +19,7 @@ export const dataAcciones = [
     texto: `25-07-2023
 
     INCAUTACION DE GUACAMAYOS EN MATADEROS
-    Efectivos del Departamento Delitos Ambientales de la Policía Federal Argentina, rescataron dos Guacamayos Azul y Amarillo (Ara Ararauna) en peligro de extinción, los cuales se encontraban cautivos en jaulas escondidas entre los acopios de mercadería de una fábrica de vidrios de la localidad de Mataderos, CABA, en infracción a las Leyes de Conservación de la Fauna Silvestre (22.421) y la de Maltrato Animal (14.346)
-    La investigación comenzó a raíz de una denuncia en la que se hizo saber a las autoridades de la existencia de estos dos Guacamayos enjaulados en un área no adecuada. Tomó intervención la Unidad Fiscal de Investigación en Materia Ambiental (UFEMA) de la Ciudad Autónoma de Buenos Aires a cargo del Dr. Carlos Fel Rolero Santurian, Secretaría del Dr. Ricardo Bomparola, quien dio intervención al Departamento de Delitos Ambientales, lográndose determinar la veracidad de la denuncia.
-    Con las pruebas reunidas, se procedió a la incautación de las dos aves, que fueron trasladadas a la Ong. Pájaros Caídos, en donde se procurará un período de cuarentena para su rehabilitación y posterior reinserción a su hábitat especifico.
-    El responsable de la firma quedó a disposición de la Fiscalía interventora, afectado por los delitos de Tráfico de Fauna Silvestre y Maltrato Animal.
-    La manera de frenar el Tráfico Ilegal de Fauna es hacer la Denuncia!!! Si se denuncia, las autoridades pueden intervenir y salvar a los animales que se tienen en cautiverio.
-    Si ves maltrato animal, venta de animales silvestres, te enterás de caza ilegal de fauna silvestre, por favor Denunciá, las denuncias si sirven.`,
+    Efectivos del Departamento Delitos Ambientales de la Policía Federal Argentina, rescataron dos Guacamayos Azul y Amarillo (Ara Ararauna) en peligro de extinción, los cuales se encontraban cautivos en jaulas escondidas entre los acopios de mercadería de una fábrica de vidrios de la localidad de Mataderos, CABA, en infracción a las Leyes de Conservación de la Fauna Silvestre (22.421) y la de Maltrato Animal (14.346)`,
     image: HistoriaDeLosGuacaMayos,
     redireccion: "/acciones/articulo2",
     textoPersonalizado: true,
