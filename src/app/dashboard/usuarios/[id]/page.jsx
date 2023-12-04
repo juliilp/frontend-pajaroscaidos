@@ -153,8 +153,8 @@ const UserData = ({ params }) => {
         onChange={(e) => setSelectedVoluntaryType(e.target.value)}
       >
         {voluntaryTypes.map((e, i) => (
-          <option key={i} value={e}>
-            {e}
+          <option key={i} value={e.name}>
+            {e.name}
           </option>
         ))}
       </select>
