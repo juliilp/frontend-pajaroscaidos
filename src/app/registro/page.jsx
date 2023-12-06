@@ -5,12 +5,12 @@ import { AiOutlineEyeInvisible } from "react-icons/ai";
 import RegistroImagen from "@/assets/registro-login.webp";
 import Image from "next/image";
 import api from "@/api/api";
-import { validateCreateUser } from "@/utils/auxfunctions";
 import Cookies from "js-cookie";
 import RegistroExitoso from "@/components/RegistroExitoso/RegistroExitoso";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export default function Page() {
-  const [errors, setErrors] = useState({});
   const [emailUsed, setEmailUsed] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
   const [registroOk, setRegistroOk] = useState(false);
@@ -27,32 +27,24 @@ export default function Page() {
 
   useEffect(() => {}, [registroOk]);
 
-  const [formRegister, setFormRegister] = useState({
-    email: "",
-    password: "",
-    passwordConfirm: "",
-    first_name: "",
-    last_name: "",
-    country: "",
-    province: "",
-    phone_number: "",
-  });
+  //   email: "",
+  //   password: "",
+  //   passwordConfirm: "",
+  //   first_name: "",
+  //   last_name: "",
+  //   country: "",
+  //   province: "",
+  //   phone_number: "",
+  // });
 
-  const handlerRegistro = (e) => {
-    setFormRegister({
-      ...formRegister,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const handlerSubmit = async (e) => {
-    e.preventDefault();
+  // const handlerRegistro = (e) => {
+  //   setFormRegister({
+  //     ...formRegister,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
-    const validationErrors = validateCreateUser(formRegister);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
+  const handlerSubmit = async (values) => {
     if (isRegistering) {
       return;
     }
@@ -60,7 +52,7 @@ export default function Page() {
     setIsRegistering(true);
 
     try {
-      const { passwordConfirm, ...userData } = formRegister;
+      const { passwordConfirm, ...userData } = values;
       const response = await api.post(`/user/create`, userData, {
         withCredentials: true,
       });
@@ -83,8 +75,10 @@ export default function Page() {
     } finally {
       setIsRegistering(false);
     }
+  };
 
-    setFormRegister({
+  const formik = useFormik({
+    initialValues: {
       email: "",
       password: "",
       passwordConfirm: "",
@@ -93,8 +87,33 @@ export default function Page() {
       country: "",
       province: "",
       phone_number: "",
-    });
-  };
+    },
+
+    validationSchema: Yup.object({
+      email: Yup.string().email("Debe ser un email valido.").required("Debe ingresar un email."),
+      password: Yup.string()
+        .min(8, "La contraseña tiene que tender un mínimo de 8 caracteres")
+        .required("Debe ingresar una contraseña."),
+      passwordConfirm: Yup.string()
+        .oneOf([Yup.ref("password"), null], "Las contraseñas ingresadas no coinciden.")
+        .required("Debe confirmar la contraseña."),
+      first_name: Yup.string()
+        .min(2, "Ingrese un nombre valido.")
+        .required("Debe ingresar su nombre"),
+      last_name: Yup.string()
+        .min(2, "Ingrese un apellido valido.")
+        .required("Debe ingresar su apellido."),
+      country: Yup.string().min(4, "País invalido").required("Debe ingresar el país donde vive."),
+      province: Yup.string()
+        .min(4, "Debe ingresar una ciudad valida.")
+        .required("Debe ingresar la ciudad donde vive."),
+      phone_number: Yup.string()
+        .matches(/^\d{7,}$/, "Debe ingresar un número de teléfono válido con al menos 7 dígitos")
+        .required("Debe ingresar un número de teléfono."),
+    }),
+
+    onSubmit: handlerSubmit,
+  });
 
   if (registroOk) return <RegistroExitoso />;
 
@@ -112,10 +131,10 @@ export default function Page() {
 
       <form
         className="w-full md:max-w-[400px] lg:max-w-[550px] flex flex-col bg-white rounded-xl md:justify-self-start"
-        onSubmit={handlerSubmit}
+        onSubmit={formik.handleSubmit}
       >
         <h2 className="w-full text-center mt-6 lg:mt-10 font-bold text-xl md:text-2xl lg:text-3xl">
-          Registrate
+          Regístrate
         </h2>
 
         <div className="flex flex-col mx-4">
@@ -124,14 +143,14 @@ export default function Page() {
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="first_name"
-            onChange={handlerRegistro}
-            value={formRegister.first_name}
+            onChange={formik.handleChange}
+            value={formik.values.first_name}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.first_name ? "visible" : "hidden" }}
+            style={{ visibility: formik.errors.first_name ? "visible" : "hidden" }}
           >
-            {errors.first_name}
+            {formik.errors.first_name}
           </span>
         </div>
 
@@ -141,30 +160,30 @@ export default function Page() {
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="last_name"
-            onChange={handlerRegistro}
-            value={formRegister.last_name}
+            onChange={formik.handleChange}
+            value={formik.values.last_name}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.last_name ? "visible" : "hidden" }}
+            style={{ visibility: formik.errors.last_name ? "visible" : "hidden" }}
           >
-            {errors.last_name}
+            {formik.errors.last_name}
           </span>
         </div>
         <div className="flex flex-col mx-4">
-          <span>Pais</span>
+          <span>País</span>
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="country"
-            onChange={handlerRegistro}
-            value={formRegister.country}
+            onChange={formik.handleChange}
+            value={formik.values.country}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.country ? "visible" : "hidden" }}
+            style={{ visibility: formik.errors.country ? "visible" : "hidden" }}
           >
-            {errors.country}
+            {formik.errors.country}
           </span>
         </div>
         <div className="flex flex-col mx-4">
@@ -173,30 +192,30 @@ export default function Page() {
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="province"
-            onChange={handlerRegistro}
-            value={formRegister.province}
+            onChange={formik.handleChange}
+            value={formik.values.province}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.province ? "visible" : "hidden" }}
+            style={{ visibility: formik.errors.province ? "visible" : "hidden" }}
           >
-            {errors.estado}
+            {formik.errors.province}
           </span>
         </div>
         <div className="flex flex-col mx-4">
-          <span>Telefono</span>
+          <span>Teléfono</span>
           <input
             type="text"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="phone_number"
-            onChange={handlerRegistro}
-            value={formRegister.phone_number}
+            onChange={formik.handleChange}
+            value={formik.values.phone_number}
           />
           <span
             className="text-red-500"
-            style={{ visibility: errors.phone_number ? "visible" : "hidden" }}
+            style={{ visibility: formik.errors.phone_number ? "visible" : "hidden" }}
           >
-            {errors.telefono}
+            {formik.errors.phone_number}
           </span>
         </div>
 
@@ -206,19 +225,18 @@ export default function Page() {
             type="email"
             className="bg-[#EEEEEE] outline-none py-3 pl-1"
             name="email"
-            onChange={handlerRegistro}
-            value={formRegister.email}
+            onChange={formik.handleChange}
+            value={formik.values.email}
           />
 
           <span
             className="text-red-500"
             style={{
-              visibility: errors.email || emailUsed ? "visible" : "hidden",
+              visibility: formik.errors.email || emailUsed ? "visible" : "hidden",
             }}
           >
-            {errors.email ||
-              (emailUsed &&
-                "Existe un usuario registrado con el e-mail ingresado")}
+            {formik.errors.email ||
+              (emailUsed && "Existe un usuario registrado con el e-mail ingresado")}
           </span>
         </div>
 
@@ -229,24 +247,21 @@ export default function Page() {
               type={switchPassword ? "text" : "password"}
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="password"
-              onChange={handlerRegistro}
-              value={formRegister.password}
+              onChange={formik.handleChange}
+              value={formik.values.password}
             />
             <div className="absolute top-[18%] right-2 cursor-pointer">
               {switchPassword ? (
                 <AiOutlineEye size={30} onClick={handlerSwitchPassword} />
               ) : (
-                <AiOutlineEyeInvisible
-                  size={30}
-                  onClick={handlerSwitchPassword}
-                />
+                <AiOutlineEyeInvisible size={30} onClick={handlerSwitchPassword} />
               )}
             </div>
             <span
               className="text-red-500"
-              style={{ visibility: errors.password ? "visible" : "hidden" }}
+              style={{ visibility: formik.errors.password ? "visible" : "hidden" }}
             >
-              {errors.password}
+              {formik.errors.password}
             </span>
           </div>
         </div>
@@ -258,30 +273,24 @@ export default function Page() {
               type={switchPasswordConfirm ? "text" : "password"}
               className="bg-[#EEEEEE] outline-none py-3 pl-1 w-full"
               name="passwordConfirm"
-              onChange={handlerRegistro}
-              value={formRegister.passwordConfirm}
+              onChange={formik.handleChange}
+              value={formik.values.passwordConfirm}
             />
             <div className="absolute top-[18%] right-2 cursor-pointer">
               {switchPasswordConfirm ? (
-                <AiOutlineEye
-                  size={30}
-                  onClick={handlerSwitchPasswordConfirm}
-                />
+                <AiOutlineEye size={30} onClick={handlerSwitchPasswordConfirm} />
               ) : (
-                <AiOutlineEyeInvisible
-                  size={30}
-                  onClick={handlerSwitchPasswordConfirm}
-                />
+                <AiOutlineEyeInvisible size={30} onClick={handlerSwitchPasswordConfirm} />
               )}
             </div>
           </div>
           <span
             className="text-red-500"
             style={{
-              visibility: errors.passwordConfirm ? "visible" : "hidden",
+              visibility: formik.errors.passwordConfirm ? "visible" : "hidden",
             }}
           >
-            {errors.passwordConfirm}
+            {formik.errors.passwordConfirm}
           </span>
         </div>
 
@@ -289,7 +298,7 @@ export default function Page() {
           className="bg-[#128117] text-white px-16 py-3 w-max mx-auto mb-4 rounded hover:bg-[#00812b] duration-200"
           disabled={isRegistering}
         >
-          {isRegistering ? "Registrando..." : "Registrate"}
+          {isRegistering ? "Registrando..." : "Regístrate"}
         </button>
       </form>
     </section>
