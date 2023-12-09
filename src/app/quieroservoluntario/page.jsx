@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useId } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import api from "@/api/api";
 import { Autoplay } from "swiper/modules";
@@ -11,6 +11,7 @@ import Imagen4 from "@/../public/images/QuieroSerVoluntario/4.png";
 import Imagen5 from "@/../public/images/QuieroSerVoluntario/5.png";
 import "swiper/css";
 import CardQuieroSerVoluntario from "@/components/CardQuieroSerVoluntario/CardQuieroSerVoluntario";
+import CardQuieroSerVoluntarioLoading from "@/components/CardQuieroSerVoluntario/CardQuieroSerVoluntarioLoading";
 export default function Page() {
   const [voluntarios, setVoluntarios] = useState([]);
   const [typesVoluntarios, setTypesVoluntarios] = useState([]);
@@ -36,7 +37,6 @@ export default function Page() {
       imagen: Imagen5,
     },
   ];
-  const idCard = useId();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -58,6 +58,13 @@ export default function Page() {
     fetchData();
   }, []);
 
+  function generateLoadingCards(count) {
+    const loadingCards = [];
+    for (let i = 0; i < count; i++) {
+      loadingCards.push(<CardQuieroSerVoluntarioLoading key={i} />);
+    }
+    return loadingCards;
+  }
   return (
     <section>
       <header className="mySwiperContainer h-full ">
@@ -85,11 +92,17 @@ export default function Page() {
           Tipo de voluntariado
         </h1>
         <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-end justify-center gap-10 mx-auto justify-items-center">
-          {typesVoluntarios.map((t) => {
-            return (
-              <CardQuieroSerVoluntario key={t} titulo={t} imagen={Imagen1} />
-            );
-          })}
+          {typesVoluntarios.length > 0
+            ? typesVoluntarios.map((t) => {
+                return (
+                  <CardQuieroSerVoluntario
+                    key={t}
+                    titulo={t.name}
+                    imagen={t.image}
+                  />
+                );
+              })
+            : generateLoadingCards(8)}
         </article>
       </section>
     </section>
