@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useId } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import api from "@/api/api";
 import { Autoplay } from "swiper/modules";
@@ -36,7 +36,6 @@ export default function Page() {
       imagen: Imagen5,
     },
   ];
-  const idCard = useId();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -57,7 +56,6 @@ export default function Page() {
 
     fetchData();
   }, []);
-
   return (
     <section>
       <header className="mySwiperContainer h-full ">
@@ -87,7 +85,11 @@ export default function Page() {
         <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-end justify-center gap-10 mx-auto justify-items-center">
           {typesVoluntarios.map((t) => {
             return (
-              <CardQuieroSerVoluntario key={t} titulo={t} imagen={Imagen1} />
+              <CardQuieroSerVoluntario
+                key={t}
+                titulo={t.name}
+                imagen={t.image}
+              />
             );
           })}
         </article>
