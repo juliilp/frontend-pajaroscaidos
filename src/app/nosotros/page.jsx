@@ -10,8 +10,8 @@ import ComisionDirectiva from "@/components/Nosotros/ComisionDirectiva";
 export default function page() {
   return (
     <div className=" min-h-screen flex flex-col items-center gap-6 lg:text-lg xl:text-xl pt-[70px] 2xl:text-2xl">
-      <section className="h-[18rem] 2xl:h-[23rem] bg-black relative w-full">
-        <Image src={image1} alt="Image1" fill />
+      <section className="w-full md:px-[10%]">
+        <Image src={image1} alt="Image1" width={2000} height={600} priority />
       </section>
 
       <main className="flex items-center flex-col w-11/12 text-center gap-6">
