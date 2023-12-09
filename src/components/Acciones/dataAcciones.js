@@ -1,6 +1,6 @@
-import GegeVolvioALaSelva from "@/../public/images/Acciones/ImagenGegeElTucan.webp";
+import GegeVolvioALaSelva from "@/../public/images/Acciones/Articulo3/Action_Tucan.jpg";
 import FeriaDeVillaDominico from "@/../public/images/Acciones/ImagenFeriaDeVillaDominico.webp";
-import PigeonClubArgentino from '@/../public/images/Acciones/ImagenPigeonClubArgentino.webp' 
+import PigeonClubArgentino from "@/../public/images/Acciones/ImagenPigeonClubArgentino.webp";
 import HistoriaDeCocoElMono from "@/../public/images/Acciones/ImagenDeCoco.jpg";
 import HistoriaDeLosGuacaMayos from "@/../public/images/Acciones/ImagenDeGuacamayos.jpg";
 export const dataAcciones = [
@@ -8,7 +8,7 @@ export const dataAcciones = [
     id: 1,
     titulo: "Historia de coco el mono",
     texto:
-      'COCO EL MONO RESCATADO DE UNA FIESTA EN BELGRANO El dia 5 de diciembre de 2021, la Unidad Fiscal Especializada en Delitos Ambientales (UFEMA) de la Ciudad de Buenos Aires solicitó ayuda a nuestra Asociación para poder derivar un mono carayá que había sido descubierto en un procedimiento judicial en una vivienda en el barrio de Belgrano, en la Ciudad de Buenos Aires.',
+      "COCO EL MONO RESCATADO DE UNA FIESTA EN BELGRANO El dia 5 de diciembre de 2021, la Unidad Fiscal Especializada en Delitos Ambientales (UFEMA) de la Ciudad de Buenos Aires solicitó ayuda a nuestra Asociación para poder derivar un mono carayá que había sido descubierto en un procedimiento judicial en una vivienda en el barrio de Belgrano, en la Ciudad de Buenos Aires.",
     image: HistoriaDeCocoElMono,
     redireccion: "/acciones/articulo1",
     textoPersonalizado: true,
