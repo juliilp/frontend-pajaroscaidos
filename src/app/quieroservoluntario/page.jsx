@@ -67,7 +67,7 @@ export default function Page() {
   }
   return (
     <section>
-      <header className="mySwiperContainer h-full ">
+      <header className="mySwiperContainer h-full px-[10%] mt-[70px] ">
         <Swiper
           navigation={true}
           modules={[Autoplay]}
