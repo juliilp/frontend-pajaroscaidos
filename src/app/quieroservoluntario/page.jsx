@@ -65,6 +65,7 @@ export default function Page() {
     }
     return loadingCards;
   }
+
   return (
     <section>
       <header className="mySwiperContainer h-full px-[10%] mt-[70px] ">
@@ -99,6 +100,7 @@ export default function Page() {
                     key={t}
                     titulo={t.name}
                     imagen={t.image}
+                    form={t.formUrl}
                   />
                 );
               })
