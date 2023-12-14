@@ -74,11 +74,11 @@ function Campañas() {
   return (
     <>
       <h1 className="text-center pt-6 text-2xl font-bold">Campañas</h1>
-      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] h-[450px] w-[90%] mb-10">
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] h-[500px] w-[90%] mb-10">
         <div className="flex justify-evenly gap-3 items-center h-[80%] w-[100%] px-6">
           {campañas.map((campaña) => (
             <section
-              className="bg-[#C2C2C2] w-[30%] h-[250px] flex flex-col rounded-md cursor-pointer text-center"
+              className="bg-[#C2C2C2] w-[80%] h-[100%] mt-5 flex flex-col rounded-md cursor-pointer text-center"
               onClick={() => toggleModalPut(campaña)}
               key={campaña.id}
             >
@@ -88,7 +88,7 @@ function Campañas() {
                   width={150}
                   height={200}
                   alt="prueba"
-                  className="item-center h-[auto] w-[auto] max-w-[200px] max-h-[200px] w-full rounded-md"
+                  className=" h-[auto] w-full max-w-[200px] max-h-[200px] rounded-md"
                 />
               </div>
               <div className="p-2 flex flex-col items-center text-[#727272] text-sm">
