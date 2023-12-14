@@ -68,11 +68,13 @@ export default function Page() {
 
   return (
     <section>
-      <header className="mySwiperContainer h-full px-[10%] mt-[70px] ">
+
+      <header className="mySwiperContainer h-full md:px-[10%] mt-[70px] ">
+
         <Swiper
           navigation={true}
           modules={[Autoplay]}
-          className="mySwiper w-full h-full cursor-grab active:cursor-grabbing"
+          className="mySwiper w-full h-full  cursor-grab active:cursor-grabbing"
           autoplay={{
             delay: 2000,
             disableOnInteraction: false,

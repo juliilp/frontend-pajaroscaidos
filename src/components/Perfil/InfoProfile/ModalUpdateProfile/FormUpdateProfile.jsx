@@ -30,6 +30,12 @@ export default function FormUpdateProfile({ user, setChangeView }) {
 
   const handleNewAvatar = (event) => {
     const file = event.target.files[0];
+    const bytes = file.size;
+    const mb = Math.round(bytes / 1024)
+    if (mb > 4400) {
+      alert("La imagen no puede pesar mas de 4.5MB")
+      return
+    }
     setNewAvatar(file);
   };
 
@@ -170,9 +176,8 @@ export default function FormUpdateProfile({ user, setChangeView }) {
           </div>
         ))}
         <div
-          className={`w-full flex mt-4 ${
-            user.registerWithAuth0 ? "justify-end" : "justify-between"
-          }`}
+          className={`w-full flex mt-4 ${user.registerWithAuth0 ? "justify-end" : "justify-between"
+            }`}
         >
           {!user.registerWithAuth0 && (
             <button className="py-1 px-3 rounded-md bg-[#7e7e7e]" onClick={changeView}>

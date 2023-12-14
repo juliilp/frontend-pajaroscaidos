@@ -29,6 +29,8 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
   const [categoriesToDelete, setCategoriesToDelete] = useState([]);
   const [imageToDelete, setimageToDelete] = useState([]);
 
+  const [totalmbs, setTotalmbs] = useState(0);
+
   useEffect(() => {
     const SideBarAdmin = document.getElementById("SideBarAdmin");
     const footer = document.getElementById("footer");
@@ -63,9 +65,22 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
 
   const handlePhotoChange = (event) => {
     const files = event.target.files;
-    const imageArray = Array.from(files);
+    let imageArray = Array.from(files);
 
-    setNewItem({
+    let allow = false
+    let totalsize = 0
+    imageArray.forEach((image) => {
+      const bytes = image.size;
+      const mb = Math.round(bytes / 1024)
+      totalsize += mb
+    });
+    if (totalsize > 4400) {
+      alert(` ${imageArray.length > 1 ? "El total de las imagenes, superan los 4.5mb" : "La imagen no puede pesar mas de 4.5MB"} `)
+      imageArray = []
+      return
+    }
+    allow = true
+    allow && setNewItem({
       ...newItem,
       image: imageArray,
     });
@@ -109,6 +124,7 @@ export default function ItemModal({ closeModal, ModalType, itemToEdit }) {
     closeModal();
     setMode({ ...mode, delete: false });
   };
+
 
   const handleEdit = () => {
     const edited = {
