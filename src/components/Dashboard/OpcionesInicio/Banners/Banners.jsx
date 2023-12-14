@@ -85,17 +85,14 @@ function Banners() {
       <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%]">
         <div className="flex justify-evenly items-center h-[80%] w-[95%]">
           {banners.map((banner, index) => (
-            <section
-              className="bg-[#C2C2C2] mx-3 flex flex-col rounded-md"
-              key={index}
-            >
+            <section className="bg-[#C2C2C2] mx-3 flex flex-col rounded-md" key={index}>
               <div className="">
                 <Image
                   src={banner.image.secure_url}
-                  width={150}
-                  height={200}
+                  width={400}
+                  height={300}
                   alt="prueba"
-                  className="w-[300px] h-[130px] rounded-md"
+                  className=" h-[auto] w-[auto] max-w-[400px] max-h-[300px] rounded-md"
                 />
               </div>
               <div className="p-2">
@@ -128,10 +125,7 @@ function Banners() {
           modal.toggle ? "block" : "hidden"
         }`}
       >
-        <ModalPost
-          handleDataUpdated={handleDataUpdated}
-          toggleModal={toggleModal}
-        />
+        <ModalPost handleDataUpdated={handleDataUpdated} toggleModal={toggleModal} />
       </div>
     </>
   );
