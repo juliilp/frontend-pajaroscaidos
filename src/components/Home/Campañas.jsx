@@ -28,21 +28,22 @@ export default function Campañas() {
 
   return (
     <div className="w-full h-max flex flex-wrap gap-6 md:grid 2xl:grid-cols-3 justify-center items-center lg:justify-normal lg:items-stretch">
-      {news.length > 0 ? (
+      {news && news.length > 0 ? (
         news.map((e) => (
           <div
             key={e.id}
             className="w-full max-w-[300px] font-roboto bg-[#d9d9d9] p-4 lg:p-4 rounded-md my-6 justify-self-center hover:bg-[#cdcdcd] rounded-lg shadow-md flex flex-col items-center"
           >
             <Link href={`${e.id}`}>
-              <Image
-                src={e.image[0].imageUrl}
-                alt="auto"
-                width={250}
-                height={200}
-                className=" h-[200px] w-[200px] w-full rounded-md"
-              />
-
+              <div className="flex items-center justify-center">
+                <Image
+                  src={e.image[0].imageUrl}
+                  alt="auto"
+                  width={250}
+                  height={200}
+                  className="item-center h-[auto] w-[auto] max-w-[270px] max-h-[200px] w-full rounded-md"
+                />
+              </div>
               <span className="text-[#727272] text-sm w-full">{formatDate(e.createdAt)}</span>
               <h1 className="font-bold  text-xl my-2 ">{e.title}</h1>
               <p className="text-sm line-clamp-5">{e.description}</p>

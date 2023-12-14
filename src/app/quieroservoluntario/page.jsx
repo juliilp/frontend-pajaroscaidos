@@ -65,9 +65,12 @@ export default function Page() {
     }
     return loadingCards;
   }
+
   return (
     <section>
+
       <header className="mySwiperContainer h-full md:px-[10%] mt-[70px] ">
+
         <Swiper
           navigation={true}
           modules={[Autoplay]}
@@ -99,6 +102,7 @@ export default function Page() {
                     key={t}
                     titulo={t.name}
                     imagen={t.image}
+                    form={t.formUrl}
                   />
                 );
               })

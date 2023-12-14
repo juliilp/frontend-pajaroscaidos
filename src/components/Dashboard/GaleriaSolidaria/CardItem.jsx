@@ -9,20 +9,18 @@ export default function CardItem({ item, openEditModal }) {
       <div className="w-full h-64 overflow-x-hidden flex items-center justify-center bg-white rounded-t-md">
         {item.image[0]?.secure_url ? (
           <Image
-            width={100}
-            height={100}
+            width={200}
+            height={200}
             src={item.image[0].secure_url}
             alt={`product: ${item.id}`}
-            className="h-full w-auto"
+            className=" h-[auto] w-[auto] max-w-[300px] max-h-[300px] rounded-md"
           />
         ) : (
           <h1> Sin imagen</h1>
         )}
       </div>
       <section className="w-full flex flex-col flex-grow items-center gap-2 px-3">
-        <h2 className="text-xl font-semibold">
-          {item.title ?? "Titulo no disponible"}
-        </h2>
+        <h2 className="text-xl font-semibold">{item.title ?? "Titulo no disponible"}</h2>
         <p className="w-full text-lg break-words line-clamp-3">
           {item.description ?? "Descripcion no disponible"}
         </p>
