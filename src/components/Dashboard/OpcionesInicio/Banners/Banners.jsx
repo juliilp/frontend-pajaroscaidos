@@ -92,7 +92,7 @@ function Banners() {
                   width={400}
                   height={300}
                   alt="prueba"
-                  className=" h-[auto] w-[auto] max-w-[400px] max-h-[300px] rounded-md"
+                  className=" h-[auto] w-full max-w-[400px] max-h-[300px] rounded-md"
                 />
               </div>
               <div className="p-2">
