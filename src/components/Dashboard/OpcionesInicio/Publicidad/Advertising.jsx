@@ -83,17 +83,17 @@ function Advertising() {
   return (
     <>
       <h1 className="text-center pt-6 text-2xl font-bold">Publicidad</h1>
-      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[400px] w-[90%]">
-        <div className="flex justify-evenly items-center h-[80%] w-[95%]">
+      <div className="bg-[#4f4f4f] flex flex-col items-center rounded-xl mt-[10px] mb-[50px] h-[500px] w-[90%]">
+        <div className="flex justify-evenly items-center h-[80%] w-[95%] pt-3">
           {advertising.map((ad, index) => (
             <section className="bg-[#C2C2C2] mx-3 flex flex-col rounded-md" key={index}>
-              <div className="">
+              <div className="flex items-center justify-center">
                 <Image
                   src={ad.image[0].secure_url}
-                  width={150}
-                  height={200}
+                  width={300}
+                  height={300}
                   alt="prueba"
-                  className="w-[300px] h-[130px] rounded-md"
+                  className=" h-[auto] w-[auto] max-w-[300px] max-h-[300px] rounded-md"
                 />
               </div>
               <div className="p-2">

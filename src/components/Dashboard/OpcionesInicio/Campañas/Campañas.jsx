@@ -51,9 +51,7 @@ function Campañas() {
   const fetchCampañas = async () => {
     if (newsPerPage !== null) {
       try {
-        const response = await api.get(
-          `/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`
-        );
+        const response = await api.get(`/news?pageNumber=${pageNumber}&newsPerPage=${newsPerPage}`);
         setCampañas(response.data.news);
         setTotalPages(response.data.totalPages);
       } catch (error) {
@@ -90,23 +88,19 @@ function Campañas() {
                   width={150}
                   height={200}
                   alt="prueba"
-                  className=" w-[90%] h-[120px]"
+                  className="item-center h-[auto] w-[auto] max-w-[200px] max-h-[200px] w-full rounded-md"
                 />
               </div>
               <div className="p-2 flex flex-col items-center text-[#727272] text-sm">
                 <span>{formatDate(campaña.updatedAt)}</span>
                 <div className="flex flex-col font-bold text-xl text-black">
-                  <span>{campaña.title}</span>
+                  <span className="line-clamp-2">{campaña.title}</span>
                 </div>
               </div>
             </section>
           ))}
         </div>
-        <Pagination
-          pageNumber={pageNumber}
-          totalPages={totalPages}
-          changePage={handlePageChange}
-        />
+        <Pagination pageNumber={pageNumber} totalPages={totalPages} changePage={handlePageChange} />
 
         <div className="flex md:justify-end justify-center w-[95%] md:w-[95%] mb-5">
           <div className="flex justify-center items-center px-2 md:w-[22%] w-[53%] text-sm h-8 bg-[#60EA4A] font-bold rounded">
