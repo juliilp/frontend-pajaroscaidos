@@ -9,6 +9,7 @@ import Image from "next/image";
 import DefaultBanner from "@/../public/images/Home/DefaultBanner.webp";
 
 export default function MainHome({ banner }) {
+  console.log(banner);
   return (
     <div className="mySwiperContainer h-[180px] md:h-[350px] max-h-[600px] z-[-1]">
       {banner?.[0] ? (

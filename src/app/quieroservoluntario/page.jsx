@@ -65,12 +65,10 @@ export default function Page() {
     }
     return loadingCards;
   }
-
+  console.log(typesVoluntarios);
   return (
     <section>
-
       <header className="mySwiperContainer h-full md:px-[10%] mt-[70px] ">
-
         <Swiper
           navigation={true}
           modules={[Autoplay]}
